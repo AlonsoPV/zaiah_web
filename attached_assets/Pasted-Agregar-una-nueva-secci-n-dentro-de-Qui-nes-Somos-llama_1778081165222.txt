@@ -1,0 +1,135 @@
+Agregar una nueva sección dentro de “Quiénes Somos” llamada:
+
+“Números que respaldan la decisión”
+
+IMPORTANTE:
+La sección debe integrarse perfectamente al diseño premium actual del sitio.
+No debe verse como un bloque aislado o genérico.
+Debe sentirse institucional, elegante y alineado al storytelling de ZAIAH.
+
+OBJETIVO:
+Transmitir respaldo, trayectoria y credibilidad de forma visual y estratégica.
+
+DISEÑO:
+- Fondo azul ZAIAH profundo (#00246B)
+- Mucho espacio vertical
+- Diseño limpio y editorial
+- Grid elegante
+- Cards minimalistas
+- Tipografía protagonista
+- Números grandes y poderosos
+- Hover sutil premium
+- Bordes muy finos
+- Separaciones amplias
+- Jerarquía clara
+
+ESTRUCTURA:
+
+Eyebrow pequeño:
+TRAYECTORIA · EJECUCIÓN · RESPALDO
+
+Título:
+Números que respaldan la decisión
+
+Subtítulo:
+Más de 7 años regenerando la Ciudad de México con resultados medibles y reconocimiento dentro del sector inmobiliario.
+
+GRID DE MÉTRICAS:
+
+CARD 1
+15+
+Proyectos Concluidos
+
+Texto pequeño:
+de regeneración urbana en CDMX
+
+CARD 2
+160 MDP+
+Portafolio Activo
+
+Texto pequeño:
+en inversión gestionada
+
+CARD 3
+7+
+Años de Trayectoria
+
+Texto pequeño:
+regenerando Ciudad de México
+
+CARD 4
+50+
+Familias Beneficiadas
+
+Texto pequeño:
+dentro del ecosistema ZAIAH
+
+ESTILO DE LAS CARDS:
+- Fondo ligeramente más oscuro o transparente
+- Bordes sutiles
+- Mucho padding
+- Números dorados (#CAAA57)
+- Títulos blancos
+- Texto secundario gris claro
+- Animación hover elegante:
+  - ligero lift
+  - borde dorado suave
+  - sombra muy sutil
+
+Agregar separación amplia entre cards y encabezado.
+
+SECCIÓN INFERIOR / RESPALDO
+
+Debajo del grid agregar un bloque horizontal elegante.
+
+Diseño:
+- Fondo ligeramente distinto
+- Layout dividido en desktop
+- Stack vertical en mobile
+- Línea divisoria sutil
+
+Contenido izquierdo:
+Ícono estrella minimalista dorada.
+
+Título:
+Presentados en Forbes México
+
+Texto:
+Reconocidos por innovar en el sector inmobiliario.
+
+Contenido derecho:
+“A través de la metodología de flipping profesional, ZAIAH regenera espacios para volverlos rentables mientras mejora la calidad urbana del entorno.”
+
+Resaltar:
+“flipping profesional”
+en dorado.
+
+IMPORTANTE:
+La sección NO debe sentirse como dashboard financiero.
+Debe verse:
+- premium
+- institucional
+- moderna
+- arquitectónica
+- estratégica
+
+El diseño debe integrarse con:
+- la narrativa del sitio
+- la paleta actual
+- el tono silenciosamente dominante
+
+RESPONSIVE:
+En mobile:
+- Cards en una sola columna o 2x2 elegante
+- Tipografía bien escalada
+- Espaciados amplios
+- Mantener impacto visual
+
+MICROINTERACCIONES:
+- Hover elegante
+- Animaciones suaves al hacer scroll
+- Fade-up minimalista
+
+RESULTADO ESPERADO:
+La sección debe hacer que el usuario piense:
+“Esta empresa ya tiene estructura, experiencia y ejecución real.”

@@ -57,6 +57,35 @@ const pillars = [
   { title: "Silenciosamente dominante", body: "No necesitamos hacer ruido. Los ecosistemas que creamos hablan por sí solos." },
 ];
 
+function MetricCard({ value, title, sub, index }: { value: string; title: string; sub: string; index: number }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        padding: "2.75rem 2.5rem",
+        backgroundColor: hovered ? "rgba(202,170,87,0.06)" : "rgba(0,0,0,0.18)",
+        borderTop: hovered ? "2px solid rgba(202,170,87,0.5)" : "2px solid transparent",
+        transform: hovered ? "translateY(-3px)" : "translateY(0)",
+        boxShadow: hovered ? "0 8px 32px rgba(0,0,0,0.2)" : "none",
+        transition: "background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease",
+        cursor: "default",
+      }}
+    >
+      <p style={{ color: "#CAAA57", fontWeight: 800, fontSize: "clamp(2.5rem, 5vw, 3.5rem)", lineHeight: 1, letterSpacing: "-0.03em", marginBottom: "0.75rem" }}>
+        {value}
+      </p>
+      <p style={{ color: "#ffffff", fontWeight: 600, fontSize: "0.95rem", letterSpacing: "0.01em", marginBottom: "0.375rem" }}>
+        {title}
+      </p>
+      <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.78rem", fontWeight: 300, letterSpacing: "0.02em" }}>
+        {sub}
+      </p>
+    </div>
+  );
+}
+
 export default function QuienesSomos() {
   const [vis, setVis] = useState(false);
   useEffect(() => { const t = setTimeout(() => setVis(true), 80); return () => clearTimeout(t); }, []);
@@ -241,6 +270,108 @@ export default function QuienesSomos() {
               </FadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* NÚMEROS QUE RESPALDAN LA DECISIÓN */}
+      <section
+        className="py-32 md:py-48"
+        style={{ backgroundColor: "#00246B" }}
+        data-testid="section-numeros"
+      >
+        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
+
+          {/* Header */}
+          <FadeIn>
+            <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "1.5rem" }}>
+              Trayectoria · Ejecución · Respaldo
+            </p>
+            <h2 style={{ color: "#ffffff", fontWeight: 800, fontSize: "clamp(2rem, 4.5vw, 3.25rem)", lineHeight: 1.08, letterSpacing: "-0.025em", marginBottom: "1.25rem", maxWidth: "36rem" }}>
+              Números que respaldan la decisión.
+            </h2>
+            <p style={{ color: "rgba(255,255,255,0.42)", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.75, maxWidth: "42rem", marginBottom: "4rem" }}>
+              Más de 7 años regenerando la Ciudad de México con resultados medibles y reconocimiento dentro del sector inmobiliario.
+            </p>
+          </FadeIn>
+
+          {/* Metric cards 2×2 grid */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
+              gap: "1px",
+              backgroundColor: "rgba(255,255,255,0.07)",
+              border: "1px solid rgba(255,255,255,0.07)",
+              marginBottom: "1px",
+            }}
+          >
+            {[
+              { value: "15+", title: "Proyectos Concluidos", sub: "de regeneración urbana en CDMX" },
+              { value: "160 MDP+", title: "Portafolio Activo", sub: "en inversión gestionada" },
+              { value: "7+", title: "Años de Trayectoria", sub: "regenerando Ciudad de México" },
+              { value: "50+", title: "Familias Beneficiadas", sub: "dentro del ecosistema ZAIAH" },
+            ].map((m, i) => (
+              <FadeIn key={i} delay={i * 90}>
+                <MetricCard value={m.value} title={m.title} sub={m.sub} index={i} />
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Forbes endorsement block */}
+          <FadeIn delay={360}>
+            <div
+              style={{
+                marginTop: "1px",
+                border: "1px solid rgba(255,255,255,0.07)",
+                backgroundColor: "rgba(0,0,0,0.2)",
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gap: 0,
+              }}
+              className="md:grid-cols-2"
+            >
+              {/* Left — Forbes badge */}
+              <div
+                style={{
+                  padding: "2.5rem 2.5rem",
+                  borderBottom: "1px solid rgba(255,255,255,0.07)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                  justifyContent: "center",
+                }}
+                className="md:border-b-0 md:border-r"
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                  {/* Star SVG */}
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                    <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
+                  </svg>
+                  <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "#CAAA57" }}>
+                    Presentados en Forbes México
+                  </p>
+                </div>
+                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.85rem", fontWeight: 300, lineHeight: 1.65, maxWidth: "22rem" }}>
+                  Reconocidos por innovar en el sector inmobiliario.
+                </p>
+              </div>
+
+              {/* Right — quote */}
+              <div
+                style={{
+                  padding: "2.5rem 2.5rem",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8 }}>
+                  "A través de la metodología de{" "}
+                  <span style={{ color: "#CAAA57", fontWeight: 600 }}>flipping profesional</span>
+                  , ZAIAH regenera espacios para volverlos rentables mientras mejora la calidad urbana del entorno."
+                </p>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
