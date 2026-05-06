@@ -271,9 +271,9 @@ export default function Home() {
                     letterSpacing: "-0.01em",
                   }}
                 >
-                  Transformamos activos urbanos en{" "}
+                  Las ciudades siguen creciendo.{" "}
                   <br className="hidden md:block" />
-                  <em style={{ color: "#CAAA57", fontStyle: "italic" }}>patrimonio estructurado.</em>
+                  <em style={{ color: "#CAAA57", fontStyle: "italic" }}>No todos participan de su transformación.</em>
                 </h1>
               </div>
 
@@ -297,7 +297,7 @@ export default function Home() {
                     fontWeight: 300,
                   }}
                 >
-                  Identificamos, adquirimos y regeneramos activos estratégicos en ciudades emergentes — creando patrimonio con impacto económico, urbano y estructural.
+                  Mientras algunas zonas pierden valor, otras esconden activos con potencial patrimonial desaprovechado.
                 </p>
               </div>
 
@@ -456,9 +456,18 @@ export default function Home() {
                 ))}
               </div>
 
+              {/* User desire identification */}
+              <FadeIn delay={580}>
+                <div className="mt-12 mb-4" style={{ borderLeft: "2px solid rgba(202,170,87,0.2)", paddingLeft: "1.5rem" }}>
+                  <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.1rem)", lineHeight: 1.9, color: "rgba(0,36,107,0.5)", fontWeight: 300 }}>
+                    Cada vez más inversionistas buscan construir ingresos sostenibles respaldados por activos estratégicos. No quieren depender únicamente de su tiempo. Buscan patrimonio heredable. Renta estructurada. Participar en algo que trascienda.
+                  </p>
+                </div>
+              </FadeIn>
+
               {/* The pivot — ZAIAH enters */}
-              <FadeIn delay={700}>
-                <div className="mt-14 pt-10 border-t border-[#CAAA57]/20">
+              <FadeIn delay={750}>
+                <div className="mt-12 pt-10 border-t border-[#CAAA57]/20">
                   <p
                     style={{
                       fontFamily: "'Playfair Display', Georgia, serif",
@@ -474,7 +483,7 @@ export default function Home() {
                   </p>
                   <Link href="/quienes-somos" data-testid="button-problema-conocer">
                     <span className="inline-flex items-center gap-3 eyebrow text-[#00246B] border-b border-[#CAAA57] pb-1 hover:text-[#CAAA57] transition-colors cursor-pointer">
-                      Entender el sistema →
+                      Entender el modelo →
                     </span>
                   </Link>
                 </div>
@@ -826,21 +835,21 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
             {[
               {
-                prefix: "No somos",
-                title: "Una desarrolladora tradicional",
-                body: "No construimos por volumen ni seguimos ciclos especulativos. Cada activo responde a un modelo, no a una intuición de mercado.",
+                prefix: "Para quienes buscan",
+                title: "Patrimonio real, no inmuebles especulativos",
+                body: "No seguimos ciclos de oferta y demanda ni construimos por volumen. Cada activo que seleccionamos responde a un modelo de largo plazo con criterios institucionales de análisis y selección.",
                 highlight: false,
               },
               {
-                prefix: "No somos",
-                title: "Un fondo inmobiliario convencional",
-                body: "No buscamos rendimientos pasivos. Orquestamos capital, diseño y gobernanza activa para crear ecosistemas productivos.",
+                prefix: "Para quienes evitan",
+                title: "Las complicaciones de operar directamente",
+                body: "ZAIAH estructura, opera y administra el activo. El inversionista participa del valor sin gestionar propiedades diariamente. Patrimonio profesional, sin fricción operativa.",
                 highlight: false,
               },
               {
-                prefix: "Somos",
-                title: "Una arquitectura de regeneración urbana",
-                body: "Un sistema replicable que convierte deterioro en patrimonio estructurado. Ciudad como ecosistema. Activos como nodos de largo plazo.",
+                prefix: "Para quienes entienden",
+                title: "Que el capital bien estructurado genera legado",
+                body: "No se trata de adquirir metros cuadrados. Se trata de participar en activos capaces de generar valor urbano, renta sostenible y patrimonio heredable por generaciones.",
                 highlight: true,
               },
             ].map((item, i) => (
@@ -928,6 +937,47 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
+          PROYECCIÓN — ASPIRATION QUOTE
+      ═══════════════════════════════════════════════════════════ */}
+      <section
+        className="py-28 md:py-40 overflow-hidden"
+        style={{ backgroundColor: "#000000" }}
+        data-testid="section-proyeccion"
+      >
+        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-1 hidden lg:block">
+              <FadeIn>
+                <div className="w-px h-20 bg-gradient-to-b from-[#CAAA57]/30 to-transparent" />
+              </FadeIn>
+            </div>
+            <div className="lg:col-span-11">
+              <FadeIn delay={100}>
+                <p className="eyebrow text-[#CAAA57] mb-8">La participación</p>
+                <p
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 400,
+                    fontSize: "clamp(1.5rem, 3vw, 2.6rem)",
+                    lineHeight: 1.5,
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  <span style={{ color: "rgba(255,255,255,0.28)" }}>No se trata únicamente de adquirir propiedades.</span>
+                  <br />
+                  <span style={{ color: "rgba(255,255,255,0.28)" }}>Se trata de participar en activos capaces de generar</span>
+                  <br />
+                  <em style={{ color: "#CAAA57", fontStyle: "italic" }}>
+                    valor urbano, estabilidad patrimonial y flujo sostenible.
+                  </em>
+                </p>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
           VISIÓN — TYPOGRAPHIC STATEMENT
       ═══════════════════════════════════════════════════════════ */}
       <section
@@ -1005,6 +1055,24 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-end">
             <div className="lg:col-span-7">
               <FadeIn>
+                {/* Vision closing statement */}
+                <div style={{ marginBottom: "3rem", paddingBottom: "3rem", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                  <p
+                    style={{
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontWeight: 400,
+                      fontStyle: "italic",
+                      fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
+                      lineHeight: 1.75,
+                      color: "rgba(255,255,255,0.28)",
+                      letterSpacing: "0",
+                    }}
+                  >
+                    Las ciudades seguirán transformándose.<br />
+                    La diferencia estará en quién participe de esa transformación.
+                  </p>
+                </div>
+
                 <div className="flex items-center gap-3 mb-8">
                   <span className="w-5 h-px bg-[#CAAA57]" />
                   <p className="eyebrow text-[#CAAA57]">Siguiente paso</p>
