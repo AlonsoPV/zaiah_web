@@ -37,7 +37,7 @@ const PROJECTS = [
     status: "Preventa activa",
     statusColor: "#CAAA57",
     description:
-      "El único proyecto de inversión en consultorios boutique de especialidad a 5 minutos del WTC. Zona médica de alta demanda con plusvalía comprobada y administración profesional.",
+      "Una zona médica consolidada a cinco minutos del WTC. Consultorios boutique de especialidad en un mercado de demanda crónica. Para el inversionista que busca renta pasiva estable, sin operación directa y con administración profesional.",
     tags: ["Médico", "Renta Pasiva", "Bajo Riesgo"],
     metrics: [
       { value: "$1.5 MDP", label: "Inversión desde" },
@@ -55,7 +55,7 @@ const PROJECTS = [
     status: "Cupo limitado",
     statusColor: "#E8533A",
     description:
-      "El único proyecto boutique de la Tabacalera para inversionistas que buscan una propiedad en un mercado de alta demanda. Diseño histórico, zona céntrica con la mayor plusvalía de CDMX.",
+      "La Tabacalera: el barrio histórico con mayor plusvalía proyectada de CDMX. Edison 58 transforma un edificio icónico en plataforma de renta corta boutique, para inversionistas que comprenden el nuevo mercado urbano.",
     tags: ["Renta Corta", "Alta Plusvalía", "Diseño Histórico"],
     metrics: [
       { value: "$4.7 MDP", label: "Inversión desde" },
@@ -274,16 +274,19 @@ export default function Portafolio() {
             </div>
             <h1
               style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 600,
+                fontSize: "clamp(2.4rem, 4.5vw, 4rem)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.01em",
                 color: "#ffffff",
-                fontWeight: 800,
-                fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
-                lineHeight: 1.08,
-                letterSpacing: "-0.03em",
-                maxWidth: "700px",
+                maxWidth: "720px",
                 marginBottom: "1.75rem",
               }}
             >
-              Portafolio de activos estratégicos
+              Activos seleccionados por estructura,
+              <br />
+              <em style={{ color: "#CAAA57", fontStyle: "italic" }}>no por oportunismo.</em>
             </h1>
             <div style={{ width: "2.5rem", height: "1px", backgroundColor: "#CAAA57", marginBottom: "1.75rem" }} />
             <p
@@ -296,7 +299,7 @@ export default function Portafolio() {
                 marginBottom: "0.75rem",
               }}
             >
-              Proyectos seleccionados por ubicación, demanda, estructura financiera y capacidad de activar zonas urbanas con potencial patrimonial.
+              Cada proyecto en el portafolio ZAIAH responde a una tesis de inversión: ubicación estratégica, demanda comprobada y modelo financiero disciplinado.
             </p>
             <p
               style={{
@@ -307,7 +310,7 @@ export default function Portafolio() {
                 maxWidth: "480px",
               }}
             >
-              Cada activo responde a un modelo claro: ubicación estratégica, viabilidad comercial, ejecución disciplinada y potencial de generación de valor.
+              No seguimos ciclos de oferta y demanda. Seleccionamos activos donde el deterioro es la oportunidad y la estructura es la ventaja.
             </p>
           </div>
         </div>
@@ -347,16 +350,17 @@ export default function Portafolio() {
               <div className="lg:col-span-9">
                 <p
                   style={{
-                    color: "rgba(255,255,255,0.7)",
-                    fontWeight: 300,
-                    fontSize: "clamp(1.1rem, 2vw, 1.5rem)",
-                    lineHeight: 1.65,
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    color: "rgba(255,255,255,0.55)",
+                    fontWeight: 400,
+                    fontSize: "clamp(1.3rem, 2.4vw, 2rem)",
+                    lineHeight: 1.6,
                     letterSpacing: "-0.01em",
                     marginBottom: "2rem",
                     fontStyle: "italic",
                   }}
                 >
-                  "Cada proyecto responde a modelo, data y ejecución disciplinada. No trabajamos por intuición. Trabajamos sobre activos, zonas y estructuras con potencial medible."
+                  "Cada activo en este portafolio no es solo una inversión.<br />Es una participación en la transformación urbana de una ciudad."
                 </p>
                 <Link href="/contacto" data-testid="button-portfolio-contact">
                   <span

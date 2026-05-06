@@ -122,12 +122,25 @@ export default function QuienesSomos() {
             <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.35em] uppercase mb-6">
               Quiénes Somos
             </p>
-            <h1 className="text-white font-bold text-[2.6rem] md:text-[3.4rem] leading-[1.08] tracking-tight max-w-2xl mb-7">
-              Una empresa privada de transformación urbana.
+            <h1
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 600,
+                fontSize: "clamp(2.4rem, 4.5vw, 4rem)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.01em",
+                color: "#ffffff",
+                maxWidth: "760px",
+                marginBottom: "1.75rem",
+              }}
+            >
+              Una firma construida para quienes piensan
+              <br />
+              <em style={{ color: "#CAAA57", fontStyle: "italic" }}>en generaciones, no en transacciones.</em>
             </h1>
             <div className="w-10 h-px bg-[#CAAA57] mb-7" />
             <p className="text-white/50 text-base font-light max-w-lg leading-relaxed">
-              Operamos bajo un modelo estructurado de Zonas ZH para detectar, adquirir y regenerar activos inmobiliarios estratégicos en ciudades emergentes.
+              Detrás de cada activo regenerado hay una metodología, un equipo y una visión de largo plazo que convierte deterioro urbano en patrimonio estructurado.
             </p>
           </div>
         </div>
@@ -154,15 +167,21 @@ export default function QuienesSomos() {
             <div className="lg:col-span-8">
               <div className="space-y-5">
                 {[
-                  { text: "No somos una desarrolladora tradicional.", dim: true },
-                  { text: "No somos un fondo inmobiliario convencional.", dim: true },
+                  { text: "No somos una desarrolladora tradicional.", highlight: false },
+                  { text: "No somos un fondo inmobiliario convencional.", highlight: false },
                   { text: "Somos una arquitectura de regeneración.", highlight: true },
                 ].map((line, i) => (
                   <FadeIn key={i} delay={i * 120}>
                     <p
-                      className={`font-bold text-3xl md:text-4xl tracking-tight leading-tight ${
-                        line.highlight ? "text-[#00246B]" : "text-[#00246B]/20"
-                      }`}
+                      style={{
+                        fontFamily: "'Playfair Display', Georgia, serif",
+                        fontWeight: line.highlight ? 600 : 400,
+                        fontStyle: !line.highlight ? "italic" : "normal",
+                        fontSize: "clamp(1.6rem, 3vw, 2.6rem)",
+                        lineHeight: 1.2,
+                        color: line.highlight ? "#00246B" : "rgba(0,36,107,0.18)",
+                        letterSpacing: "-0.01em",
+                      }}
                     >
                       {line.text}
                     </p>
@@ -296,8 +315,8 @@ export default function QuienesSomos() {
                 <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "1.25rem" }}>
                   Trayectoria · Ejecución · Respaldo
                 </p>
-                <h2 style={{ color: "#ffffff", fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.05, letterSpacing: "-0.025em", margin: 0 }}>
-                  Números que respaldan<br />la decisión.
+                <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#ffffff", fontWeight: 600, fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.015em", margin: 0 }}>
+                  Números que respaldan<br /><em style={{ fontStyle: "italic", color: "#CAAA57" }}>la decisión.</em>
                 </h2>
               </div>
               <div style={{ display: "flex", alignItems: "flex-end" }}>
@@ -392,8 +411,17 @@ export default function QuienesSomos() {
                 <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.3em] uppercase mb-4">
                   Identidad
                 </p>
-                <h2 className="text-[#00246B] font-bold text-4xl tracking-tight leading-tight">
-                  El ADN de ZAIAH
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: "clamp(1.8rem, 3.2vw, 2.8rem)",
+                    lineHeight: 1.15,
+                    letterSpacing: "-0.01em",
+                    color: "#00246B",
+                  }}
+                >
+                  El ADN de ZAIAH.
                 </h2>
               </FadeIn>
             </div>
