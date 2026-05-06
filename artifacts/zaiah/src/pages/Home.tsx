@@ -62,6 +62,154 @@ const MARQUEE_ITEMS = [
   "Visión 2045",
 ];
 
+const HOME_PROJECTS = [
+  {
+    id: "san-pedro-patriotismo",
+    name: "San Pedro Patriotismo",
+    category: "Boutique Medical Real Estate",
+    location: "San Pedro de los Pinos, CDMX",
+    status: "Preventa activa",
+    statusColor: "#CAAA57",
+    description:
+      "El único proyecto de inversión en consultorios boutique de especialidad a 5 minutos del WTC. Zona médica de alta demanda con plusvalía comprobada y administración profesional.",
+    tags: ["Médico", "Renta Pasiva", "Bajo Riesgo"],
+    metrics: [
+      { value: "$1.5 MDP", label: "Inversión desde" },
+      { value: "9% anual", label: "Rentabilidad estimada" },
+      { value: "14 m²", label: "Tamaño desde" },
+      { value: "Consultorio", label: "Tipo de activo" },
+    ],
+    img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=85&auto=format&fit=crop",
+  },
+  {
+    id: "edison-58-tabacalera",
+    name: "Edison 58 Tabacalera",
+    category: "Departamentos Boutique · Renta Corta",
+    location: "Tabacalera, CDMX",
+    status: "Cupo limitado",
+    statusColor: "#E8533A",
+    description:
+      "El único proyecto boutique de la Tabacalera para inversionistas que buscan una propiedad en un mercado de alta demanda. Diseño histórico, zona céntrica con la mayor plusvalía de CDMX.",
+    tags: ["Renta Corta", "Alta Plusvalía", "Diseño Histórico"],
+    metrics: [
+      { value: "$4.7 MDP", label: "Inversión desde" },
+      { value: "12%", label: "Cap Rate rentas cortas" },
+      { value: "$68 USD", label: "Tarifa Airbnb promedio" },
+      { value: "Departamento", label: "Tipo de activo" },
+    ],
+    img: "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1200&q=85&auto=format&fit=crop",
+  },
+];
+
+function HomeProjectCard({ project, delay = 0 }: { project: typeof HOME_PROJECTS[0]; delay?: number }) {
+  const [hovered, setHovered] = useState(false);
+  const { ref, inView } = useInView();
+
+  return (
+    <div
+      ref={ref}
+      className="flex flex-col overflow-hidden"
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? (hovered ? "translateY(-4px)" : "translateY(0)") : "translateY(32px)",
+        transition: "opacity 0.9s ease, transform 0.9s ease, box-shadow 0.35s ease, border-color 0.35s ease",
+        transitionDelay: `${delay}ms`,
+        border: hovered ? "1px solid rgba(202,170,87,0.6)" : "1px solid rgba(0,0,0,0.08)",
+        boxShadow: hovered ? "0 12px 48px rgba(0,0,0,0.14)" : "0 2px 16px rgba(0,0,0,0.06)",
+        backgroundColor: "#ffffff",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Header — dark institutional blue */}
+      <div style={{ backgroundColor: "#00246B", position: "relative", overflow: "hidden" }}>
+        <img
+          src={project.img}
+          alt=""
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.18, filter: "grayscale(100%)" }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,36,107,0.7) 0%, rgba(0,36,107,0.95) 100%)" }} />
+        <div style={{ position: "relative", zIndex: 1, padding: "2rem 2rem 1.75rem" }}>
+          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem", marginBottom: "1.25rem" }}>
+            <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#CAAA57" }}>
+              {project.category}
+            </p>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "0.375rem", padding: "0.3rem 0.75rem", border: `1px solid ${project.statusColor}`, borderRadius: "2px", flexShrink: 0 }}>
+              <span style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: project.statusColor, flexShrink: 0 }} />
+              <span style={{ fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: project.statusColor, whiteSpace: "nowrap" }}>
+                {project.status}
+              </span>
+            </span>
+          </div>
+          <h3 style={{ color: "#ffffff", fontWeight: 800, fontSize: "clamp(1.5rem, 2.8vw, 2rem)", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "0.625rem" }}>
+            {project.name}
+          </h3>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <span style={{ color: "rgba(202,170,87,0.6)", fontSize: "11px" }}>◎</span>
+            <p style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>
+              {project.location}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div style={{ padding: "1.75rem 2rem 2rem", display: "flex", flexDirection: "column", gap: "1.5rem", flex: 1 }}>
+        <p style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "rgba(0,36,107,0.6)" }}>
+          {project.description}
+        </p>
+
+        {/* Tags */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+          {project.tags.map(tag => (
+            <span key={tag} style={{ display: "inline-block", padding: "0.3rem 0.75rem", backgroundColor: "rgba(0,36,107,0.06)", border: "1px solid rgba(0,36,107,0.12)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#00246B" }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div style={{ height: "1px", backgroundColor: "rgba(0,36,107,0.08)" }} />
+
+        {/* Metrics 2×2 */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", backgroundColor: "rgba(0,36,107,0.08)", border: "1px solid rgba(0,36,107,0.08)" }}>
+          {project.metrics.map((m, i) => (
+            <div key={i} style={{ padding: "1rem 1.1rem", backgroundColor: i % 2 === 0 ? "#fafafa" : "#ffffff" }}>
+              <p style={{ fontSize: "clamp(1rem, 2vw, 1.25rem)", fontWeight: 800, color: "#00246B", letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: "0.25rem" }}>
+                {m.value}
+              </p>
+              <p style={{ fontSize: "9px", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(0,36,107,0.4)" }}>
+                {m.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div style={{ marginTop: "auto", paddingTop: "0.25rem" }}>
+          <Link href="/portafolio">
+            <span
+              className="block w-full text-center cursor-pointer"
+              style={{
+                backgroundColor: hovered ? "#00246B" : "transparent",
+                color: hovered ? "#ffffff" : "#00246B",
+                border: "1px solid #00246B",
+                padding: "0.9rem 1.5rem",
+                fontSize: "9.5px",
+                fontWeight: 700,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                transition: "background-color 0.3s ease, color 0.3s ease",
+              }}
+            >
+              Ver Proyecto Completo
+            </span>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [vis, setVis] = useState(false);
   useEffect(() => { const t = setTimeout(() => setVis(true), 100); return () => clearTimeout(t); }, []);
@@ -584,27 +732,28 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          PORTAFOLIO PREVIEW
+          PORTAFOLIO PREVIEW — investment cards (same as /portafolio)
       ═══════════════════════════════════════════════════════════ */}
       <section
-        className="py-32 md:py-44"
-        style={{ backgroundColor: "#EFEEED" }}
+        style={{ backgroundColor: "#EFEEED", paddingTop: "5rem", paddingBottom: "6rem" }}
         data-testid="section-portfolio-preview"
       >
         <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16">
-            <div className="lg:col-span-6">
+
+          {/* Section header */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+            <div className="lg:col-span-7">
               <FadeIn>
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-5 h-px bg-[#CAAA57]" />
                   <p className="eyebrow text-[#CAAA57]">Portafolio activo</p>
                 </div>
-                <h2 className="text-[#00246B] font-bold text-4xl md:text-5xl tracking-tight">
-                  Zonas en transformación.
+                <h2 className="text-[#00246B] font-bold text-4xl md:text-5xl tracking-tight leading-[1.08]">
+                  Activos estratégicos en operación.
                 </h2>
               </FadeIn>
             </div>
-            <div className="lg:col-span-6 flex items-end justify-end">
+            <div className="lg:col-span-5 flex items-end justify-start lg:justify-end">
               <FadeIn delay={100}>
                 <Link href="/portafolio" data-testid="button-portfolio-more">
                   <span className="inline-flex items-center gap-3 eyebrow text-[#00246B] border-b border-[#CAAA57] pb-1 hover:text-[#CAAA57] transition-colors cursor-pointer">
@@ -615,64 +764,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                name: "Edison 58",
-                cat: "Regeneración habitacional",
-                status: "En desarrollo",
-                color: "#CAAA57",
-                img: "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=600&q=80",
-                loc: "Ciudad de México",
-              },
-              {
-                name: "Zona ZH Salud",
-                cat: "Ecosistema wellness",
-                status: "Estructuración",
-                color: "#D5D3CE",
-                img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
-                loc: "Ciudad de México",
-              },
-              {
-                name: "Próxima Zona ZH",
-                cat: "Activo estratégico",
-                status: "En análisis",
-                color: "#606060",
-                img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80",
-                loc: "Por confirmar",
-              },
-            ].map((p, i) => (
-              <FadeIn key={i} delay={i * 100}>
-                <Link href="/portafolio" data-testid={`card-portfolio-preview-${i + 1}`}>
-                  <div className="group relative overflow-hidden cursor-pointer">
-                    {/* Image */}
-                    <div className="relative aspect-[3/4] overflow-hidden">
-                      <img
-                        src={p.img}
-                        alt={p.name}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                        style={{ transform: "scale(1.04)", transition: "transform 0.7s ease, filter 0.7s ease" }}
-                        onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1.0)"; }}
-                        onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)"; }}
-                      />
-                      <div
-                        className="absolute inset-0 transition-opacity duration-700"
-                        style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)" }}
-                      />
-                    </div>
-                    {/* Content overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-7">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: p.color }} />
-                        <p className="eyebrow text-white/50">{p.status}</p>
-                      </div>
-                      <p className="eyebrow text-[#CAAA57] mb-2">{p.cat}</p>
-                      <h3 className="text-white font-bold text-xl tracking-tight">{p.name}</h3>
-                      <p className="eyebrow text-white/30 mt-2">{p.loc}</p>
-                    </div>
-                  </div>
-                </Link>
-              </FadeIn>
+          {/* Investment cards — identical to /portafolio page */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 480px), 1fr))",
+              gap: "1.5rem",
+            }}
+          >
+            {HOME_PROJECTS.map((project, i) => (
+              <HomeProjectCard key={project.id} project={project} delay={i * 100} />
             ))}
           </div>
         </div>
