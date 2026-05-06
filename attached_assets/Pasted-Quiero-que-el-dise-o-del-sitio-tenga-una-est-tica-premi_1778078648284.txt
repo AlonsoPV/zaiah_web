@@ -1,0 +1,130 @@
+Quiero que el diseño del sitio tenga una estética premium inspirada en las mejores webs de real estate, arquitectura y fondos inmobiliarios modernos.
+
+NO quiero un diseño corporativo genérico.
+NO quiero una landing común.
+NO quiero bloques aburridos ni layouts básicos.
+
+El objetivo es que el sitio:
+- Genere impacto visual desde el primer segundo
+- Se vea moderno, elegante y aspiracional
+- Mantenga un enfoque institucional y estratégico
+- Lleve al usuario por un storytelling claro
+- Explique visualmente qué es ZAIAH y por qué es diferente
+- Haga que el usuario quiera seguir explorando
+- Transmita confianza, visión y sofisticación
+
+REFERENCIAS DE ESTILO:
+Inspirarse en:
+- Firmas inmobiliarias premium
+- Estudios de arquitectura contemporánea
+- Fondos de inversión modernos
+- Desarrolladoras boutique de alto nivel
+- Webs editoriales minimalistas
+- Estética tipo:
+  → Serhant
+  → The Boundary
+  → ODA Architecture
+  → BIG
+  → Aston Martin Residences
+  → Real estate luxury editorials
+  → Apple-style storytelling
+  → ArchDaily editorial layouts
+
+ESTILO VISUAL:
+- Cinemático
+- Arquitectónico
+- Editorial
+- Minimalista
+- Premium
+- Atemporal
+- Oscuro + elegante
+- Sofisticado pero limpio
+- Mucho espacio en blanco
+- Jerarquía visual muy clara
+- Tipografía protagonista
+- Uso inteligente de imágenes grandes
+- Layouts dinámicos y modernos
+
+DISEÑO:
+- Secciones visualmente distintas entre sí
+- Alternar fondos claros y oscuros
+- Uso de grids editoriales modernos
+- Imágenes amplias tipo fullscreen
+- Superposición elegante de texto e imagen
+- Bordes finos
+- Líneas decorativas sutiles
+- Microinteracciones suaves
+- Animaciones minimalistas
+- Scroll cinematográfico
+- Efectos hover elegantes
+- Transiciones suaves entre secciones
+
+NARRATIVA / STORYTELLING:
+El sitio debe sentirse como una experiencia, no solo una página informativa.
+
+El usuario debe entender progresivamente:
+1. Qué hace ZAIAH
+2. Por qué es diferente
+3. Cómo funciona el modelo
+4. Qué transforma realmente
+5. Qué proyectos existen
+6. Por qué genera confianza
+7. Cómo iniciar conversación
+
+Cada sección debe conectar con la siguiente de forma natural.
+
+IMPORTANTE:
+No saturar con texto enorme.
+No usar demasiados elementos visuales.
+No usar layouts rígidos.
+No hacer todo centrado.
+No usar iconografía genérica.
+
+La web debe sentirse:
+“silenciosamente dominante”.
+
+Debe parecer una firma de regeneración urbana global con visión de largo plazo.
+
+EXPERIENCIA DEL HERO:
+El hero debe ser extremadamente atractivo y moderno:
+- Imagen o video urbano cinematográfico
+- Overlay elegante
+- Tipografía limpia y poderosa
+- CTA claro
+- Composición editorial
+- Mucha profundidad visual
+- Sensación de escala y ciudad
+
+La experiencia debe provocar:
+“Quiero saber más.”
+
+ESTRUCTURA VISUAL:
+Cada sección debe sentirse como un capítulo:
+- Introducción
+- Manifiesto
+- Modelo
+- Diferenciador
+- Portafolio
+- Visión
+- Contacto
+
+El diseño debe guiar naturalmente el scroll.
+
+MOBILE:
+La versión móvil debe verse igual de premium:
+- Espaciado correcto
+- Jerarquía clara
+- Navegación limpia
+- Hero bien adaptado
+- CTAs visibles
+- Cards elegantes
+
+RESULTADO FINAL:
+Quiero una web que:
+- Destaque frente a inmobiliarias tradicionales
+- Se vea de nivel internacional
+- Sea visualmente memorable
+- Genere percepción de alto valor
+- Convierta visitas en conversaciones
+- Explique claramente el universo ZAIAH
+- Se vea moderna, aspiracional y estratégicamente diseñada
