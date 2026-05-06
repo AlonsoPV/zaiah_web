@@ -73,7 +73,7 @@ export default function Home() {
           HERO — CINEMATIC FULLSCREEN
       ═══════════════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-screen flex flex-col justify-end overflow-hidden"
+        className="relative min-h-screen flex flex-col overflow-hidden"
         data-testid="section-hero"
       >
         {/* Background image */}
@@ -82,76 +82,156 @@ export default function Home() {
             src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=90&auto=format&fit=crop"
             alt=""
             className="w-full h-full object-cover object-center"
-            style={{ transform: "scale(1.04)" }}
           />
         </div>
 
-        {/* Gradient overlays — depth layers */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #000 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.45) 100%)" }} />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0.2) 70%, transparent 100%)" }} />
-        {/* Subtle blue tint */}
-        <div className="absolute inset-0 opacity-20" style={{ background: "radial-gradient(ellipse at 80% 40%, #00246B 0%, transparent 70%)" }} />
+        {/* Gradient overlays — depth layers for legibility */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.65) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.50) 55%, rgba(0,0,0,0.15) 100%)" }} />
+        {/* Subtle blue atmosphere */}
+        <div className="absolute inset-0 opacity-15" style={{ background: "radial-gradient(ellipse at 75% 35%, #00246B 0%, transparent 65%)" }} />
 
-        {/* Content — anchored bottom-left */}
-        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-14 lg:px-20 pb-20 md:pb-28 w-full">
-          <div className="max-w-3xl">
-            {/* Eyebrow */}
-            <div
-              className={`flex items-center gap-4 mb-10 transition-all duration-800 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ transitionDelay: "0ms" }}
-            >
-              <span className="w-8 h-px bg-[#CAAA57]" />
-              <p className="eyebrow text-[#CAAA57]">Regeneración Urbana Estructurada</p>
-            </div>
+        {/* Content — vertically centered between header and bottom */}
+        <div
+          className="relative z-10 flex-1 flex flex-col justify-center w-full"
+          style={{ paddingTop: "80px", paddingBottom: "80px" }}
+        >
+          <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20 w-full">
+            <div style={{ maxWidth: "800px" }}>
 
-            {/* Title */}
-            <div
-              className={`transition-all duration-1000 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-              style={{ transitionDelay: "150ms" }}
-            >
-              <h1 className="text-white font-bold text-[2.8rem] md:text-[4rem] lg:text-[4.5rem] leading-[1.04] tracking-[-0.02em] mb-7">
-                Transformamos activos<br />
-                urbanos en patrimonio<br />
-                <span style={{ color: "#CAAA57" }}>estructurado.</span>
-              </h1>
-            </div>
+              {/* Eyebrow */}
+              <div
+                className="flex items-center gap-4"
+                style={{ marginBottom: "1.75rem", opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(16px)", transition: "opacity 0.8s ease, transform 0.8s ease", transitionDelay: "0ms" }}
+              >
+                <span style={{ width: "2rem", height: "1px", backgroundColor: "#CAAA57", flexShrink: 0 }} />
+                <p className="eyebrow text-[#CAAA57]">Regeneración Urbana Estructurada</p>
+              </div>
 
-            {/* Subtitle */}
-            <div
-              className={`transition-all duration-1000 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: "300ms" }}
-            >
-              <p className="text-white/50 text-base font-light leading-relaxed max-w-md mb-10">
-                ZAIAH identifica, adquiere y regenera edificios subutilizados en ciudades emergentes — creando nodos productivos con impacto económico, urbano y patrimonial.
-              </p>
-            </div>
+              {/* Title */}
+              <div
+                style={{ marginBottom: "1.75rem", opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(20px)", transition: "opacity 1s ease, transform 1s ease", transitionDelay: "120ms" }}
+              >
+                <h1
+                  className="text-white font-bold"
+                  style={{
+                    fontSize: "clamp(2.5rem, 4.8vw, 4.4rem)",
+                    lineHeight: "1.04",
+                    letterSpacing: "-0.03em",
+                  }}
+                >
+                  Transformamos activos urbanos en{" "}
+                  <br className="hidden md:block" />
+                  <span style={{ color: "#CAAA57" }}>patrimonio estructurado.</span>
+                </h1>
+              </div>
 
-            {/* CTAs */}
-            <div
-              className={`flex flex-col sm:flex-row items-start gap-3 transition-all duration-1000 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: "450ms" }}
-            >
-              <Link href="/contacto" data-testid="button-hero-agendar">
-                <span className="inline-block px-8 py-3.5 bg-[#CAAA57] text-black eyebrow hover:bg-white transition-all duration-300 cursor-pointer">
-                  Agendar conversación
-                </span>
-              </Link>
-              <Link href="/portafolio" data-testid="button-hero-portafolio">
-                <span className="inline-block px-8 py-3.5 border border-white/20 text-white/80 eyebrow hover:border-white/50 hover:text-white transition-all duration-300 cursor-pointer">
-                  Ver portafolio
-                </span>
-              </Link>
+              {/* Divider accent */}
+              <div
+                style={{ marginBottom: "1.5rem", opacity: vis ? 0.5 : 0, transition: "opacity 0.8s ease", transitionDelay: "200ms" }}
+              >
+                <span style={{ display: "block", width: "2.5rem", height: "1px", backgroundColor: "#CAAA57" }} />
+              </div>
+
+              {/* Subtitle */}
+              <div
+                style={{ marginBottom: "2.25rem", opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(12px)", transition: "opacity 1s ease, transform 1s ease", transitionDelay: "240ms" }}
+              >
+                <p
+                  style={{
+                    fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)",
+                    lineHeight: "1.75",
+                    maxWidth: "480px",
+                    color: "rgba(255,255,255,0.45)",
+                    fontWeight: 300,
+                  }}
+                >
+                  Identificamos, adquirimos y regeneramos activos estratégicos en ciudades emergentes — creando patrimonio con impacto económico, urbano y estructural.
+                </p>
+              </div>
+
+              {/* CTAs */}
+              <div
+                className="flex flex-col sm:flex-row items-start"
+                style={{ gap: "0.75rem", opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(12px)", transition: "opacity 1s ease, transform 1s ease", transitionDelay: "320ms" }}
+              >
+                {/* Primary CTA — gold, premium */}
+                <Link href="/contacto" data-testid="button-hero-agendar">
+                  <span
+                    className="inline-flex items-center cursor-pointer"
+                    style={{
+                      backgroundColor: "#CAAA57",
+                      color: "#000000",
+                      padding: "0.9rem 2rem",
+                      fontSize: "9.5px",
+                      fontWeight: 700,
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase",
+                      transition: "background-color 0.3s ease",
+                      whiteSpace: "nowrap",
+                      display: "inline-flex",
+                    }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#ffffff"; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#CAAA57"; }}
+                  >
+                    Agendar conversación
+                  </span>
+                </Link>
+
+                {/* Secondary CTA — ghost */}
+                <Link href="/portafolio" data-testid="button-hero-portafolio">
+                  <span
+                    className="inline-flex items-center gap-2 cursor-pointer"
+                    style={{
+                      color: "rgba(255,255,255,0.55)",
+                      padding: "0.9rem 2rem",
+                      fontSize: "9.5px",
+                      fontWeight: 600,
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase",
+                      border: "1px solid rgba(255,255,255,0.18)",
+                      transition: "color 0.3s ease, border-color 0.3s ease",
+                      whiteSpace: "nowrap",
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "rgba(255,255,255,0.9)";
+                      el.style.borderColor = "rgba(255,255,255,0.45)";
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLElement;
+                      el.style.color = "rgba(255,255,255,0.55)";
+                      el.style.borderColor = "rgba(255,255,255,0.18)";
+                    }}
+                  >
+                    Ver portafolio
+                    <span style={{ color: "#CAAA57", fontSize: "11px" }}>→</span>
+                  </span>
+                </Link>
+              </div>
+
             </div>
           </div>
         </div>
 
-        {/* Bottom right: scroll cue */}
+        {/* Scroll cue — bottom right */}
         <div
-          className={`absolute bottom-10 right-10 md:right-20 flex flex-col items-center gap-3 transition-all duration-1000 ${vis ? "opacity-100" : "opacity-0"}`}
+          className={`absolute bottom-8 right-10 md:right-16 flex flex-col items-center gap-3 transition-all duration-1000 ${vis ? "opacity-100" : "opacity-0"}`}
           style={{ transitionDelay: "900ms" }}
         >
-          <div className="w-px h-16 bg-gradient-to-b from-white/40 to-transparent" />
-          <p className="eyebrow text-white/25" style={{ writingMode: "vertical-rl", letterSpacing: "0.4em" }}>Scroll</p>
+          <div style={{ width: "1px", height: "56px", background: "linear-gradient(to bottom, rgba(255,255,255,0.35), transparent)" }} />
+          <p className="eyebrow text-white/20" style={{ writingMode: "vertical-rl", letterSpacing: "0.4em" }}>Scroll</p>
+        </div>
+
+        {/* Bottom left: location tag */}
+        <div
+          className={`absolute bottom-8 left-8 md:left-14 lg:left-20 transition-all duration-1000 ${vis ? "opacity-100" : "opacity-0"}`}
+          style={{ transitionDelay: "1000ms" }}
+        >
+          <div className="flex items-center gap-3">
+            <span style={{ width: "1rem", height: "1px", backgroundColor: "rgba(202,170,87,0.4)" }} />
+            <p className="eyebrow text-white/20">Ciudad de México · MX</p>
+          </div>
         </div>
       </section>
 
