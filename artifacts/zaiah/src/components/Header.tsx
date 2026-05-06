@@ -4,8 +4,8 @@ import { Link, useLocation } from "wouter";
 const navLinks = [
   { href: "/", label: "Inicio" },
   { href: "/quienes-somos", label: "Quiénes Somos" },
+  { href: "/modelo", label: "Modelo" },
   { href: "/portafolio", label: "Portafolio" },
-  { href: "/contacto", label: "Contacto" },
 ];
 
 export default function Header() {
@@ -14,7 +14,7 @@ export default function Header() {
   const [location] = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -23,22 +23,24 @@ export default function Header() {
     setMenuOpen(false);
   }, [location]);
 
+  const isLight = scrolled;
+
   return (
     <header
       data-testid="header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-[#D5D3CE]"
+        isLight
+          ? "bg-white/97 backdrop-blur-sm border-b border-[#D5D3CE]/70"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-16">
+        <div className="flex items-center justify-between h-[72px]">
           {/* Logo */}
           <Link href="/" data-testid="link-logo">
             <span
-              className={`font-bold text-xl tracking-[0.12em] transition-colors duration-300 ${
-                scrolled ? "text-[#00246B]" : "text-white"
+              className={`font-bold text-lg tracking-[0.18em] transition-colors duration-400 ${
+                isLight ? "text-[#00246B]" : "text-white"
               }`}
             >
               ZAIAH
@@ -46,64 +48,58 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-10" data-testid="nav-desktop">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                data-testid={`nav-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
-              >
-                <span
-                  className={`text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-300 relative group ${
-                    scrolled ? "text-[#00246B]" : "text-white/90"
-                  } ${location === link.href ? "text-[#CAAA57]" : ""}`}
+          <nav className="hidden md:flex items-center gap-8" data-testid="nav-desktop">
+            {navLinks.map((link) => {
+              const active = location === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  data-testid={`nav-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                 >
-                  {link.label}
                   <span
-                    className={`absolute -bottom-1 left-0 h-px bg-[#CAAA57] transition-all duration-300 ${
-                      location === link.href ? "w-full" : "w-0 group-hover:w-full"
+                    className={`text-[11px] font-semibold tracking-[0.14em] uppercase transition-colors duration-300 relative group ${
+                      isLight
+                        ? active ? "text-[#00246B]" : "text-[#00246B]/55 hover:text-[#00246B]"
+                        : active ? "text-white" : "text-white/55 hover:text-white"
                     }`}
-                  />
-                </span>
-              </Link>
-            ))}
+                  >
+                    {link.label}
+                    <span
+                      className={`absolute -bottom-0.5 left-0 h-px bg-[#CAAA57] transition-all duration-300 ${
+                        active ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
+                  </span>
+                </Link>
+              );
+            })}
+
             <Link href="/contacto" data-testid="nav-cta">
               <span
-                className={`text-xs font-semibold tracking-[0.12em] uppercase px-5 py-2.5 border transition-all duration-300 ${
-                  scrolled
+                className={`text-[11px] font-bold tracking-[0.14em] uppercase px-5 py-2 border transition-all duration-300 ${
+                  isLight
                     ? "border-[#00246B] text-[#00246B] hover:bg-[#00246B] hover:text-white"
-                    : "border-white/60 text-white hover:border-[#CAAA57] hover:text-[#CAAA57]"
+                    : "border-white/40 text-white/90 hover:border-[#CAAA57] hover:text-[#CAAA57]"
                 }`}
               >
-                Contacto
+                Agendar conversación
               </span>
             </Link>
           </nav>
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden flex flex-col gap-1.5 p-2 transition-colors duration-300 ${
-              scrolled ? "text-[#00246B]" : "text-white"
+            className={`md:hidden flex flex-col gap-[5px] p-2 transition-colors duration-300 ${
+              isLight ? "text-[#00246B]" : "text-white"
             }`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
             data-testid="button-menu-toggle"
           >
-            <span
-              className={`block w-6 h-0.5 bg-current transition-transform duration-300 ${
-                menuOpen ? "translate-y-2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-current transition-opacity duration-300 ${
-                menuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-current transition-transform duration-300 ${
-                menuOpen ? "-translate-y-2 -rotate-45" : ""
-              }`}
-            />
+            <span className={`block w-5 h-px bg-current transition-transform duration-300 origin-center ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`} />
+            <span className={`block w-5 h-px bg-current transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-5 h-px bg-current transition-transform duration-300 origin-center ${menuOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
           </button>
         </div>
       </div>
@@ -111,22 +107,27 @@ export default function Header() {
       {/* Mobile menu */}
       <div
         className={`md:hidden bg-[#00246B] overflow-hidden transition-all duration-500 ${
-          menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
         data-testid="nav-mobile"
       >
-        <div className="px-6 py-8 flex flex-col gap-6">
-          {navLinks.map((link) => (
+        <div className="px-6 py-10 flex flex-col gap-7 border-t border-white/10">
+          {[...navLinks, { href: "/contacto", label: "Contacto" }].map((link) => (
             <Link
               key={link.href}
               href={link.href}
               data-testid={`mobile-nav-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
             >
-              <span className="text-white/90 font-medium tracking-[0.1em] uppercase text-sm hover:text-[#CAAA57] transition-colors">
+              <span className="text-white/80 font-medium tracking-[0.12em] uppercase text-sm hover:text-[#CAAA57] transition-colors">
                 {link.label}
               </span>
             </Link>
           ))}
+          <Link href="/contacto">
+            <span className="inline-block mt-2 px-6 py-3 bg-[#CAAA57] text-black text-xs font-bold tracking-[0.15em] uppercase">
+              Agendar conversación
+            </span>
+          </Link>
         </div>
       </div>
     </header>

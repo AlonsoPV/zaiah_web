@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Home from "@/pages/Home";
 import QuienesSomos from "@/pages/QuienesSomos";
+import Modelo from "@/pages/Modelo";
 import Portafolio from "@/pages/Portafolio";
 import Contacto from "@/pages/Contacto";
 import NotFound from "@/pages/not-found";
@@ -19,6 +20,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/quienes-somos" component={QuienesSomos} />
+        <Route path="/modelo" component={Modelo} />
         <Route path="/portafolio" component={Portafolio} />
         <Route path="/contacto" component={Contacto} />
         <Route component={NotFound} />
