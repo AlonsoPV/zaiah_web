@@ -1,0 +1,253 @@
+Actúa como diseñador UI/UX senior y desarrollador frontend experto. Necesito que generes un sitio web institucional para ZAIAH / ZH, una empresa privada de regeneración urbana estructurada.
+
+Objetivo:
+Crear un sitio web rápido, elegante, minimalista, institucional y boutique, con las secciones:
+Inicio · Quiénes Somos · Portafolio · Contacto
+
+El sitio debe comunicar autoridad tranquila, visión de largo plazo, estructura, regeneración urbana y confianza patrimonial. No debe sentirse como una desarrolladora tradicional ni como una inmobiliaria común.
+
+Estilo visual:
+- Diseño minimalista, premium, sobrio y atemporal.
+- Inspiración: arquitectura, regeneración urbana, institucional boutique, lujo silencioso.
+- Mucho espacio en blanco.
+- Uso de bloques amplios, tipografía limpia, líneas finas, grids elegantes y composición editorial.
+- Evitar exceso de animaciones, colores saturados o elementos genéricos.
+- Debe sentirse como una firma estratégica de transformación urbana.
+
+Paleta de color:
+- Azul ZAIAH: #00246B
+- Dorado metálico: #CAAA57
+- Blanco piedra ZAIAH: #EFEEED
+- Gris concreto ZAIAH: #D5D3CE
+- Negro profundo: #000000
+
+Tipografía:
+Usar una fuente similar a Qualion. Si no está disponible, usar una combinación elegante como:
+- Títulos: Inter, Manrope o Montserrat en bold
+- Texto: Inter o Manrope regular
+Mantener jerarquía clara: título, subtítulo, cuerpo.
+
+Tono de voz:
+Claro, estructurado y preciso.
+Seguro, pero no arrogante.
+Estratégico, no comercial.
+Minimalista, con oraciones cortas e ideas profundas.
+Visionario pero aterrizado.
+
+Palabras clave a usar:
+Regeneración, estructura, modelo, arquitectura, sistema, nodo, capital, patrimonio, ecosistema, ejecución, respaldo, flipping, remodelación, rendimientos.
+
+Evitar palabras como:
+Oportunidad única, ganga, descuentos, plusvalía garantizada, proyecto soñado, lujo exagerado.
+
+Contenido base:
+
+ZAIAH / ZH es una empresa privada de transformación urbana dedicada a identificar, adquirir y regenerar activos inmobiliarios estratégicos en ciudades emergentes.
+
+No es una desarrolladora tradicional.
+No es un fondo inmobiliario convencional.
+Es una arquitectura de regeneración.
+
+ZH opera bajo un modelo estructurado de Zonas ZH, donde detecta edificios subutilizados, jurídicamente viables y financieramente escalables, para convertirlos en ecosistemas productivos de alto impacto económico y patrimonial.
+
+Visión a 20 años:
+Liderar la regeneración de 1,000 activos urbanos estratégicos, redefiniendo el modelo privado de renovación urbana en economías emergentes y posicionando a las grandes ciudades como motores globales de prosperidad.
+
+Propósito:
+Cambiar el destino de las ciudades, devolviendo el poder a las personas para regenerarlas y convertir el deterioro urbano en ecosistemas sostenibles de prosperidad y patrimonio.
+
+Arquetipo:
+El Estratega Regenerador.
+ZAIAH no solo construye. Reestructura sistemas urbanos.
+No solo desarrolla. Orquesta capital, diseño y gobernanza privada.
+No solo compra activos. Crea ecosistemas replicables.
+
+Personalidad:
+- Visionaria pero disciplinada
+- Estratégica pero humana
+- Institucional pero boutique
+- Silenciosamente dominante
+
+Posicionamiento:
+ZAIAH es una empresa privada de regeneración urbana estructurada.
+Una empresa de regeneración de activos estratégicos urbanos.
+Un sistema replicable de renovación.
+Arquitectura financiera aplicada a ciudad.
+
+Narrativa central:
+Creamos nodos urbanos transformados.
+No renovamos fachadas.
+Reactivamos economías locales.
+No vendemos metros.
+Creamos patrimonio estructurado.
+
+Arquitectura de marca:
+ZAIAH como marca madre.
+ZAIAH Flipping: unidad encargada del desarrollo de Zonas ZH, regeneradas y activadas económicamente.
+ZAIAH Propiedades: unidad encargada de comercializar proyectos de naturaleza flipping.
+
+Estructura del sitio:
+
+1. INICIO
+
+Hero section:
+- Título principal potente:
+“Regeneramos activos urbanos estratégicos.”
+- Subtítulo:
+“ZAIAH estructura capital, diseño y ejecución para transformar edificios subutilizados en ecosistemas de patrimonio, productividad y regeneración urbana.”
+- Botones:
+“Conocer modelo”
+“Ver portafolio”
+- Incluir imagen placeholder arquitectónica o render urbano.
+- Diseño sobrio con fondo blanco piedra o negro profundo.
+
+Sección de manifiesto:
+“No compramos edificios en oferta.
+Regeneramos zonas.
+No vendemos metros.
+Creamos patrimonio estructurado.”
+
+Sección de modelo:
+Tres cards:
+1. Identificamos activos
+Edificios subutilizados con potencial jurídico, urbano y financiero.
+
+2. Estructuramos regeneración
+Integramos capital, diseño, remodelación y gobernanza privada.
+
+3. Activamos ecosistemas
+Convertimos activos en nodos productivos con impacto económico y patrimonial.
+
+Sección de visión:
+“1,000 activos urbanos estratégicos regenerados en 20 años.”
+Agregar texto breve sobre la visión de largo plazo.
+
+2. QUIÉNES SOMOS
+
+Sección institucional:
+“ZAIAH es una empresa privada de transformación urbana.”
+Texto:
+“Operamos bajo un modelo estructurado de Zonas ZH para detectar, adquirir y regenerar activos inmobiliarios estratégicos en ciudades emergentes.”
+
+Sección diferenciadora:
+Usar formato editorial:
+“No somos una desarrolladora tradicional.
+No somos un fondo inmobiliario convencional.
+Somos una arquitectura de regeneración.”
+
+Sección de fundadores:
+Crear bloque para fundadores con cards editables:
+- Foto placeholder
+- Nombre
+- Cargo
+- Breve semblanza
+Dejar contenido placeholder para reemplazar.
+
+Sección de equipo:
+Grid simple con miembros del equipo:
+- Foto
+- Nombre
+- Área
+- Rol
+Dejar placeholders.
+
+Sección personalidad de marca:
+4 cards:
+- Visionaria pero disciplinada
+- Estratégica pero humana
+- Institucional pero boutique
+- Silenciosamente dominante
+
+3. PORTAFOLIO
+
+Sección hero:
+“Portafolio de regeneración urbana.”
+Subtítulo:
+“Activos seleccionados por ubicación, viabilidad jurídica, potencial financiero y capacidad de activar zonas estratégicas.”
+
+Cards de proyectos:
+Crear mínimo 3 cards editables:
+1. Edison 58
+Categoría: Regeneración habitacional / flipping
+Descripción: Proyecto de remodelación estratégica enfocado en transformar un activo urbano en un producto patrimonial de alto potencial.
+Estado: En desarrollo
+Imagen placeholder.
+
+2. Zona ZH Salud
+Categoría: Ecosistema wellness / consultorios
+Descripción: Concepto orientado a crear infraestructura para profesionales de la salud dentro de zonas urbanas estratégicas.
+Estado: Conceptual / estructuración
+Imagen placeholder.
+
+3. Próxima Zona ZH
+Categoría: Activo estratégico urbano
+Descripción: Nuevo nodo urbano en evaluación bajo criterios de ubicación, absorción, viabilidad y escalabilidad.
+Estado: En análisis
+Imagen placeholder.
+
+Cada card debe tener:
+- Imagen
+- Nombre del proyecto
+- Tipo
+- Descripción
+- Estado
+- Botón “Ver proyecto” o “Solicitar información”
+
+Sección contexto:
+Agregar bloque:
+“Cada proyecto responde a modelo, data y ejecución disciplinada. No trabajamos por intuición. Trabajamos sobre activos, zonas y estructuras con potencial medible.”
+
+4. CONTACTO
+
+Objetivo:
+Convertir interés en conversación.
+
+Título:
+“Construyamos el siguiente nodo urbano.”
+
+Texto:
+“Si buscas conocer el modelo ZAIAH, explorar inversión, presentar un activo o generar una alianza estratégica, podemos iniciar una conversación.”
+
+Formulario:
+- Nombre
+- Empresa
+- Correo
+- Teléfono
+- Tipo de interés:
+  - Inversión
+  - Alianza
+  - Venta de activo
+  - Proyecto inmobiliario
+  - Otro
+- Mensaje
+- Botón: “Enviar solicitud”
+
+Agregar botón de WhatsApp:
+“Hablar por WhatsApp”
+
+Agregar datos placeholder:
+- Correo: contacto@zaiah.mx
+- WhatsApp: +52 55 0000 0000
+- Ciudad: Ciudad de México
+
+Requerimientos técnicos:
+- Sitio responsive para desktop, tablet y mobile.
+- Usar HTML, CSS y JavaScript o React/Vite si el entorno lo permite.
+- Código limpio, fácil de editar.
+- Crear componentes reutilizables: Header, Footer, Hero, SectionTitle, ProjectCard, TeamCard, ContactForm.
+- Navegación sticky elegante.
+- Scroll suave entre secciones.
+- Botón flotante de WhatsApp.
+- Formularios sin backend por ahora, solo validación visual básica.
+- Imágenes como placeholders fáciles de reemplazar.
+- Optimizar para carga rápida.
+- Añadir metatags SEO básicos:
+  title: ZAIAH | Regeneración Urbana Estructurada
+  description: Empresa privada de regeneración urbana dedicada a transformar activos inmobiliarios estratégicos en ecosistemas de patrimonio y prosperidad.
+
+Estética:
+El sitio debe verse serio, premium y corporativo, pero no aburrido.
+Debe transmitir:
+estructura, capital, visión, ciudad, patrimonio, ejecución y confianza.
+
+Genera el sitio completo con diseño profesional y listo para editar.

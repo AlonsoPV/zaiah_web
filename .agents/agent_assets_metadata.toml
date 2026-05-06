@@ -1,0 +1,56 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ex8DW_118w2UvjvDyDYLF"
+uri = "file://artifacts/zaiah/src/assets/images/hero-bg.png"
+type = "image"
+title = "Dramatic aerial city shot"
+
+[[generated]]
+id = "6qtvEsRL_9R7a8OZ4lYsZ"
+uri = "file://artifacts/zaiah/src/assets/images/project-1.png"
+type = "image"
+title = "Urban regeneration render 1"
+
+[[generated]]
+id = "9b4vzxmz6QmaQHO-EnHig"
+uri = "file://artifacts/zaiah/src/assets/images/project-2.png"
+type = "image"
+title = "Urban regeneration render 2"
+
+[[generated]]
+id = "0evuFkAcZGNJEA9EAuLHf"
+uri = "file://artifacts/zaiah/src/assets/images/project-3.png"
+type = "image"
+title = "Urban regeneration render 3"
+
+[[generated]]
+id = "MtMC2kY5N3m8NEQj5wjYf"
+uri = "file://artifacts/zaiah/src/assets/images/founder-1.png"
+type = "image"
+title = "Founder portrait 1"
+
+[[generated]]
+id = "h2TQgKFQJU24Z2yVH1391"
+uri = "file://artifacts/zaiah/src/assets/images/founder-2.png"
+type = "image"
+title = "Founder portrait 2"
+
+[[generated]]
+id = "g_4wq2jjh8XzXgvT0lQmF"
+uri = "file://artifacts/zaiah/src/assets/images/team-1.png"
+type = "image"
+title = "Team member 1"
+
+[[generated]]
+id = "ZJpUMk86_WoQqFbmdY7gW"
+uri = "file://artifacts/zaiah/src/assets/images/team-2.png"
+type = "image"
+title = "Team member 2"
+
+[[generated]]
+id = "7yTTu0TlnoB-Qq7uhbFaK"
+uri = "file://artifacts/zaiah/src/assets/images/team-3.png"
+type = "image"
+title = "Team member 3"
