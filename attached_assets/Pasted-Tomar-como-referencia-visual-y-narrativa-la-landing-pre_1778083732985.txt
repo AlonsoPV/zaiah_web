@@ -1,0 +1,231 @@
+Tomar como referencia visual y narrativa la landing previamente desarrollada (evento presencial de inversión inmobiliaria) y trasladar esa misma esencia al sitio institucional de ZAIAH.
+
+IMPORTANTE:
+NO copiar literalmente la landing.
+NO convertir el sitio institucional en una landing de evento.
+
+El objetivo es:
+- conservar la atmósfera premium y editorial
+- mantener el nivel de persuasión emocional
+- mejorar el storytelling
+- hacer que el usuario sienta que está entrando al universo ZAIAH
+- guiar visual y emocionalmente el scroll
+- hacer que la página “cuente una historia”
+
+La web actual se siente demasiado corporativa y racional.
+Necesitamos más:
+- emoción estratégica
+- tensión narrativa
+- curiosidad
+- aspiración
+- profundidad visual
+- experiencia cinematográfica
+
+REFERENCIAS CLAVE DE LA LANDING:
+- Mucho aire visual
+- Secciones que se sienten como capítulos
+- Storytelling progresivo
+- Uso elegante de tipografía serif + sans
+- Mezcla de emoción + racionalidad
+- Sensación editorial
+- Layouts más dinámicos
+- Uso de imágenes con composición cinematográfica
+- Comunicación persuasiva sin parecer agresiva
+- Diseño limpio y silenciosamente dominante
+
+OBJETIVO DE EXPERIENCIA:
+El usuario no debe sentir que “lee información”.
+Debe sentir que:
+- descubre una visión
+- entiende un problema
+- visualiza una transformación
+- comprende el modelo
+- percibe autoridad
+- se imagina formando parte
+
+ESTRUCTURA NARRATIVA:
+La página debe sentirse como un recorrido emocional e intelectual.
+
+FLUJO DEL STORYTELLING:
+
+1. EL PROBLEMA
+Mostrar el deterioro urbano, activos desaprovechados y ciudades creciendo sin estructura.
+
+2. LA OPORTUNIDAD
+Explicar que existen activos estratégicos ignorados por el mercado tradicional.
+
+3. EL MODELO ZAIAH
+Cómo ZAIAH detecta, estructura y regenera activos urbanos.
+
+4. LA TRANSFORMACIÓN
+Mostrar el impacto económico, urbano y patrimonial.
+
+5. EL RESPALDO
+Trayectoria, métricas, proyectos y reconocimiento.
+
+6. EL PORTAFOLIO
+Visualizar activos reales y oportunidades.
+
+7. LA VISIÓN
+Transmitir la visión de largo plazo:
+“regenerar ciudades”.
+
+8. LA CONVERSACIÓN
+Invitar al usuario a conectar.
+
+CAMBIOS VISUALES IMPORTANTES:
+
+1. MÁS EDITORIAL
+
+Usar layouts tipo revista premium:
+- bloques asimétricos
+- imagen + texto
+- secciones divididas
+- composiciones con profundidad
+- menos grids rígidos
+
+2. MÁS ATMÓSFERA
+
+Agregar:
+- overlays suaves
+- degradados elegantes
+- profundidad visual
+- imágenes más cinematográficas
+- transiciones suaves
+
+3. MÁS RITMO VISUAL
+
+Alternar:
+- secciones oscuras
+- secciones claras
+- bloques minimalistas
+- imágenes fullscreen
+- espacios vacíos
+
+El scroll debe sentirse dinámico.
+
+4. TIPOGRAFÍA MÁS PREMIUM
+
+Combinar:
+- Serif elegante para títulos emocionales
+- Sans limpia para estructura
+
+Ejemplo:
+- Títulos narrativos en serif
+- Datos y estructura en sans
+
+5. MENOS TEXTO CORPORATIVO
+
+Reducir bloques largos.
+Usar:
+- frases cortas
+- manifiestos
+- storytelling progresivo
+- microcopys inteligentes
+
+Ejemplo:
+NO:
+“ZAIAH es una empresa privada…”
+
+SÍ:
+“Las ciudades no colapsan de un día a otro.
+Se deterioran lentamente.
+Activos abandonados.
+Zonas desaprovechadas.
+Capital mal dirigido.
+
+Ahí es donde opera ZAIAH.”
+
+6. MÁS SECCIONES DE TRANSICIÓN
+
+Agregar bloques intermedios que conecten emocionalmente.
+
+Ejemplo:
+“No remodelamos edificios.
+Regeneramos sistemas urbanos.”
+
+O:
+“Detrás de cada activo existe una zona esperando ser reactivada.”
+
+7. PORTAFOLIO MÁS DESEABLE
+
+Los proyectos deben sentirse:
+- aspiracionales
+- estratégicos
+- exclusivos
+- respaldados
+
+No solo cards informativas.
+
+Agregar:
+- imágenes más grandes
+- sensación de inversión premium
+- métricas mejor integradas
+- storytelling por proyecto
+
+8. HERO MÁS CINEMATOGRÁFICO
+
+Inspirarse en la landing:
+- imagen fuerte
+- overlay elegante
+- composición editorial
+- sensación premium inmediata
+
+El hero debe provocar:
+“Quiero entender qué hacen.”
+
+9. MEJORAR CONVERSIÓN
+
+El sitio debe persuadir de forma elegante.
+
+NO usar marketing agresivo.
+
+SÍ usar:
+- credibilidad
+- tensión narrativa
+- visión
+- claridad
+- percepción de alto nivel
+
+10. CTA MÁS NATURALES
+
+Evitar CTAs muy comerciales.
+
+Usar:
+- Conocer modelo
+- Explorar portafolio
+- Iniciar conversación
+- Entender el sistema
+- Agendar conversación estratégica
+
+11. MICROINTERACCIONES
+
+Agregar:
+- fade-up elegante
+- reveal suave
+- hover premium
+- transiciones lentas y sofisticadas
+- scroll cinematográfico
+
+12. MOBILE
+
+La experiencia móvil debe mantener:
+- storytelling
+- ritmo visual
+- elegancia
+- jerarquía clara
+- impacto emocional
+
+13. RESULTADO FINAL
+
+Quiero que la web se sienta como:
+- una experiencia editorial premium
+- una firma internacional de regeneración urbana
+- una mezcla entre:
+  arquitectura + real estate + fondo estratégico + storytelling cinematográfico
+
+La experiencia debe provocar:
+“Esto no es una inmobiliaria tradicional.”
+
+Y al terminar el scroll:
+“Quiero hablar con ellos.”

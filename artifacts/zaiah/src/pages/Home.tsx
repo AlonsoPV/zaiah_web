@@ -262,16 +262,18 @@ export default function Home() {
                 style={{ marginBottom: "1.75rem", opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(20px)", transition: "opacity 1s ease, transform 1s ease", transitionDelay: "120ms" }}
               >
                 <h1
-                  className="text-white font-bold"
+                  className="text-white"
                   style={{
-                    fontSize: "clamp(2.5rem, 4.8vw, 4.4rem)",
-                    lineHeight: "1.04",
-                    letterSpacing: "-0.03em",
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: "clamp(2.6rem, 5vw, 4.8rem)",
+                    lineHeight: "1.06",
+                    letterSpacing: "-0.01em",
                   }}
                 >
                   Transformamos activos urbanos en{" "}
                   <br className="hidden md:block" />
-                  <span style={{ color: "#CAAA57" }}>patrimonio estructurado.</span>
+                  <em style={{ color: "#CAAA57", fontStyle: "italic" }}>patrimonio estructurado.</em>
                 </h1>
               </div>
 
@@ -403,34 +405,173 @@ export default function Home() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════
-          INTRO — WHO WE ARE
+          EL PROBLEMA — NARRATIVE TENSION
       ═══════════════════════════════════════════════════════════ */}
       <section
-        className="py-32 md:py-44"
+        className="py-32 md:py-52 overflow-hidden"
         style={{ backgroundColor: "#EFEEED" }}
-        data-testid="section-intro"
+        data-testid="section-problema"
       >
         <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+            {/* Left — eyebrow + vertical rule */}
+            <div className="lg:col-span-3">
               <FadeIn>
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="w-5 h-px bg-[#CAAA57]" />
-                  <p className="eyebrow text-[#CAAA57]">Quiénes somos</p>
+                <p className="eyebrow text-[#CAAA57] mb-6">El problema</p>
+                <div className="hidden lg:block w-px h-32 bg-gradient-to-b from-[#CAAA57]/30 to-transparent" />
+              </FadeIn>
+            </div>
+
+            {/* Right — narrative copy */}
+            <div className="lg:col-span-9">
+              <div className="space-y-0">
+                {[
+                  { text: "Las ciudades no colapsan de un día para otro.", serif: true, dim: false },
+                  { text: "Se deterioran lentamente.", serif: true, dim: true },
+                  { text: "Activos subutilizados.", serif: false, dim: true, small: true },
+                  { text: "Zonas ignoradas por el capital.", serif: false, dim: true, small: true },
+                  { text: "Oportunidades que el mercado tradicional no sabe ver.", serif: false, dim: true, small: true },
+                ].map((line, i) => (
+                  <FadeIn key={i} delay={i * 130}>
+                    <p
+                      style={{
+                        fontFamily: line.serif ? "'Playfair Display', Georgia, serif" : "inherit",
+                        fontWeight: line.serif ? 500 : 400,
+                        fontStyle: line.serif && i > 0 ? "italic" : "normal",
+                        fontSize: line.small ? "clamp(1rem, 1.4vw, 1.2rem)" : "clamp(1.7rem, 3.2vw, 2.8rem)",
+                        lineHeight: line.small ? 1.7 : 1.2,
+                        color: line.dim ? "rgba(0,36,107,0.22)" : "#00246B",
+                        letterSpacing: line.serif ? "-0.01em" : "0",
+                        paddingTop: line.small ? "0.1rem" : i === 0 ? "0" : "0.5rem",
+                        paddingBottom: line.small ? "0.1rem" : "0.5rem",
+                        paddingLeft: line.small ? "0.25rem" : "0",
+                        borderLeft: line.small ? "2px solid rgba(0,36,107,0.08)" : "none",
+                        marginLeft: line.small ? "0.5rem" : "0",
+                      }}
+                    >
+                      {line.text}
+                    </p>
+                  </FadeIn>
+                ))}
+              </div>
+
+              {/* The pivot — ZAIAH enters */}
+              <FadeIn delay={700}>
+                <div className="mt-14 pt-10 border-t border-[#CAAA57]/20">
+                  <p
+                    style={{
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontWeight: 600,
+                      fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
+                      lineHeight: 1.2,
+                      color: "#00246B",
+                      letterSpacing: "-0.01em",
+                      marginBottom: "1.5rem",
+                    }}
+                  >
+                    Ahí es donde opera ZAIAH.
+                  </p>
+                  <Link href="/quienes-somos" data-testid="button-problema-conocer">
+                    <span className="inline-flex items-center gap-3 eyebrow text-[#00246B] border-b border-[#CAAA57] pb-1 hover:text-[#CAAA57] transition-colors cursor-pointer">
+                      Entender el sistema →
+                    </span>
+                  </Link>
                 </div>
               </FadeIn>
             </div>
-            <div className="lg:col-span-8">
-              <FadeIn delay={100}>
-                <p className="text-[#00246B] font-light text-2xl md:text-3xl leading-[1.5] tracking-tight mb-10">
-                  ZAIAH es una firma privada de regeneración urbana estructurada. Identificamos activos deteriorados con potencial oculto y los convertimos en ecosistemas productivos — con rigor institucional, visión de largo plazo y ejecución disciplinada.
+
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          LA OPORTUNIDAD — FULL-BLEED EDITORIAL
+      ═══════════════════════════════════════════════════════════ */}
+      <section
+        className="relative overflow-hidden"
+        style={{ minHeight: "65vh", display: "flex", alignItems: "center" }}
+        data-testid="section-oportunidad"
+      >
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=85&auto=format&fit=crop"
+            alt=""
+            className="w-full h-full object-cover object-center"
+            style={{ filter: "grayscale(40%)" }}
+          />
+        </div>
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.70) 55%, rgba(0,0,0,0.2) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(0,36,107,0.15) 100%)" }} />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-14 lg:px-20 py-24 w-full">
+          <div className="max-w-2xl">
+            <FadeIn>
+              <p className="eyebrow text-[#CAAA57] mb-7">La oportunidad</p>
+              <h2
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontWeight: 500,
+                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                  lineHeight: 1.15,
+                  color: "#ffffff",
+                  letterSpacing: "-0.01em",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Existen activos estratégicos ignorados por el mercado tradicional.
+              </h2>
+              <div style={{ width: "2.5rem", height: "1px", backgroundColor: "#CAAA57", marginBottom: "1.5rem" }} />
+              <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "1rem", fontWeight: 300, lineHeight: 1.8, maxWidth: "36rem" }}>
+                ZAIAH los detecta antes que el mercado. Los estructura con rigor institucional. Los transforma en patrimonio con visión de 20 años.
+              </p>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          INTRO — WHO WE ARE
+      ═══════════════════════════════════════════════════════════ */}
+      <section
+        className="py-28 md:py-36"
+        style={{ backgroundColor: "#ffffff" }}
+        data-testid="section-intro"
+      >
+        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5">
+              <FadeIn>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-5 h-px bg-[#CAAA57]" />
+                  <p className="eyebrow text-[#CAAA57]">Quiénes somos</p>
+                </div>
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 500,
+                    fontSize: "clamp(2rem, 3.2vw, 2.8rem)",
+                    lineHeight: 1.2,
+                    color: "#00246B",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  Una firma privada de regeneración urbana estructurada.
+                </h2>
+              </FadeIn>
+            </div>
+            <div className="lg:col-span-7 lg:pl-8">
+              <FadeIn delay={150}>
+                <p className="text-[#00246B]/55 font-light text-lg leading-[1.8] tracking-tight mb-8" style={{ borderLeft: "2px solid rgba(202,170,87,0.25)", paddingLeft: "1.5rem" }}>
+                  No compramos activos en oferta. Detectamos zonas con potencial.<br />
+                  No vendemos metros cuadrados. Creamos patrimonio estructurado.<br />
+                  No seguimos tendencias. Construimos modelos replicables.
                 </p>
               </FadeIn>
-              <FadeIn delay={200}>
+              <FadeIn delay={280}>
                 <Link href="/quienes-somos" data-testid="button-intro-nosotros">
                   <span className="inline-flex items-center gap-3 eyebrow text-[#00246B] border-b border-[#CAAA57] pb-1 hover:text-[#CAAA57] transition-colors cursor-pointer">
-                    Conocer la firma
-                    <span className="text-[#CAAA57] text-xs">→</span>
+                    Conocer la firma →
                   </span>
                 </Link>
               </FadeIn>
@@ -443,7 +584,7 @@ export default function Home() {
           MANIFESTO — TYPOGRAPHIC DRAMA
       ═══════════════════════════════════════════════════════════ */}
       <section
-        className="py-32 md:py-44 overflow-hidden"
+        className="py-32 md:py-52 overflow-hidden"
         style={{ backgroundColor: "#000000" }}
         data-testid="section-manifesto"
       >
@@ -458,21 +599,28 @@ export default function Home() {
               </FadeIn>
             </div>
             <div className="lg:col-span-9">
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {[
-                  { text: "No compramos edificios en oferta.", weight: "font-bold", opacity: "text-white" },
-                  { text: "Regeneramos zonas.", weight: "font-light", opacity: "text-white/20" },
-                  { text: "No vendemos metros cuadrados.", weight: "font-bold", opacity: "text-white" },
-                  { text: "Creamos patrimonio", weight: "font-bold", opacity: "text-white" },
-                  { text: "estructurado.", weight: "font-bold", opacity: "text-[#CAAA57]", big: true },
+                  { text: "No remodelamos edificios.", serif: true, color: "rgba(255,255,255,0.15)" },
+                  { text: "Regeneramos sistemas urbanos.", serif: true, color: "#ffffff" },
+                  { text: "No compramos activos en oferta.", serif: true, color: "rgba(255,255,255,0.15)" },
+                  { text: "Detectamos zonas con potencial.", serif: true, color: "#ffffff" },
+                  { text: "No vendemos metros cuadrados.", serif: true, color: "rgba(255,255,255,0.15)" },
+                  { text: "Creamos patrimonio estructurado.", serif: true, color: "#CAAA57", large: true },
                 ].map((line, i) => (
-                  <FadeIn key={i} delay={i * 100}>
+                  <FadeIn key={i} delay={i * 110}>
                     <p
-                      className={`${line.weight} ${line.opacity} leading-tight tracking-tight ${
-                        line.big
-                          ? "text-4xl md:text-6xl lg:text-7xl"
-                          : "text-3xl md:text-5xl lg:text-6xl"
-                      }`}
+                      style={{
+                        fontFamily: "'Playfair Display', Georgia, serif",
+                        fontWeight: 500,
+                        fontStyle: i % 2 === 0 ? "normal" : "italic",
+                        color: line.color,
+                        fontSize: line.large
+                          ? "clamp(2.2rem, 4.8vw, 5rem)"
+                          : "clamp(1.9rem, 3.8vw, 3.8rem)",
+                        lineHeight: 1.15,
+                        letterSpacing: "-0.01em",
+                      }}
                     >
                       {line.text}
                     </p>
@@ -802,10 +950,30 @@ export default function Home() {
           <FadeIn delay={100}>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
               <div className="lg:col-span-8">
-                <h2 className="text-white font-bold text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.02em]">
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 700,
+                    fontSize: "clamp(4rem, 9vw, 9rem)",
+                    lineHeight: 0.95,
+                    letterSpacing: "-0.02em",
+                    color: "#ffffff",
+                  }}
+                >
                   1,000
                 </h2>
-                <h3 className="text-white/40 font-light text-3xl md:text-4xl tracking-tight mt-3 mb-8">
+                <h3
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 400,
+                    fontStyle: "italic",
+                    fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
+                    lineHeight: 1.2,
+                    color: "rgba(255,255,255,0.35)",
+                    marginTop: "0.75rem",
+                    marginBottom: "2rem",
+                  }}
+                >
                   activos urbanos regenerados.
                 </h3>
                 <div className="w-10 h-px bg-[#CAAA57] mb-8" />
@@ -841,9 +1009,20 @@ export default function Home() {
                   <span className="w-5 h-px bg-[#CAAA57]" />
                   <p className="eyebrow text-[#CAAA57]">Siguiente paso</p>
                 </div>
-                <h2 className="text-white font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.01em] mb-8">
-                  Construyamos el<br />
-                  <span className="font-light text-white/40">siguiente</span> nodo urbano.
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: "clamp(2.2rem, 4.5vw, 4.2rem)",
+                    lineHeight: 1.1,
+                    letterSpacing: "-0.01em",
+                    color: "#ffffff",
+                    marginBottom: "2rem",
+                  }}
+                >
+                  Construyamos el{" "}
+                  <em style={{ color: "rgba(255,255,255,0.35)", fontStyle: "italic", fontWeight: 400 }}>siguiente</em>{" "}
+                  nodo urbano.
                 </h2>
                 <p className="text-white/35 text-base font-light leading-relaxed max-w-md mb-10">
                   Si buscas explorar inversión, presentar un activo o generar una alianza estratégica con ZAIAH, podemos iniciar una conversación.

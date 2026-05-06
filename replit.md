@@ -24,7 +24,7 @@ Sitio web institucional para ZAIAH / ZH, empresa privada de regeneración urbana
 - `artifacts/zaiah/` — ZAIAH institutional website (preview path: `/`)
   - `src/pages/` — Home, QuienesSomos, Portafolio, Contacto, not-found
   - `src/components/` — Header, Footer, WhatsAppButton + shadcn UI components
-  - `src/index.css` — ZAIAH brand theme (Manrope font, color palette)
+  - `src/index.css` — ZAIAH brand theme (Manrope + Playfair Display fonts, color palette)
   - `index.html` — SEO meta tags in Spanish
 - `artifacts/api-server/` — shared Express API server (preview path: `/api`)
 - `lib/api-spec/openapi.yaml` — OpenAPI spec source of truth
@@ -50,7 +50,7 @@ Sitio web institucional para ZAIAH / ZH, empresa privada de regeneración urbana
 
 - Language: Spanish throughout the UI
 - Brand palette: ZAIAH Blue #00246B, Metallic Gold #CAAA57, Stone White #EFEEED, Concrete Gray #D5D3CE, Deep Black #000000
-- Typography: Manrope (300–800 weight) — loaded from Google Fonts
+- Typography: Manrope (300–800 weight) + Playfair Display (400–700, italic) — loaded from Google Fonts. Manrope for structure/data, Playfair Display for emotional headlines.
 - Tone: institutional, boutique, silently dominant — no emojis, no generic patterns
 
 ## Gotchas
