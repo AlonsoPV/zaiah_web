@@ -1,0 +1,138 @@
+Actualiza la sección PORTAFOLIO con esta nueva información y mejora el diseño para que se vea más premium, inmobiliario y claro.
+
+Objetivo:
+Mostrar los proyectos como oportunidades/activos inmobiliarios estructurados, no como simples tarjetas. La sección debe ayudar al usuario a entender rápidamente:
+- Qué es cada proyecto
+- Dónde está
+- Para quién es
+- Qué métricas clave tiene
+- Por qué vale la pena conocerlo
+
+Diseño de Portafolio:
+- Crear cards grandes tipo “investment project card”.
+- Layout de 2 columnas en desktop y 1 columna en mobile.
+- Cada card debe tener header oscuro con color institucional.
+- Usar etiquetas tipo pill.
+- Métricas en grid 2x2.
+- CTA claro: “Ver proyecto completo”.
+- Hover elegante con borde dorado, sombra suave y ligero lift.
+- Mantener paleta ZAIAH:
+  - Azul #00246B
+  - Dorado #CAAA57
+  - Blanco piedra #EFEEED
+  - Gris concreto #D5D3CE
+  - Negro #000000
+
+Contenido de la sección:
+
+Título:
+Portafolio de activos estratégicos
+
+Subtítulo:
+Proyectos seleccionados por ubicación, demanda, estructura financiera y capacidad de activar zonas urbanas con potencial patrimonial.
+
+Texto de apoyo:
+Cada activo responde a un modelo claro: ubicación estratégica, viabilidad comercial, ejecución disciplinada y potencial de generación de valor.
+
+PROYECTO 1
+
+Nombre:
+San Pedro Patriotismo
+
+Categoría:
+Boutique Medical Real Estate
+
+Ubicación:
+San Pedro de los Pinos, CDMX
+
+Estado:
+Preventa activa
+
+Descripción:
+El único proyecto de inversión en consultorios boutique de especialidad a 5 minutos del WTC. Zona médica de alta demanda con plusvalía comprobada y administración profesional.
+
+Tags:
+- Médico
+- Renta Pasiva
+- Bajo Riesgo
+
+Métricas:
+1. $1.5 MDP
+Inversión desde
+
+2. 9% anual
+Rentabilidad estimada
+
+3. 14 m²
+Tamaño desde
+
+4. Consultorio
+Tipo de activo
+
+CTA:
+Ver Proyecto Completo
+
+PROYECTO 2
+
+Nombre:
+Edison 58 Tabacalera
+
+Categoría:
+Departamentos Boutique · Renta Corta
+
+Ubicación:
+Tabacalera, CDMX
+
+Estado:
+Cupo limitado
+
+Descripción:
+El único proyecto boutique de la Tabacalera para inversionistas que buscan una propiedad en un mercado de alta demanda. Diseño histórico, zona céntrica con la mayor plusvalía de CDMX.
+
+Tags:
+- Renta Corta
+- Alta Plusvalía
+- Diseño Histórico
+
+Métricas:
+1. $4.7 MDP
+Inversión desde
+
+2. 12%
+Cap Rate rentas cortas
+
+3. $68 USD
+Tarifa Airbnb promedio
+
+4. Departamento
+Tipo de activo
+
+CTA:
+Ver Proyecto Completo
+
+Ajustes de copy:
+Evitar que suene exagerado o genérico.
+Mantener un tono:
+- estratégico
+- inmobiliario
+- premium
+- claro
+- orientado a inversión
+
+Mejora visual:
+Cada card debe incluir:
+- Header superior con categoría, nombre, ubicación y estado.
+- Cuerpo con descripción.
+- Tags.
+- Grid de métricas.
+- CTA al final.
+- Puede incluir placeholder de imagen o render en el header/card, pero sin saturar.
+
+Importante:
+No usar textos genéricos como “Próxima Zona ZH” por ahora.
+Eliminar proyectos placeholder anteriores.
+Solo mostrar estos dos proyectos.
+
+Responsive:
+En mobile las cards deben apilarse, las métricas deben verse en 2 columnas si cabe o 1 columna si es necesario.
+Los botones deben ocupar ancho completo.
