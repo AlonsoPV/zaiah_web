@@ -64,22 +64,31 @@ function MetricCard({ value, title, sub, index }: { value: string; title: string
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        padding: "2.75rem 2.5rem",
-        backgroundColor: hovered ? "rgba(202,170,87,0.06)" : "rgba(0,0,0,0.18)",
-        borderTop: hovered ? "2px solid rgba(202,170,87,0.5)" : "2px solid transparent",
-        transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        boxShadow: hovered ? "0 8px 32px rgba(0,0,0,0.2)" : "none",
-        transition: "background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease",
+        padding: "3rem 0 3rem",
+        paddingRight: "2.5rem",
+        borderLeft: index === 0 ? "none" : "1px solid rgba(255,255,255,0.07)",
+        paddingLeft: index === 0 ? "0" : "2.5rem",
+        borderTop: hovered ? "2px solid #CAAA57" : "2px solid transparent",
+        transition: "border-color 0.3s ease",
         cursor: "default",
       }}
     >
-      <p style={{ color: "#CAAA57", fontWeight: 800, fontSize: "clamp(2.5rem, 5vw, 3.5rem)", lineHeight: 1, letterSpacing: "-0.03em", marginBottom: "0.75rem" }}>
+      <p style={{
+        color: hovered ? "#fff" : "#CAAA57",
+        fontWeight: 800,
+        fontSize: "clamp(2.8rem, 5.5vw, 4.5rem)",
+        lineHeight: 1,
+        letterSpacing: "-0.04em",
+        marginBottom: "1.1rem",
+        transition: "color 0.3s ease",
+      }}>
         {value}
       </p>
-      <p style={{ color: "#ffffff", fontWeight: 600, fontSize: "0.95rem", letterSpacing: "0.01em", marginBottom: "0.375rem" }}>
+      <div style={{ width: "1.5rem", height: "1px", backgroundColor: "rgba(202,170,87,0.4)", marginBottom: "0.875rem" }} />
+      <p style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, fontSize: "0.82rem", letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: "0.375rem" }}>
         {title}
       </p>
-      <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.78rem", fontWeight: 300, letterSpacing: "0.02em" }}>
+      <p style={{ color: "rgba(255,255,255,0.28)", fontSize: "0.75rem", fontWeight: 300, lineHeight: 1.5 }}>
         {sub}
       </p>
     </div>
@@ -275,103 +284,98 @@ export default function QuienesSomos() {
 
       {/* NÚMEROS QUE RESPALDAN LA DECISIÓN */}
       <section
-        className="py-32 md:py-48"
-        style={{ backgroundColor: "#00246B" }}
+        style={{ backgroundColor: "#00246B", paddingTop: "6rem", paddingBottom: "0" }}
         data-testid="section-numeros"
       >
         <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
 
-          {/* Header */}
+          {/* ── Header split layout ── */}
           <FadeIn>
-            <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "1.5rem" }}>
-              Trayectoria · Ejecución · Respaldo
-            </p>
-            <h2 style={{ color: "#ffffff", fontWeight: 800, fontSize: "clamp(2rem, 4.5vw, 3.25rem)", lineHeight: 1.08, letterSpacing: "-0.025em", marginBottom: "1.25rem", maxWidth: "36rem" }}>
-              Números que respaldan la decisión.
-            </h2>
-            <p style={{ color: "rgba(255,255,255,0.42)", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.75, maxWidth: "42rem", marginBottom: "4rem" }}>
-              Más de 7 años regenerando la Ciudad de México con resultados medibles y reconocimiento dentro del sector inmobiliario.
-            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2.5rem", marginBottom: "4.5rem" }} className="lg:grid-cols-2 lg:items-end">
+              <div>
+                <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "1.25rem" }}>
+                  Trayectoria · Ejecución · Respaldo
+                </p>
+                <h2 style={{ color: "#ffffff", fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.05, letterSpacing: "-0.025em", margin: 0 }}>
+                  Números que respaldan<br />la decisión.
+                </h2>
+              </div>
+              <div style={{ display: "flex", alignItems: "flex-end" }}>
+                <p style={{ color: "rgba(255,255,255,0.38)", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, borderLeft: "1px solid rgba(202,170,87,0.3)", paddingLeft: "1.75rem" }}>
+                  Más de 7 años regenerando la Ciudad de México con resultados medibles y reconocimiento dentro del sector inmobiliario.
+                </p>
+              </div>
+            </div>
           </FadeIn>
 
-          {/* Metric cards 2×2 grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
-              gap: "1px",
-              backgroundColor: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              marginBottom: "1px",
-            }}
-          >
+          {/* ── Thin gold divider ── */}
+          <FadeIn delay={100}>
+            <div style={{ height: "1px", backgroundColor: "rgba(202,170,87,0.2)", marginBottom: "0" }} />
+          </FadeIn>
+
+          {/* ── 4 metrics — horizontal strip ── */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", borderBottom: "1px solid rgba(255,255,255,0.07)" }} className="md:grid-cols-4">
             {[
-              { value: "15+", title: "Proyectos Concluidos", sub: "de regeneración urbana en CDMX" },
-              { value: "160 MDP+", title: "Portafolio Activo", sub: "en inversión gestionada" },
-              { value: "7+", title: "Años de Trayectoria", sub: "regenerando Ciudad de México" },
-              { value: "50+", title: "Familias Beneficiadas", sub: "dentro del ecosistema ZAIAH" },
+              { value: "15+",      title: "Proyectos Concluidos",  sub: "de regeneración urbana en CDMX" },
+              { value: "160 MDP+", title: "Portafolio Activo",      sub: "en inversión gestionada" },
+              { value: "7+",       title: "Años de Trayectoria",    sub: "regenerando Ciudad de México" },
+              { value: "50+",      title: "Familias Beneficiadas",  sub: "dentro del ecosistema ZAIAH" },
             ].map((m, i) => (
-              <FadeIn key={i} delay={i * 90}>
+              <FadeIn key={i} delay={i * 80}>
                 <MetricCard value={m.value} title={m.title} sub={m.sub} index={i} />
               </FadeIn>
             ))}
           </div>
 
-          {/* Forbes endorsement block */}
-          <FadeIn delay={360}>
+          {/* ── Forbes endorsement — full-width strip ── */}
+          <FadeIn delay={380}>
             <div
               style={{
-                marginTop: "1px",
-                border: "1px solid rgba(255,255,255,0.07)",
-                backgroundColor: "rgba(0,0,0,0.2)",
                 display: "grid",
                 gridTemplateColumns: "1fr",
-                gap: 0,
+                borderBottom: "1px solid rgba(255,255,255,0.07)",
               }}
               className="md:grid-cols-2"
             >
-              {/* Left — Forbes badge */}
+              {/* Left */}
               <div
                 style={{
-                  padding: "2.5rem 2.5rem",
-                  borderBottom: "1px solid rgba(255,255,255,0.07)",
+                  padding: "2.75rem 0 2.75rem",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "1rem",
-                  justifyContent: "center",
+                  gap: "0.75rem",
+                  borderRight: "none",
+                  borderBottom: "1px solid rgba(255,255,255,0.07)",
                 }}
-                className="md:border-b-0 md:border-r"
+                className="md:pr-14 md:border-r md:border-r-white/7 md:border-b-0"
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  {/* Star SVG */}
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
                     <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
                   </svg>
-                  <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "#CAAA57" }}>
+                  <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#CAAA57" }}>
                     Presentados en Forbes México
                   </p>
                 </div>
-                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.85rem", fontWeight: 300, lineHeight: 1.65, maxWidth: "22rem" }}>
-                  Reconocidos por innovar en el sector inmobiliario.
+                <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.82rem", fontWeight: 300, lineHeight: 1.7 }}>
+                  Reconocidos por innovar en el sector inmobiliario de Ciudad de México.
                 </p>
               </div>
 
               {/* Right — quote */}
               <div
-                style={{
-                  padding: "2.5rem 2.5rem",
-                  display: "flex",
-                  alignItems: "center",
-                }}
+                style={{ padding: "2.75rem 0" }}
+                className="md:pl-14"
               >
-                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8 }}>
+                <p style={{ color: "rgba(255,255,255,0.38)", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.9, fontStyle: "italic" }}>
                   "A través de la metodología de{" "}
-                  <span style={{ color: "#CAAA57", fontWeight: 600 }}>flipping profesional</span>
+                  <span style={{ color: "#CAAA57", fontWeight: 600, fontStyle: "normal" }}>flipping profesional</span>
                   , ZAIAH regenera espacios para volverlos rentables mientras mejora la calidad urbana del entorno."
                 </p>
               </div>
             </div>
           </FadeIn>
+
         </div>
       </section>
 
