@@ -73,7 +73,8 @@ export default function Home() {
           HERO — CINEMATIC FULLSCREEN
       ═══════════════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-screen flex flex-col overflow-hidden"
+        className="relative flex flex-col overflow-hidden"
+        style={{ minHeight: "calc(100vh - 56px)" }}
         data-testid="section-hero"
       >
         {/* Background image */}

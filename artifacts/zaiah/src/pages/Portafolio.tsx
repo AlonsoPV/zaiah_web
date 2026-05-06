@@ -77,13 +77,11 @@ function ProjectCard({ project, delay = 0 }: { project: typeof PROJECTS[0]; dela
       className="flex flex-col overflow-hidden"
       style={{
         opacity: inView ? 1 : 0,
-        transform: inView ? "none" : "translateY(32px)",
-        transition: `opacity 0.9s ease, transform 0.9s ease`,
+        transform: inView ? (hovered ? "translateY(-4px)" : "translateY(0)") : "translateY(32px)",
+        transition: `opacity 0.9s ease, transform 0.9s ease, box-shadow 0.35s ease, border-color 0.35s ease`,
         transitionDelay: `${delay}ms`,
         border: hovered ? "1px solid rgba(202,170,87,0.6)" : "1px solid rgba(0,0,0,0.08)",
         boxShadow: hovered ? "0 12px 48px rgba(0,0,0,0.14)" : "0 2px 16px rgba(0,0,0,0.06)",
-        transform: inView ? (hovered ? "translateY(-4px)" : "translateY(0)") : "translateY(32px)",
-        transition: `opacity 0.9s ease, transform 0.9s ease, box-shadow 0.35s ease, border-color 0.35s ease`,
         backgroundColor: "#ffffff",
       }}
       onMouseEnter={() => setHovered(true)}
