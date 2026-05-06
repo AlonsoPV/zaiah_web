@@ -408,89 +408,128 @@ export default function Home() {
           EL PROBLEMA — NARRATIVE TENSION
       ═══════════════════════════════════════════════════════════ */}
       <section
-        className="py-32 md:py-52 overflow-hidden"
-        style={{ backgroundColor: "#EFEEED" }}
+        style={{ backgroundColor: "#EFEEED", paddingTop: "6rem", paddingBottom: "7rem" }}
         data-testid="section-problema"
       >
         <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
-            {/* Left — eyebrow + vertical rule */}
-            <div className="lg:col-span-3">
-              <FadeIn>
-                <p className="eyebrow text-[#CAAA57] mb-6">El problema</p>
-                <div className="hidden lg:block w-px h-32 bg-gradient-to-b from-[#CAAA57]/30 to-transparent" />
-              </FadeIn>
+          {/* ── Header: eyebrow + headline ── */}
+          <FadeIn>
+            <div style={{ marginBottom: "4rem", maxWidth: "820px" }}>
+              <p className="eyebrow" style={{ color: "#CAAA57", marginBottom: "1.5rem" }}>El problema</p>
+              <h2
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontWeight: 600,
+                  fontSize: "clamp(2rem, 4vw, 3.4rem)",
+                  lineHeight: 1.12,
+                  letterSpacing: "-0.015em",
+                  color: "#00246B",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Las ciudades no colapsan de un día para otro.
+                <br />
+                <em style={{ fontStyle: "italic", color: "rgba(0,36,107,0.35)" }}>Se deterioran lentamente.</em>
+              </h2>
+              <p style={{ fontSize: "1rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(0,36,107,0.5)", maxWidth: "560px" }}>
+                Y mientras el deterioro avanza, el capital espera una señal que nunca llega. El mercado tradicional no tiene las herramientas para leer estas oportunidades.
+              </p>
             </div>
+          </FadeIn>
 
-            {/* Right — narrative copy */}
-            <div className="lg:col-span-9">
-              <div className="space-y-0">
-                {[
-                  { text: "Las ciudades no colapsan de un día para otro.", serif: true, dim: false },
-                  { text: "Se deterioran lentamente.", serif: true, dim: true },
-                  { text: "Activos subutilizados.", serif: false, dim: true, small: true },
-                  { text: "Zonas ignoradas por el capital.", serif: false, dim: true, small: true },
-                  { text: "Oportunidades que el mercado tradicional no sabe ver.", serif: false, dim: true, small: true },
-                ].map((line, i) => (
-                  <FadeIn key={i} delay={i * 130}>
-                    <p
-                      style={{
-                        fontFamily: line.serif ? "'Playfair Display', Georgia, serif" : "inherit",
-                        fontWeight: line.serif ? 500 : 400,
-                        fontStyle: line.serif && i > 0 ? "italic" : "normal",
-                        fontSize: line.small ? "clamp(1rem, 1.4vw, 1.2rem)" : "clamp(1.7rem, 3.2vw, 2.8rem)",
-                        lineHeight: line.small ? 1.7 : 1.2,
-                        color: line.dim ? "rgba(0,36,107,0.22)" : "#00246B",
-                        letterSpacing: line.serif ? "-0.01em" : "0",
-                        paddingTop: line.small ? "0.1rem" : i === 0 ? "0" : "0.5rem",
-                        paddingBottom: line.small ? "0.1rem" : "0.5rem",
-                        paddingLeft: line.small ? "0.25rem" : "0",
-                        borderLeft: line.small ? "2px solid rgba(0,36,107,0.08)" : "none",
-                        marginLeft: line.small ? "0.5rem" : "0",
-                      }}
-                    >
-                      {line.text}
-                    </p>
-                  </FadeIn>
-                ))}
-              </div>
-
-              {/* User desire identification */}
-              <FadeIn delay={580}>
-                <div className="mt-12 mb-4" style={{ borderLeft: "2px solid rgba(202,170,87,0.2)", paddingLeft: "1.5rem" }}>
-                  <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.1rem)", lineHeight: 1.9, color: "rgba(0,36,107,0.5)", fontWeight: 300 }}>
-                    Cada vez más inversionistas buscan construir ingresos sostenibles respaldados por activos estratégicos. No quieren depender únicamente de su tiempo. Buscan patrimonio heredable. Renta estructurada. Participar en algo que trascienda.
+          {/* ── 3 Problem cards ── */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              borderTop: "1px solid rgba(0,36,107,0.12)",
+              borderBottom: "1px solid rgba(0,36,107,0.12)",
+              marginBottom: "4rem",
+            }}
+            className="grid-cols-1 md:grid-cols-3"
+          >
+            {[
+              {
+                num: "01",
+                title: "Activos subutilizados",
+                body: "Edificios con valor estratégico que el mercado ignora porque no tiene metodología para detectarlos.",
+              },
+              {
+                num: "02",
+                title: "Capital mal dirigido",
+                body: "El inversionista tradicional busca ciclos rápidos. No ve el patrimonio estructurado que está frente a él.",
+              },
+              {
+                num: "03",
+                title: "Zonas sin activación",
+                body: "Barrios completos con potencial comprobado que esperan capital con visión, no con miedo.",
+              },
+            ].map((card, i) => (
+              <FadeIn key={i} delay={i * 100}>
+                <div
+                  style={{
+                    padding: "2.5rem 2rem 2.5rem",
+                    borderLeft: i === 0 ? "none" : "1px solid rgba(0,36,107,0.1)",
+                    height: "100%",
+                  }}
+                >
+                  <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "0.18em", color: "#CAAA57", marginBottom: "1.25rem" }}>
+                    {card.num}
+                  </p>
+                  <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#00246B", marginBottom: "0.875rem", letterSpacing: "-0.01em", lineHeight: 1.3 }}>
+                    {card.title}
+                  </h3>
+                  <p style={{ fontSize: "0.875rem", fontWeight: 300, lineHeight: 1.75, color: "rgba(0,36,107,0.5)" }}>
+                    {card.body}
                   </p>
                 </div>
               </FadeIn>
-
-              {/* The pivot — ZAIAH enters */}
-              <FadeIn delay={750}>
-                <div className="mt-12 pt-10 border-t border-[#CAAA57]/20">
-                  <p
-                    style={{
-                      fontFamily: "'Playfair Display', Georgia, serif",
-                      fontWeight: 600,
-                      fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-                      lineHeight: 1.2,
-                      color: "#00246B",
-                      letterSpacing: "-0.01em",
-                      marginBottom: "1.5rem",
-                    }}
-                  >
-                    Ahí es donde opera ZAIAH.
-                  </p>
-                  <Link href="/quienes-somos" data-testid="button-problema-conocer">
-                    <span className="inline-flex items-center gap-3 eyebrow text-[#00246B] border-b border-[#CAAA57] pb-1 hover:text-[#CAAA57] transition-colors cursor-pointer">
-                      Entender el modelo →
-                    </span>
-                  </Link>
-                </div>
-              </FadeIn>
-            </div>
-
+            ))}
           </div>
+
+          {/* ── Desire + pivot split ── */}
+          <div
+            style={{ display: "grid", gridTemplateColumns: "1fr", gap: "3rem" }}
+            className="lg:grid-cols-2 lg:gap-20"
+          >
+            {/* User desire identification */}
+            <FadeIn>
+              <div style={{ borderLeft: "2px solid rgba(202,170,87,0.35)", paddingLeft: "1.75rem" }}>
+                <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "1rem" }}>
+                  El inversionista de hoy
+                </p>
+                <p style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)", lineHeight: 1.9, color: "rgba(0,36,107,0.55)", fontWeight: 300 }}>
+                  Cada vez más personas buscan construir ingresos sostenibles respaldados por activos reales. No quieren depender únicamente de su tiempo. Buscan patrimonio heredable, renta estructurada y participar en algo que trascienda.
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* The pivot — ZAIAH enters */}
+            <FadeIn delay={180}>
+              <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
+                <p
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)",
+                    lineHeight: 1.2,
+                    color: "#00246B",
+                    letterSpacing: "-0.01em",
+                    marginBottom: "1.75rem",
+                  }}
+                >
+                  Ahí es donde opera ZAIAH.
+                </p>
+                <Link href="/quienes-somos" data-testid="button-problema-conocer">
+                  <span className="inline-flex items-center gap-3 eyebrow text-[#00246B] border-b border-[#CAAA57] pb-1 hover:text-[#CAAA57] transition-colors cursor-pointer">
+                    Entender el modelo →
+                  </span>
+                </Link>
+              </div>
+            </FadeIn>
+          </div>
+
         </div>
       </section>
 
