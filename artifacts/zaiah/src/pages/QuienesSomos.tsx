@@ -234,40 +234,140 @@ export default function QuienesSomos() {
       >
         <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
           <FadeIn>
-            <div className="mb-20">
+            <div className="mb-16">
               <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.3em] uppercase mb-4">
                 Liderazgo
               </p>
-              <h2 className="text-[#00246B] font-bold text-4xl md:text-5xl tracking-tight">
+              <h2
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontWeight: 600,
+                  fontSize: "clamp(1.8rem, 3.2vw, 2.8rem)",
+                  lineHeight: 1.1,
+                  letterSpacing: "-0.01em",
+                  color: "#00246B",
+                }}
+              >
                 Fundadores
               </h2>
             </div>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8">
-            {founders.map((f, i) => (
-              <FadeIn key={i} delay={i * 120}>
-                <div className="group" data-testid={`card-founder-${i + 1}`}>
-                  <div className="relative overflow-hidden mb-8 aspect-[3/2]">
-                    <img
-                      src={f.img}
-                      alt={f.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                    />
-                    <div className="absolute inset-0 bg-[#00246B]/15 group-hover:bg-transparent transition-all duration-700" />
-                  </div>
-                  <div className="h-px bg-[#CAAA57] w-8 mb-5" />
-                  <h3 className="text-[#00246B] font-bold text-xl tracking-tight mb-1">{f.name}</h3>
-                  <p className="text-[#CAAA57] text-[10px] tracking-[0.2em] uppercase font-bold mb-4">{f.title}</p>
-                  <p className="text-[#00246B]/55 text-sm leading-relaxed">{f.bio}</p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+
+            {/* ── LEFT: Real Forbes photo ── */}
+            <FadeIn>
+              <div className="group relative" data-testid="card-founder-photo">
+                <div className="relative overflow-hidden">
+                  <img
+                    src="/founders-forbes.png"
+                    alt="Fundadores ZAIAH — Forbes México Mayo 2024"
+                    className="w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    style={{ display: "block" }}
+                  />
+                  <div className="absolute inset-0 bg-[#00246B]/10 group-hover:bg-transparent transition-all duration-700" />
                 </div>
-              </FadeIn>
-            ))}
+                {/* Forbes badge */}
+                <div
+                  style={{
+                    backgroundColor: "#ffffff",
+                    padding: "1.25rem 1.5rem",
+                    borderLeft: "3px solid #CAAA57",
+                    marginTop: "0",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.3rem" }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                      <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
+                    </svg>
+                    <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#00246B" }}>
+                      Presentados en Forbes México
+                    </p>
+                  </div>
+                  <p style={{ color: "rgba(0,36,107,0.45)", fontSize: "0.78rem", fontWeight: 300 }}>
+                    Forbes Content · Mayo 31, 2024
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* ── RIGHT: Founder profiles ── */}
+            <FadeIn delay={140}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "3.5rem" }}>
+                {founders.map((f, i) => (
+                  <div key={i} data-testid={`card-founder-${i + 1}`}>
+                    <div style={{ height: "1px", backgroundColor: "#CAAA57", width: "2rem", marginBottom: "1.5rem" }} />
+                    <h3
+                      style={{
+                        color: "#00246B",
+                        fontWeight: 700,
+                        fontSize: "1.15rem",
+                        letterSpacing: "-0.01em",
+                        marginBottom: "0.35rem",
+                      }}
+                    >
+                      {f.name}
+                    </h3>
+                    <p
+                      style={{
+                        color: "#CAAA57",
+                        fontSize: "9px",
+                        fontWeight: 700,
+                        letterSpacing: "0.22em",
+                        textTransform: "uppercase",
+                        marginBottom: "1rem",
+                      }}
+                    >
+                      {f.title}
+                    </p>
+                    <p style={{ color: "rgba(0,36,107,0.55)", fontSize: "0.9rem", lineHeight: 1.75 }}>
+                      {f.bio}
+                    </p>
+                  </div>
+                ))}
+
+                {/* Recognition strip */}
+                <div
+                  style={{
+                    borderTop: "1px solid rgba(0,36,107,0.1)",
+                    paddingTop: "2rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.9rem",
+                  }}
+                >
+                  {[
+                    { value: "15+",      label: "Proyectos concluidos de regeneración" },
+                    { value: "160 MDP+", label: "Portafolio activo de inversión" },
+                    { value: "7+",       label: "Años regenerando Ciudad de México" },
+                  ].map((s, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "baseline", gap: "1rem" }}>
+                      <span
+                        style={{
+                          color: "#00246B",
+                          fontWeight: 800,
+                          fontSize: "clamp(1.3rem, 2.5vw, 1.6rem)",
+                          lineHeight: 1,
+                          minWidth: "5rem",
+                        }}
+                      >
+                        {s.value}
+                      </span>
+                      <span style={{ color: "rgba(0,36,107,0.45)", fontSize: "0.8rem", fontWeight: 300 }}>
+                        {s.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+
           </div>
         </div>
       </section>
 
       {/* TEAM */}
-      <section
+      {/* <section
         className="py-28 md:py-40"
         style={{ backgroundColor: "#000000" }}
         data-testid="section-team"
@@ -302,7 +402,7 @@ export default function QuienesSomos() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* NÚMEROS QUE RESPALDAN LA DECISIÓN */}
       <section
