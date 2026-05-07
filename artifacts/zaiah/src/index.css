@@ -1,13 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 @import "tailwindcss";
 
-/* ── Qualion custom font family ──────────────────────────────────
-   Currently available weights:
-   - Light  (300) → Book / cuerpo de texto  ✓
-   - Book   (350) → waiting for font file
-   - Regular(400) → waiting for font file
-   - Bold   (700) → waiting for font file
+/* ── Qualion — fuente principal ZAIAH ───────────────────────────
+   Jerarquía:
+   - Bold   (700) → Títulos / headings
+   - Regular(400) → Subtítulos
+   - Book   (350) → Cuerpo de texto
+   - Light  (300) → Thin / elementos delicados
 ──────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Qualion";
+  src: url("/fonts/Qualion-Bold.woff2") format("woff2"),
+       url("/fonts/Qualion-Bold.woff") format("woff"),
+       url("/fonts/Qualion-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Qualion";
+  src: url("/fonts/Qualion-Regular.woff2") format("woff2"),
+       url("/fonts/Qualion-Regular.woff") format("woff"),
+       url("/fonts/Qualion-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Qualion";
+  src: url("/fonts/Qualion-Book.woff2") format("woff2"),
+       url("/fonts/Qualion-Book.woff") format("woff"),
+       url("/fonts/Qualion-Book.ttf") format("truetype");
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: "Qualion";
   src: url("/fonts/Qualion-Light.otf") format("opentype");
@@ -124,8 +151,8 @@
   --chart-4: 30 6% 93%;
   --chart-5: 0 0% 7%;
 
-  --app-font-sans: 'Manrope', sans-serif;
-  --app-font-serif: Georgia, serif;
+  --app-font-sans: 'Qualion', 'Manrope', sans-serif;
+  --app-font-serif: 'Playfair Display', Georgia, serif;
   --app-font-mono: Menlo, monospace;
   --radius: 0rem;
 
@@ -224,6 +251,7 @@
 
   body {
     @apply font-sans bg-background text-foreground;
+    font-weight: 350;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -238,6 +266,18 @@
     display: block;
   }
 }
+
+/* ── Qualion typographic hierarchy ──────────────────────────────
+   Apply these classes OR font-weight values directly:
+   - Título    → font-weight: 700  (.q-title)
+   - Subtítulo → font-weight: 400  (.q-sub)
+   - Cuerpo    → font-weight: 350  (.q-body  / default body)
+   - Thin      → font-weight: 300  (.q-thin)
+──────────────────────────────────────────────────────────────── */
+.q-title  { font-family: 'Qualion', sans-serif; font-weight: 700; }
+.q-sub    { font-family: 'Qualion', sans-serif; font-weight: 400; }
+.q-body   { font-family: 'Qualion', sans-serif; font-weight: 350; }
+.q-thin   { font-family: 'Qualion', sans-serif; font-weight: 300; }
 
 /* ZAIAH custom utilities */
 .zaiah-blue { color: #00246B; }
