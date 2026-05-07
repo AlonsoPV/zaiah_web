@@ -67,7 +67,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/20 text-xs tracking-widest">
-            © 2025 ZAIAH — Empresa privada de regeneración urbana estructurada.
+            © 2026 ZAIAH — Empresa privada de regeneración urbana estructurada.
           </p>
           <div className="flex items-center gap-3">
             <span className="w-6 h-px bg-[#CAAA57]/40" />

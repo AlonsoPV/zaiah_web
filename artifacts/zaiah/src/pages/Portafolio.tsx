@@ -360,7 +360,9 @@ export default function Portafolio() {
                     fontStyle: "italic",
                   }}
                 >
-                  "Cada activo en este portafolio no es solo una inversión.<br />Es una participación en la transformación urbana de una ciudad."
+                  {"\"Cada activo en este portafolio no es solo una inversión."}
+                  <br />
+                  {"Es una participación en la transformación urbana de una ciudad.\""}
                 </p>
                 <Link href="/contacto" data-testid="button-portfolio-contact">
                   <span
@@ -391,6 +393,52 @@ export default function Portafolio() {
                   </span>
                 </Link>
               </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* CTA FINAL */}
+      <section
+        style={{ backgroundColor: "#00246B", paddingTop: "5rem", paddingBottom: "5.5rem" }}
+        data-testid="section-portfolio-cta"
+      >
+        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
+          <FadeIn>
+            <div style={{ textAlign: "center", maxWidth: "580px", margin: "0 auto" }}>
+              <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "1.25rem" }}>
+                ¿Quieres acceso anticipado al siguiente activo?
+              </p>
+              <p
+                style={{
+                  fontSize: "clamp(1rem, 1.4vw, 1.1rem)",
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: "rgba(255,255,255,0.45)",
+                  marginBottom: "2.5rem",
+                }}
+              >
+                Los cupos son limitados y se asignan por orden de conversación.
+              </p>
+              <Link href="/contacto" data-testid="button-portfolio-cta">
+                <span
+                  className="inline-block cursor-pointer"
+                  style={{
+                    padding: "1.1rem 3rem",
+                    backgroundColor: "#CAAA57",
+                    color: "#000000",
+                    fontSize: "9.5px",
+                    fontWeight: 700,
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    transition: "background-color 0.3s ease",
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#ffffff"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#CAAA57"; }}
+                >
+                  Agendar conversación
+                </span>
+              </Link>
             </div>
           </FadeIn>
         </div>

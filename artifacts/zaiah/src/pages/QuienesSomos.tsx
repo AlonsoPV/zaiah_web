@@ -179,8 +179,11 @@ export default function QuienesSomos() {
                         fontStyle: !line.highlight ? "italic" : "normal",
                         fontSize: "clamp(1.6rem, 3vw, 2.6rem)",
                         lineHeight: 1.2,
-                        color: line.highlight ? "#00246B" : "rgba(0,36,107,0.18)",
+                        color: line.highlight ? "#00246B" : "rgba(0,36,107,0.22)",
                         letterSpacing: "-0.01em",
+                        textDecoration: line.highlight ? "none" : "line-through",
+                        textDecorationColor: "rgba(0,36,107,0.14)",
+                        textDecorationThickness: "1px",
                       }}
                     >
                       {line.text}
@@ -439,6 +442,56 @@ export default function QuienesSomos() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA FINAL */}
+      <section
+        className="py-28 md:py-40"
+        style={{ backgroundColor: "#000000" }}
+        data-testid="section-about-cta"
+      >
+        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
+          <FadeIn>
+            <div style={{ textAlign: "center", maxWidth: "640px", margin: "0 auto" }}>
+              <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "2rem" }}>
+                Siguiente paso
+              </p>
+              <h2
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontWeight: 500,
+                  fontStyle: "italic",
+                  fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
+                  lineHeight: 1.25,
+                  color: "rgba(255,255,255,0.8)",
+                  marginBottom: "2.5rem",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                ¿Listo para conocer quién está detrás de cada decisión?
+              </h2>
+              <Link href="/contacto" data-testid="button-about-cta">
+                <span
+                  className="inline-block cursor-pointer"
+                  style={{
+                    padding: "1.1rem 3rem",
+                    backgroundColor: "#CAAA57",
+                    color: "#000000",
+                    fontSize: "9.5px",
+                    fontWeight: 700,
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    transition: "background-color 0.3s ease",
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#ffffff"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#CAAA57"; }}
+                >
+                  Agendar conversación
+                </span>
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </main>
