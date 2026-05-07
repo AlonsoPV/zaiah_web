@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 @import "tailwindcss";
+
+/* ── Qualion custom font family ──────────────────────────────────
+   Currently available weights:
+   - Light  (300) → Book / cuerpo de texto  ✓
+   - Book   (350) → waiting for font file
+   - Regular(400) → waiting for font file
+   - Bold   (700) → waiting for font file
+──────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Qualion";
+  src: url("/fonts/Qualion-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
