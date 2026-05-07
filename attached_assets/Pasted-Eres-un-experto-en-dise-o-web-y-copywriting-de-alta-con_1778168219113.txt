@@ -1,0 +1,311 @@
+Eres un experto en diseño web y copywriting de alta conversión.
+Vas a desarrollar 3 páginas internas del sitio ZAIAH manteniendo
+coherencia visual y narrativa con la landing principal.
+
+=== SISTEMA DE DISEÑO BASE ===
+Aplicar en las 3 páginas sin excepción:
+
+Colores:
+  --color-bg-primary: #F5F2EC        (beige cálido — fondo principal)
+  --color-bg-dark: #0A0E1A           (negro azulado — secciones de impacto)
+  --color-bg-navy: #1A2C6B           (azul marino — secciones de datos/métricas)
+  --color-accent-gold: #C9A84C       (dorado — cursivas, highlights, números)
+  --color-accent-green: #1A3D2B      (verde oscuro — CTA principal)
+  --color-text-primary: #1A1A1A
+  --color-text-light: #F5F2EC
+
+Tipografía:
+  Display/Headlines: Cormorant Garamond (serif, peso 600-700)
+  Body/UI: DM Sans (sans-serif, peso 300-500)
+  Cursivas de acento: Cormorant Garamond Italic en --color-accent-gold
+
+Navbar (igual en las 3 páginas):
+  Logo ZAIAH — links: Inicio / Quiénes Somos / Modelo / Portafolio
+  CTA sticky derecha: botón negro con borde fino → "AGENDAR CONVERSACIÓN"
+  Fondo: blanco con border-bottom sutil al hacer scroll
+
+Footer (igual en las 3 páginas):
+  Fondo oscuro #0A0E1A
+  3 columnas: descripción marca / navegación / contacto
+  Tagline: "REGENERACIÓN URBANA ESTRUCTURADA"
+  Botón WhatsApp flotante verde en esquina inferior derecha
+
+Animaciones globales:
+  fade-in-up al entrar en viewport (IntersectionObserver)
+  Transiciones hover: 0.3s ease
+  Sin animaciones agresivas — elegancia, no espectáculo
+
+===================================================
+PÁGINA 1: QUIÉNES SOMOS
+===================================================
+Ruta: /quienes-somos
+Objetivo narrativo: Construir autoridad y confianza humana.
+El usuario debe salir con la certeza de que hay personas
+expertas y comprometidas detrás de cada decisión.
+
+--- HERO ---
+Fondo: imagen arquitectónica oscura con overlay #0A0E1A al 70%
+Etiqueta pequeña uppercase: "QUIÉNES SOMOS"
+H1 en blanco (serif grande):
+  "Una firma construida para quienes piensan
+  [salto de línea]
+  en generaciones, [dorado italic] no en transacciones."
+Párrafo corto (max 2 líneas): Detrás de cada activo regenerado hay una
+metodología, un equipo y una visión de largo plazo que convierte
+deterioro urbano en patrimonio estructurado.
+
+--- SECCIÓN: LO QUE NOS DISTINGUE ---
+Fondo: --color-bg-primary (beige)
+Layout: 2 columnas
+  Columna izquierda: título "Lo que nos distingue." (serif azul marino)
+  Columna derecha: 3 frases en jerarquía visual
+    Línea tachada tenue: "No somos una desarrolladora tradicional."
+    Línea tachada tenue: "No somos un fondo inmobiliario convencional."
+    Línea destacada en azul marino bold: "Somos una arquitectura de regeneración."
+Nota de diseño: las líneas tachadas deben ser texto gris claro con
+line-through, creando contraste con la frase final poderosa.
+
+--- SECCIÓN: METODOLOGÍA (BANNER) ---
+Fondo: --color-bg-navy (azul marino)
+Layout: 2 columnas con espacio generoso
+  Izquierda: párrafo corto sobre el modelo estructurado de 3 fases
+  Derecha: botón outline blanco → "CONOCER EL MODELO →"
+Padding vertical generoso (80px arriba y abajo)
+
+--- SECCIÓN: FUNDADORES ---
+Fondo: --color-bg-primary
+Etiqueta: "LIDERAZGO"
+Título: "Fundadores" (serif grande, azul marino)
+Layout: 2 cards lado a lado, luego detalles debajo
+  Cada card:
+    Foto en escala de grises (hover: color)
+    Nombre en dorado bold
+    Cargo en gris pequeño
+    Bio corta (3-4 líneas) sobre experiencia y visión
+Nota: las fotos deben tener proporción 3:4, bordes nítidos sin redondear
+
+--- SECCIÓN: EL EQUIPO ---
+Fondo: #0A0E1A (oscuro)
+Etiqueta: "ESTRUCTURA OPERATIVA"
+Título: "El equipo" (blanco, serif)
+Grid de 4 avatares:
+  Foto circular pequeña (60px)
+  Nombre
+  Cargo en dorado pequeño
+Nota de diseño: minimalista, sobre fondo oscuro — transmite seriedad
+institucional, no startup
+
+--- SECCIÓN: NÚMEROS QUE RESPALDAN ---
+Fondo: --color-bg-navy
+Etiqueta uppercase: "TRAYECTORIA · EJECUCIÓN · IMPACTO"
+Título: "Números que respaldan [dorado italic] la decisión."
+Grid 2x2 de métricas grandes:
+  15+ PROYECTOS CONCLUIDOS
+  160 MDP+ PORTAFOLIO ACTIVO
+  7+ AÑOS DE TRAYECTORIA
+  50+ FAMILIAS BENEFICIADAS
+Números en --color-accent-gold, tamaño display (64px+)
+Etiquetas en blanco pequeño uppercase con tracking amplio
+Debajo del grid: badge Forbes México + texto de reconocimiento
+Línea final en italic pequeño:
+  "El inicio de una metodología de Flipping profesional..."
+
+--- SECCIÓN: EL ADN DE ZAIAH ---
+Fondo: --color-bg-primary
+Título izquierda: "El ADN de ZAIAH." (serif azul marino grande)
+Grid derecha 2x2 con cards blancas con sombra sutil:
+  Card 1: "Visionaria pero disciplinada"
+  Card 2: "Estratégica pero humana"
+  Card 3: "Institucional pero boutique"
+  Card 4: "Silenciosamente dominante"
+Cada card: título en azul marino bold + descripción 2 líneas en gris
+
+--- CTA FINAL ---
+Fondo: --color-bg-dark
+Texto centrado:
+  "¿Listo para conocer quién está detrás de cada decisión?"
+Botón grande verde: "AGENDAR CONVERSACIÓN"
+
+===================================================
+PÁGINA 2: MODELO ZH
+===================================================
+Ruta: /modelo
+Objetivo narrativo: Convertir escepticismo en confianza racional.
+El usuario debe entender QUÉ hace ZAIAH diferente y POR QUÉ funciona,
+antes de ver cualquier número.
+
+--- HERO ---
+Fondo oscuro con gradiente azul marino sutil
+Etiqueta: "METODOLOGÍA ZH"
+H1 blanco + dorado italic:
+  "No es un proceso lineal.
+  [dorado italic] Es una arquitectura de regeneración."
+Párrafo: Tres fases interconectadas para convertir activos subutilizados
+en ecosistemas productivos. Un sistema replicable con capacidad de escala
+y horizonte de 20 años.
+
+--- SECCIÓN: 3 FASES (CORE DE LA PÁGINA) ---
+Fondo: --color-bg-primary
+Layout: 3 bloques grandes en columna (no en grid horizontal)
+Cada bloque tiene:
+  Número grande en --color-bg-navy (01, 02, 03) — cuadrado sólido izquierda
+  Etiqueta pequeña uppercase: DATA · CRITERIO · PRECISIÓN (varía por fase)
+  Título fase en serif azul marino (grande)
+  Párrafo explicativo (4-5 líneas)
+  Lista "Componentes clave:" con bullets finos en dos columnas
+
+  FASE 01: "Identificación de activos"
+    Etiqueta: DATA · CRITERIO · PRECISIÓN
+    Componentes: Análisis de datos urbanos / Due diligence jurídico /
+    Evaluación financiera / Viabilidad de mercado
+
+  FASE 02: "Estructuración de la regeneración"
+    Etiqueta: CAPITAL · DISEÑO · EJECUCIÓN
+    Componentes: Estructuración financiera / Diseño arquitectónico estratégico /
+    Remodelación y obra / Gobernanza privada
+
+  FASE 03: "Activación del ecosistema"
+    Etiqueta: NODO · IMPACTO · PATRIMONIO
+    Componentes: Activación económica local / Generación de patrimonio /
+    Modelo de comercialización / Impacto urbano medible
+
+Nota de diseño: cada bloque alterna alineación del número (izq/der/izq)
+para crear ritmo visual sin ser simétrico
+
+--- SECCIÓN: 4 PRINCIPIOS ---
+Fondo: #0A0E1A (oscuro)
+Título: "Cuatro principios. [dorado italic] Sin excepción."
+Grid 2x2 o 4 columnas (desktop):
+  Modelo, no intuición
+  Zonas, no propiedades
+  Patrimonio, no especulación
+  Ejecución, no concepto
+Cada principio: título bold blanco + descripción corta gris claro
+Separadores entre principios: línea dorada fina vertical
+
+--- SECCIÓN: PERFIL DEL INVERSIONISTA ---
+Fondo: --color-bg-navy
+Etiqueta: "ARQUETIPO"
+Título: "El perfil del inversionista ZAIAH." (blanco serif grande)
+Columna izquierda: 4 bullets descriptivos sobre el perfil ideal
+  • Busca ingresos sostenibles, no dependientes únicamente de su tiempo.
+  • Quiere patrimonio heredable, no especulación de corto plazo.
+  • Valora la estructura, el rigor institucional y la visión de largo plazo.
+  • Entiende que el capital bien estructurado genera legado.
+Columna derecha: 3 etiquetas pill destacadas en blanco/outline:
+  "Estratégica pero humana"
+  "Institucional pero boutique"
+  "Silenciosamente dominante"
+
+--- SECCIÓN: EL MODELO EN ACCIÓN ---
+Fondo: --color-bg-primary
+Etiqueta: "PORTAFOLIO ACTIVO"
+Layout: 2 columnas
+  Izquierda: título "El modelo en acción." + párrafo + botón → "VER PORTAFOLIO"
+  Derecha: tabla de métricas con líneas finas
+    Tiempo promedio de identificación: 30-60 días
+    Criterios de selección por activo: 8 variables
+    Fases de estructuración: 4 etapas ZH
+    Visión de portafolio: 1,000 activos
+Nota: tabla sin fondo de celda, solo líneas divisorias horizontales finas
+
+--- CTA FINAL ---
+Mismo patrón que Quiénes Somos: fondo oscuro, texto + botón verde
+
+===================================================
+PÁGINA 3: PORTAFOLIO
+===================================================
+Ruta: /portafolio
+Objetivo narrativo: Demostrar ejecución real con prueba concreta.
+Cada proyecto debe sentirse como una oportunidad seria,
+no como una ficha técnica.
+
+--- HERO ---
+Fondo: imagen urbana con overlay oscuro
+Etiqueta: "PORTAFOLIO"
+H1: "Activos seleccionados por estructura,"
+    [dorado italic] "no por oportunismo."
+Párrafo 1 (max 3 líneas): Cada proyecto en el portafolio ZAIAH responde
+a una tesis de inversión: ubicación estratégica, demanda comprobada y
+modelo financiero disciplinado.
+Párrafo 2 más pequeño en gris claro: No seguimos ciclos de oferta y
+demanda. Seleccionamos activos donde el deterioro es la oportunidad y
+la estructura es la ventaja.
+
+--- SECCIÓN: CARDS DE PROYECTOS ---
+Fondo: --color-bg-primary
+Layout: 2 columnas (desktop) / 1 columna (mobile)
+
+CARD 1 — SAN PEDRO PATRIOTISMO:
+  Header card: fondo --color-bg-navy
+    Badge pill rojo: "• PREVENTA ACTIVA"
+    Etiqueta pequeña: "BOUTIQUE MEDICAL REAL ESTATE"
+    Título: "San Pedro Patriotismo" (blanco serif grande)
+    Ubicación con ícono pin: "SAN PEDRO DE LOS PINOS, CDMX"
+  Body card: fondo blanco
+    Descripción (3-4 líneas): zona médica consolidada, consultorio boutique,
+    renta pasiva estable, sin operación directa, administración profesional.
+    Tags: pill outline → MÉDICO / RENTA PASIVA / BAJO RIESGO
+    Separador línea fina
+    Grid 2x2 métricas:
+      $1.5 MDP — INVERSIÓN DESDE
+      9% anual — RENTABILIDAD ESTIMADA
+      14 m² — TAMAÑO DESDE
+      Consultorio — TIPO DE ACTIVO
+    Botón outline azul marino ancho completo: "VER PROYECTO COMPLETO"
+
+CARD 2 — EDISON 58 TABACALERA:
+  Header card: fondo --color-bg-navy
+    Badge pill rojo: "• CUPO LIMITADO"
+    Etiqueta pequeña: "DEPARTAMENTOS BOUTIQUE · RENTA CORTA"
+    Título: "Edison 58 Tabacalera" (blanco serif grande)
+    Ubicación: "TABACALERA, CDMX"
+  Body card: fondo blanco
+    Descripción: La Tabacalera, barrio histórico con mayor plusvalía
+    proyectada de CDMX. Edison 58 transforma edificio icónico en
+    plataforma de renta corta boutique.
+    Tags: RENTA CORTA / ALTA PLUSVALÍA / DISEÑO HISTÓRICO
+    Grid 2x2 métricas:
+      $4.7 MDP — INVERSIÓN DESDE
+      12% — CAP RATE RENTAS CORTAS
+      $68 USD — TARIFA NOCHE PROMEDIO
+      Departamento — TIPO DE ACTIVO
+    Botón outline azul marino: "VER PROYECTO COMPLETO"
+
+--- SECCIÓN: CITA DE CIERRE ---
+Fondo: #0A0E1A
+Layout centrado, padding generoso
+Texto en italic serif grande blanco (máximo 2 líneas):
+  "Cada activo en este portafolio no es solo una inversión.
+  Es una participación en la transformación urbana de una ciudad."
+Comillas tipográficas decorativas en dorado (tamaño display)
+Botón outline blanco debajo: "PRESENTAR UN ACTIVO →"
+
+--- CTA FINAL ---
+Fondo: --color-bg-navy
+Centrado:
+  Etiqueta: "¿QUIERES ACCESO ANTICIPADO AL SIGUIENTE ACTIVO?"
+  Párrafo: Los cupos son limitados y se asignan por orden de conversación.
+  Botón grande verde: "AGENDAR CONVERSACIÓN"
+
+===================================================
+REGLAS TÉCNICAS GLOBALES (aplican a las 3 páginas)
+===================================================
+
+HTML/CSS/JS vanilla — sin frameworks
+Google Fonts: Cormorant+Garamond:ital,wght@0,600;1,400,600 y DM+Sans:wght@300;400;500
+Viewport: mobile-first, breakpoint principal en 768px
+Animaciones: IntersectionObserver con clase .visible que activa
+  opacity: 0 → 1 y translateY(20px) → translateY(0)
+  transition: 0.6s ease, delay escalonado por elemento
+Botón WhatsApp flotante: posición fixed bottom-right, fondo #25D366,
+  ícono SVG de WhatsApp, z-index 1000
+Navbar activa el link de la página actual con color dorado
+Hover en botones CTA: ligero scale(1.02) + sombra suave
+Cards de portafolio: hover eleva con box-shadow más pronunciada
+Imágenes: usar placeholder via https://placehold.co con
+  dimensiones y colores acordes al diseño
+Números de métricas: animar conteo desde 0 al entrar en viewport
+  (CountUp animation en JS puro)
+No usar Bootstrap, Tailwind ni ningún framework CSS
+Código limpio, comentado por sección, fácil de editar
