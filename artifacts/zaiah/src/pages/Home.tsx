@@ -271,9 +271,9 @@ export default function Home() {
                     letterSpacing: "-0.01em",
                   }}
                 >
-                  Las ciudades siguen creciendo.{" "}
+                  Llevas tiempo buscando cómo{" "}
                   <br className="hidden md:block" />
-                  <em style={{ color: "#CAAA57", fontStyle: "italic" }}>No todos participan de su transformación.</em>
+                  <em style={{ color: "#CAAA57", fontStyle: "italic" }}>hacer crecer tu dinero sin depender de nadie.</em>
                 </h1>
               </div>
 
@@ -297,7 +297,7 @@ export default function Home() {
                     fontWeight: 300,
                   }}
                 >
-                  Mientras algunas zonas pierden valor, otras esconden activos con potencial patrimonial desaprovechado.
+                  La mayoría invierte en lo que todos conocen. Nosotros operamos donde pocos miran.
                 </p>
               </div>
 
@@ -307,7 +307,7 @@ export default function Home() {
                 style={{ gap: "0.75rem", opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(12px)", transition: "opacity 1s ease, transform 1s ease", transitionDelay: "320ms" }}
               >
                 {/* Primary CTA — gold, premium */}
-                <Link href="/contacto" data-testid="button-hero-agendar">
+                <Link href="/modelo" data-testid="button-hero-agendar">
                   <span
                     className="inline-flex items-center cursor-pointer"
                     style={{
@@ -325,7 +325,7 @@ export default function Home() {
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#ffffff"; }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#CAAA57"; }}
                   >
-                    Agendar conversación
+                    Quiero saber cómo
                   </span>
                 </Link>
 
@@ -413,122 +413,73 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
 
-          {/* ── Header: eyebrow + headline ── */}
+          {/* ── Header ── */}
           <FadeIn>
-            <div style={{ marginBottom: "4rem", maxWidth: "820px" }}>
+            <div style={{ marginBottom: "3.5rem", maxWidth: "760px" }}>
               <p className="eyebrow" style={{ color: "#CAAA57", marginBottom: "1.5rem" }}>El problema</p>
               <h2
                 style={{
                   fontFamily: "'Playfair Display', Georgia, serif",
                   fontWeight: 600,
-                  fontSize: "clamp(2rem, 4vw, 3.4rem)",
+                  fontSize: "clamp(2rem, 4vw, 3.2rem)",
                   lineHeight: 1.12,
                   letterSpacing: "-0.015em",
                   color: "#00246B",
-                  marginBottom: "1.5rem",
                 }}
               >
-                Las ciudades no colapsan de un día para otro.
+                El mercado inmobiliario tradicional
                 <br />
-                <em style={{ fontStyle: "italic", color: "rgba(0,36,107,0.35)" }}>Se deterioran lentamente.</em>
+                <em style={{ fontStyle: "italic", color: "rgba(0,36,107,0.4)" }}>tiene un problema serio.</em>
               </h2>
-              <p style={{ fontSize: "1rem", fontWeight: 300, lineHeight: 1.8, color: "rgba(0,36,107,0.5)", maxWidth: "560px" }}>
-                Y mientras el deterioro avanza, el capital espera una señal que nunca llega. El mercado tradicional no tiene las herramientas para leer estas oportunidades.
-              </p>
             </div>
           </FadeIn>
 
-          {/* ── 3 Problem cards ── */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              borderTop: "1px solid rgba(0,36,107,0.12)",
-              borderBottom: "1px solid rgba(0,36,107,0.12)",
-              marginBottom: "4rem",
-            }}
-            className="grid-cols-1 md:grid-cols-3"
-          >
+          {/* ── 3 bullets ── */}
+          <div style={{ marginBottom: "3rem" }}>
             {[
-              {
-                num: "01",
-                title: "Activos subutilizados",
-                body: "Edificios con valor estratégico que el mercado ignora porque no tiene metodología para detectarlos.",
-              },
-              {
-                num: "02",
-                title: "Capital mal dirigido",
-                body: "El inversionista tradicional busca ciclos rápidos. No ve el patrimonio estructurado que está frente a él.",
-              },
-              {
-                num: "03",
-                title: "Zonas sin activación",
-                body: "Barrios completos con potencial comprobado que esperan capital con visión, no con miedo.",
-              },
-            ].map((card, i) => (
-              <FadeIn key={i} delay={i * 100}>
+              "Los mejores activos nunca llegan a la oferta pública.",
+              "Las comisiones erosionan tu rendimiento antes de empezar.",
+              "Administrar propiedades depende de ti, no de un sistema.",
+            ].map((text, i) => (
+              <FadeIn key={i} delay={i * 120}>
                 <div
                   style={{
-                    padding: "2.5rem 2rem 2.5rem",
-                    borderLeft: i === 0 ? "none" : "1px solid rgba(0,36,107,0.1)",
-                    height: "100%",
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "1.25rem",
+                    padding: "1.5rem 0",
+                    borderBottom: "1px solid rgba(0,36,107,0.08)",
                   }}
                 >
-                  <p style={{ fontSize: "11px", fontWeight: 800, letterSpacing: "0.18em", color: "#CAAA57", marginBottom: "1.25rem" }}>
-                    {card.num}
-                  </p>
-                  <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#00246B", marginBottom: "0.875rem", letterSpacing: "-0.01em", lineHeight: 1.3 }}>
-                    {card.title}
-                  </h3>
-                  <p style={{ fontSize: "0.875rem", fontWeight: 300, lineHeight: 1.75, color: "rgba(0,36,107,0.5)" }}>
-                    {card.body}
+                  <span style={{ width: "1.5rem", height: "1.5rem", borderRadius: "50%", border: "1.5px solid rgba(202,170,87,0.5)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "3px" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#CAAA57" }} />
+                  </span>
+                  <p style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)", fontWeight: 400, lineHeight: 1.6, color: "rgba(0,36,107,0.7)" }}>
+                    {text}
                   </p>
                 </div>
               </FadeIn>
             ))}
           </div>
 
-          {/* ── Desire + pivot split ── */}
-          <div
-            style={{ display: "grid", gridTemplateColumns: "1fr", gap: "3rem" }}
-            className="lg:grid-cols-2 lg:gap-20"
-          >
-            {/* User desire identification */}
-            <FadeIn>
-              <div style={{ borderLeft: "2px solid rgba(202,170,87,0.35)", paddingLeft: "1.75rem" }}>
-                <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "1rem" }}>
-                  El inversionista de hoy
-                </p>
-                <p style={{ fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)", lineHeight: 1.9, color: "rgba(0,36,107,0.55)", fontWeight: 300 }}>
-                  Cada vez más personas buscan construir ingresos sostenibles respaldados por activos reales. No quieren depender únicamente de su tiempo. Buscan patrimonio heredable, renta estructurada y participar en algo que trascienda.
-                </p>
-              </div>
-            </FadeIn>
-
-            {/* The pivot — ZAIAH enters */}
-            <FadeIn delay={180}>
-              <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
-                <p
-                  style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
-                    fontWeight: 600,
-                    fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)",
-                    lineHeight: 1.2,
-                    color: "#00246B",
-                    letterSpacing: "-0.01em",
-                    marginBottom: "1.75rem",
-                  }}
-                >
-                  Ahí es donde opera ZAIAH.
-                </p>
-                <Link href="/quienes-somos" data-testid="button-problema-conocer">
-                  <span className="inline-flex items-center gap-3 eyebrow text-[#00246B] border-b border-[#CAAA57] pb-1 hover:text-[#CAAA57] transition-colors cursor-pointer">
-                    Entender el modelo →
-                  </span>
-                </Link>
-              </div>
-            </FadeIn>
-          </div>
+          {/* ── Closing italic phrase ── */}
+          <FadeIn delay={380}>
+            <p
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+                fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)",
+                lineHeight: 1.6,
+                color: "rgba(0,36,107,0.32)",
+                borderLeft: "2px solid rgba(202,170,87,0.3)",
+                paddingLeft: "1.5rem",
+                maxWidth: "560px",
+              }}
+            >
+              "Así se pierde tiempo, capital y oportunidades."
+            </p>
+          </FadeIn>
 
         </div>
       </section>
@@ -555,7 +506,7 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-14 lg:px-20 py-24 w-full">
           <div className="max-w-2xl">
             <FadeIn>
-              <p className="eyebrow text-[#CAAA57] mb-7">La oportunidad</p>
+              <p className="eyebrow text-[#CAAA57] mb-7">La perspectiva</p>
               <h2
                 style={{
                   fontFamily: "'Playfair Display', Georgia, serif",
@@ -567,12 +518,23 @@ export default function Home() {
                   marginBottom: "1.5rem",
                 }}
               >
-                Existen activos estratégicos ignorados por el mercado tradicional.
+                Existe una forma distinta de participar en el mercado urbano.
               </h2>
               <div style={{ width: "2.5rem", height: "1px", backgroundColor: "#CAAA57", marginBottom: "1.5rem" }} />
-              <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "1rem", fontWeight: 300, lineHeight: 1.8, maxWidth: "36rem" }}>
-                ZAIAH los detecta antes que el mercado. Los estructura con rigor institucional. Los transforma en patrimonio con visión de 20 años.
+              <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "1rem", fontWeight: 300, lineHeight: 1.8, maxWidth: "36rem", marginBottom: "2rem" }}>
+                No compramos lo que todos ven. Identificamos zonas con potencial de regeneración, estructuramos los activos y creamos patrimonio con flujo sostenible.
               </p>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "1.5rem", padding: "1.1rem 1.75rem", border: "1px solid rgba(202,170,87,0.3)", backgroundColor: "rgba(0,0,0,0.35)" }}>
+                <div>
+                  <p style={{ fontSize: "clamp(1.5rem, 2.8vw, 2rem)", fontWeight: 800, color: "#CAAA57", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.3rem" }}>9% anual</p>
+                  <p style={{ fontSize: "9px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Rentabilidad estimada</p>
+                </div>
+                <div style={{ width: "1px", height: "2.5rem", backgroundColor: "rgba(202,170,87,0.2)" }} />
+                <div>
+                  <p style={{ fontSize: "clamp(1.5rem, 2.8vw, 2rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.3rem" }}>$1.5 MDP</p>
+                  <p style={{ fontSize: "9px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Inversión desde</p>
+                </div>
+              </div>
             </FadeIn>
           </div>
         </div>
@@ -716,19 +678,19 @@ export default function Home() {
             {[
               {
                 num: "01",
-                title: "Identificamos activos",
+                title: "Identificamos activos ignorados por el mercado",
                 body: "Edificios subutilizados con potencial jurídico, urbano y financiero. Detectamos oportunidades donde otros ven deterioro. Cada selección pasa por 8 criterios de análisis.",
                 tag: "Detección",
               },
               {
                 num: "02",
-                title: "Estructuramos la regeneración",
+                title: "Construimos regeneración económica, no solo cosmética",
                 body: "Integramos capital, diseño, remodelación y gobernanza privada. Cada proyecto es una arquitectura financiera aplicada a la ciudad. No delegamos la visión.",
                 tag: "Ejecución",
               },
               {
                 num: "03",
-                title: "Activamos ecosistemas",
+                title: "Activamos ecosistemas de valor sostenido",
                 body: "Convertimos activos en nodos productivos con impacto económico y patrimonial. No renovamos fachadas. Reactivamos economías locales con visión de 20 años.",
                 tag: "Impacto",
               },
@@ -786,6 +748,23 @@ export default function Home() {
                   Ver modelo completo →
                 </span>
               </Link>
+            </div>
+          </FadeIn>
+
+          {/* Forbes social proof strip */}
+          <FadeIn delay={500}>
+            <div style={{ marginTop: "4rem", padding: "1.5rem 2rem", backgroundColor: "rgba(0,36,107,0.04)", borderLeft: "3px solid #CAAA57", display: "flex", alignItems: "center", flexWrap: "wrap", gap: "1.5rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexShrink: 0 }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
+                </svg>
+                <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "#CAAA57" }}>
+                  Forbes México
+                </p>
+              </div>
+              <p style={{ fontSize: "0.875rem", fontWeight: 300, lineHeight: 1.6, color: "rgba(0,36,107,0.55)", flex: 1, minWidth: "200px" }}>
+                "Reconocidos por innovar en el sector inmobiliario de Ciudad de México a través del flipping estructurado."
+              </p>
             </div>
           </FadeIn>
         </div>
@@ -945,7 +924,7 @@ export default function Home() {
                   <p className="eyebrow text-[#CAAA57]">Portafolio activo</p>
                 </div>
                 <h2 className="text-[#00246B] font-bold text-4xl md:text-5xl tracking-tight leading-[1.08]">
-                  Activos estratégicos en operación.
+                  Activos estratégicos activos hoy.
                 </h2>
               </FadeIn>
             </div>
@@ -960,7 +939,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Investment cards — identical to /portafolio page */}
+          {/* Investment cards */}
           <div
             style={{
               display: "grid",
@@ -971,6 +950,133 @@ export default function Home() {
             {HOME_PROJECTS.map((project, i) => (
               <HomeProjectCard key={project.id} project={project} delay={i * 100} />
             ))}
+          </div>
+
+          {/* Urgency note */}
+          <FadeIn delay={300}>
+            <div style={{ marginTop: "2.5rem", padding: "1.25rem 0", borderTop: "1px solid rgba(0,36,107,0.1)", textAlign: "center" }}>
+              <p
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  fontSize: "clamp(0.9rem, 1.3vw, 1.05rem)",
+                  color: "rgba(0,36,107,0.4)",
+                  lineHeight: 1.6,
+                }}
+              >
+                Estos ya no están disponibles. Los próximos, tampoco estarán por mucho tiempo.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          PARA QUIÉN ES — FILTER + BELONGING
+      ═══════════════════════════════════════════════════════════ */}
+      <section
+        style={{ backgroundColor: "#ffffff", paddingTop: "6rem", paddingBottom: "6rem" }}
+        data-testid="section-para-quien"
+      >
+        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-5">
+              <FadeIn>
+                <p className="eyebrow" style={{ color: "#CAAA57", marginBottom: "1.5rem" }}>Perfil de inversionista</p>
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: "clamp(2rem, 3.5vw, 3rem)",
+                    lineHeight: 1.12,
+                    letterSpacing: "-0.015em",
+                    color: "#00246B",
+                    marginBottom: "2rem",
+                  }}
+                >
+                  Esto es para ti si...
+                </h2>
+                <p
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontStyle: "italic",
+                    fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)",
+                    fontWeight: 400,
+                    lineHeight: 1.7,
+                    color: "rgba(0,36,107,0.32)",
+                    paddingLeft: "1.25rem",
+                    borderLeft: "2px solid rgba(202,170,87,0.3)",
+                  }}
+                >
+                  "No es para quien busca resultados en semanas."
+                </p>
+              </FadeIn>
+            </div>
+            <div className="lg:col-span-7">
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {[
+                  "Quieres ingresos que no dependan únicamente de tu tiempo.",
+                  "Buscas ser parte de una comunidad con visión de largo plazo.",
+                  "Tienes desde 1.5 MDP y quieres que trabajen de forma estructurada.",
+                ].map((text, i) => (
+                  <FadeIn key={i} delay={i * 120}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: "1.25rem",
+                        padding: "1.75rem 0",
+                        borderBottom: i < 2 ? "1px solid rgba(0,36,107,0.07)" : "none",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "1.75rem",
+                          height: "1.75rem",
+                          backgroundColor: "#CAAA57",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexShrink: 0,
+                          marginTop: "2px",
+                        }}
+                      >
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                          <path d="M1 4L3.5 6.5L9 1" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                      <p style={{ fontSize: "clamp(1rem, 1.5vw, 1.15rem)", fontWeight: 400, lineHeight: 1.6, color: "rgba(0,36,107,0.75)" }}>
+                        {text}
+                      </p>
+                    </div>
+                  </FadeIn>
+                ))}
+                <FadeIn delay={400}>
+                  <div style={{ marginTop: "2.5rem" }}>
+                    <Link href="/contacto" data-testid="button-para-quien-reservar">
+                      <span
+                        className="inline-block cursor-pointer"
+                        style={{
+                          padding: "1rem 2.5rem",
+                          backgroundColor: "#00246B",
+                          color: "#ffffff",
+                          fontSize: "9.5px",
+                          fontWeight: 700,
+                          letterSpacing: "0.2em",
+                          textTransform: "uppercase",
+                          transition: "background-color 0.3s ease, color 0.3s ease",
+                        }}
+                        onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#CAAA57"; el.style.color = "#000"; }}
+                        onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = "#00246B"; el.style.color = "#fff"; }}
+                      >
+                        Reservar mi lugar →
+                      </span>
+                    </Link>
+                  </div>
+                </FadeIn>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1127,17 +1233,19 @@ export default function Home() {
                     marginBottom: "2rem",
                   }}
                 >
-                  Construyamos el{" "}
-                  <em style={{ color: "rgba(255,255,255,0.35)", fontStyle: "italic", fontWeight: 400 }}>siguiente</em>{" "}
-                  nodo urbano.
+                  Reserva tu lugar en la{" "}
+                  <em style={{ color: "#CAAA57", fontStyle: "italic", fontWeight: 500 }}>próxima conversación estratégica.</em>
                 </h2>
-                <p className="text-white/35 text-base font-light leading-relaxed max-w-md mb-10">
-                  Si buscas explorar inversión, presentar un activo o generar una alianza estratégica con ZAIAH, podemos iniciar una conversación.
+                <p className="text-white/35 text-base font-light leading-relaxed max-w-md mb-4">
+                  Si tienes desde 1.5 MDP y buscas participar en activos que generen renta estructurada y patrimonio a largo plazo, este es el momento.
+                </p>
+                <p style={{ fontSize: "9px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(202,170,87,0.5)", marginBottom: "1.5rem" }}>
+                  Solo 20 lugares con precio preferencial
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link href="/contacto" data-testid="button-cta-agendar">
                     <span className="inline-block px-8 py-4 bg-[#CAAA57] text-black eyebrow hover:bg-white transition-all duration-300 cursor-pointer">
-                      Agendar conversación
+                      Reservar mi lugar
                     </span>
                   </Link>
                   <a
