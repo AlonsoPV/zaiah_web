@@ -18,7 +18,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14 pb-14 border-b border-white/6">
           {/* Brand */}
           <div className="md:col-span-5">
-            <p className="font-bold text-2xl tracking-[0.2em] text-white mb-2">ZAIAH</p>
+            <img
+              src="/logo-zaiah.png"
+              alt="ZAIAH"
+              style={{
+                height: "34px",
+                width: "auto",
+                display: "block",
+                filter: "invert(1) brightness(10)",
+                marginBottom: "0.5rem",
+              }}
+            />
             <p className="text-[#CAAA57] eyebrow mb-7">Regeneración Urbana Estructurada</p>
             <p className="text-white/35 text-sm leading-relaxed max-w-xs">
               Empresa privada de transformación urbana dedicada a identificar, adquirir y regenerar activos inmobiliarios estratégicos en ciudades emergentes.

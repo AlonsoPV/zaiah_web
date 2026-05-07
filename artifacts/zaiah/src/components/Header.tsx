@@ -38,13 +38,19 @@ export default function Header() {
         <div className="flex items-center justify-between h-[72px]">
           {/* Logo */}
           <Link href="/" data-testid="link-logo">
-            <span
-              className={`font-bold text-lg tracking-[0.18em] transition-colors duration-400 ${
-                isLight ? "text-[#00246B]" : "text-white"
-              }`}
-            >
-              ZAIAH
-            </span>
+            <img
+              src="/logo-zaiah.png"
+              alt="ZAIAH"
+              style={{
+                height: "30px",
+                width: "auto",
+                display: "block",
+                filter: isLight
+                  ? "brightness(0) saturate(100%) invert(11%) sepia(98%) saturate(2600%) hue-rotate(210deg) brightness(85%)"
+                  : "invert(1) brightness(10)",
+                transition: "filter 0.5s ease",
+              }}
+            />
           </Link>
 
           {/* Desktop Nav */}

@@ -340,45 +340,10 @@ export default function QuienesSomos() {
                   <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "0.75rem" }}>
                     Liderazgo
                   </p>
-                  <h3
-                    style={{
-                      fontFamily: "'Playfair Display', Georgia, serif",
-                      fontWeight: 600,
-                      fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)",
-                      lineHeight: 1.1,
-                      letterSpacing: "-0.01em",
-                      color: "#00246B",
-                    }}
-                  >
-                    Fundadores
-                  </h3>
                 </div>
               </FadeIn>
 
-              {/* Founder profiles */}
-              {founders.map((f, i) => (
-                <FadeIn key={i} delay={160 + i * 100}>
-                  <div
-                    data-testid={`card-founder-${i + 1}`}
-                    style={{
-                      paddingBottom: "2.5rem",
-                      marginBottom: i < founders.length - 1 ? "2.5rem" : "0",
-                      borderBottom: i < founders.length - 1 ? "1px solid rgba(0,36,107,0.1)" : "none",
-                    }}
-                  >
-                    <div style={{ height: "1px", backgroundColor: "#CAAA57", width: "2rem", marginBottom: "1.25rem" }} />
-                    <h4 style={{ color: "#00246B", fontWeight: 700, fontSize: "1.05rem", letterSpacing: "-0.01em", marginBottom: "0.3rem" }}>
-                      {f.name}
-                    </h4>
-                    <p style={{ fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "1rem" }}>
-                      {f.title}
-                    </p>
-                    <p style={{ color: "rgba(0,36,107,0.5)", fontSize: "0.875rem", lineHeight: 1.8, fontWeight: 300 }}>
-                      {f.bio}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
+          
 
               {/* Premium KPI cards */}
               <FadeIn delay={380}>
