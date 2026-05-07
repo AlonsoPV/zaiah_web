@@ -655,7 +655,7 @@ export default function QuienesSomos() {
               >
                 ¿Listo para conocer quién está detrás de cada decisión?
               </h2>
-              <Link href="/contacto" data-testid="button-about-cta">
+              <a href="https://wa.me/525500000000" target="_blank" rel="noopener noreferrer" data-testid="button-about-cta">
                 <span
                   className="inline-block cursor-pointer"
                   style={{
@@ -673,7 +673,7 @@ export default function QuienesSomos() {
                 >
                   Agendar conversación
                 </span>
-              </Link>
+              </a>
             </div>
           </FadeIn>
         </div>

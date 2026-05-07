@@ -209,7 +209,7 @@ function ProjectCard({ project, delay = 0 }: { project: typeof PROJECTS[0]; dela
 
         {/* CTA */}
         <div style={{ marginTop: "auto", paddingTop: "0.25rem" }}>
-          <Link href="/contacto" data-testid={`button-project-${project.id}`}>
+          <a href="https://wa.me/525500000000" target="_blank" rel="noopener noreferrer" data-testid={`button-project-${project.id}`}>
             <span
               className="block w-full text-center cursor-pointer"
               style={{
@@ -226,7 +226,7 @@ function ProjectCard({ project, delay = 0 }: { project: typeof PROJECTS[0]; dela
             >
               Ver Proyecto Completo
             </span>
-          </Link>
+          </a>
         </div>
 
       </div>
@@ -364,7 +364,7 @@ export default function Portafolio() {
                   <br />
                   {"Es una participación en la transformación urbana de una ciudad.\""}
                 </p>
-                <Link href="/contacto" data-testid="button-portfolio-contact">
+                <a href="https://wa.me/525500000000" target="_blank" rel="noopener noreferrer" data-testid="button-portfolio-contact">
                   <span
                     className="inline-flex items-center gap-3 cursor-pointer"
                     style={{
@@ -391,7 +391,7 @@ export default function Portafolio() {
                     Presentar un activo
                     <span style={{ color: "#CAAA57" }}>→</span>
                   </span>
-                </Link>
+                </a>
               </div>
             </div>
           </FadeIn>
@@ -420,7 +420,7 @@ export default function Portafolio() {
               >
                 Los cupos son limitados y se asignan por orden de conversación.
               </p>
-              <Link href="/contacto" data-testid="button-portfolio-cta">
+              <a href="https://wa.me/525500000000" target="_blank" rel="noopener noreferrer" data-testid="button-portfolio-cta">
                 <span
                   className="inline-block cursor-pointer"
                   style={{
@@ -438,7 +438,7 @@ export default function Portafolio() {
                 >
                   Agendar conversación
                 </span>
-              </Link>
+              </a>
             </div>
           </FadeIn>
         </div>

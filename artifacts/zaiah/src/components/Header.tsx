@@ -81,7 +81,7 @@ export default function Header() {
               );
             })}
 
-            <Link href="/contacto" data-testid="nav-cta">
+            {/* <Link href="/contacto" data-testid="nav-cta">
               <span
                 className={`text-[11px] font-bold tracking-[0.14em] uppercase px-5 py-2 border transition-all duration-300 ${
                   isLight
@@ -91,7 +91,7 @@ export default function Header() {
               >
                 Agendar conversación
               </span>
-            </Link>
+            </Link> */}
           </nav>
 
           {/* Mobile hamburger */}
@@ -118,7 +118,7 @@ export default function Header() {
         data-testid="nav-mobile"
       >
         <div className="px-6 py-10 flex flex-col gap-7 border-t border-white/10">
-          {[...navLinks, { href: "/contacto", label: "Contacto" }].map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -129,11 +129,11 @@ export default function Header() {
               </span>
             </Link>
           ))}
-          <Link href="/contacto">
+          {/* <Link href="/contacto">
             <span className="inline-block mt-2 px-6 py-3 bg-[#CAAA57] text-black text-xs font-bold tracking-[0.15em] uppercase">
               Agendar conversación
             </span>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </header>

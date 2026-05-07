@@ -9,7 +9,7 @@ import Home from "@/pages/Home";
 import QuienesSomos from "@/pages/QuienesSomos";
 import Modelo from "@/pages/Modelo";
 import Portafolio from "@/pages/Portafolio";
-import Contacto from "@/pages/Contacto";
+// import Contacto from "@/pages/Contacto";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -32,7 +32,7 @@ function Router() {
         <Route path="/quienes-somos" component={QuienesSomos} />
         <Route path="/modelo" component={Modelo} />
         <Route path="/portafolio" component={Portafolio} />
-        <Route path="/contacto" component={Contacto} />
+        {/* <Route path="/contacto" component={Contacto} /> */}
         <Route component={NotFound} />
       </Switch>
       <Footer />

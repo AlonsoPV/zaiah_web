@@ -1054,7 +1054,7 @@ export default function Home() {
                 ))}
                 <FadeIn delay={400}>
                   <div style={{ marginTop: "2.5rem" }}>
-                    <Link href="/contacto" data-testid="button-para-quien-reservar">
+                    <a href="https://wa.me/525500000000" target="_blank" rel="noopener noreferrer" data-testid="button-para-quien-reservar">
                       <span
                         className="inline-block cursor-pointer"
                         style={{
@@ -1072,7 +1072,7 @@ export default function Home() {
                       >
                         Reservar mi lugar →
                       </span>
-                    </Link>
+                    </a>
                   </div>
                 </FadeIn>
               </div>
@@ -1243,11 +1243,11 @@ export default function Home() {
                   Solo 20 lugares con precio preferencial
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/contacto" data-testid="button-cta-agendar">
+                  <a href="https://wa.me/525500000000" target="_blank" rel="noopener noreferrer" data-testid="button-cta-agendar">
                     <span className="inline-block px-8 py-4 bg-[#CAAA57] text-black eyebrow hover:bg-white transition-all duration-300 cursor-pointer">
                       Reservar mi lugar
                     </span>
-                  </Link>
+                  </a>
                   <a
                     href="https://wa.me/525500000000"
                     target="_blank"

@@ -352,7 +352,7 @@ export default function Modelo() {
               >
                 ¿Listo para participar en el modelo?
               </h2>
-              <Link href="/contacto" data-testid="button-modelo-cta-final">
+              <a href="https://wa.me/525500000000" target="_blank" rel="noopener noreferrer" data-testid="button-modelo-cta-final">
                 <span
                   className="inline-block cursor-pointer"
                   style={{
@@ -370,7 +370,7 @@ export default function Modelo() {
                 >
                   Agendar conversación
                 </span>
-              </Link>
+              </a>
             </div>
           </FadeIn>
         </div>

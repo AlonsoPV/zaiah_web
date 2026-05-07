@@ -5,7 +5,6 @@ const footerLinks = [
   { href: "/quienes-somos", label: "Quiénes Somos" },
   { href: "/modelo", label: "Modelo ZH" },
   { href: "/portafolio", label: "Portafolio" },
-  { href: "/contacto", label: "Contacto" },
 ];
 
 export default function Footer() {
