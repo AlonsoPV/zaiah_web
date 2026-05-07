@@ -46,6 +46,7 @@ const PROJECTS = [
       { value: "Consultorio", label: "Tipo de activo" },
     ],
     img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=85&auto=format&fit=crop",
+    url: "https://sanpedropatriotismo.com/",
   },
   {
     id: "edison-58-tabacalera",
@@ -64,6 +65,7 @@ const PROJECTS = [
       { value: "Departamento", label: "Tipo de activo" },
     ],
     img: "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1200&q=85&auto=format&fit=crop",
+    url: "https://edison58tabacalera.com/",
   },
 ];
 
@@ -209,7 +211,7 @@ function ProjectCard({ project, delay = 0 }: { project: typeof PROJECTS[0]; dela
 
         {/* CTA */}
         <div style={{ marginTop: "auto", paddingTop: "0.25rem" }}>
-          <a href="https://wa.me/525500000000" target="_blank" rel="noopener noreferrer" data-testid={`button-project-${project.id}`}>
+          <a href={project.url ?? "https://wa.me/525500000000"} target="_blank" rel="noopener noreferrer" data-testid={`button-project-${project.id}`}>
             <span
               className="block w-full text-center cursor-pointer"
               style={{
