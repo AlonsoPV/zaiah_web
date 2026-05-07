@@ -1,0 +1,114 @@
+Eres un experto en diseño web y copywriting de alta conversión. 
+Vas a rediseñar el sitio web de ZAIAH — una firma de regeneración 
+urbana estructurada en Ciudad de México — para que tenga una línea 
+clara de storytelling que guíe al usuario a reservar una cita/consultoría.
+
+=== OBJETIVO PRINCIPAL ===
+Cada sección debe cumplir una función narrativa específica dentro 
+del arco: PROBLEMA → AGITACIÓN → SOLUCIÓN → PRUEBA → ACCIÓN.
+El CTA principal es: "Reservar mi lugar" (evento presencial o consultoría).
+
+=== REFERENCIA VISUAL ===
+Usar tonos claros como base:
+- Fondo principal: #F5F2EC (beige cálido)
+- Fondo secundario: #FFFFFF
+- Color acento primario: #1A3D2B (verde oscuro institucional)
+- Color acento secundario: #C9A84C (dorado suave)
+- Tipografía display: serif elegante (ej. Playfair Display o Cormorant)
+- Tipografía body: sans-serif limpio (ej. DM Sans o Neue Haas Grotesk)
+- Estilo general: luxury real estate + editorial financiero
+
+=== ESTRUCTURA DE SECCIONES CON STORYTELLING ===
+
+--- SECCIÓN 1: HERO (GANCHO EMOCIONAL) ---
+Función: Identificar al usuario y crear resonancia inmediata.
+
+Headline: "Llevas tiempo buscando cómo hacer crecer tu dinero sin depender de nadie."
+Subheadline: "La mayoría invierte en lo que todos conocen. Nosotros operamos donde pocos miran."
+CTA primario: botón verde → "Quiero saber cómo"
+Visual: imagen arquitectónica de alta gama, luz natural, edificio urbano regenerado
+Nota de diseño: headline en serif grande, CTA flotante sticky en mobile
+
+--- SECCIÓN 2: PROBLEMA (AGITACIÓN) ---
+Función: Hacer que el usuario sienta el costo de no actuar.
+
+Título: "El mercado inmobiliario tradicional tiene un problema serio."
+3 bullets con iconos simples:
+  • "Los mejores activos nunca llegan a la oferta pública"
+  • "Las comisiones erosionan tu rendimiento antes de empezar"  
+  • "Administrar propiedades depende de ti, no de un sistema"
+Frase de cierre en cursiva: "Así se pierde tiempo, capital y oportunidades."
+
+--- SECCIÓN 3: CAMBIO DE PERSPECTIVA ---
+Función: Introducir a ZAIAH como el agente de cambio, no solo como empresa.
+
+Título: "Existe una forma distinta de participar en el mercado urbano."
+Párrafo corto (2-3 líneas): No compramos lo que todos ven. Identificamos zonas 
+con potencial de regeneración, estructuramos los activos y creamos patrimonio 
+con flujo sostenible.
+Métrica destacada: "9% anual estimado — desde 1.5 MDP"
+Sin CTA aquí — dejar que el usuario siga leyendo con curiosidad.
+
+--- SECCIÓN 4: MODELO / CREDIBILIDAD ---
+Función: Explicar el proceso sin jerga, con autoridad visual.
+
+Título: "El Modelo ZH en 3 pasos"
+Paso 01: Identificamos activos ignorados por el mercado
+Paso 02: Construimos regeneración económica, no solo cosmética
+Paso 03: Activamos ecosistemas de valor sostenido
+Visual: línea de tiempo horizontal con iconos finos
+
+Bloque de prueba social debajo:
+- Badge Forbes México
+- "Reconocidos por innovar en regeneración urbana mediante Flipping estructurado"
+- Foto del equipo (si disponible)
+
+--- SECCIÓN 5: ACTIVOS EN OPERACIÓN ---
+Función: Demostrar con evidencia concreta, no solo promesas.
+
+Título: "Activos estratégicos activos hoy."
+Cards de proyectos: San Pedro Patriotismo / Edison 58 Tabacalera
+Cada card: nombre, ubicación, m², rendimiento estimado, tipo de operación
+Frase al pie: "Estos ya no están disponibles. Los próximos, tampoco estarán por mucho tiempo."
+
+--- SECCIÓN 6: PARA QUIÉN ES ---
+Función: Filtrar al inversionista ideal y crear pertenencia.
+
+Título: "Esto es para ti si..."
+3 bullets afirmativos:
+  ✓ Quieres ingresos que no dependan de tu tiempo
+  ✓ Buscas ser parte de una comunidad con visión de largo plazo
+  ✓ Tienes desde 1.5 MDP y quieres que trabajen de forma estructurada
+
+Frase de exclusión (crea deseo): "No es para quien busca resultados en semanas."
+
+--- SECCIÓN 7: EVENTO / CTA PRINCIPAL ---
+Función: Convertir. Esta es la sección de mayor peso visual.
+
+Diseño: bloque verde oscuro (#1A3D2B) con texto claro
+Título grande: "Reserva tu lugar en el próximo evento presencial."
+Detalles: fecha, lugar (San Pedro de los Pinos, CDMX), formato (presencial)
+Contador regresivo (si aplica)
+CTA grande centrado: "RESERVAR MI LUGAR →"
+Nota de escasez: "Solo 20 lugares con precio preferencial"
+
+--- SECCIÓN 8: FOOTER CON MICRO-CTA ---
+Links de navegación mínimos
+Línea final: "¿Tienes dudas? Escríbenos antes de reservar."
+Link a WhatsApp o formulario simple
+
+=== REGLAS DE DISEÑO ===
+1. Sticky header con CTA "Reservar" siempre visible
+2. Espaciado generoso entre secciones (no condensar)
+3. Solo UN CTA principal por sección — no saturar
+4. Usar líneas finas doradas como separadores de sección
+5. Animaciones sutiles al hacer scroll (fade-in, no rebotes)
+6. Mobile-first: el flujo narrativo debe funcionar igual en celular
+7. No usar fondos negros — el sitio de referencia es claro y respirable
+8. Números y métricas siempre en grande, bold, color acento
+
+=== TECNOLOGÍA ===
+HTML + CSS + JS vanilla (sin frameworks pesados)
+Fuentes vía Google Fonts
+El contador regresivo debe ser funcional en JS
+Formulario de reserva con validación básica (nombre, email, teléfono)
