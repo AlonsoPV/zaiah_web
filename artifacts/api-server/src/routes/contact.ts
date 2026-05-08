@@ -1,9 +1,9 @@
 import { Router, type IRouter } from "express";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 const router: IRouter = Router();
 
-const RECIPIENT = "mkt@zaiah.com.mx";
+const RECIPIENTS = ["mkt@zaiah.com.mx", "alpeva96@gmail.com"];
 
 router.post("/contact", async (req, res) => {
   const { nombre, empresa, correo, telefono, interes, mensaje } = req.body as Record<string, string>;
@@ -13,14 +13,14 @@ router.post("/contact", async (req, res) => {
     return;
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    req.log.warn("RESEND_API_KEY no configurada — formulario no enviado");
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailPass = process.env.GMAIL_APP_PASSWORD;
+
+  if (!gmailUser || !gmailPass) {
+    req.log.warn("GMAIL_USER / GMAIL_APP_PASSWORD no configurados");
     res.status(500).json({ ok: false, error: "Servicio de correo no configurado." });
     return;
   }
-
-  const resend = new Resend(apiKey);
 
   const interesLabels: Record<string, string> = {
     inversion: "Inversión",
@@ -89,25 +89,24 @@ router.post("/contact", async (req, res) => {
   `;
 
   try {
-    const { error } = await resend.emails.send({
-      from: "ZAIAH Contacto <no-reply@zaiah.com.mx>",
-      to: [RECIPIENT],
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: { user: gmailUser, pass: gmailPass },
+    });
+
+    await transporter.sendMail({
+      from: `"ZAIAH Formulario" <${gmailUser}>`,
+      to: RECIPIENTS.join(", "),
       replyTo: correo,
       subject: `Nueva solicitud — ${nombre} · ${interesLabels[interes] ?? interes}`,
       html,
     });
 
-    if (error) {
-      req.log.error({ err: error }, "Resend error");
-      res.status(502).json({ ok: false, error: "Error al enviar el correo." });
-      return;
-    }
-
     req.log.info({ correo, interes }, "Contacto enviado correctamente");
     res.json({ ok: true });
   } catch (err) {
-    req.log.error({ err }, "Error inesperado en /contact");
-    res.status(500).json({ ok: false, error: "Error interno." });
+    req.log.error({ err }, "Error al enviar correo");
+    res.status(502).json({ ok: false, error: "Error al enviar el correo." });
   }
 });
 
