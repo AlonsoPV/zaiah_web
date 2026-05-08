@@ -53,20 +53,20 @@ export default function Footer() {
             <p className="text-[#CAAA57] eyebrow mb-7">Contacto</p>
             <div className="flex flex-col gap-4">
               <a
-                href="mailto:contacto@zaiah.mx"
+                href="mailto:mkt@zaiah.com.mx"
                 className="text-white/40 text-sm hover:text-[#CAAA57] transition-colors tracking-wide"
                 data-testid="link-footer-email"
               >
-                contacto@zaiah.mx
+                mkt@zaiah.com.mx
               </a>
               <a
-                href="https://wa.me/525500000000"
+                href="https://wa.me/+5215551452047"
                 className="text-white/40 text-sm hover:text-[#CAAA57] transition-colors tracking-wide"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="link-footer-whatsapp"
               >
-                +52 55 0000 0000
+                55 5145 2047
               </a>
               <p className="text-white/40 text-sm tracking-wide">Ciudad de México</p>
             </div>

@@ -67,11 +67,25 @@ export default function Contacto() {
     defaultValues: { nombre: "", empresa: "", correo: "", telefono: "", mensaje: "" },
   });
 
-  function onSubmit(_data: ContactForm) {
-    setSubmitted(true);
-    toast({ title: "Solicitud enviada", description: "El equipo ZAIAH te contactará pronto." });
-    form.reset();
-    setTimeout(() => setSubmitted(false), 6000);
+  async function onSubmit(data: ContactForm) {
+    try {
+      const res = await fetch(`${import.meta.env.BASE_URL}api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json() as { ok: boolean; error?: string };
+      if (!json.ok) throw new Error(json.error ?? "Error al enviar");
+      setSubmitted(true);
+      form.reset();
+      setTimeout(() => setSubmitted(false), 8000);
+    } catch {
+      toast({
+        title: "Error al enviar",
+        description: "Hubo un problema. Escríbenos directamente a mkt@zaiah.com.mx",
+        variant: "destructive",
+      });
+    }
   }
 
   const interesOptions = [
