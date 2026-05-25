@@ -524,17 +524,7 @@ export default function Home() {
               <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "1rem", fontWeight: 300, lineHeight: 1.8, maxWidth: "36rem", marginBottom: "2rem" }}>
                 No compramos lo que todos ven. Identificamos zonas con potencial de regeneración, estructuramos los activos y creamos patrimonio con flujo sostenible.
               </p>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "1.5rem", padding: "1.1rem 1.75rem", border: "1px solid rgba(202,170,87,0.3)", backgroundColor: "rgba(0,0,0,0.35)" }}>
-                <div>
-                  <p style={{ fontSize: "clamp(1.5rem, 2.8vw, 2rem)", fontWeight: 800, color: "#CAAA57", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.3rem" }}>9% anual</p>
-                  <p style={{ fontSize: "9px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Rentabilidad estimada</p>
-                </div>
-                <div style={{ width: "1px", height: "2.5rem", backgroundColor: "rgba(202,170,87,0.2)" }} />
-                <div>
-                  <p style={{ fontSize: "clamp(1.5rem, 2.8vw, 2rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.3rem" }}>$1.5 MDP</p>
-                  <p style={{ fontSize: "9px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Inversión desde</p>
-                </div>
-              </div>
+      
             </FadeIn>
           </div>
         </div>
@@ -751,9 +741,74 @@ export default function Home() {
             </div>
           </FadeIn>
 
+          {/* Forbes founders photo — links to liderazgo */}
+          <FadeIn delay={450}>
+            <Link href="/quienes-somos#liderazgo" data-testid="link-founders-photo">
+              <div
+                style={{ marginTop: "4rem", position: "relative", overflow: "hidden", cursor: "pointer" }}
+                className="group"
+              >
+                <img
+                  src="/founders-forbes.png"
+                  alt="Fundadores ZAIAH — Forbes México"
+                  style={{
+                    width: "100%",
+                    maxHeight: "420px",
+                    objectFit: "cover",
+                    objectPosition: "center top",
+                    display: "block",
+                    filter: "grayscale(20%)",
+                    transition: "filter 0.5s ease, transform 0.6s ease",
+                  }}
+                  className="group-hover:grayscale-0 group-hover:scale-[1.02]"
+                />
+                {/* Gradient overlay */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
+                  }}
+                />
+                {/* Caption */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: "1.5rem 2rem",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                    gap: "0.75rem",
+                  }}
+                >
+                  <div>
+                    <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "0.35rem" }}>
+                      Liderazgo ZAIAH
+                    </p>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 300, color: "rgba(255,255,255,0.6)", letterSpacing: "0.04em" }}>
+                      Conoce al equipo fundador →
+                    </p>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
+                    </svg>
+                    <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>
+                      Forbes México
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </FadeIn>
+
           {/* Forbes social proof strip */}
           <FadeIn delay={500}>
-            <div style={{ marginTop: "4rem", padding: "1.5rem 2rem", backgroundColor: "rgba(0,36,107,0.04)", borderLeft: "3px solid #CAAA57", display: "flex", alignItems: "center", flexWrap: "wrap", gap: "1.5rem" }}>
+            <div style={{ marginTop: "1.5rem", padding: "1.5rem 2rem", backgroundColor: "rgba(0,36,107,0.04)", borderLeft: "3px solid #CAAA57", display: "flex", alignItems: "center", flexWrap: "wrap", gap: "1.5rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexShrink: 0 }}>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />

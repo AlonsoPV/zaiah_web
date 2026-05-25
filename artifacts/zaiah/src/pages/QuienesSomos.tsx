@@ -226,6 +226,7 @@ export default function QuienesSomos() {
 
       {/* FOUNDERS */}
       <section
+        id="liderazgo"
         style={{ backgroundColor: "#EFEEED", overflow: "hidden" }}
         data-testid="section-founders"
       >
