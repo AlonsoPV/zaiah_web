@@ -741,85 +741,115 @@ export default function Home() {
             </div>
           </FadeIn>
 
-          {/* Forbes founders photo — links to liderazgo */}
+          {/* Forbes — two-column: photo + declaration */}
           <FadeIn delay={450}>
-            <Link href="/quienes-somos#liderazgo" data-testid="link-founders-photo">
-              <div
-                style={{ marginTop: "4rem", position: "relative", overflow: "hidden", cursor: "pointer" }}
-                className="group"
-              >
-                <img
-                  src="/founders-forbes.png"
-                  alt="Fundadores ZAIAH — Forbes México"
-                  style={{
-                    width: "100%",
-                    maxHeight: "420px",
-                    objectFit: "cover",
-                    objectPosition: "center top",
-                    display: "block",
-                    filter: "grayscale(20%)",
-                    transition: "filter 0.5s ease, transform 0.6s ease",
-                  }}
-                  className="group-hover:grayscale-0 group-hover:scale-[1.02]"
-                />
-                {/* Gradient overlay */}
+            <div
+              style={{
+                marginTop: "4rem",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                minHeight: "340px",
+              }}
+              className="flex-col md:grid"
+            >
+              {/* Left — founders photo */}
+              <Link href="/quienes-somos#liderazgo" data-testid="link-founders-photo" style={{ display: "block" }}>
                 <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
-                  }}
-                />
-                {/* Caption */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    padding: "1.5rem 2rem",
-                    display: "flex",
-                    alignItems: "flex-end",
-                    justifyContent: "space-between",
-                    flexWrap: "wrap",
-                    gap: "0.75rem",
-                  }}
+                  style={{ position: "relative", overflow: "hidden", height: "100%", minHeight: "280px", cursor: "pointer" }}
+                  className="group"
                 >
-                  <div>
-                    <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "0.35rem" }}>
+                  <img
+                    src="/founders-forbes.png"
+                    alt="Fundadores ZAIAH — Forbes México"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center top",
+                      display: "block",
+                      filter: "grayscale(15%)",
+                      transition: "filter 0.5s ease, transform 0.7s ease",
+                    }}
+                    className="group-hover:grayscale-0 group-hover:scale-[1.03]"
+                  />
+                  {/* subtle gradient at bottom of photo */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%)",
+                    }}
+                  />
+                  {/* Photo label */}
+                  <div style={{ position: "absolute", bottom: "1.25rem", left: "1.5rem" }}>
+                    <p style={{ fontSize: "8px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#CAAA57" }}>
                       Liderazgo ZAIAH
                     </p>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 300, color: "rgba(255,255,255,0.6)", letterSpacing: "0.04em" }}>
+                    <p style={{ fontSize: "0.72rem", fontWeight: 300, color: "rgba(255,255,255,0.55)", marginTop: "0.2rem", letterSpacing: "0.03em" }}>
                       Conoce al equipo fundador →
                     </p>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
-                      <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
-                    </svg>
-                    <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>
-                      Forbes México
-                    </p>
-                  </div>
+                </div>
+              </Link>
+
+              {/* Right — Forbes declaration */}
+              <div
+                style={{
+                  backgroundColor: "#00246B",
+                  padding: "3rem 2.75rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                {/* Badge */}
+                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "2.5rem" }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
+                  </svg>
+                  <p style={{ fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#CAAA57" }}>
+                    Forbes México
+                  </p>
+                </div>
+
+                {/* Quote */}
+                <p
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 400,
+                    fontStyle: "italic",
+                    fontSize: "clamp(1.05rem, 1.6vw, 1.35rem)",
+                    lineHeight: 1.65,
+                    color: "rgba(255,255,255,0.88)",
+                    flex: 1,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  "Reconocidos por innovar en el sector inmobiliario de Ciudad de México a través del flipping estructurado."
+                </p>
+
+                {/* Divider + link */}
+                <div style={{ marginTop: "2.5rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(202,170,87,0.2)" }}>
+                  <Link href="/quienes-somos#liderazgo">
+                    <span
+                      style={{
+                        fontSize: "8.5px",
+                        fontWeight: 700,
+                        letterSpacing: "0.22em",
+                        textTransform: "uppercase",
+                        color: "rgba(202,170,87,0.55)",
+                        cursor: "pointer",
+                        transition: "color 0.3s ease",
+                      }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "#CAAA57"; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(202,170,87,0.55)"; }}
+                    >
+                      Ver liderazgo →
+                    </span>
+                  </Link>
                 </div>
               </div>
-            </Link>
-          </FadeIn>
-
-          {/* Forbes social proof strip */}
-          <FadeIn delay={500}>
-            <div style={{ marginTop: "1.5rem", padding: "1.5rem 2rem", backgroundColor: "rgba(0,36,107,0.04)", borderLeft: "3px solid #CAAA57", display: "flex", alignItems: "center", flexWrap: "wrap", gap: "1.5rem" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexShrink: 0 }}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
-                </svg>
-                <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "#CAAA57" }}>
-                  Forbes México
-                </p>
-              </div>
-              <p style={{ fontSize: "0.875rem", fontWeight: 300, lineHeight: 1.6, color: "rgba(0,36,107,0.55)", flex: 1, minWidth: "200px" }}>
-                "Reconocidos por innovar en el sector inmobiliario de Ciudad de México a través del flipping estructurado."
-              </p>
             </div>
           </FadeIn>
         </div>
