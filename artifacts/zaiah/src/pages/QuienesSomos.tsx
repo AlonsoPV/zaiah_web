@@ -1,684 +1,117 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import cityImage from "@/assets/images/project-2.png";
 
-function useInView(threshold = 0.12) {
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setInView(true); },
-      { threshold }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold]);
-  return { ref, inView };
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { const o = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), { threshold: .12 }); if (ref.current) o.observe(ref.current); return () => o.disconnect(); }, []);
+  return <div ref={ref} className={`transition-all duration-1000 ${visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"} ${className}`}>{children}</div>;
 }
 
-function FadeIn({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
-  const { ref, inView } = useInView();
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-1000 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </div>
-  );
-}
-
-const founders = [
-  {
-    name: "Nombre Fundador",
-    title: "Co-Fundador & Director General",
-    bio: "Identifica lo que otros descartan. Convierte el deterioro urbano en tesis de inversión. Más de una década estructurando operaciones en economías donde la mayoría no ve oportunidad.",
-  },
-  {
-    name: "Nombre Fundador",
-    title: "Co-Fundador & Director de Operaciones",
-    bio: "Diseña los modelos que hacen viable lo que parece imposible. Su criterio financiero convierte cada activo en una operación institucional, replicable y escalable.",
-  },
+const character = [
+  ["Visionaria, pero disciplinada", "Pensamos en décadas. Ejecutamos en ciclos medibles."],
+  ["Estratégica, pero humana", "Analizamos el riesgo sin olvidar a las personas que habitan la ciudad."],
+  ["Institucional, pero boutique", "Procesos sólidos, decisiones ágiles y atención cercana."],
+  ["Silenciosamente dominante", "Menos promesas. Más consistencia, estructura y resultados."],
 ];
-
-const team = [
-  { name: "Nombre", area: "Inversiones", role: "Director de Capital", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" },
-  { name: "Nombre", area: "Diseño Urbano", role: "Arquitecto Principal", img: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=200&q=80" },
-  { name: "Nombre", area: "Legal", role: "Directora Jurídica", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" },
-  { name: "Nombre", area: "Comercialización", role: "Director Comercial", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" },
-];
-
-const pillars = [
-  { title: "Visionaria pero disciplinada", body: "Pensamos en décadas, ejecutamos en trimestres. La visión sin estructura es solo retórica." },
-  { title: "Estratégica pero humana", body: "Cada decisión es calculada. Pero detrás de cada activo hay una comunidad que se transforma." },
-  { title: "Institucional pero boutique", body: "La solidez de una firma establecida. La precisión de un equipo que selecciona con criterio." },
-  { title: "Silenciosamente dominante", body: "No necesitamos hacer ruido. Los ecosistemas que creamos hablan por sí solos." },
-];
-
-function MetricCard({ value, title, sub, index }: { value: string; title: string; sub: string; index: number }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        padding: "3rem 0 3rem",
-        paddingRight: "2.5rem",
-        borderLeft: index === 0 ? "none" : "1px solid rgba(255,255,255,0.07)",
-        paddingLeft: index === 0 ? "0" : "2.5rem",
-        borderTop: hovered ? "2px solid #CAAA57" : "2px solid transparent",
-        transition: "border-color 0.3s ease",
-        cursor: "default",
-      }}
-    >
-      <p style={{
-        color: hovered ? "#fff" : "#CAAA57",
-        fontWeight: 800,
-        fontSize: "clamp(2.8rem, 5.5vw, 4.5rem)",
-        lineHeight: 1,
-        letterSpacing: "-0.04em",
-        marginBottom: "1.1rem",
-        transition: "color 0.3s ease",
-      }}>
-        {value}
-      </p>
-      <div style={{ width: "1.5rem", height: "1px", backgroundColor: "rgba(202,170,87,0.4)", marginBottom: "0.875rem" }} />
-      <p style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, fontSize: "0.82rem", letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: "0.375rem" }}>
-        {title}
-      </p>
-      <p style={{ color: "rgba(255,255,255,0.28)", fontSize: "0.75rem", fontWeight: 300, lineHeight: 1.5 }}>
-        {sub}
-      </p>
-    </div>
-  );
-}
 
 export default function QuienesSomos() {
-  const [vis, setVis] = useState(false);
-  useEffect(() => { const t = setTimeout(() => setVis(true), 80); return () => clearTimeout(t); }, []);
+  return <main className="bg-[#faf9f7] text-[#1c1c1c]">
+    <section className="relative min-h-[92vh] overflow-hidden bg-[#0a1628] text-white">
+      <motion.img
+        src={cityImage}
+        alt="Ciudad regenerada por ZAIAH"
+        className="absolute inset-0 h-full w-full object-cover"
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 2, ease: EASE }}
+      />
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.5)_0%,rgba(0,0,0,.15)_40%,rgba(0,0,0,.5)_100%)]" />
 
-  return (
-    <main>
-      {/* HERO */}
-      <section
-        className="relative pt-40 pb-28 md:pb-40 overflow-hidden"
-        style={{ backgroundColor: "#000000" }}
-        data-testid="section-about-hero"
-      >
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center top",
-            mixBlendMode: "luminosity",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <div className={`transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.35em] uppercase mb-6">
-              Quiénes Somos
-            </p>
-            <h1
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontWeight: 600,
-                fontSize: "clamp(2.4rem, 4.5vw, 4rem)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.01em",
-                color: "#ffffff",
-                maxWidth: "760px",
-                marginBottom: "1.75rem",
-              }}
-            >
-              Una firma construida para quienes piensan
-              <br />
-              <em style={{ color: "#CAAA57", fontStyle: "italic" }}>en generaciones, no en transacciones.</em>
-            </h1>
-            <div className="w-10 h-px bg-[#CAAA57] mb-7" />
-            <p className="text-white/50 text-base font-light max-w-lg leading-relaxed">
-              Detrás de cada activo regenerado hay una metodología, un equipo y una visión de largo plazo que convierte deterioro urbano en patrimonio estructurado.
-            </p>
-          </div>
-        </div>
-      </section>
+      <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-5xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center md:px-12">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
+          className="mb-6 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.42em] text-[#c6a65a]"
+        >
+          <span className="h-px w-9 bg-[#c6a65a]" /> Quiénes somos <span className="h-px w-9 bg-[#c6a65a]" />
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: EASE, delay: 0.22 }}
+          style={{ fontFamily: "var(--app-font-serif)" }}
+          className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-normal leading-[1.05] tracking-[-.02em] text-white"
+        >
+          No compramos edificios. <em className="italic">Reestructuramos sistemas urbanos.</em>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
+          className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
+        >
+          ZAIAH es una empresa privada de regeneración urbana. Integramos territorio, capital, diseño y operación para crear patrimonio con permanencia.
+        </motion.p>
+      </div>
+    </section>
 
-      {/* EDITORIAL — DIFERENCIADORES */}
-      <section
-        className="py-28 md:py-40"
-        style={{ backgroundColor: "#EFEEED" }}
-        data-testid="section-differentiator"
-      >
-        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-4">
-              <FadeIn>
-                <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.3em] uppercase mb-4">
-                  Posicionamiento
-                </p>
-                <h2 className="text-[#00246B] font-bold text-4xl tracking-tight leading-tight">
-                  Lo que nos distingue.
-                </h2>
-              </FadeIn>
-            </div>
-            <div className="lg:col-span-8">
-              <div className="space-y-5">
-                {[
-                  { text: "No somos una desarrolladora tradicional.", highlight: false },
-                  { text: "No somos un fondo inmobiliario convencional.", highlight: false },
-                  { text: "Somos una arquitectura de regeneración.", highlight: true },
-                ].map((line, i) => (
-                  <FadeIn key={i} delay={i * 120}>
-                    <p
-                      style={{
-                        fontFamily: "'Playfair Display', Georgia, serif",
-                        fontWeight: line.highlight ? 600 : 400,
-                        fontStyle: !line.highlight ? "italic" : "normal",
-                        fontSize: "clamp(1.6rem, 3vw, 2.6rem)",
-                        lineHeight: 1.2,
-                        color: line.highlight ? "#00246B" : "rgba(0,36,107,0.22)",
-                        letterSpacing: "-0.01em",
-                        textDecoration: line.highlight ? "none" : "line-through",
-                        textDecorationColor: "rgba(0,36,107,0.14)",
-                        textDecorationThickness: "1px",
-                      }}
-                    >
-                      {line.text}
-                    </p>
-                  </FadeIn>
-                ))}
-                <FadeIn delay={400}>
-                  <div className="pt-6">
-                    <div className="w-10 h-px bg-[#CAAA57]" />
-                  </div>
-                </FadeIn>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <section className="py-16 md:py-24">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 md:items-end md:gap-8 md:px-12 lg:px-16">
+        <Reveal className="md:col-span-5">
+          <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
+            <span className="h-px w-9 bg-[#c6a65a]" /> Nuestro propósito
+          </p>
+          <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.04em] text-[#041f49]">
+            Devolver a las personas el poder de regenerar sus ciudades.
+          </h2>
+        </Reveal>
+        <Reveal className="md:col-span-6 md:col-start-7">
+          <p className="max-w-xl text-base font-light leading-7 text-black/60 md:text-lg md:leading-8">
+            Convertimos deterioro urbano en ecosistemas sostenibles de prosperidad y patrimonio. No renovamos fachadas para vender una imagen. Creamos nodos capaces de activar su entorno.
+          </p>
+        </Reveal>
+      </div>
+    </section>
 
-      {/* MODELO REFERENCIA */}
-      <section
-        className="py-20"
-        style={{ backgroundColor: "#00246B" }}
-        data-testid="section-modelo-ref"
-      >
-        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <FadeIn>
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-              <div className="max-w-lg">
-                <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.3em] uppercase mb-3">Metodología</p>
-                <p className="text-white font-semibold text-lg leading-snug">
-                  Operamos sobre un modelo estructurado de 3 fases: identificación, estructuración y activación. Cada proyecto responde a criterios medibles, no a intuición.
-                </p>
-              </div>
-              <Link href="/modelo" data-testid="button-about-modelo">
-                <span className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#CAAA57]/40 text-[#CAAA57] text-[11px] font-bold tracking-[0.18em] uppercase hover:bg-[#CAAA57] hover:text-black hover:border-[#CAAA57] transition-all duration-300 whitespace-nowrap">
-                  Conocer el modelo →
-                </span>
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+    <section className="grid bg-[#d9d6cf] md:grid-cols-2"><div className="relative min-h-[380px]"><img src={cityImage} alt="Ecosistema urbano regenerado" className="absolute inset-0 h-full w-full object-cover grayscale" /></div><div className="flex items-center px-7 py-14 md:px-14 md:py-16 lg:px-20"><Reveal><p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">El estratega regenerador</p><h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">La ciudad es el sistema. Cada edificio, un nodo.</h2><p className="mt-6 text-base font-light leading-7 text-black/60">Por eso concentramos nuestra operación dentro de radios caminables. Un activo aislado puede cambiar de apariencia. Una red de activos coordinados puede cambiar el destino de una colonia.</p></Reveal></div></section>
 
-      {/* FOUNDERS */}
-      <section
-        id="liderazgo"
-        style={{ backgroundColor: "#EFEEED", overflow: "hidden" }}
-        data-testid="section-founders"
-      >
+    <section className="bg-[#041f49] py-16 text-white md:py-24"><div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16"><Reveal><p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]"><span className="h-px w-9 bg-[#c6a65a]" /> Cómo pensamos y actuamos</p><h2 className="max-w-4xl text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em]">Autoridad tranquila. Precisión técnica. Sensibilidad urbana.</h2></Reveal><div className="mt-10 grid border-l border-t border-white/15 md:grid-cols-2">{character.map(([title,text],i)=><Reveal key={title} className="group border-b border-r border-white/15 p-7 transition-colors duration-500 hover:bg-white/[.04] md:p-8"><span className="text-[10px] tracking-[.22em] text-[#c6a65a]">0{i+1}</span><h3 className="mt-8 text-2xl">{title}</h3><span className="mt-3 block h-px w-8 bg-[#c6a65a]/60 transition-all duration-500 group-hover:w-16" /><p className="mt-3 text-sm font-light leading-6 text-white/50">{text}</p></Reveal>)}</div></div></section>
 
-        {/* ── OPENING NARRATIVE — dark cinematic band ── */}
-        <div style={{ backgroundColor: "#000000", padding: "5.5rem 0 6rem" }}>
-          <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-            <FadeIn>
-              <p style={{
-                fontSize: "8px",
-                fontWeight: 700,
-                letterSpacing: "0.38em",
-                textTransform: "uppercase",
-                color: "#CAAA57",
-                marginBottom: "2rem",
-              }}>
-                Regeneración · Visión · Ejecución
-              </p>
-              <h2
-                style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  fontWeight: 600,
-                  fontStyle: "italic",
-                  fontSize: "clamp(2rem, 4.5vw, 3.6rem)",
-                  lineHeight: 1.15,
-                  letterSpacing: "-0.02em",
-                  color: "#ffffff",
-                  maxWidth: "700px",
-                  marginBottom: "3rem",
-                }}
-              >
-                Las ciudades cambian cuando alguien decide regenerarlas.
-              </h2>
-            </FadeIn>
-            <FadeIn delay={140}>
-              <div style={{
-                borderLeft: "1px solid rgba(202,170,87,0.35)",
-                paddingLeft: "1.75rem",
-                maxWidth: "560px",
-              }}>
-                <p style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  fontStyle: "italic",
-                  fontWeight: 400,
-                  fontSize: "clamp(1rem, 1.6vw, 1.2rem)",
-                  lineHeight: 1.8,
-                  color: "rgba(255,255,255,0.5)",
-                }}>
-                  "ZAIAH nació bajo una idea simple: los activos deteriorados no representan el final de una zona. Representan el inicio de una transformación."
-                </p>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
+    <section className="py-16 md:py-24"><div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16"><Reveal className="grid gap-10 md:grid-cols-12"><div className="md:col-span-7"><p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]"><span className="h-px w-9 bg-[#c6a65a]" /> Visión a 20 años</p><h2 className="text-[clamp(3rem,6.5vw,6.5rem)] leading-[.9] tracking-[-.06em] text-[#041f49]">1,000 activos urbanos regenerados.</h2></div><div className="self-end md:col-span-4 md:col-start-9"><p className="text-base font-light leading-7 text-black/60">Una escala capaz de redefinir el modelo privado de renovación urbana en economías emergentes.</p><Link href="/modelo"><span className="mt-6 inline-flex cursor-pointer items-center gap-3 border-b border-[#041f49] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">Conocer el modelo <ArrowRight size={14}/></span></Link></div></Reveal></div></section>
 
-        {/* ── EDITORIAL GRID — 60/40 ── */}
-        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-14 items-start">
-
-            {/* ── Photo column — 60% ── */}
-            <FadeIn className="lg:col-span-3">
-              <div
-                style={{
-                  position: "relative",
-                  boxShadow: "0 40px 80px rgba(0,0,0,0.22), 0 8px 24px rgba(0,0,0,0.1)",
-                  overflow: "hidden",
-                }}
-                data-testid="card-founder-photo"
-              >
-                <img
-                  src="/founders-forbes.png"
-                  alt="Fundadores ZAIAH — Forbes México 2024"
-                  style={{
-                    width: "100%",
-                    display: "block",
-                    filter: "grayscale(75%)",
-                    transition: "filter 1s ease",
-                  }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%)"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.filter = "grayscale(75%)"; }}
-                />
-                {/* Deep bottom gradient */}
-                <div style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.35) 38%, transparent 62%)",
-                  pointerEvents: "none",
-                }} />
-                {/* Forbes caption — inside photo at bottom */}
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "2.25rem 2rem 2rem" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.4rem" }}>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-                      <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
-                    </svg>
-                    <p style={{ fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#CAAA57" }}>
-                      Presentados en Forbes México
-                    </p>
-                  </div>
-                  <p style={{ color: "rgba(255,255,255,0.38)", fontSize: "0.72rem", fontWeight: 300, letterSpacing: "0.02em" }}>
-                    Forbes Content · Mayo 31, 2024 · Ciudad de México
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* ── Content column — 40% ── */}
-            <div className="lg:col-span-2" style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-
-              {/* Section header */}
-              <FadeIn delay={80}>
-                <div style={{ marginBottom: "3rem" }}>
-                  <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "0.75rem" }}>
-                    Liderazgo
-                  </p>
-                </div>
-              </FadeIn>
-
-          
-
-              {/* Premium KPI cards */}
-              <FadeIn delay={380}>
-                <div style={{ marginTop: "2.5rem", display: "flex", flexDirection: "column", gap: "0" }}>
-                  {[
-                    { value: "15+",      label: "Proyectos regenerados en CDMX" },
-                    { value: "160 MDP+", label: "En activos bajo gestión" },
-                    { value: "50+",      label: "Familias en el ecosistema ZAIAH" },
-                  ].map((kpi, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "1.25rem",
-                        padding: "1.1rem 0",
-                        borderTop: "1px solid rgba(0,36,107,0.08)",
-                        borderBottom: i === 2 ? "1px solid rgba(0,36,107,0.08)" : "none",
-                      }}
-                    >
-                      <span style={{
-                        color: "#00246B",
-                        fontWeight: 800,
-                        fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
-                        lineHeight: 1,
-                        minWidth: "5.5rem",
-                        letterSpacing: "-0.02em",
-                      }}>
-                        {kpi.value}
-                      </span>
-                      <span style={{ color: "rgba(0,36,107,0.4)", fontSize: "0.78rem", fontWeight: 300, lineHeight: 1.4 }}>
-                        {kpi.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </FadeIn>
-            </div>
-
-          </div>
-
-          {/* ── Emotional closing + CTA ── */}
-          <FadeIn delay={100}>
-            <div style={{
-              marginTop: "6rem",
-              paddingTop: "4rem",
-              borderTop: "1px solid rgba(0,36,107,0.1)",
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: "2.5rem",
-              alignItems: "center",
-            }} className="lg:grid-cols-2 lg:gap-20">
-              <blockquote
-                style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  fontStyle: "italic",
-                  fontWeight: 400,
-                  fontSize: "clamp(1.1rem, 2vw, 1.5rem)",
-                  lineHeight: 1.6,
-                  color: "#00246B",
-                  letterSpacing: "-0.01em",
-                  margin: 0,
-                }}
-              >
-                "No se trata únicamente de remodelar edificios.<br />
-                Se trata de participar en la transformación estructurada de una ciudad."
-              </blockquote>
-              <div>
-                <Link href="/modelo" data-testid="link-founders-modelo">
-                  <span
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.6rem",
-                      color: "#00246B",
-                      fontSize: "10px",
-                      fontWeight: 700,
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                      cursor: "pointer",
-                      borderBottom: "1px solid rgba(0,36,107,0.25)",
-                      paddingBottom: "0.3rem",
-                      transition: "color 0.3s ease, border-color 0.3s ease",
-                    }}
-                    onMouseEnter={e => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.color = "#CAAA57";
-                      el.style.borderBottomColor = "#CAAA57";
-                    }}
-                    onMouseLeave={e => {
-                      const el = e.currentTarget as HTMLElement;
-                      el.style.color = "#00246B";
-                      el.style.borderBottomColor = "rgba(0,36,107,0.25)";
-                    }}
-                  >
-                    Conocer el modelo ZAIAH
-                    <span style={{ fontSize: "0.9rem" }}>→</span>
-                  </span>
-                </Link>
-              </div>
-            </div>
-          </FadeIn>
-
-        </div>
-      </section>
-
-      {/* TEAM */}
-      {/* <section
-        className="py-28 md:py-40"
-        style={{ backgroundColor: "#000000" }}
-        data-testid="section-team"
-      >
-        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <FadeIn>
-            <div className="mb-20">
-              <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.3em] uppercase mb-4">
-                Estructura operativa
-              </p>
-              <h2 className="text-white font-bold text-4xl tracking-tight">
-                El equipo
-              </h2>
-            </div>
-          </FadeIn>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5">
-            {team.map((member, i) => (
-              <FadeIn key={i} delay={i * 80}>
-                <div className="bg-[#0a0a0a] p-8 text-center group" data-testid={`card-team-${i + 1}`}>
-                  <div className="w-16 h-16 mx-auto mb-5 overflow-hidden">
-                    <img
-                      src={member.img}
-                      alt={member.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                    />
-                  </div>
-                  <p className="text-white font-semibold text-sm mb-1">{member.name}</p>
-                  <p className="text-[#CAAA57] text-[9px] tracking-[0.2em] uppercase font-bold mb-1">{member.area}</p>
-                  <p className="text-white/30 text-xs">{member.role}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* NÚMEROS QUE RESPALDAN LA DECISIÓN */}
-      <section
-        style={{ backgroundColor: "#00246B", paddingTop: "6rem", paddingBottom: "0" }}
-        data-testid="section-numeros"
-      >
-        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-
-          {/* ── Header split layout ── */}
-          <FadeIn>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2.5rem", marginBottom: "4.5rem" }} className="lg:grid-cols-2 lg:items-end">
-              <div>
-                <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "1.25rem" }}>
-                  Trayectoria · Ejecución · Respaldo
-                </p>
-                <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", color: "#ffffff", fontWeight: 600, fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.015em", margin: 0 }}>
-                  Números que respaldan<br /><em style={{ fontStyle: "italic", color: "#CAAA57" }}>la decisión.</em>
-                </h2>
-              </div>
-              <div style={{ display: "flex", alignItems: "flex-end" }}>
-                <p style={{ color: "rgba(255,255,255,0.38)", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.8, borderLeft: "1px solid rgba(202,170,87,0.3)", paddingLeft: "1.75rem" }}>
-                  Más de 7 años regenerando la Ciudad de México con resultados medibles y reconocimiento dentro del sector inmobiliario.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* ── Thin gold divider ── */}
-          <FadeIn delay={100}>
-            <div style={{ height: "1px", backgroundColor: "rgba(202,170,87,0.2)", marginBottom: "0" }} />
-          </FadeIn>
-
-          {/* ── 4 metrics — horizontal strip ── */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", borderBottom: "1px solid rgba(255,255,255,0.07)" }} className="md:grid-cols-4">
-            {[
-              { value: "15+",      title: "Proyectos Concluidos",  sub: "de regeneración urbana en CDMX" },
-              { value: "160 MDP+", title: "Portafolio Activo",      sub: "en inversión gestionada" },
-              { value: "7+",       title: "Años de Trayectoria",    sub: "regenerando Ciudad de México" },
-              { value: "50+",      title: "Familias Beneficiadas",  sub: "dentro del ecosistema ZAIAH" },
-            ].map((m, i) => (
-              <FadeIn key={i} delay={i * 80}>
-                <MetricCard value={m.value} title={m.title} sub={m.sub} index={i} />
-              </FadeIn>
-            ))}
-          </div>
-
-          {/* ── Forbes endorsement — full-width strip ── */}
-          <FadeIn delay={380}>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr",
-                borderBottom: "1px solid rgba(255,255,255,0.07)",
-              }}
-              className="md:grid-cols-2"
-            >
-              {/* Left */}
-              <div
-                style={{
-                  padding: "2.75rem 0 2.75rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.75rem",
-                  borderRight: "none",
-                  borderBottom: "1px solid rgba(255,255,255,0.07)",
-                }}
-                className="md:pr-14 md:border-r md:border-r-white/7 md:border-b-0"
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-                    <path d="M12 2L14.85 9.15L22.5 9.27L16.5 14.02L18.54 21.5L12 17.77L5.46 21.5L7.5 14.02L1.5 9.27L9.15 9.15L12 2Z" fill="#CAAA57" />
-                  </svg>
-                  <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#CAAA57" }}>
-                    Presentados en Forbes México
-                  </p>
-                </div>
-                <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.82rem", fontWeight: 300, lineHeight: 1.7 }}>
-                  Reconocidos por innovar en el sector inmobiliario de Ciudad de México.
-                </p>
-              </div>
-
-              {/* Right — quote */}
-              <div
-                style={{ padding: "2.75rem 0" }}
-                className="md:pl-14"
-              >
-                <p style={{ color: "rgba(255,255,255,0.38)", fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.9, fontStyle: "italic" }}>
-                  "A través de la metodología de{" "}
-                  <span style={{ color: "#CAAA57", fontWeight: 600, fontStyle: "normal" }}>flipping profesional</span>
-                  , ZAIAH regenera espacios para volverlos rentables mientras mejora la calidad urbana del entorno."
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-
-        </div>
-      </section>
-
-      {/* PILLARS */}
-      <section
-        className="py-28 md:py-40"
-        style={{ backgroundColor: "#EFEEED" }}
-        data-testid="section-pillars"
-      >
-        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-4">
-              <FadeIn>
-                <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.3em] uppercase mb-4">
-                  Identidad
-                </p>
-                <h2
-                  style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
-                    fontWeight: 600,
-                    fontSize: "clamp(1.8rem, 3.2vw, 2.8rem)",
-                    lineHeight: 1.15,
-                    letterSpacing: "-0.01em",
-                    color: "#00246B",
-                  }}
-                >
-                  El ADN de ZAIAH.
-                </h2>
-              </FadeIn>
-            </div>
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#D5D3CE]">
-                {pillars.map((p, i) => (
-                  <FadeIn key={i} delay={i * 80}>
-                    <div className="bg-white p-10 h-full" data-testid={`card-pillar-${i + 1}`}>
-                      <div className="w-6 h-px bg-[#CAAA57] mb-7" />
-                      <h3 className="text-[#00246B] font-bold text-lg tracking-tight mb-4 leading-snug">{p.title}</h3>
-                      <p className="text-[#00246B]/50 text-sm leading-relaxed">{p.body}</p>
-                    </div>
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA FINAL */}
-      <section
-        className="py-28 md:py-40"
-        style={{ backgroundColor: "#000000" }}
-        data-testid="section-about-cta"
-      >
-        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <FadeIn>
-            <div style={{ textAlign: "center", maxWidth: "640px", margin: "0 auto" }}>
-              <p style={{ fontSize: "9px", fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase", color: "#CAAA57", marginBottom: "2rem" }}>
-                Siguiente paso
-              </p>
-              <h2
-                style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  fontWeight: 500,
-                  fontStyle: "italic",
-                  fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
-                  lineHeight: 1.25,
-                  color: "rgba(255,255,255,0.8)",
-                  marginBottom: "2.5rem",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                ¿Listo para conocer quién está detrás de cada decisión?
-              </h2>
-              <a href="https://wa.me/525500000000" target="_blank" rel="noopener noreferrer" data-testid="button-about-cta">
-                <span
-                  className="inline-block cursor-pointer"
-                  style={{
-                    padding: "1.1rem 3rem",
-                    backgroundColor: "#CAAA57",
-                    color: "#000000",
-                    fontSize: "9.5px",
-                    fontWeight: 700,
-                    letterSpacing: "0.2em",
-                    textTransform: "uppercase",
-                    transition: "background-color 0.3s ease",
-                  }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#ffffff"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "#CAAA57"; }}
-                >
-                  Agendar conversación
-                </span>
-              </a>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-    </main>
-  );
+    <section className="relative overflow-hidden bg-[#041f49] text-white">
+      <div className="absolute inset-y-0 right-0 hidden w-2/5 md:block">
+        <img src={cityImage} alt="" aria-hidden className="h-full w-full object-cover opacity-30 grayscale" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#041f49_0%,rgba(4,31,73,.4)_100%)]" />
+      </div>
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 md:grid-cols-12 md:px-12 md:py-16 lg:px-16">
+        <Reveal className="md:col-span-7">
+          <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
+            <span className="h-px w-9 bg-[#c6a65a]" /> Conoce si ZAIAH es para ti
+          </p>
+          <h2 className="max-w-2xl text-[clamp(2.1rem,3.8vw,3.6rem)] leading-[1.05] tracking-[-.04em]">
+            Las ciudades cambian cuando alguien decide intervenir con estructura.
+          </h2>
+        </Reveal>
+        <Reveal className="md:col-span-4 md:col-start-9 md:justify-self-end">
+          <p className="mb-6 max-w-xs text-sm font-light leading-6 text-white/55">
+            Una conversación para revisar si tu perfil y horizonte encajan con el modelo.
+          </p>
+          <Link href="/contacto">
+            <span className="group inline-flex cursor-pointer items-center gap-4 border border-[#c6a65a] px-7 py-4 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a] transition-colors hover:bg-[#c6a65a] hover:text-[#041f49]">
+              Agendar una cita <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+        </Reveal>
+      </div>
+    </section>
+  </main>;
 }

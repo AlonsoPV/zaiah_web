@@ -100,30 +100,26 @@ export default function Contacto() {
     <main>
       <Toaster />
 
-      {/* HERO */}
+      {/* HERO — focused on a low-pressure first conversation */}
       <section
-        className="relative pt-40 pb-20 md:pb-28"
-        style={{ backgroundColor: "#00246B" }}
+        className="relative overflow-hidden pt-40 pb-24 md:pb-36"
+        style={{ backgroundColor: "#041f49" }}
         data-testid="section-contact-hero"
       >
         <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `linear-gradient(#CAAA57 1px, transparent 1px), linear-gradient(90deg, #CAAA57 1px, transparent 1px)`,
-            backgroundSize: "60px 60px",
-          }}
-        />
+          className="absolute -right-20 -top-40 text-[32rem] font-bold leading-none text-white/[.025]"
+        >Z</div>
         <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
           <div className={`transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.35em] uppercase mb-6">
-              Contacto
+              Agenda una cita
             </p>
-            <h1 className="text-white font-bold text-[2.6rem] md:text-[3.4rem] leading-[1.08] tracking-tight max-w-2xl mb-7">
-              Construyamos el siguiente nodo urbano.
+            <h1 className="text-white font-normal text-[clamp(3.2rem,7vw,7rem)] leading-[.94] tracking-[-.05em] max-w-5xl mb-9">
+              Antes de invertir, <span className="text-white/40">hablemos de tu estrategia.</span>
             </h1>
             <div className="w-10 h-px bg-[#CAAA57] mb-7" />
-            <p className="text-white/50 text-base font-light max-w-md leading-relaxed">
-              Si buscas conocer el modelo ZAIAH, explorar inversión, presentar un activo o generar una alianza estratégica, podemos iniciar una conversación.
+            <p className="text-white/60 text-lg font-light max-w-2xl leading-8 border-l border-[#CAAA57]/60 pl-6">
+              Una conversación clara para entender tu perfil, resolver tus dudas y saber si el modelo ZAIAH es adecuado para ti.
             </p>
           </div>
         </div>
@@ -132,7 +128,7 @@ export default function Contacto() {
       {/* CONTACT BODY */}
       <section
         className="py-28 md:py-40"
-        style={{ backgroundColor: "#EFEEED" }}
+        style={{ backgroundColor: "#faf9f7" }}
         data-testid="section-contact-form"
       >
         <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
@@ -141,13 +137,15 @@ export default function Contacto() {
             <FadeIn className="lg:col-span-4">
               <div>
                 <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.3em] uppercase mb-8">
-                  Información de contacto
+                  Qué puedes esperar
                 </p>
 
-                <div className="space-y-8 mb-12">
+                <div className="space-y-8 mb-12 border-t border-black/10 pt-8">
+                  <p className="text-[#041f49] text-2xl leading-tight tracking-tight">Una conversación de diagnóstico, no una llamada de presión.</p>
+                  <p className="text-[#041f49]/55 text-sm leading-7">Revisaremos tu objetivo, horizonte, experiencia y nivel de involucramiento deseado. Si existe afinidad, te mostraremos los activos correspondientes.</p>
                   {[
-                    { label: "Correo electrónico", val: "contacto@zaiah.mx", href: "mailto:contacto@zaiah.mx", testid: "link-contact-email" },
-                    { label: "WhatsApp", val: "+52 55 0000 0000", href: "https://wa.me/525500000000", testid: "link-contact-whatsapp" },
+                    { label: "Correo electrónico", val: "mkt@zaiah.com.mx", href: "mailto:mkt@zaiah.com.mx", testid: "link-contact-email" },
+                    { label: "WhatsApp", val: "+52 55 5145 2047", href: "https://wa.me/5215551452047", testid: "link-contact-whatsapp" },
                     { label: "Sede", val: "Ciudad de México", href: null, testid: null },
                   ].map((item, i) => (
                     <div key={i}>
@@ -168,7 +166,7 @@ export default function Contacto() {
                     Respondemos en un plazo de 48 horas hábiles. Para conversaciones urgentes, escríbenos directamente por WhatsApp.
                   </p>
                   <a
-                    href="https://wa.me/525500000000"
+                    href="https://wa.me/5215551452047"
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid="button-contact-whatsapp"
@@ -183,7 +181,7 @@ export default function Contacto() {
 
             {/* Form */}
             <FadeIn delay={150} className="lg:col-span-8">
-              <div className="bg-white p-10 md:p-14 border border-[#D5D3CE]/60">
+              <div className="bg-white p-8 md:p-14 border border-black/10">
                 {submitted ? (
                   <div className="flex flex-col items-start justify-center py-20">
                     <div className="w-8 h-px bg-[#CAAA57] mb-8" />
@@ -196,7 +194,7 @@ export default function Contacto() {
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7" data-testid="form-contact">
                       <p className="text-[#00246B] text-[10px] font-bold tracking-[0.2em] uppercase mb-8">
-                        Datos de contacto
+                        Cuéntanos qué quieres construir
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField control={form.control} name="nombre" render={({ field }) => (
@@ -287,7 +285,7 @@ export default function Contacto() {
                           disabled={form.formState.isSubmitting}
                           data-testid="button-submit"
                         >
-                          Enviar solicitud
+                          Solicitar conversación
                         </button>
                       </div>
                     </form>

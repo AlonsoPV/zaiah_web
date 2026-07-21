@@ -13,8 +13,8 @@ export default function Footer() {
       {/* Top border line */}
       <div className="h-px" style={{ background: "linear-gradient(to right, transparent, #CAAA57, transparent)" }} />
 
-      <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-14 pb-14 border-b border-white/6">
+      <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/6">
           {/* Brand */}
           <div className="md:col-span-5">
             <img
@@ -28,9 +28,9 @@ export default function Footer() {
                 marginBottom: "0.5rem",
               }}
             />
-            <p className="text-[#CAAA57] eyebrow mb-7">Regeneración Urbana Estructurada</p>
+            <p className="text-[#CAAA57] eyebrow mb-7">Regeneración urbana estructurada</p>
             <p className="text-white/35 text-sm leading-relaxed max-w-xs">
-              Empresa privada de transformación urbana dedicada a identificar, adquirir y regenerar activos inmobiliarios estratégicos en ciudades emergentes.
+              Convertimos edificios estratégicos en patrimonio urbano estabilizado dentro de Zonas Z.
             </p>
           </div>
 

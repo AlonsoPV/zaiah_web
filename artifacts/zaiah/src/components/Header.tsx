@@ -81,7 +81,7 @@ export default function Header() {
               );
             })}
 
-            {/* <Link href="/contacto" data-testid="nav-cta">
+            <Link href="/contacto" data-testid="nav-cta">
               <span
                 className={`text-[11px] font-bold tracking-[0.14em] uppercase px-5 py-2 border transition-all duration-300 ${
                   isLight
@@ -89,9 +89,9 @@ export default function Header() {
                     : "border-white/40 text-white/90 hover:border-[#CAAA57] hover:text-[#CAAA57]"
                 }`}
               >
-                Agendar conversación
+                Agendar cita
               </span>
-            </Link> */}
+            </Link>
           </nav>
 
           {/* Mobile hamburger */}
@@ -129,11 +129,11 @@ export default function Header() {
               </span>
             </Link>
           ))}
-          {/* <Link href="/contacto">
+          <Link href="/contacto">
             <span className="inline-block mt-2 px-6 py-3 bg-[#CAAA57] text-black text-xs font-bold tracking-[0.15em] uppercase">
-              Agendar conversación
+              Agendar cita
             </span>
-          </Link> */}
+          </Link>
         </div>
       </div>
     </header>
