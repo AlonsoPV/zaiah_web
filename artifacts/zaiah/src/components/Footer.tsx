@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-5">
             <img
-              src="/logo-zaiah.png"
+              src={`${import.meta.env.BASE_URL}logo-zaiah.png`}
               alt="ZAIAH"
               style={{
                 height: "34px",

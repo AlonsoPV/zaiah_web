@@ -39,7 +39,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" data-testid="link-logo">
             <img
-              src="/logo-zaiah.png"
+              src={`${import.meta.env.BASE_URL}logo-zaiah.png`}
               alt="ZAIAH"
               style={{
                 height: "30px",
