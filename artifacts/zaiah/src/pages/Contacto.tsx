@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -8,6 +9,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import heroImage from "@/assets/images/hero-bg.png";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,11 +60,9 @@ const WA_ICON = (
 );
 
 export default function Contacto() {
-  const [vis, setVis] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
-
-  useEffect(() => { const t = setTimeout(() => setVis(true), 80); return () => clearTimeout(t); }, []);
+  const formRef = useRef<HTMLElement>(null);
 
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
@@ -97,112 +99,153 @@ export default function Contacto() {
   ];
 
   return (
-    <main>
+    <main className="bg-[#faf9f7] text-[#1c1c1c]">
       <Toaster />
 
-      {/* HERO — focused on a low-pressure first conversation */}
+      {/* HERO — homologado con inicio */}
       <section
-        className="relative overflow-hidden pt-40 pb-24 md:pb-36"
-        style={{ backgroundColor: "#041f49" }}
+        className="relative min-h-[92vh] overflow-hidden bg-[#0a1628] text-white"
         data-testid="section-contact-hero"
       >
-        <div
-          className="absolute -right-20 -top-40 text-[32rem] font-bold leading-none text-white/[.025]"
-        >Z</div>
-        <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <div className={`transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.35em] uppercase mb-6">
-              Agenda una cita
-            </p>
-            <h1 className="text-white font-normal text-[clamp(3.2rem,7vw,7rem)] leading-[.94] tracking-[-.05em] max-w-5xl mb-9">
-              Antes de invertir, <span className="text-white/40">hablemos de tu estrategia.</span>
-            </h1>
-            <div className="w-10 h-px bg-[#CAAA57] mb-7" />
-            <p className="text-white/60 text-lg font-light max-w-2xl leading-8 border-l border-[#CAAA57]/60 pl-6">
-              Una conversación clara para entender tu perfil, resolver tus dudas y saber si el modelo ZAIAH es adecuado para ti.
-            </p>
-          </div>
+        <motion.img
+          src={heroImage}
+          alt="Conversación patrimonial ZAIAH"
+          className="absolute inset-0 h-full w-full object-cover"
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2, ease: EASE }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.5)_0%,rgba(0,0,0,.15)_40%,rgba(0,0,0,.5)_100%)]" />
+
+        <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-5xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center md:px-12">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
+            className="mb-6 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.42em] text-[#c6a65a]"
+          >
+            <span className="h-px w-9 bg-[#c6a65a]" /> Agenda una cita <span className="h-px w-9 bg-[#c6a65a]" />
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: EASE, delay: 0.22 }}
+            style={{ fontFamily: "var(--app-font-serif)" }}
+            className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-normal leading-[1.05] tracking-[-.02em] text-white"
+          >
+            Antes de invertir, <em className="italic">hablemos de tu estrategia.</em>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
+            className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
+          >
+            Una conversación clara para entender tu perfil, resolver tus dudas y saber si el modelo ZAIAH es adecuado para ti.
+          </motion.p>
+
+          <motion.button
+            type="button"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
+            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            className="mt-10 inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white"
+          >
+            Ir al formulario
+          </motion.button>
         </div>
       </section>
 
       {/* CONTACT BODY */}
       <section
-        className="py-28 md:py-40"
-        style={{ backgroundColor: "#faf9f7" }}
+        ref={formRef}
+        className="bg-[#faf9f7] py-12 md:py-16"
         data-testid="section-contact-form"
       >
-        <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 lg:items-start">
             {/* Left info */}
-            <FadeIn className="lg:col-span-4">
-              <div>
-                <p className="text-[#CAAA57] text-[10px] font-bold tracking-[0.3em] uppercase mb-8">
-                  Qué puedes esperar
+            <FadeIn className="lg:col-span-4 lg:sticky lg:top-28">
+              <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
+                <span className="h-px w-9 bg-[#c6a65a]" /> Qué puedes esperar
+              </p>
+              <h2 className="text-[clamp(1.7rem,2.8vw,2.4rem)] leading-[1.08] tracking-[-.03em] text-[#041f49]">
+                Una conversación de diagnóstico, no una llamada de presión.
+              </h2>
+              <p className="mt-4 text-sm font-light leading-6 text-[#041f49]/60">
+                Revisaremos tu objetivo, horizonte y nivel de involucramiento. Si hay afinidad, te mostramos los activos que corresponden.
+              </p>
+
+              <div className="mt-8 grid gap-4 border-t border-black/10 pt-6 sm:grid-cols-3 lg:grid-cols-1">
+                {[
+                  { label: "Correo", val: "mkt@zaiah.com.mx", href: "mailto:mkt@zaiah.com.mx", testid: "link-contact-email" },
+                  { label: "WhatsApp", val: "+52 55 5145 2047", href: "https://wa.me/5215551452047", testid: "link-contact-whatsapp" },
+                  { label: "Sede", val: "Ciudad de México", href: null as string | null, testid: null as string | null },
+                ].map((item) => (
+                  <div key={item.label} className="border-b border-black/10 pb-4 last:border-0 last:pb-0 lg:border-b lg:pb-4 lg:last:border-b lg:last:pb-4">
+                    <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]/45">{item.label}</p>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="text-sm text-[#041f49] transition-colors hover:text-[#c6a65a]"
+                        data-testid={item.testid ?? undefined}
+                        target={item.href.startsWith("http") ? "_blank" : undefined}
+                        rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      >
+                        {item.val}
+                      </a>
+                    ) : (
+                      <p className="text-sm text-[#041f49]">{item.val}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col gap-4 border-t border-black/10 pt-6">
+                <p className="text-xs font-light leading-5 text-[#041f49]/45">
+                  Respondemos en 48 horas hábiles. Para urgencias, WhatsApp.
                 </p>
-
-                <div className="space-y-8 mb-12 border-t border-black/10 pt-8">
-                  <p className="text-[#041f49] text-2xl leading-tight tracking-tight">Una conversación de diagnóstico, no una llamada de presión.</p>
-                  <p className="text-[#041f49]/55 text-sm leading-7">Revisaremos tu objetivo, horizonte, experiencia y nivel de involucramiento deseado. Si existe afinidad, te mostraremos los activos correspondientes.</p>
-                  {[
-                    { label: "Correo electrónico", val: "mkt@zaiah.com.mx", href: "mailto:mkt@zaiah.com.mx", testid: "link-contact-email" },
-                    { label: "WhatsApp", val: "+52 55 5145 2047", href: "https://wa.me/5215551452047", testid: "link-contact-whatsapp" },
-                    { label: "Sede", val: "Ciudad de México", href: null, testid: null },
-                  ].map((item, i) => (
-                    <div key={i}>
-                      <p className="text-[#00246B] text-[10px] tracking-[0.2em] uppercase font-bold mb-2">{item.label}</p>
-                      {item.href ? (
-                        <a href={item.href} className="text-[#00246B]/60 text-sm hover:text-[#CAAA57] transition-colors" data-testid={item.testid ?? undefined} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
-                          {item.val}
-                        </a>
-                      ) : (
-                        <p className="text-[#00246B]/60 text-sm">{item.val}</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="border-t border-[#D5D3CE] pt-10">
-                  <p className="text-[#00246B]/40 text-sm leading-relaxed mb-7">
-                    Respondemos en un plazo de 48 horas hábiles. Para conversaciones urgentes, escríbenos directamente por WhatsApp.
-                  </p>
-                  <a
-                    href="https://wa.me/5215551452047"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-testid="button-contact-whatsapp"
-                    className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#25D366] text-white text-[10px] font-bold tracking-[0.15em] uppercase hover:bg-[#1ebe5d] transition-colors"
-                  >
-                    {WA_ICON}
-                    Hablar por WhatsApp
-                  </a>
-                </div>
+                <a
+                  href="https://wa.me/5215551452047"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-contact-whatsapp"
+                  className="inline-flex w-fit items-center gap-2.5 bg-[#25D366] px-5 py-3 text-[10px] font-bold uppercase tracking-[.15em] text-white transition-colors hover:bg-[#1ebe5d]"
+                >
+                  {WA_ICON}
+                  Hablar por WhatsApp
+                </a>
               </div>
             </FadeIn>
 
             {/* Form */}
-            <FadeIn delay={150} className="lg:col-span-8">
-              <div className="bg-white p-8 md:p-14 border border-black/10">
+            <FadeIn delay={120} className="lg:col-span-8">
+              <div className="border border-black/10 bg-white p-6 md:p-10">
                 {submitted ? (
-                  <div className="flex flex-col items-start justify-center py-20">
-                    <div className="w-8 h-px bg-[#CAAA57] mb-8" />
-                    <h3 className="text-[#00246B] font-bold text-2xl mb-4">Solicitud enviada</h3>
-                    <p className="text-[#00246B]/55 text-sm leading-relaxed max-w-sm">
+                  <div className="flex flex-col items-start py-10">
+                    <div className="mb-6 h-px w-8 bg-[#c6a65a]" />
+                    <h3 className="mb-3 text-2xl text-[#041f49]">Solicitud enviada</h3>
+                    <p className="max-w-sm text-sm font-light leading-6 text-[#041f49]/55">
                       Hemos recibido tu mensaje. El equipo ZAIAH te contactará en las próximas 48 horas hábiles.
                     </p>
                   </div>
                 ) : (
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7" data-testid="form-contact">
-                      <p className="text-[#00246B] text-[10px] font-bold tracking-[0.2em] uppercase mb-8">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" data-testid="form-contact">
+                      <p className="mb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
                         Cuéntanos qué quieres construir
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                         <FormField control={form.control} name="nombre" render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-[#00246B] text-[10px] tracking-[0.18em] uppercase font-bold">Nombre *</FormLabel>
+                            <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Nombre *</FormLabel>
                             <FormControl>
                               <Input {...field} placeholder="Tu nombre completo"
-                                className="border-0 border-b border-[#D5D3CE] bg-transparent focus-visible:ring-0 focus-visible:border-[#00246B] rounded-none text-[#00246B] placeholder:text-[#00246B]/25 px-0"
+                                className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                                 data-testid="input-nombre" />
                             </FormControl>
                             <FormMessage />
@@ -210,10 +253,10 @@ export default function Contacto() {
                         )} />
                         <FormField control={form.control} name="empresa" render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-[#00246B] text-[10px] tracking-[0.18em] uppercase font-bold">Empresa</FormLabel>
+                            <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Empresa</FormLabel>
                             <FormControl>
                               <Input {...field} placeholder="Tu empresa u organización"
-                                className="border-0 border-b border-[#D5D3CE] bg-transparent focus-visible:ring-0 focus-visible:border-[#00246B] rounded-none text-[#00246B] placeholder:text-[#00246B]/25 px-0"
+                                className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                                 data-testid="input-empresa" />
                             </FormControl>
                             <FormMessage />
@@ -221,13 +264,13 @@ export default function Contacto() {
                         )} />
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                         <FormField control={form.control} name="correo" render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-[#00246B] text-[10px] tracking-[0.18em] uppercase font-bold">Correo *</FormLabel>
+                            <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Correo *</FormLabel>
                             <FormControl>
                               <Input {...field} type="email" placeholder="correo@ejemplo.com"
-                                className="border-0 border-b border-[#D5D3CE] bg-transparent focus-visible:ring-0 focus-visible:border-[#00246B] rounded-none text-[#00246B] placeholder:text-[#00246B]/25 px-0"
+                                className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                                 data-testid="input-correo" />
                             </FormControl>
                             <FormMessage />
@@ -235,10 +278,10 @@ export default function Contacto() {
                         )} />
                         <FormField control={form.control} name="telefono" render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-[#00246B] text-[10px] tracking-[0.18em] uppercase font-bold">Teléfono *</FormLabel>
+                            <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Teléfono *</FormLabel>
                             <FormControl>
                               <Input {...field} type="tel" placeholder="+52 55 0000 0000"
-                                className="border-0 border-b border-[#D5D3CE] bg-transparent focus-visible:ring-0 focus-visible:border-[#00246B] rounded-none text-[#00246B] placeholder:text-[#00246B]/25 px-0"
+                                className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                                 data-testid="input-telefono" />
                             </FormControl>
                             <FormMessage />
@@ -248,10 +291,10 @@ export default function Contacto() {
 
                       <FormField control={form.control} name="interes" render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-[#00246B] text-[10px] tracking-[0.18em] uppercase font-bold">Tipo de interés *</FormLabel>
+                          <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Tipo de interés *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger className="border-0 border-b border-[#D5D3CE] bg-transparent focus:ring-0 rounded-none text-[#00246B] px-0" data-testid="select-interes">
+                              <SelectTrigger className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] focus:ring-0" data-testid="select-interes">
                                 <SelectValue placeholder="Selecciona una opción" />
                               </SelectTrigger>
                             </FormControl>
@@ -267,21 +310,21 @@ export default function Contacto() {
 
                       <FormField control={form.control} name="mensaje" render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-[#00246B] text-[10px] tracking-[0.18em] uppercase font-bold">Mensaje *</FormLabel>
+                          <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Mensaje *</FormLabel>
                           <FormControl>
                             <Textarea {...field} placeholder="Cuéntanos sobre tu interés, activo o proyecto..."
-                              rows={4}
-                              className="border-0 border-b border-[#D5D3CE] bg-transparent focus-visible:ring-0 focus-visible:border-[#00246B] rounded-none text-[#00246B] placeholder:text-[#00246B]/25 px-0 resize-none"
+                              rows={3}
+                              className="resize-none rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                               data-testid="textarea-mensaje" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )} />
 
-                      <div className="pt-4">
+                      <div className="pt-2">
                         <button
                           type="submit"
-                          className="w-full py-4 bg-[#00246B] text-white text-[11px] font-bold tracking-[0.22em] uppercase hover:bg-[#CAAA57] hover:text-black transition-all duration-300 disabled:opacity-50"
+                          className="w-full bg-[#041f49] py-4 text-[11px] font-bold uppercase tracking-[.22em] text-white transition-all duration-300 hover:bg-[#c6a65a] hover:text-[#041f49] disabled:opacity-50"
                           disabled={form.formState.isSubmitting}
                           data-testid="button-submit"
                         >
