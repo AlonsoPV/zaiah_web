@@ -115,7 +115,7 @@ export default function Home() {
             transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
             className="mt-6 max-w-xl text-sm font-light leading-6 text-white/75 md:text-base"
           >
-            En ZAIAH recuperamos edificios con potencial para convertirlos en activos bien administrados, con demanda real y una historia de largo plazo. Tú inviertes; nosotros hacemos el trabajo complejo.
+            No compramos edificios para dejarlos aislados. Los convertimos en nodos que reactivan su entorno, fortalecen la economía local y crean patrimonio estructurado para quienes invierten en ellos.
           </motion.p>
 
           <motion.div
@@ -256,14 +256,14 @@ export default function Home() {
           >
             <motion.div variants={fadeUp} className="md:col-span-7">
               <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-                <span className="h-px w-9 bg-[#c6a65a]" /> Así lo hacemos
+                <span className="h-px w-9 bg-[#c6a65a]" /> Nuestra narrativa central
               </p>
               <h2 className="text-[clamp(2.4rem,4.4vw,4.6rem)] leading-[.98] tracking-[-.04em]">
-                Un edificio puede cambiar una calle. <span className="text-[#c6a65a]">Varios pueden transformar una zona.</span>
+                No compramos edificios. <span className="text-[#c6a65a]">Creamos nodos urbanos transformados.</span>
               </h2>
             </motion.div>
             <motion.p variants={fadeUp} className="self-end text-base font-light leading-7 text-white/60 md:col-span-4 md:col-start-9">
-              No es un proyecto. Es un ecosistema territorial de transformación urbana. Cada edificio regenerado es un nodo dentro de esa zona.
+              No renovamos fachadas. Reactivamos economías locales. Cada edificio regenerado se conecta con su calle, su comunidad y una visión más grande de ciudad.
             </motion.p>
           </motion.div>
 

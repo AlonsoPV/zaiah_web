@@ -28,7 +28,7 @@ export default function Footer() {
                 marginBottom: "0.5rem",
               }}
             />
-            <p className="text-[#CAAA57] eyebrow mb-7">Regeneramos edificios. Reconectamos ciudades.</p>
+            <p className="text-[#CAAA57] eyebrow mb-7">No remodelamos. Transformamos zonas.</p>
             <p className="text-white/35 text-sm leading-relaxed max-w-xs">
               Recuperamos edificios con potencial y los convertimos en lugares vivos, bien administrados y con valor de largo plazo.
             </p>

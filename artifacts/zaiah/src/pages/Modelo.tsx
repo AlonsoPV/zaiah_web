@@ -53,7 +53,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
         transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
         className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
       >
-        Y los convertimos en patrimonio urbano estabilizado para inversionistas patrimoniales.
+        No vendemos metros. Creamos patrimonio estructurado dentro de nodos urbanos capaces de transformar su zona.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
             <span className="h-px w-9 bg-[#c6a65a]" /> Lo que cambia para ti
           </p>
           <h2 className="max-w-xl text-[clamp(2rem,3.4vw,3.3rem)] leading-[1.05] tracking-[-.04em] text-[#041f49]">
-            Tu inversión no queda sola. Forma parte de una estrategia para regenerar y fortalecer toda la zona.
+            Tu inversión no queda sola. Se convierte en un nodo dentro de una estrategia para regenerar y fortalecer toda la zona.
           </h2>
         </Reveal>
         <Reveal className="border-t border-black/15 pt-6 md:col-span-5 md:col-start-8 md:border-l md:border-t-0 md:pl-8 md:pt-0 lg:pl-12">

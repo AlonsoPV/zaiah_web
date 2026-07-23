@@ -98,15 +98,15 @@ export default function QuienesSomos() {
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 md:grid-cols-12 md:px-12 lg:px-16">
         <Reveal className="md:col-span-7">
           <p className="mb-4 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-            <span className="h-px w-9 bg-[#c6a65a]" /> Visión a 20 años
+            <span className="h-px w-9 bg-[#c6a65a]" /> La huella que queremos dejar
           </p>
           <h2 className="text-[clamp(2.6rem,5vw,4.8rem)] leading-[.95] tracking-[-.05em] text-[#041f49]">
-            1,000 activos urbanos regenerados.
+            “Esos no remodelan… transforman zonas.”
           </h2>
         </Reveal>
         <Reveal className="border-t border-black/15 pt-6 md:col-span-4 md:col-start-9 md:border-l md:border-t-0 md:pl-8 md:pt-0">
           <p className="text-sm font-light leading-7 text-black/60 md:text-base">
-            Para posicionar a las grandes ciudades como motores globales de prosperidad.
+            En 10 años queremos que se reconozca la transformación. En 20: “Son quienes regeneraron la ciudad, quienes cambiaron el destino.” Esa es la escala con la que elegimos y operamos cada proyecto hoy.
           </p>
           <Link href="/modelo">
             <span className="mt-5 inline-flex cursor-pointer items-center gap-3 border-b border-[#041f49] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
