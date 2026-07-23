@@ -173,10 +173,10 @@ export default function Contacto() {
                 <span className="h-px w-9 bg-[#c6a65a]" /> Qué puedes esperar
               </p>
               <h2 className="text-[clamp(1.7rem,2.8vw,2.4rem)] leading-[1.08] tracking-[-.03em] text-[#041f49]">
-                Una conversación entre personas. Sin discursos de venta.
+                Una conversación clara, enfocada en tu estrategia.
               </h2>
               <p className="mt-4 text-sm font-light leading-6 text-[#041f49]/60">
-                Queremos escucharte, responder tus preguntas y entender si ZAIAH puede aportar a tus planes. Sin ejecutar remodelaciones, administrar rentas o perseguir inquilinos por tu cuenta.
+                Escuchamos tus objetivos, respondemos preguntas y explicamos el modelo con precisión. Si existe compatibilidad, definimos contigo el siguiente paso.
               </p>
 
               <div className="mt-8 grid gap-4 border-t border-black/10 pt-6 sm:grid-cols-3 lg:grid-cols-1">

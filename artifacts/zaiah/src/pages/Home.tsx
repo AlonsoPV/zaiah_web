@@ -47,10 +47,10 @@ const principles = [
 ];
 
 const pains = [
-  "Has visto proyectos que prometen mucho y entregan poco.",
-  "Sabes que administrar rentas, mantenimiento e inquilinos puede convertirse en otro trabajo.",
-  "No quieres comprar sólo metros cuadrados sin entender qué hay alrededor.",
-  "Buscas una decisión bien acompañada, con información clara y respaldo jurídico.",
+  "La información comercial no siempre explica la estructura completa del activo.",
+  "La administración de rentas, mantenimiento e inquilinos exige tiempo y criterio operativo.",
+  "El valor de un inmueble también depende de su relación con la zona.",
+  "Una decisión patrimonial requiere información clara, respaldo jurídico y acompañamiento.",
 ];
 
 const pillars = [
@@ -170,10 +170,10 @@ export default function Home() {
       <section className="border-b border-black/10 bg-[#faf9f7] py-16 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
           <Reveal className="md:col-span-5">
-            <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55"><span className="h-px w-9 bg-[#c6a65a]" /> Si ya pasaste por esto</p>
-            <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.035em] text-[#041f49]">Invertiste para generar ingresos. Terminaste administrando.</h2>
+            <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55"><span className="h-px w-9 bg-[#c6a65a]" /> El reto patrimonial</p>
+            <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.035em] text-[#041f49]">Invertir en un activo no debería implicar operarlo.</h2>
             <p className="mt-6 max-w-md text-base font-light leading-7 text-[#1c1c1c]/65">
-              Lo que iba a ser una inversión terminó ocupando tus tardes: pagos, reparaciones, meses vacíos y decisiones que nadie te ayudó a tomar. Tu patrimonio debería darte tranquilidad, no convertirse en un segundo trabajo.
+              Pagos, mantenimiento, ocupación y administración requieren una estructura especializada. ZAIAH integra esas funciones para que cada activo opere con disciplina y continuidad.
             </p>
           </Reveal>
           <motion.div
@@ -344,7 +344,7 @@ export default function Home() {
                 Nos involucramos en todo el proceso porque así se cuida mejor cada decisión.
               </h2>
               <p className="mt-6 max-w-md text-base font-light leading-7 text-black/55">
-                Desde la elección de la colonia hasta la operación diaria. No entregamos un inmueble y desaparecemos.
+                Participamos desde la selección de la zona hasta la operación diaria. La responsabilidad permanece dentro de una misma estructura.
               </p>
             </motion.div>
             <div className="border-t border-black/15 md:col-span-7 md:border-t-0">
@@ -372,12 +372,12 @@ export default function Home() {
       </section>
 
       {/* ── CTA FINAL ────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#c6a65a] py-16 text-[#041f49] md:py-20">
+      <section className="relative overflow-hidden border-t border-black/10 bg-[#faf9f7] py-16 text-[#041f49] md:py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
           <Reveal className="md:col-span-8">
             <p className="mb-5 text-[10px] font-bold uppercase tracking-[.32em] text-[#041f49]/60">Una conversación antes que una decisión</p>
             <h2 className="text-[clamp(2.4rem,4.6vw,4.6rem)] leading-[1] tracking-[-.04em]">¿Qué quieres que tu patrimonio haga por ti?</h2>
-            <p className="mt-5 max-w-xl text-base font-light leading-7 text-[#041f49]/70">Generar ingresos, diversificar, proteger el futuro o formar parte de la regeneración de la ciudad. Cuéntanos qué buscas y revisamos juntos si hay un proyecto para ti.</p>
+            <p className="mt-5 max-w-xl text-base font-light leading-7 text-[#041f49]/70">Generar ingresos, diversificar o construir patrimonio dentro de una estrategia urbana. Conversemos para revisar objetivos, estructura y compatibilidad con el modelo.</p>
           </Reveal>
           <Reveal className="md:col-span-4 md:justify-self-end">
             <Link href="/contacto">

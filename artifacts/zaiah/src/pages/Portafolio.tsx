@@ -50,7 +50,7 @@ export default function Portafolio(){return <main className="bg-[#faf9f7] text-[
        transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
        className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
      >
-       Aquí puedes conocer los edificios que estamos regenerando y la historia que queremos construir con cada uno.
+       Cada proyecto responde a criterios urbanos, jurídicos, financieros y operativos. Aquí puedes revisar su estructura y contexto.
      </motion.p>
      <motion.div
        initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ export default function Portafolio(){return <main className="bg-[#faf9f7] text-[
      </Reveal>
      <Reveal className="border-t border-black/15 pt-7 md:col-span-5 md:col-start-8 md:border-l md:border-t-0 md:py-2 md:pl-8 lg:pl-12">
        <p className="max-w-lg text-sm font-light leading-7 text-black/60 sm:text-base">
-         También compra estabilidad financiera, valores, propósito y pertenencia a un proyecto urbano mayor. Cuéntanos qué quieres proteger y hacia dónde quieres llevarlo; después revisamos contigo el activo que haga sentido.
+         También evalúas estructura financiera, operación, propósito y relación con una estrategia urbana mayor. Revisamos contigo qué activo corresponde a tus objetivos patrimoniales.
        </p>
        <Link href="/contacto">
          <span className="group mt-6 inline-flex cursor-pointer items-center gap-3 bg-[#041f49] px-6 py-4 text-[9px] font-bold uppercase tracking-[.16em] text-white transition-colors hover:bg-[#c6a65a] hover:text-[#041f49] sm:px-7 sm:text-[10px] sm:tracking-[.2em]">
