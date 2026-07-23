@@ -135,7 +135,7 @@ export default function Contacto() {
             style={{ fontFamily: "var(--app-font-serif)" }}
             className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-normal leading-[1.05] tracking-[-.02em] text-white"
           >
-            Antes de invertir, <em className="italic">hablemos de tu estrategia.</em>
+            Empecemos por conocerte. <em className="italic">Lo demás viene después.</em>
           </motion.h1>
 
           <motion.p
@@ -144,7 +144,7 @@ export default function Contacto() {
             transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
             className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
           >
-            Una conversación clara para entender tu perfil, resolver tus dudas y saber si el modelo ZAIAH es adecuado para ti.
+            Si buscas comprar y delegar la operación, cuéntanos qué quieres proteger y qué te gustaría construir. Nosotros te explicamos con claridad cómo podemos acompañarte.
           </motion.p>
 
           <motion.button
@@ -174,10 +174,10 @@ export default function Contacto() {
                 <span className="h-px w-9 bg-[#c6a65a]" /> Qué puedes esperar
               </p>
               <h2 className="text-[clamp(1.7rem,2.8vw,2.4rem)] leading-[1.08] tracking-[-.03em] text-[#041f49]">
-                Una conversación de diagnóstico, no una llamada de presión.
+                Una conversación entre personas. Sin discursos de venta.
               </h2>
               <p className="mt-4 text-sm font-light leading-6 text-[#041f49]/60">
-                Revisaremos tu objetivo, horizonte y nivel de involucramiento. Si hay afinidad, te mostramos los activos que corresponden.
+                Queremos escucharte, responder tus preguntas y entender si ZAIAH puede aportar a tus planes. Sin ejecutar remodelaciones, administrar rentas o perseguir inquilinos por tu cuenta.
               </p>
 
               <div className="mt-8 grid gap-4 border-t border-black/10 pt-6 sm:grid-cols-3 lg:grid-cols-1">
@@ -207,7 +207,7 @@ export default function Contacto() {
 
               <div className="mt-8 flex flex-col gap-4 border-t border-black/10 pt-6">
                 <p className="text-xs font-light leading-5 text-[#041f49]/45">
-                  Respondemos en 48 horas hábiles. Para urgencias, WhatsApp.
+                  Te responderemos en un máximo de 48 horas hábiles. Si prefieres escribirnos directamente, estamos en WhatsApp.
                 </p>
                 <a
                   href="https://wa.me/5215551452047"
@@ -237,7 +237,7 @@ export default function Contacto() {
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" data-testid="form-contact">
                       <p className="mb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
-                        Cuéntanos qué quieres construir
+                        Cuéntanos un poco de ti
                       </p>
                       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                         <FormField control={form.control} name="nombre" render={({ field }) => (
@@ -312,7 +312,7 @@ export default function Contacto() {
                         <FormItem>
                           <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Mensaje *</FormLabel>
                           <FormControl>
-                            <Textarea {...field} placeholder="Cuéntanos sobre tu interés, activo o proyecto..."
+                            <Textarea {...field} placeholder="¿Qué estás buscando y cómo podemos ayudarte?"
                               rows={3}
                               className="resize-none rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                               data-testid="textarea-mensaje" />
@@ -328,7 +328,7 @@ export default function Contacto() {
                           disabled={form.formState.isSubmitting}
                           data-testid="button-submit"
                         >
-                          Solicitar conversación
+                          Quiero conversar con ZAIAH
                         </button>
                       </div>
                     </form>

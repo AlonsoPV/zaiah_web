@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import modelImage from "@/assets/images/project-3.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -9,11 +9,11 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 function Reveal({children,className=""}:{children:React.ReactNode;className?:string}){const r=useRef<HTMLDivElement>(null);const[v,s]=useState(false);useEffect(()=>{const o=new IntersectionObserver(([e])=>e.isIntersecting&&s(true),{threshold:.1});if(r.current)o.observe(r.current);return()=>o.disconnect()},[]);return <div ref={r} className={`transition-all duration-1000 ${v?"translate-y-0 opacity-100":"translate-y-6 opacity-0"} ${className}`}>{children}</div>}
 
 const steps=[
-  ["01","Detectamos","Edificios habitacionales subutilizados en colonias con conectividad, demanda sostenida y profundidad de mercado."],
-  ["02","Validamos","Revisamos estructura, situación jurídica, viabilidad financiera y capacidad de transformación integral."],
-  ["03","Adquirimos","La compra progresiva del edificio completo permite control, libertad de reconfiguración y administración centralizada."],
-  ["04","Regeneramos","Integramos arquitectura, capital y ejecución para devolver utilidad, identidad y valor al activo."],
-  ["05","Estabilizamos","Comercializamos y administramos profesionalmente para sostener el patrimonio en el tiempo."],
+  ["01","Encontramos","Buscamos edificios que todavía tienen mucho por dar, dentro de colonias conectadas y con demanda real."],
+  ["02","Revisamos","Antes de avanzar estudiamos el edificio, su situación jurídica, los números y su verdadero potencial."],
+  ["03","Adquirimos","Compramos el edificio completo de manera progresiva. Así podemos hacernos cargo de la transformación de principio a fin."],
+  ["04","Regeneramos","Reunimos arquitectura, inversión y ejecución para devolverle vida, identidad y utilidad al edificio."],
+  ["05","Acompañamos","Comercializamos y administramos profesionalmente para que el patrimonio se mantenga bien cuidado en el tiempo."],
 ];
 
 export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1c1c]">
@@ -45,7 +45,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
         style={{ fontFamily: "var(--app-font-serif)" }}
         className="max-w-5xl text-[clamp(2.9rem,6.5vw,5.8rem)] font-normal leading-[1.05] tracking-[-.02em]"
       >
-        De un edificio obsoleto a <em className="italic">patrimonio urbano estabilizado.</em>
+        Construimos Zonas Z mediante la compra progresiva <em className="italic">de edificios completos.</em>
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 18 }}
@@ -53,37 +53,46 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
         transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
         className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
       >
-        Un sistema de regeneración diseñado para reducir improvisación, concentrar control y construir valor de largo plazo.
+        Y los convertimos en patrimonio urbano estabilizado para inversionistas patrimoniales.
       </motion.p>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
+        className="mt-9 flex flex-col items-center gap-4 sm:flex-row"
+      >
+        <Link href="/contacto"><span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white">Revisar si es para mí <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span></Link>
+        <Link href="/portafolio"><span className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/45 bg-black/25 px-7 py-4 text-[11px] font-medium uppercase tracking-[.18em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10"><MapPin size={14} /> Ver proyectos</span></Link>
+      </motion.div>
     </div>
   </section>
 
-  <section className="py-16 md:py-24">
+  <section className="py-12 md:py-16">
     <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-      <div className="grid gap-8 md:grid-cols-12 md:items-end">
-        <Reveal className="md:col-span-7">
-          <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-            <span className="h-px w-9 bg-[#c6a65a]" /> La diferencia central
+      <div className="grid gap-8 md:grid-cols-12 md:items-center">
+        <Reveal className="md:col-span-6">
+          <p className="mb-4 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
+            <span className="h-px w-9 bg-[#c6a65a]" /> Lo que cambia para ti
           </p>
-          <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.04em] text-[#041f49]">
-            No apostamos por una propiedad. Construimos concentración territorial.
+          <h2 className="max-w-xl text-[clamp(2rem,3.4vw,3.3rem)] leading-[1.05] tracking-[-.04em] text-[#041f49]">
+            Tu inversión no queda sola. Forma parte de una estrategia para regenerar y fortalecer toda la zona.
           </h2>
         </Reveal>
-        <Reveal className="md:col-span-4 md:col-start-9">
-          <p className="max-w-sm text-base font-light leading-7 text-black/55">
-            Cinco etapas encadenadas: del hallazgo del activo a su estabilización patrimonial.
+        <Reveal className="border-t border-black/15 pt-6 md:col-span-5 md:col-start-8 md:border-l md:border-t-0 md:pl-8 md:pt-0 lg:pl-12">
+          <p className="max-w-sm text-sm font-light leading-7 text-black/55 md:text-base">
+            Este es el recorrido que seguimos, desde la primera visita hasta la operación diaria.
           </p>
         </Reveal>
       </div>
-      <div className="mt-12 grid border-l border-t border-black/15 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mt-10 grid border-l border-t border-black/15 sm:grid-cols-2 lg:grid-cols-5">
         {steps.map(([n, t, x]) => (
           <Reveal
             key={n}
-            className="group relative overflow-hidden border-b border-r border-black/15 p-6 transition-colors duration-500 hover:bg-[#041f49] md:min-h-[250px]"
+            className="group relative overflow-hidden border-b border-r border-black/15 p-5 transition-colors duration-500 hover:bg-[#041f49] md:min-h-[220px] md:p-6"
           >
             <span className="text-[10px] font-bold tracking-[.25em] text-[#c6a65a]">{n}</span>
-            <div className="mt-14">
-              <h3 className="text-xl tracking-[-.02em] text-[#041f49] transition-colors duration-500 group-hover:text-white">{t}</h3>
+            <div className="mt-10">
+              <h3 className="text-lg tracking-[-.02em] text-[#041f49] transition-colors duration-500 group-hover:text-white md:text-xl">{t}</h3>
               <span className="mt-3 block h-px w-8 bg-[#c6a65a] transition-all duration-500 group-hover:w-14" />
               <p className="mt-3 text-sm font-light leading-6 text-black/55 transition-colors duration-500 group-hover:text-white/60">{x}</p>
             </div>
@@ -93,7 +102,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
     </div>
   </section>
 
-  <section className="grid bg-[#d9d6cf] md:grid-cols-2"><div className="flex items-center px-7 py-14 md:px-14 md:py-16 lg:px-20"><Reveal><p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">Qué es una Zona Z</p><h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Un corredor. Múltiples nodos. Una transformación acumulativa.</h2><p className="mt-6 text-base font-light leading-7 text-black/60">Concentramos la adquisición, regeneración y administración de varios edificios dentro de un radio caminable. La escala genera eficiencia operativa, identidad urbana y una revalorización que un activo aislado no puede producir por sí solo.</p></Reveal></div><div className="relative min-h-[380px]"><img src={modelImage} alt="Representación de una Zona Z" className="absolute inset-0 h-full w-full object-cover grayscale"/></div></section>
+  <section className="grid bg-[#d9d6cf] md:grid-cols-2"><div className="flex items-center px-7 py-14 md:px-14 md:py-16 lg:px-20"><Reveal><p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">Qué es una Zona Z</p><h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">No es un proyecto. Es un ecosistema territorial de transformación urbana.</h2><p className="mt-6 text-base font-light leading-7 text-black/60">Cada edificio regenerado es un nodo dentro de esa zona. Al concentrarlos en un radio caminable, mejora la experiencia de la calle, se hace más eficiente la operación y se fortalece el valor del conjunto.</p></Reveal></div><div className="relative min-h-[380px]"><img src={modelImage} alt="Representación de una Zona Z" className="absolute inset-0 h-full w-full object-cover grayscale"/></div></section>
 
   <section className="bg-[#041f49] py-16 text-white md:py-20">
     <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
@@ -101,9 +110,9 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
           <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
             <span className="h-px w-9 bg-[#c6a65a]" /> Criterios de decisión
           </p>
-          <h2 className="text-[clamp(2.2rem,4vw,3.8rem)] leading-[1.02] tracking-[-.04em]">Modelo, no intuición.</h2>
+          <h2 className="text-[clamp(2.2rem,4vw,3.8rem)] leading-[1.02] tracking-[-.04em]">Cada decisión tiene una razón.</h2>
           <p className="mt-6 max-w-sm text-sm font-light leading-6 text-white/55 md:text-base md:leading-7">
-            Cada activo pasa por los mismos filtros antes de entrar a una Zona Z.
+            Antes de integrar un edificio a una Zona Z, necesitamos responder con claridad cuatro preguntas.
           </p>
         </Reveal>
       <div className="grid border-l border-t border-white/15 sm:grid-cols-2 md:col-span-7">
@@ -127,12 +136,12 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
           <span className="h-px w-9 bg-[#c6a65a]" /> Tu lugar dentro del sistema
         </p>
         <h2 className="text-[clamp(2.1rem,3.5vw,3.4rem)] leading-[1.02] tracking-[-.04em] text-[#041f49]">
-          Invierte en el activo. Delega la complejidad.
+          Tú eliges el patrimonio. Nosotros hacemos el trabajo complejo.
         </h2>
       </Reveal>
       <Reveal className="md:col-span-3 md:col-start-7">
         <p className="max-w-xs text-sm font-light leading-6 text-black/55">
-          Agenda una conversación para revisar objetivos, horizonte y proyectos disponibles.
+          Conversemos sobre tus planes y veamos qué proyecto puede acompañarlos mejor.
         </p>
       </Reveal>
       <Reveal className="md:col-span-3 md:col-start-10 md:justify-self-end">

@@ -41,22 +41,22 @@ const heroSlides = [
 ];
 
 const principles = [
-  { icon: Map, number: "01", title: "Concentramos", text: "Seleccionamos colonias con conectividad, demanda comprobable y potencial de regeneración." },
-  { icon: Building2, number: "02", title: "Regeneramos", text: "Adquirimos edificios completos para reconfigurarlos con control integral, identidad y disciplina." },
-  { icon: ShieldCheck, number: "03", title: "Estabilizamos", text: "Profesionalizamos la administración para convertir cada unidad en patrimonio de largo plazo." },
+  { icon: Map, number: "01", title: "Elegimos la zona", text: "Buscamos colonias bien conectadas, con vida propia y demanda real. Lugares donde vale la pena quedarse y construir futuro." },
+  { icon: Building2, number: "02", title: "Regeneramos el edificio", text: "Compramos edificios completos y los transformamos de manera integral, cuidando su identidad y su relación con la calle." },
+  { icon: ShieldCheck, number: "03", title: "Cuidamos el patrimonio", text: "Dejamos la operación en manos de un equipo profesional para que el activo funcione bien y conserve su valor en el tiempo." },
 ];
 
 const pains = [
-  "Proyectos que prometen más de lo que pueden ejecutar.",
-  "Rentas, mantenimiento e inquilinos que consumen tu tiempo.",
-  "Departamentos aislados que no transforman su entorno.",
-  "Decisiones inmobiliarias sin estructura ni información suficiente.",
+  "Has visto proyectos que prometen mucho y entregan poco.",
+  "Sabes que administrar rentas, mantenimiento e inquilinos puede convertirse en otro trabajo.",
+  "No quieres comprar sólo metros cuadrados sin entender qué hay alrededor.",
+  "Buscas una decisión bien acompañada, con información clara y respaldo jurídico.",
 ];
 
 const pillars = [
-  { number: "01", title: "Edificios completos", text: "La compra progresiva permite control y reconfiguración integral del activo, sin depender de terceros." },
-  { number: "02", title: "Demanda real", text: "Decidimos con conectividad, absorción y profundidad de mercado. Datos antes que intuición." },
-  { number: "03", title: "Identidad urbana", text: "Cada proyecto pertenece a una narrativa mayor y reconocible que multiplica el valor del conjunto." },
+  { number: "01", title: "Vemos el edificio completo", text: "Así podemos intervenir de fondo, tomar mejores decisiones y hacernos responsables del resultado." },
+  { number: "02", title: "Entendemos la zona", text: "Antes de actuar estudiamos cómo se vive, qué hace falta y qué demanda realmente el mercado." },
+  { number: "03", title: "Pensamos más allá del proyecto", text: "Cada edificio se conecta con otros para mejorar la zona y hacer visible una transformación más amplia." },
 ];
 
 export default function Home() {
@@ -105,8 +105,8 @@ export default function Home() {
             style={{ fontFamily: "var(--app-font-serif)" }}
             className="text-[clamp(3.4rem,8vw,6.5rem)] font-normal leading-[1.02] tracking-[-.02em] text-white"
           >
-            Cambia el destino.{" "}
-            <em className="italic text-white">Pertenece.</em>
+            REDEFINIMOS EL FUTURO URBANO{" "}
+            <em className="italic text-white">DE LAS GRANDES CIUDADES</em>
           </motion.h1>
 
           <motion.p
@@ -115,7 +115,7 @@ export default function Home() {
             transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
             className="mt-6 max-w-xl text-sm font-light leading-6 text-white/75 md:text-base"
           >
-            Regeneramos activos urbanos estratégicos y los convertimos en patrimonio estabilizado.
+            En ZAIAH recuperamos edificios con potencial para convertirlos en activos bien administrados, con demanda real y una historia de largo plazo. Tú inviertes; nosotros hacemos el trabajo complejo.
           </motion.p>
 
           <motion.div
@@ -126,7 +126,7 @@ export default function Home() {
           >
             <Link href="/contacto">
               <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white">
-                Agendar una cita <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+                Cuéntanos qué estás buscando <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
             <Link href="/portafolio">
@@ -171,10 +171,10 @@ export default function Home() {
       <section className="border-b border-black/10 bg-[#faf9f7] py-16 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
           <Reveal className="md:col-span-5">
-            <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55"><span className="h-px w-9 bg-[#c6a65a]" /> El problema no es invertir</p>
-            <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.035em] text-[#041f49]">Es tener que hacerlo todo solo.</h2>
+            <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55"><span className="h-px w-9 bg-[#c6a65a]" /> Si ya pasaste por esto</p>
+            <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.035em] text-[#041f49]">Invertiste para generar ingresos. Terminaste administrando.</h2>
             <p className="mt-6 max-w-md text-base font-light leading-7 text-[#1c1c1c]/65">
-              Ya construiste capital. Ahora buscas protegerlo y hacerlo crecer sin convertirte en administrador, remodelador o experto inmobiliario de tiempo completo.
+              Lo que iba a ser una inversión terminó ocupando tus tardes: pagos, reparaciones, meses vacíos y decisiones que nadie te ayudó a tomar. Tu patrimonio debería darte tranquilidad, no convertirse en un segundo trabajo.
             </p>
           </Reveal>
           <motion.div
@@ -200,6 +200,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── DOS FORMAS DE EMPEZAR ───────────────────────────── */}
+      <section className="bg-[#f1efe9] py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <Reveal className="grid gap-8 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-7">
+              <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]"><span className="h-px w-9 bg-[#c6a65a]" /> Proyectos actuales</p>
+              <h2 className="text-[clamp(2.3rem,4.2vw,4.2rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Dos proyectos. Dos maneras de construir patrimonio sin operarlo solo.</h2>
+            </div>
+            <p className="max-w-sm text-base font-light leading-7 text-black/55 md:col-span-4 md:col-start-9">Conoce el proyecto que conversa mejor con tus objetivos. Si todavía no lo tienes claro, lo revisamos contigo.</p>
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            <motion.article className="group relative min-h-[520px] overflow-hidden bg-[#041f49]" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={fadeUp}>
+              <img src={projectImage} alt="San Pedro Patriotismo" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,31,73,.08)_20%,rgba(4,31,73,.95)_100%)]" />
+              <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-9">
+                <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">San Pedro Patriotismo · Zaiah Health</p>
+                <h3 className="mt-4 text-3xl tracking-[-.03em] md:text-4xl">Una inversión que no te pide convertirte en administrador.</h3>
+                <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/65">Consultorios médicos boutique a cinco minutos del WTC. Administración especializada y un sector con demanda constante.</p>
+                <a href="https://sanpedropatriotismo.com/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">Conocer Zaiah Health <ArrowUpRight size={14}/></a>
+              </div>
+            </motion.article>
+
+            <motion.article className="group relative min-h-[520px] overflow-hidden bg-[#1c1c1c]" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={fadeUp}>
+              <img src={projectTwo} alt="Edison 58 Tabacalera" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.08)_20%,rgba(0,0,0,.9)_100%)]" />
+              <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-9">
+                <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">Edison 58 · Tabacalera</p>
+                <h3 className="mt-4 text-3xl tracking-[-.03em] md:text-4xl">Historia, diseño y una propiedad pensada para rentas cortas.</h3>
+                <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/65">Un edificio con identidad en el corazón de la ciudad, para quien busca un activo que no se parezca a todos los demás.</p>
+                <a href="https://edison58tabacalera.com/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">Conocer Edison 58 <ArrowUpRight size={14}/></a>
+              </div>
+            </motion.article>
+          </div>
+
+          <Reveal className="mt-12 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
+            <div className="bg-[#faf9f7] p-7"><p className="text-3xl text-[#041f49]">10 años</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Regenerando inmuebles en CDMX</p></div>
+            <div className="bg-[#faf9f7] p-7"><p className="text-3xl text-[#041f49]">+30</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Inversionistas que confían en el modelo</p></div>
+            <div className="bg-[#faf9f7] p-7"><p className="text-3xl text-[#041f49]">100%</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Operación y administración a nuestro cargo</p></div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── NUESTRA RESPUESTA / ZONAS Z ─────────────────────── */}
       <section className="relative overflow-hidden bg-[#041f49] py-16 text-white md:py-24">
         <div aria-hidden className="pointer-events-none absolute -left-24 top-10 select-none text-[26rem] font-bold leading-none text-white/[.02]">Z</div>
@@ -213,14 +256,14 @@ export default function Home() {
           >
             <motion.div variants={fadeUp} className="md:col-span-7">
               <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-                <span className="h-px w-9 bg-[#c6a65a]" /> Nuestra respuesta
+                <span className="h-px w-9 bg-[#c6a65a]" /> Así lo hacemos
               </p>
               <h2 className="text-[clamp(2.4rem,4.4vw,4.6rem)] leading-[.98] tracking-[-.04em]">
-                No desarrollamos proyectos aislados. <span className="text-[#c6a65a]">Construimos Zonas Z.</span>
+                Un edificio puede cambiar una calle. <span className="text-[#c6a65a]">Varios pueden transformar una zona.</span>
               </h2>
             </motion.div>
             <motion.p variants={fadeUp} className="self-end text-base font-light leading-7 text-white/60 md:col-span-4 md:col-start-9">
-              Corredores caminables donde concentramos edificios regenerados. Cada activo funciona como un nodo; juntos crean identidad, escala y transformación visible.
+              No es un proyecto. Es un ecosistema territorial de transformación urbana. Cada edificio regenerado es un nodo dentro de esa zona.
             </motion.p>
           </motion.div>
 
@@ -271,9 +314,9 @@ export default function Home() {
           </div>
           <div className="flex items-center px-7 py-14 md:px-14 md:py-16 lg:px-20">
             <Reveal>
-              <p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">Patrimonio, no especulación</p>
-              <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Compra. Delega. Conserva.</h2>
-              <p className="mt-6 max-w-lg text-base font-light leading-7 text-[#1c1c1c]/65">Nuestro modelo está pensado para inversionistas patrimoniales que valoran seguridad jurídica, operación profesional y visión de largo plazo. Tú eliges el activo. ZAIAH estructura y acompaña el proceso.</p>
+              <p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">Patrimonio con propósito</p>
+              <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Una inversión que puedes entender y disfrutar.</h2>
+              <p className="mt-6 max-w-lg text-base font-light leading-7 text-[#1c1c1c]/65">No vendemos metros. Creamos patrimonio estructurado. Tú sabes dónde está tu patrimonio; nosotros nos ocupamos de que funcione.</p>
               <div className="mt-7 grid grid-cols-2 gap-px bg-black/15">
                 <div className="bg-[#d9d6cf] py-4 pr-5"><p className="text-2xl text-[#041f49]">30–65</p><p className="mt-1 text-[9px] uppercase tracking-[.18em] text-black/45">Perfil patrimonial</p></div>
                 <div className="bg-[#d9d6cf] py-4 pl-5"><p className="text-2xl text-[#041f49]">CDMX</p><p className="mt-1 text-[9px] uppercase tracking-[.18em] text-black/45">Primera Zona Z</p></div>
@@ -296,13 +339,13 @@ export default function Home() {
           >
             <motion.div variants={fadeUp} className="md:col-span-5">
               <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-                <span className="h-px w-9 bg-[#c6a65a]" /> Por qué ZAIAH
+                <span className="h-px w-9 bg-[#c6a65a]" /> Lo que hacemos diferente
               </p>
               <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.04em] text-[#041f49]">
-                Control del activo. Lectura del territorio. Ejecución disciplinada.
+                Nos involucramos en todo el proceso porque así se cuida mejor cada decisión.
               </h2>
               <p className="mt-6 max-w-md text-base font-light leading-7 text-black/55">
-                Tres decisiones estructurales que separan un proyecto especulativo de un patrimonio con permanencia.
+                Desde la elección de la colonia hasta la operación diaria. No entregamos un inmueble y desaparecemos.
               </p>
             </motion.div>
             <div className="border-t border-black/15 md:col-span-7 md:border-t-0">
@@ -333,9 +376,9 @@ export default function Home() {
       <section className="relative overflow-hidden bg-[#c6a65a] py-16 text-[#041f49] md:py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
           <Reveal className="md:col-span-8">
-            <p className="mb-5 text-[10px] font-bold uppercase tracking-[.32em] text-[#041f49]/60">Una conversación, antes que una decisión</p>
-            <h2 className="text-[clamp(2.4rem,4.6vw,4.6rem)] leading-[1] tracking-[-.04em]">¿Tu patrimonio está listo para formar parte de algo mayor?</h2>
-            <p className="mt-5 max-w-xl text-base font-light leading-7 text-[#041f49]/70">Conversemos sobre tus objetivos, horizonte y perfil. Sin presión. Con estructura y claridad.</p>
+            <p className="mb-5 text-[10px] font-bold uppercase tracking-[.32em] text-[#041f49]/60">Una conversación antes que una decisión</p>
+            <h2 className="text-[clamp(2.4rem,4.6vw,4.6rem)] leading-[1] tracking-[-.04em]">¿Qué quieres que tu patrimonio haga por ti?</h2>
+            <p className="mt-5 max-w-xl text-base font-light leading-7 text-[#041f49]/70">Generar ingresos, diversificar, proteger el futuro o formar parte de la regeneración de la ciudad. Cuéntanos qué buscas y revisamos juntos si hay un proyecto para ti.</p>
           </Reveal>
           <Reveal className="md:col-span-4 md:justify-self-end">
             <Link href="/contacto">

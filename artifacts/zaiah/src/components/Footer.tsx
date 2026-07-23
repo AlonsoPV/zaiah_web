@@ -28,9 +28,9 @@ export default function Footer() {
                 marginBottom: "0.5rem",
               }}
             />
-            <p className="text-[#CAAA57] eyebrow mb-7">Regeneración urbana estructurada</p>
+            <p className="text-[#CAAA57] eyebrow mb-7">Regeneramos edificios. Reconectamos ciudades.</p>
             <p className="text-white/35 text-sm leading-relaxed max-w-xs">
-              Convertimos edificios estratégicos en patrimonio urbano estabilizado dentro de Zonas Z.
+              Recuperamos edificios con potencial y los convertimos en lugares vivos, bien administrados y con valor de largo plazo.
             </p>
           </div>
 
@@ -76,7 +76,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/20 text-xs tracking-widest">
-            © 2026 ZAIAH — Empresa privada de regeneración urbana estructurada.
+            © 2026 ZAIAH — Redefinimos el futuro urbano de las grandes ciudades.
           </p>
           <div className="flex items-center gap-3">
             <span className="w-6 h-px bg-[#CAAA57]/40" />

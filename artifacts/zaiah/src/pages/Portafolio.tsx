@@ -10,8 +10,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 function Reveal({children,className=""}:{children:React.ReactNode;className?:string}){const r=useRef<HTMLDivElement>(null);const[v,s]=useState(false);useEffect(()=>{const o=new IntersectionObserver(([e])=>e.isIntersecting&&s(true),{threshold:.1});if(r.current)o.observe(r.current);return()=>o.disconnect()},[]);return <div ref={r} className={`transition-all duration-1000 ${v?"translate-y-0 opacity-100":"translate-y-6 opacity-0"} ${className}`}>{children}</div>}
 
 const projects=[
- {name:"San Pedro Patriotismo",type:"Boutique Medical Real Estate",place:"San Pedro de los Pinos · CDMX",status:"Preventa activa",description:"Consultorios boutique dentro de una zona médica consolidada, a cinco minutos del WTC. Diseñado para quien busca un activo especializado con administración profesional.",image:projectOne,url:"https://sanpedropatriotismo.com/",facts:[["$1.5 MDP","Inversión desde"],["9% anual","Rentabilidad estimada"],["14 m²","Superficie desde"]]},
- {name:"Edison 58",type:"Residencial boutique · Renta corta",place:"Tabacalera · CDMX",status:"Cupo limitado",description:"Un edificio con identidad histórica transformado para el mercado contemporáneo de renta corta en una de las colonias con mayor conectividad del centro de la ciudad.",image:projectTwo,url:"https://edison58tabacalera.com/",facts:[["$4.7 MDP","Inversión desde"],["12%","Cap rate estimado"],["$68 USD","Tarifa promedio"]]},
+ {name:"San Pedro Patriotismo",type:"Consultorios boutique",place:"San Pedro de los Pinos · CDMX",status:"Preventa activa",description:"Un espacio pensado para especialistas médicos y para quienes buscan invertir en un activo con demanda constante. Está a cinco minutos del WTC y cuenta con administración profesional, para que no tengas que operar el inmueble por tu cuenta.",image:projectOne,url:"https://sanpedropatriotismo.com/",facts:[["$1.5 MDP","Inversión desde"],["9% anual","Rentabilidad estimada"],["14 m²","Superficie desde"]]},
+ {name:"Edison 58",type:"Departamentos boutique · Renta corta",place:"Tabacalera · CDMX",status:"Cupo limitado",description:"Recuperamos un edificio con historia en una de las zonas mejor conectadas del centro. El proyecto combina identidad, ubicación y un modelo de renta corta para quienes buscan una propiedad con carácter y potencial de ingresos.",image:projectTwo,url:"https://edison58tabacalera.com/",facts:[["$4.7 MDP","Inversión desde"],["12%","Cap rate estimado"],["$68 USD","Tarifa promedio"]]},
 ];
 
 export default function Portafolio(){return <main className="bg-[#faf9f7] text-[#1c1c1c]">
@@ -43,7 +43,7 @@ export default function Portafolio(){return <main className="bg-[#faf9f7] text-[
        style={{ fontFamily: "var(--app-font-serif)" }}
        className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-normal leading-[1.05] tracking-[-.02em]"
      >
-       Activos con una tesis. <em className="italic">Proyectos con un lugar.</em>
+       Proyectos que nacen de escuchar <em className="italic">lo que una zona necesita.</em>
      </motion.h1>
      <motion.p
        initial={{ opacity: 0, y: 18 }}
@@ -51,8 +51,17 @@ export default function Portafolio(){return <main className="bg-[#faf9f7] text-[
        transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
        className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
      >
-       Cada proyecto responde a demanda, ubicación, estructura jurídica y una narrativa urbana clara.
+       Aquí puedes conocer los edificios que estamos regenerando y la historia que queremos construir con cada uno.
      </motion.p>
+     <motion.div
+       initial={{ opacity: 0, y: 20 }}
+       animate={{ opacity: 1, y: 0 }}
+       transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
+       className="mt-9 flex flex-col items-center gap-4 sm:flex-row"
+     >
+       <Link href="/contacto"><span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white">Encontrar mi proyecto <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span></Link>
+       <Link href="/modelo"><span className="inline-flex cursor-pointer items-center gap-3 rounded-full border border-white/45 bg-black/25 px-7 py-4 text-[11px] font-medium uppercase tracking-[.18em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10">Entender el modelo</span></Link>
+     </motion.div>
      <motion.div
        initial={{ opacity: 0, y: 14 }}
        animate={{ opacity: 1, y: 0 }}
@@ -75,12 +84,12 @@ export default function Portafolio(){return <main className="bg-[#faf9f7] text-[
          <span className="h-px w-9 bg-[#c6a65a]" /> Antes de elegir
        </p>
        <h2 className="max-w-xl text-[clamp(2rem,3.4vw,3.3rem)] leading-[1.03] tracking-[-.04em] text-[#041f49]">
-         Tu patrimonio cuenta una historia. El siguiente activo debe estar a su altura.
+         No compras metros cuadrados. Buscas respaldo patrimonial.
        </h2>
      </Reveal>
      <Reveal className="border-t border-black/15 pt-7 md:col-span-5 md:col-start-8 md:border-l md:border-t-0 md:py-2 md:pl-8 lg:pl-12">
        <p className="max-w-lg text-sm font-light leading-7 text-black/60 sm:text-base">
-         No empezamos mostrándote inventario. Primero escuchamos qué has construido, qué quieres proteger y hacia dónde quieres llevarlo. Después encontramos el activo que haga sentido para ti.
+         También compra estabilidad financiera, valores, propósito y pertenencia a un proyecto urbano mayor. Cuéntanos qué quieres proteger y hacia dónde quieres llevarlo; después revisamos contigo el activo que haga sentido.
        </p>
        <Link href="/contacto">
          <span className="group mt-6 inline-flex cursor-pointer items-center gap-3 bg-[#041f49] px-6 py-4 text-[9px] font-bold uppercase tracking-[.16em] text-white transition-colors hover:bg-[#c6a65a] hover:text-[#041f49] sm:px-7 sm:text-[10px] sm:tracking-[.2em]">
