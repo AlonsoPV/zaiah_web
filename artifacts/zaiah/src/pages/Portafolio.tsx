@@ -10,8 +10,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 function Reveal({children,className=""}:{children:React.ReactNode;className?:string}){const r=useRef<HTMLDivElement>(null);const[v,s]=useState(false);useEffect(()=>{const o=new IntersectionObserver(([e])=>e.isIntersecting&&s(true),{threshold:.1});if(r.current)o.observe(r.current);return()=>o.disconnect()},[]);return <div ref={r} className={`transition-all duration-1000 ${v?"translate-y-0 opacity-100":"translate-y-6 opacity-0"} ${className}`}>{children}</div>}
 
 const projects=[
- {name:"San Pedro Patriotismo",type:"Consultorios boutique",place:"San Pedro de los Pinos · CDMX",status:"Preventa activa",description:"Un espacio pensado para especialistas médicos y para quienes buscan invertir en un activo con demanda constante. Está a cinco minutos del WTC y cuenta con administración profesional, para que no tengas que operar el inmueble por tu cuenta.",image:projectOne,url:"https://sanpedropatriotismo.com/",facts:[["$1.5 MDP","Inversión desde"],["9% anual","Rentabilidad estimada"],["14 m²","Superficie desde"]]},
- {name:"Edison 58",type:"Departamentos boutique · Renta corta",place:"Tabacalera · CDMX",status:"Cupo limitado",description:"Recuperamos un edificio con historia en una de las zonas mejor conectadas del centro. El proyecto combina identidad, ubicación y un modelo de renta corta para quienes buscan una propiedad con carácter y potencial de ingresos.",image:projectTwo,url:"https://edison58tabacalera.com/",facts:[["$4.7 MDP","Inversión desde"],["12%","Cap rate estimado"],["$68 USD","Tarifa promedio"]]},
+ {name:"San Pedro Patriotismo",type:"Consultorios médicos",place:"San Pedro de los Pinos · CDMX",status:"Preventa activa",description:"Un activo dirigido al sector médico, con demanda constante, ubicación a cinco minutos del WTC y administración profesional. La operación permanece a cargo de un equipo especializado.",image:projectOne,url:"https://sanpedropatriotismo.com/",facts:[["$1.5 MDP","Inversión desde"],["9% anual","Rentabilidad estimada"],["14 m²","Superficie desde"]]},
+ {name:"Edison 58",type:"Departamentos · Renta corta",place:"Tabacalera · CDMX",status:"Disponibilidad actual",description:"Regeneramos un edificio con valor histórico en una zona conectada del centro. El modelo integra identidad arquitectónica, ubicación y operación de renta corta con criterios de mercado.",image:projectTwo,url:"https://edison58tabacalera.com/",facts:[["$4.7 MDP","Inversión desde"],["12%","Cap rate estimado"],["$68 USD","Tarifa promedio"]]},
 ];
 
 export default function Portafolio(){return <main className="bg-[#faf9f7] text-[#1c1c1c]">
@@ -40,10 +40,9 @@ export default function Portafolio(){return <main className="bg-[#faf9f7] text-[
        initial={{ opacity: 0, y: 28 }}
        animate={{ opacity: 1, y: 0 }}
        transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-       style={{ fontFamily: "var(--app-font-serif)" }}
-       className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-normal leading-[1.05] tracking-[-.02em]"
+       className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-medium leading-[1.05] tracking-[-.02em]"
      >
-       Proyectos que nacen de escuchar <em className="italic">lo que una zona necesita.</em>
+       Proyectos que nacen de escuchar <em className="font-serif font-normal italic">lo que una zona necesita.</em>
      </motion.h1>
      <motion.p
        initial={{ opacity: 0, y: 18 }}
@@ -59,7 +58,7 @@ export default function Portafolio(){return <main className="bg-[#faf9f7] text-[
        transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
        className="mt-9 flex flex-col items-center gap-4 sm:flex-row"
      >
-       <Link href="/contacto"><span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white">Encontrar mi proyecto <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span></Link>
+       <Link href="/contacto"><span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white">Revisar proyectos <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span></Link>
        <Link href="/modelo"><span className="inline-flex cursor-pointer items-center gap-3 rounded-full border border-white/45 bg-black/25 px-7 py-4 text-[11px] font-medium uppercase tracking-[.18em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10">Entender el modelo</span></Link>
      </motion.div>
      <motion.div

@@ -102,11 +102,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-            style={{ fontFamily: "var(--app-font-serif)" }}
-            className="text-[clamp(3.4rem,8vw,6.5rem)] font-normal leading-[1.02] tracking-[-.02em] text-white"
+            className="text-[clamp(3.4rem,8vw,6.5rem)] font-medium leading-[1.02] tracking-[-.02em] text-white"
           >
             REDEFINIMOS EL FUTURO URBANO{" "}
-            <em className="italic text-white">DE LAS GRANDES CIUDADES</em>
+            <em className="font-serif font-normal italic text-white">DE LAS GRANDES CIUDADES</em>
           </motion.h1>
 
           <motion.p
@@ -218,7 +217,7 @@ export default function Home() {
               <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-9">
                 <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">San Pedro Patriotismo · Zaiah Health</p>
                 <h3 className="mt-4 text-3xl tracking-[-.03em] md:text-4xl">Una inversión que no te pide convertirte en administrador.</h3>
-                <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/65">Consultorios médicos boutique a cinco minutos del WTC. Administración especializada y un sector con demanda constante.</p>
+                <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/65">Consultorios médicos a cinco minutos del WTC. Administración especializada y un sector con demanda constante.</p>
                 <a href="https://sanpedropatriotismo.com/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">Conocer Zaiah Health <ArrowUpRight size={14}/></a>
               </div>
             </motion.article>
@@ -315,7 +314,7 @@ export default function Home() {
           <div className="flex items-center px-7 py-14 md:px-14 md:py-16 lg:px-20">
             <Reveal>
               <p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">Patrimonio con propósito</p>
-              <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Una inversión que puedes entender y disfrutar.</h2>
+              <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Patrimonio con estructura, operación y trazabilidad.</h2>
               <p className="mt-6 max-w-lg text-base font-light leading-7 text-[#1c1c1c]/65">No vendemos metros. Creamos patrimonio estructurado. Tú sabes dónde está tu patrimonio; nosotros nos ocupamos de que funcione.</p>
               <div className="mt-7 grid grid-cols-2 gap-px bg-black/15">
                 <div className="bg-[#d9d6cf] py-4 pr-5"><p className="text-2xl text-[#041f49]">30–65</p><p className="mt-1 text-[9px] uppercase tracking-[.18em] text-black/45">Perfil patrimonial</p></div>

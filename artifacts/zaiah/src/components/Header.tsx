@@ -30,7 +30,7 @@ export default function Header() {
       data-testid="header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isLight
-          ? "bg-white/97 backdrop-blur-sm border-b border-[#D5D3CE]/70"
+          ? "bg-[#faf9f7]/97 backdrop-blur-sm border-b border-[#d9d6cf]/70"
           : "bg-transparent"
       }`}
     >
@@ -66,13 +66,13 @@ export default function Header() {
                   <span
                     className={`text-[11px] font-semibold tracking-[0.14em] uppercase transition-colors duration-300 relative group ${
                       isLight
-                        ? active ? "text-[#00246B]" : "text-[#00246B]/55 hover:text-[#00246B]"
+                        ? active ? "text-[#041f49]" : "text-[#041f49]/55 hover:text-[#041f49]"
                         : active ? "text-white" : "text-white/55 hover:text-white"
                     }`}
                   >
                     {link.label}
                     <span
-                      className={`absolute -bottom-0.5 left-0 h-px bg-[#CAAA57] transition-all duration-300 ${
+                      className={`absolute -bottom-0.5 left-0 h-px bg-[#c6a65a] transition-all duration-300 ${
                         active ? "w-full" : "w-0 group-hover:w-full"
                       }`}
                     />
@@ -85,8 +85,8 @@ export default function Header() {
               <span
                 className={`text-[11px] font-bold tracking-[0.14em] uppercase px-5 py-2 border transition-all duration-300 ${
                   isLight
-                    ? "border-[#00246B] text-[#00246B] hover:bg-[#00246B] hover:text-white"
-                    : "border-white/40 text-white/90 hover:border-[#CAAA57] hover:text-[#CAAA57]"
+                    ? "border-[#041f49] text-[#041f49] hover:bg-[#041f49] hover:text-white"
+                    : "border-white/40 text-white/90 hover:border-[#c6a65a] hover:text-[#c6a65a]"
                 }`}
               >
                 Agendar cita
@@ -97,7 +97,7 @@ export default function Header() {
           {/* Mobile hamburger */}
           <button
             className={`md:hidden flex flex-col gap-[5px] p-2 transition-colors duration-300 ${
-              isLight ? "text-[#00246B]" : "text-white"
+              isLight ? "text-[#041f49]" : "text-white"
             }`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
@@ -112,7 +112,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden bg-[#00246B] overflow-hidden transition-all duration-500 ${
+        className={`md:hidden bg-[#041f49] overflow-hidden transition-all duration-500 ${
           menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
         data-testid="nav-mobile"
@@ -124,13 +124,13 @@ export default function Header() {
               href={link.href}
               data-testid={`mobile-nav-link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
             >
-              <span className="text-white/80 font-medium tracking-[0.12em] uppercase text-sm hover:text-[#CAAA57] transition-colors">
+              <span className="text-white/80 font-medium tracking-[0.12em] uppercase text-sm hover:text-[#c6a65a] transition-colors">
                 {link.label}
               </span>
             </Link>
           ))}
           <Link href="/contacto">
-            <span className="inline-block mt-2 px-6 py-3 bg-[#CAAA57] text-black text-xs font-bold tracking-[0.15em] uppercase">
+            <span className="inline-block mt-2 px-6 py-3 bg-[#c6a65a] text-black text-xs font-bold tracking-[0.15em] uppercase">
               Agendar cita
             </span>
           </Link>

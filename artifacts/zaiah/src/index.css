@@ -22,6 +22,15 @@
   src: url("/fonts/Qualion-Regular.woff2") format("woff2"),
        url("/fonts/Qualion-Regular.woff") format("woff"),
        url("/fonts/Qualion-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Qualion";
+  src: url("/fonts/Qualion-Regular.woff2") format("woff2"),
+       url("/fonts/Qualion-Regular.woff") format("woff"),
+       url("/fonts/Qualion-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -251,19 +260,26 @@
 
   body {
     @apply font-sans bg-background text-foreground;
-    font-weight: 350;
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 
   ::selection {
-    background-color: #CAAA57;
+    background-color: #c6a65a;
     color: #000000;
   }
 
   img {
     display: block;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--app-font-sans);
+    font-weight: 500;
   }
 }
 
@@ -274,20 +290,20 @@
    - Cuerpo    → font-weight: 350  (.q-body  / default body)
    - Thin      → font-weight: 300  (.q-thin)
 ──────────────────────────────────────────────────────────────── */
-.q-title  { font-family: 'Qualion', sans-serif; font-weight: 700; }
+.q-title  { font-family: 'Qualion', sans-serif; font-weight: 500; }
 .q-sub    { font-family: 'Qualion', sans-serif; font-weight: 400; }
-.q-body   { font-family: 'Qualion', sans-serif; font-weight: 350; }
+.q-body   { font-family: 'Qualion', sans-serif; font-weight: 300; }
 .q-thin   { font-family: 'Qualion', sans-serif; font-weight: 300; }
 
 /* ZAIAH custom utilities */
-.zaiah-blue { color: #00246B; }
-.zaiah-gold { color: #CAAA57; }
-.bg-zaiah-blue { background-color: #00246B; }
-.bg-zaiah-gold { background-color: #CAAA57; }
-.bg-zaiah-stone { background-color: #EFEEED; }
-.bg-zaiah-concrete { background-color: #D5D3CE; }
-.border-zaiah-gold { border-color: #CAAA57; }
-.border-zaiah-blue { border-color: #00246B; }
+.zaiah-blue { color: #041f49; }
+.zaiah-gold { color: #c6a65a; }
+.bg-zaiah-blue { background-color: #041f49; }
+.bg-zaiah-gold { background-color: #c6a65a; }
+.bg-zaiah-stone { background-color: #faf9f7; }
+.bg-zaiah-concrete { background-color: #d9d6cf; }
+.border-zaiah-gold { border-color: #c6a65a; }
+.border-zaiah-blue { border-color: #041f49; }
 
 /* Cinematic image cover */
 .img-cover {
@@ -317,7 +333,7 @@
 .gold-line {
   width: 2.5rem;
   height: 1px;
-  background-color: #CAAA57;
+  background-color: #c6a65a;
 }
 
 /* Scrollbar styling */
@@ -328,7 +344,7 @@
   background: #000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CAAA57;
+  background: #c6a65a;
   border-radius: 0;
 }
 

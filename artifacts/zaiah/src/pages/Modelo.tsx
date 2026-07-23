@@ -42,10 +42,9 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-        style={{ fontFamily: "var(--app-font-serif)" }}
-        className="max-w-5xl text-[clamp(2.9rem,6.5vw,5.8rem)] font-normal leading-[1.05] tracking-[-.02em]"
+        className="max-w-5xl text-[clamp(2.9rem,6.5vw,5.8rem)] font-medium leading-[1.05] tracking-[-.02em]"
       >
-        Construimos Zonas Z mediante la compra progresiva <em className="italic">de edificios completos.</em>
+        Construimos Zonas Z mediante la compra progresiva <em className="font-serif font-normal italic">de edificios completos.</em>
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 18 }}

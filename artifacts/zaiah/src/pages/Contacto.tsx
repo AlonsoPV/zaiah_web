@@ -132,10 +132,9 @@ export default function Contacto() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-            style={{ fontFamily: "var(--app-font-serif)" }}
-            className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-normal leading-[1.05] tracking-[-.02em] text-white"
+            className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-medium leading-[1.05] tracking-[-.02em] text-white"
           >
-            Empecemos por conocerte. <em className="italic">Lo demás viene después.</em>
+            Empecemos por conocerte. <em className="font-serif font-normal italic">Lo demás viene después.</em>
           </motion.h1>
 
           <motion.p
@@ -245,7 +244,7 @@ export default function Contacto() {
                             <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Nombre *</FormLabel>
                             <FormControl>
                               <Input {...field} placeholder="Tu nombre completo"
-                                className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
+                                className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                                 data-testid="input-nombre" />
                             </FormControl>
                             <FormMessage />
@@ -256,7 +255,7 @@ export default function Contacto() {
                             <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Empresa</FormLabel>
                             <FormControl>
                               <Input {...field} placeholder="Tu empresa u organización"
-                                className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
+                                className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                                 data-testid="input-empresa" />
                             </FormControl>
                             <FormMessage />
@@ -270,7 +269,7 @@ export default function Contacto() {
                             <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Correo *</FormLabel>
                             <FormControl>
                               <Input {...field} type="email" placeholder="correo@ejemplo.com"
-                                className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
+                                className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                                 data-testid="input-correo" />
                             </FormControl>
                             <FormMessage />
@@ -281,7 +280,7 @@ export default function Contacto() {
                             <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Teléfono *</FormLabel>
                             <FormControl>
                               <Input {...field} type="tel" placeholder="+52 55 0000 0000"
-                                className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
+                                className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                                 data-testid="input-telefono" />
                             </FormControl>
                             <FormMessage />
@@ -294,7 +293,7 @@ export default function Contacto() {
                           <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Tipo de interés *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger className="rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] focus:ring-0" data-testid="select-interes">
+                              <SelectTrigger className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] focus:ring-0" data-testid="select-interes">
                                 <SelectValue placeholder="Selecciona una opción" />
                               </SelectTrigger>
                             </FormControl>
@@ -314,7 +313,7 @@ export default function Contacto() {
                           <FormControl>
                             <Textarea {...field} placeholder="¿Qué estás buscando y cómo podemos ayudarte?"
                               rows={3}
-                              className="resize-none rounded-none border-0 border-b border-[#D5D3CE] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
+                              className="resize-none rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                               data-testid="textarea-mensaje" />
                           </FormControl>
                           <FormMessage />

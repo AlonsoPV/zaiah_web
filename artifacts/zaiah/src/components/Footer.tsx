@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer style={{ backgroundColor: "#060606" }} data-testid="footer">
       {/* Top border line */}
-      <div className="h-px" style={{ background: "linear-gradient(to right, transparent, #CAAA57, transparent)" }} />
+      <div className="h-px" style={{ background: "linear-gradient(to right, transparent, #c6a65a, transparent)" }} />
 
       <div className="max-w-7xl mx-auto px-8 md:px-14 lg:px-20 py-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/6">
@@ -28,7 +28,7 @@ export default function Footer() {
                 marginBottom: "0.5rem",
               }}
             />
-            <p className="text-[#CAAA57] eyebrow mb-7">No remodelamos. Transformamos zonas.</p>
+            <p className="text-[#c6a65a] eyebrow mb-7">No remodelamos. Transformamos zonas.</p>
             <p className="text-white/35 text-sm leading-relaxed max-w-xs">
               Recuperamos edificios con potencial y los convertimos en lugares vivos, bien administrados y con valor de largo plazo.
             </p>
@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="md:col-span-4">
-            <p className="text-[#CAAA57] eyebrow mb-7">Navegación</p>
+            <p className="text-[#c6a65a] eyebrow mb-7">Navegación</p>
             <nav className="flex flex-col gap-3">
               {footerLinks.map((link) => (
                 <Link key={link.href} href={link.href}>
@@ -50,18 +50,18 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="md:col-span-3">
-            <p className="text-[#CAAA57] eyebrow mb-7">Contacto</p>
+            <p className="text-[#c6a65a] eyebrow mb-7">Contacto</p>
             <div className="flex flex-col gap-4">
               <a
                 href="mailto:mkt@zaiah.com.mx"
-                className="text-white/40 text-sm hover:text-[#CAAA57] transition-colors tracking-wide"
+                className="text-white/40 text-sm hover:text-[#c6a65a] transition-colors tracking-wide"
                 data-testid="link-footer-email"
               >
                 mkt@zaiah.com.mx
               </a>
               <a
                 href="https://wa.me/+5215551452047"
-                className="text-white/40 text-sm hover:text-[#CAAA57] transition-colors tracking-wide"
+                className="text-white/40 text-sm hover:text-[#c6a65a] transition-colors tracking-wide"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="link-footer-whatsapp"
@@ -79,7 +79,7 @@ export default function Footer() {
             © 2026 ZAIAH — Redefinimos el futuro urbano de las grandes ciudades.
           </p>
           <div className="flex items-center gap-3">
-            <span className="w-6 h-px bg-[#CAAA57]/40" />
+            <span className="w-6 h-px bg-[#c6a65a]/40" />
             <p className="text-white/15 eyebrow">Ciudad de México · MX</p>
           </div>
         </div>

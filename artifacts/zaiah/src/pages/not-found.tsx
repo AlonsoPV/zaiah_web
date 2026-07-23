@@ -55,10 +55,9 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-          style={{ fontFamily: "var(--app-font-serif)" }}
-          className="max-w-3xl text-[clamp(2.8rem,6vw,5.2rem)] font-normal leading-[1.05] tracking-[-.02em]"
+          className="max-w-3xl text-[clamp(2.8rem,6vw,5.2rem)] font-medium leading-[1.05] tracking-[-.02em]"
         >
-          Esta ruta no existe. <em className="italic">La ciudad, sí.</em>
+          Esta ruta no existe. <em className="font-serif font-normal italic">La ciudad, sí.</em>
         </motion.h1>
 
         <motion.p

@@ -47,10 +47,9 @@ export default function QuienesSomos() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-          style={{ fontFamily: "var(--app-font-serif)" }}
-          className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-normal leading-[1.05] tracking-[-.02em] text-white"
+          className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-medium leading-[1.05] tracking-[-.02em] text-white"
         >
-          No compramos edificios. <em className="italic">Creamos nodos urbanos transformados.</em>
+          No compramos edificios. <em className="font-serif font-normal italic">Creamos nodos urbanos transformados.</em>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 18 }}
