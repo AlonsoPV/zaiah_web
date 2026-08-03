@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/images/hero-bg.png";
+import heroImage from "@/assets/images/hero-day-5.webp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 

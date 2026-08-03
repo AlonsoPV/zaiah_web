@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
-import heroImage from "@/assets/images/hero-bg.png";
+import heroImage from "@/assets/images/hero-day-4.webp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Building2, Map, MapPin, ShieldCheck } from "lucide-react";
-import heroImage from "@/assets/images/hero-bg.png";
+import { ArrowRight, ArrowUpRight, Building2, Factory, LandPlot, Leaf, Map, MapPin, RefreshCw } from "lucide-react";
+import heroNight1 from "@/assets/images/hero-night-1.webp";
+import heroNight2 from "@/assets/images/hero-night-2.webp";
+import heroNight3 from "@/assets/images/hero-night-3.webp";
 import projectImage from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.jpeg";
-import projectThree from "@/assets/images/project-3.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -34,23 +35,40 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 }
 
 const heroSlides = [
-  { image: heroImage, caption: "Zona Z · Regeneración urbana estructurada · CDMX" },
-  { image: projectImage, caption: "San Pedro Patriotismo · San Pedro de los Pinos, CDMX" },
-  { image: projectTwo, caption: "Edison 58 · Tabacalera, CDMX" },
-  { image: projectThree, caption: "Activo regenerado · Nodo urbano ZAIAH" },
+  { image: heroNight1, caption: "Ciudad de México · Regeneración urbana estructurada" },
+  { image: heroNight2, caption: "Bellas Artes · Nodo urbano · CDMX" },
+  { image: heroNight3, caption: "Paseo de la Reforma · Destino patrimonial" },
 ];
 
 const principles = [
-  { icon: Map, number: "01", title: "Elegimos la zona", text: "Buscamos colonias bien conectadas, con vida propia y demanda real. Lugares donde vale la pena quedarse y construir futuro." },
-  { icon: Building2, number: "02", title: "Regeneramos el edificio", text: "Compramos edificios completos y los transformamos de manera integral, cuidando su identidad y su relación con la calle." },
-  { icon: ShieldCheck, number: "03", title: "Cuidamos el patrimonio", text: "Dejamos la operación en manos de un equipo profesional para que el activo funcione bien y conserve su valor en el tiempo." },
+  {
+    icon: Map,
+    number: "01",
+    title: "Zona Z",
+    text: "Elegimos la zona",
+  },
+  {
+    icon: Building2,
+    number: "02",
+    title: "Adquirimos y remodelamos los inmuebles",
+  },
+  {
+    icon: RefreshCw,
+    number: "03",
+    title: "Inversión Triple impacto",
+    points: [
+      "Ganas por regenerar tu ciudad",
+      "Impactas positivamente en el medio ambiente",
+      "Generas rentabilidad",
+    ],
+  },
 ];
 
 const pains = [
-  "La información comercial no siempre explica la estructura completa del activo.",
-  "La administración de rentas, mantenimiento e inquilinos exige tiempo y criterio operativo.",
-  "El valor de un inmueble también depende de su relación con la zona.",
-  "Una decisión patrimonial requiere información clara, respaldo jurídico y acompañamiento.",
+  { icon: LandPlot, text: "Escasez de tierra disponible." },
+  { icon: Leaf, text: "Pérdida de espacios naturales y biofilia." },
+  { icon: Factory, text: "Altos niveles de contaminación." },
+  { icon: Building2, text: "Hiperdensificación de las zonas urbanas." },
 ];
 
 const pillars = [
@@ -112,9 +130,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
-            className="mt-6 max-w-xl text-sm font-light leading-6 text-white/75 md:text-base"
+            className="mt-6 max-w-xl text-base font-light leading-7 text-white/75 md:text-lg"
           >
-            No compramos edificios para dejarlos aislados. Los convertimos en nodos que reactivan su entorno, fortalecen la economía local y crean patrimonio estructurado para quienes invierten en ellos.
+            Creamos nodos de regeneración, llamadas Zonas Z, regenerando edificios y sus entornos, activando economías locales y creando patrimonio para quienes invierten en ellos.
           </motion.p>
 
           <motion.div
@@ -124,13 +142,13 @@ export default function Home() {
             className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
           >
             <Link href="/contacto">
-              <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white">
-                Cuéntanos qué estás buscando <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+              <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#22c55e] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-white transition-colors hover:bg-[#16a34a]">
+                Quiero regenerar mi Ciudad <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
             <Link href="/portafolio">
               <span className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/45 bg-black/25 px-7 py-4 text-[11px] font-medium uppercase tracking-[.18em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10">
-                <MapPin size={14} /> Ver portafolio
+                <MapPin size={14} /> Proyecto activos
               </span>
             </Link>
           </motion.div>
@@ -170,10 +188,10 @@ export default function Home() {
       <section className="border-b border-black/10 bg-[#faf9f7] py-16 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
           <Reveal className="md:col-span-5">
-            <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55"><span className="h-px w-9 bg-[#c6a65a]" /> El reto patrimonial</p>
-            <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.035em] text-[#041f49]">Invertir en un activo no debería implicar operarlo.</h2>
+            <p className="mb-5 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#041f49]/55"><span className="h-px w-9 bg-[#c6a65a]" /> El reto patrimonial</p>
+            <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.035em] text-[#041f49]">Invertir de manera tradicional, ya no es la solución</h2>
             <p className="mt-6 max-w-md text-base font-light leading-7 text-[#1c1c1c]/65">
-              Pagos, mantenimiento, ocupación y administración requieren una estructura especializada. ZAIAH integra esas funciones para que cada activo opere con disciplina y continuidad.
+              El crecimiento desordenado ha provocado que nuestras ciudades enfrenten desafíos que impactan tanto el bienestar de las personas como el valor de las inversiones.
             </p>
           </Reveal>
           <motion.div
@@ -184,14 +202,19 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
           >
             <div className="border-t border-black/15">
-              {pains.map((pain, index) => (
+              {pains.map(({ icon: Icon, text }, index) => (
                 <motion.div
-                  key={pain}
+                  key={text}
                   variants={fadeUp}
-                  className="group grid grid-cols-[34px_1fr] gap-3 border-b border-black/10 py-5 transition-colors duration-300 hover:bg-[#041f49]/[.03]"
+                  className="group grid grid-cols-[40px_1fr] items-start gap-4 border-b border-black/10 py-5 transition-colors duration-300 hover:bg-[#041f49]/[.03]"
                 >
-                  <span className="text-[10px] font-bold tracking-widest text-[#c6a65a]">0{index + 1}</span>
-                  <p className="text-sm leading-6 text-[#1c1c1c]/70 transition-transform duration-300 group-hover:translate-x-1 md:text-base">{pain}</p>
+                  <span className="mt-0.5 flex h-9 w-9 items-center justify-center text-[#c6a65a] transition-colors duration-300 group-hover:text-[#041f49]">
+                    <Icon size={22} strokeWidth={1.5} aria-hidden />
+                  </span>
+                  <div>
+                    <span className="text-[10px] font-bold tracking-widest text-[#c6a65a]">0{index + 1}</span>
+                    <p className="mt-1 text-sm leading-6 text-[#1c1c1c]/70 transition-transform duration-300 group-hover:translate-x-1 md:text-base">{text}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -200,44 +223,78 @@ export default function Home() {
       </section>
 
       {/* ── DOS FORMAS DE EMPEZAR ───────────────────────────── */}
-      <section className="bg-[#f1efe9] py-16 md:py-24">
+      <section className="bg-[#f1efe9] py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-          <Reveal className="grid gap-8 md:grid-cols-12 md:items-end">
-            <div className="md:col-span-7">
-              <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]"><span className="h-px w-9 bg-[#c6a65a]" /> Proyectos actuales</p>
-              <h2 className="text-[clamp(2.3rem,4.2vw,4.2rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Dos proyectos. Dos maneras de construir patrimonio sin operarlo solo.</h2>
+          <Reveal className="grid gap-8 md:grid-cols-12 md:items-center">
+            <div className="md:col-span-6">
+              <p className="mb-4 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
+                <span className="h-px w-9 bg-[#c6a65a]" /> Proyectos actuales
+              </p>
+              <h2 className="max-w-xl text-[clamp(2rem,3.4vw,3.4rem)] leading-[1.05] tracking-[-.04em] text-[#041f49]">
+                ¿Cómo puedes hoy, invertir con propósito?
+              </h2>
+              <p className="mt-3 max-w-md text-lg font-light leading-7 text-[#041f49]/70">
+                Dos proyectos. Dos maneras de construir patrimonio.
+              </p>
             </div>
-            <p className="max-w-sm text-base font-light leading-7 text-black/55 md:col-span-4 md:col-start-9">Conoce el proyecto que conversa mejor con tus objetivos. Si todavía no lo tienes claro, lo revisamos contigo.</p>
+            <div className="border-t border-black/15 pt-6 md:col-span-5 md:col-start-8 md:border-l md:border-t-0 md:pl-8 md:pt-0 lg:pl-12">
+              <p className="max-w-sm text-sm font-light leading-7 text-black/55 md:text-base">
+                Conoce el proyecto que conversa mejor con tus objetivos. Si todavía no lo tienes claro, lo revisamos contigo.
+              </p>
+              <Link href="/portafolio">
+                <span className="mt-5 inline-flex cursor-pointer items-center gap-3 border-b border-[#041f49] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
+                  Ver todos los proyectos <ArrowRight size={14} />
+                </span>
+              </Link>
+            </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            <motion.article className="group relative min-h-[520px] overflow-hidden bg-[#041f49]" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={fadeUp}>
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            <motion.a
+              href="https://sanpedropatriotismo.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block min-h-[440px] overflow-hidden bg-[#041f49] md:min-h-[480px]"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: .2 }}
+              variants={fadeUp}
+            >
               <img src={projectImage} alt="San Pedro Patriotismo" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,31,73,.08)_20%,rgba(4,31,73,.95)_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-9">
+              <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
                 <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">San Pedro Patriotismo · Zaiah Health</p>
-                <h3 className="mt-4 text-3xl tracking-[-.03em] md:text-4xl">Una inversión que no te pide convertirte en administrador.</h3>
-                <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/65">Consultorios médicos a cinco minutos del WTC. Administración especializada y un sector con demanda constante.</p>
-                <a href="https://sanpedropatriotismo.com/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">Conocer Zaiah Health <ArrowUpRight size={14}/></a>
+                <h3 className="mt-3 text-2xl tracking-[-.03em] md:text-3xl">Regenera consultorios</h3>
+                <p className="mt-3 max-w-lg text-sm font-light leading-6 text-white/65">Invierte a 5 min del WTC y genera ingresos pasivos a través de la renta de consultorios de salud y bienestar.</p>
+                <span className="mt-5 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">Conocer Zaiah Health <ArrowUpRight size={14}/></span>
               </div>
-            </motion.article>
+            </motion.a>
 
-            <motion.article className="group relative min-h-[520px] overflow-hidden bg-[#1c1c1c]" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={fadeUp}>
+            <motion.a
+              href="https://edison58tabacalera.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block min-h-[440px] overflow-hidden bg-[#1c1c1c] md:min-h-[480px]"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: .2 }}
+              variants={fadeUp}
+            >
               <img src={projectTwo} alt="Edison 58 Tabacalera" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.08)_20%,rgba(0,0,0,.9)_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-9">
+              <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
                 <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">Edison 58 · Tabacalera</p>
-                <h3 className="mt-4 text-3xl tracking-[-.03em] md:text-4xl">Historia, diseño y una propiedad pensada para rentas cortas.</h3>
-                <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/65">Un edificio con identidad en el corazón de la ciudad, para quien busca un activo que no se parezca a todos los demás.</p>
-                <a href="https://edison58tabacalera.com/" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">Conocer Edison 58 <ArrowUpRight size={14}/></a>
+                <h3 className="mt-3 text-2xl tracking-[-.03em] md:text-3xl">Regenera departamentos en Tabacalera</h3>
+                <p className="mt-3 max-w-lg text-sm font-light leading-6 text-white/65">Invierte en el único proyecto activo de los arquitectos de Frontón México y genera rentas por estancias cortas.</p>
+                <span className="mt-5 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">Conocer Edison 58 <ArrowUpRight size={14}/></span>
               </div>
-            </motion.article>
+            </motion.a>
           </div>
 
-          <Reveal className="mt-12 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
-            <div className="bg-[#faf9f7] p-7"><p className="text-3xl text-[#041f49]">10 años</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Regenerando inmuebles en CDMX</p></div>
-            <div className="bg-[#faf9f7] p-7"><p className="text-3xl text-[#041f49]">+30</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Inversionistas que confían en el modelo</p></div>
-            <div className="bg-[#faf9f7] p-7"><p className="text-3xl text-[#041f49]">100%</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Operación y administración a nuestro cargo</p></div>
+          <Reveal className="mt-8 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
+            <div className="bg-[#faf9f7] p-6"><p className="text-2xl text-[#041f49] md:text-3xl">10 años</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Regenerando inmuebles en CDMX</p></div>
+            <div className="bg-[#faf9f7] p-6"><p className="text-2xl text-[#041f49] md:text-3xl">+30</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Inversionistas que confían en el modelo</p></div>
+            <div className="bg-[#faf9f7] p-6"><p className="text-2xl text-[#041f49] md:text-3xl">100%</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Operación y administración a nuestro cargo</p></div>
           </Reveal>
         </div>
       </section>
@@ -254,11 +311,11 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <motion.div variants={fadeUp} className="md:col-span-7">
-              <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-                <span className="h-px w-9 bg-[#c6a65a]" /> Nuestra narrativa central
+              <p className="mb-5 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
+                <span className="h-px w-9 bg-[#c6a65a]" /> Nuestro propósito
               </p>
               <h2 className="text-[clamp(2.4rem,4.4vw,4.6rem)] leading-[.98] tracking-[-.04em]">
-                No compramos edificios. <span className="text-[#c6a65a]">Creamos nodos urbanos transformados.</span>
+                No compramos edificios. <span className="text-[#c6a65a]">Creamos polígonos de regeneración. Renovamos ciudades.</span>
               </h2>
             </motion.div>
             <motion.p variants={fadeUp} className="self-end text-base font-light leading-7 text-white/60 md:col-span-4 md:col-start-9">
@@ -273,11 +330,11 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {principles.map(({ icon: Icon, number, title, text }) => (
+            {principles.map(({ icon: Icon, number, title, text, points }) => (
               <motion.div
                 key={title}
                 variants={fadeUp}
-                className="group relative overflow-hidden border-b border-r border-white/15 p-7 transition-colors duration-500 hover:bg-white/[.04] md:min-h-[260px] md:p-8"
+                className="group relative overflow-hidden border-b border-r border-white/15 p-7 transition-colors duration-500 hover:bg-white/[.04] md:min-h-[280px] md:p-8"
               >
                 <span aria-hidden className="pointer-events-none absolute -bottom-10 -right-4 select-none text-[9rem] font-bold leading-none text-white/[.03] transition-all duration-500 group-hover:text-[#c6a65a]/10">
                   {number}
@@ -288,7 +345,18 @@ export default function Home() {
                 </div>
                 <h3 className="mt-12 text-2xl tracking-[-.03em] md:text-3xl">{title}</h3>
                 <span className="mt-3 block h-px w-8 bg-[#c6a65a]/60 transition-all duration-500 group-hover:w-16" />
-                <p className="mt-3 max-w-xs text-sm font-light leading-6 text-white/55">{text}</p>
+                {points ? (
+                  <ul className="mt-4 space-y-2.5">
+                    {points.map((point) => (
+                      <li key={point} className="flex gap-2.5 text-sm font-light leading-6 text-white/55">
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#c6a65a]" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                ) : text ? (
+                  <p className="mt-3 max-w-xs text-sm font-light leading-6 text-white/55">{text}</p>
+                ) : null}
               </motion.div>
             ))}
           </motion.div>
@@ -337,7 +405,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.15 }}
           >
             <motion.div variants={fadeUp} className="md:col-span-5">
-              <p className="mb-5 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
+              <p className="mb-5 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
                 <span className="h-px w-9 bg-[#c6a65a]" /> Lo que hacemos diferente
               </p>
               <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.04em] text-[#041f49]">

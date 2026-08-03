@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import heroDay from "@/assets/images/hero-day-3.webp";
 import projectOne from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.jpeg";
 
@@ -17,7 +18,7 @@ const projects=[
 export default function Portafolio(){return <main className="bg-[#faf9f7] text-[#1c1c1c]">
  <section className="relative min-h-[92vh] overflow-hidden bg-[#0a1628] text-white">
    <motion.img
-     src={projectOne}
+     src={heroDay}
      alt="Portafolio de activos ZAIAH"
      className="absolute inset-0 h-full w-full object-cover"
      initial={{ scale: 1.08 }}

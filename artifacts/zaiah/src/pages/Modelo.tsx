@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
-import modelImage from "@/assets/images/project-3.png";
+import modelImage from "@/assets/images/hero-day-2.webp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
