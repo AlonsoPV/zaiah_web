@@ -1,0 +1,25 @@
+PAQUETE DE PUBLICACIÓN ZAIAH — BANAHOSTING
+
+Archivo a cargar:
+ZAIAH_BANAHOSTING.zip
+
+Instalación en cPanel:
+1. Abre Administrador de archivos.
+2. Entra a public_html del dominio o a la carpeta raíz del dominio adicional.
+3. Haz una copia de seguridad de los archivos actuales.
+4. Carga ZAIAH_BANAHOSTING.zip.
+5. Extrae el ZIP directamente dentro de esa carpeta.
+6. Confirma que index.html y .htaccess queden en la raíz, no dentro de otra carpeta.
+7. Activa el certificado SSL y prueba el dominio usando https://.
+
+Verificación:
+- La portada carga sin errores.
+- /quienes-somos, /modelo, /portafolio y /contacto abren directamente.
+- Las imágenes y tipografías cargan correctamente.
+- El sitio funciona en móvil.
+
+Importante:
+- El paquete está compilado para instalarse en la raíz de un dominio.
+- Si se instalará en una subcarpeta, se debe generar otra compilación con esa ruta base.
+- El paquete incluye un endpoint PHP en /api/contact para enviar el formulario a mkt@zaiah.com.mx y alpeva96@gmail.com.
+- Después de la carga, envía un formulario de prueba. La función mail() de PHP debe estar habilitada y mkt@zaiah.com.mx debe existir en el hosting.

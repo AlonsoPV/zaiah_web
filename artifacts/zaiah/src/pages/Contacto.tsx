@@ -71,7 +71,9 @@ export default function Contacto() {
 
   async function onSubmit(data: ContactForm) {
     try {
-      const res = await fetch(`${import.meta.env.BASE_URL}api/contact`, {
+      const contactEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT
+        ?? `${import.meta.env.BASE_URL}api/contact`;
+      const res = await fetch(contactEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

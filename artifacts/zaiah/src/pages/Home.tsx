@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, Building2, Factory, LandPlot, Leaf, Map, MapP
 import heroNight1 from "@/assets/images/hero-night-1.webp";
 import heroNight2 from "@/assets/images/hero-night-2.webp";
 import heroNight3 from "@/assets/images/hero-night-3.webp";
+import patrimonioImage from "@/assets/images/hero-day-1.webp";
 import projectImage from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.jpeg";
 
@@ -76,6 +77,38 @@ const pillars = [
   { number: "02", title: "Entendemos la zona", text: "Antes de actuar estudiamos cómo se vive, qué hace falta y qué demanda realmente el mercado." },
   { number: "03", title: "Pensamos más allá del proyecto", text: "Cada edificio se conecta con otros para mejorar la zona y hacer visible una transformación más amplia." },
 ];
+
+const methodNodes = [
+  {
+    id: "zona",
+    className: "left-[4%] top-[6%] text-left md:left-[8%] md:top-[10%]",
+    title: "ZONA ESTRATÉGICA",
+    eyebrow: "Analizamos",
+  },
+  {
+    id: "intervencion",
+    className: "left-1/2 top-[4%] -translate-x-1/2 text-center md:top-[6%]",
+    title: "INTERVENCIÓN DE VALOR",
+    subtitle: "Arquitectónica y Financiera",
+  },
+  {
+    id: "horizonte",
+    className: "right-[4%] top-[6%] text-right md:right-[8%] md:top-[10%]",
+    title: "HORIZONTE DE\nINVERSIÓN",
+    subtitle: "A LARGO PLAZO",
+  },
+  {
+    id: "juridico",
+    className: "bottom-[28%] right-[4%] text-right md:bottom-[32%] md:right-[10%]",
+    title: "ASEGURAMIENTO\nJURÍDICO",
+  },
+  {
+    id: "adquisicion",
+    className: "bottom-[26%] left-1/2 -translate-x-1/2 text-center md:bottom-[30%]",
+    title: "ADQUISICIÓN\nPROGRESIVA",
+  },
+];
+
 
 export default function Home() {
   const [slide, setSlide] = useState(0);
@@ -368,8 +401,8 @@ export default function Home() {
         <div className="grid min-h-[540px] md:grid-cols-2">
           <div className="relative min-h-[360px] overflow-hidden md:min-h-full">
             <motion.img
-              src={projectImage}
-              alt="Activo urbano regenerado por ZAIAH"
+              src={patrimonioImage}
+              alt="Ciudad de México · Zona Z"
               className="absolute inset-0 h-full w-full object-cover"
               initial={{ scale: 1.15 }}
               whileInView={{ scale: 1 }}
@@ -382,8 +415,8 @@ export default function Home() {
           <div className="flex items-center px-7 py-14 md:px-14 md:py-16 lg:px-20">
             <Reveal>
               <p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">Patrimonio con propósito</p>
-              <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Patrimonio con estructura, operación y trazabilidad.</h2>
-              <p className="mt-6 max-w-lg text-base font-light leading-7 text-[#1c1c1c]/65">No vendemos metros. Creamos patrimonio estructurado. Tú sabes dónde está tu patrimonio; nosotros nos ocupamos de que funcione.</p>
+              <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Genera Patrimonio con Certeza jurídica</h2>
+              <p className="mt-6 max-w-lg text-base font-light leading-7 text-[#1c1c1c]/65">No son acciones, títulos o derechos, obtienes escrituras en todos nuestros proyectos.</p>
               <div className="mt-7 grid grid-cols-2 gap-px bg-black/15">
                 <div className="bg-[#d9d6cf] py-4 pr-5"><p className="text-2xl text-[#041f49]">30–65</p><p className="mt-1 text-[9px] uppercase tracking-[.18em] text-black/45">Perfil patrimonial</p></div>
                 <div className="bg-[#d9d6cf] py-4 pl-5"><p className="text-2xl text-[#041f49]">CDMX</p><p className="mt-1 text-[9px] uppercase tracking-[.18em] text-black/45">Primera Zona Z</p></div>
@@ -406,7 +439,7 @@ export default function Home() {
           >
             <motion.div variants={fadeUp} className="md:col-span-5">
               <p className="mb-5 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-                <span className="h-px w-9 bg-[#c6a65a]" /> Lo que hacemos diferente
+                <span className="h-px w-9 bg-[#c6a65a]" /> Nuestro método de regeneración:
               </p>
               <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.04em] text-[#041f49]">
                 Nos involucramos en todo el proceso porque así se cuida mejor cada decisión.
@@ -439,13 +472,88 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── MÉTODO ZAIAH DIAGRAMA ─────────────────────────────── */}
+      <section className="relative overflow-hidden" data-testid="section-metodo-diagrama">
+        <img
+          src={heroNight1}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/65" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.55)_0%,rgba(0,0,0,.4)_50%,rgba(0,0,0,.7)_100%)]" />
+
+        <div className="relative z-10 mx-auto min-h-[560px] max-w-6xl px-4 pb-16 pt-10 md:min-h-[680px] md:px-8 md:pb-24 md:pt-14">
+          <p
+            aria-hidden
+            className="pointer-events-none absolute left-[2%] top-[42%] max-w-[9ch] select-none text-[clamp(2.8rem,7vw,5.5rem)] font-bold leading-[.9] tracking-[-.04em] text-white/[.06] md:left-[4%] md:top-[38%]"
+          >
+            MÉTODO DE TRANSFORMACIÓN
+          </p>
+
+          <svg
+            aria-hidden
+            className="pointer-events-none absolute inset-0 hidden h-full w-full md:block"
+            viewBox="0 0 1000 640"
+            fill="none"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <path d="M420 300 H220 V130" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
+            <path d="M500 280 V120" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
+            <path d="M580 300 H780 V130" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
+            <path d="M580 340 H780 V430" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
+            <path d="M500 360 V450" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
+          </svg>
+
+          <motion.div
+            className="absolute left-1/2 top-[48%] z-10 hidden -translate-x-1/2 -translate-y-1/2 md:block"
+            initial={{ opacity: 0, scale: 0.94 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.9, ease: EASE }}
+          >
+            <p className="q-title text-[clamp(2.8rem,6vw,4.8rem)] tracking-[.36em] text-[#b89a5c]">
+              ZAIAH
+            </p>
+          </motion.div>
+
+          {methodNodes.map(({ id, className, title, eyebrow, subtitle }, index) => (
+            <motion.div
+              key={id}
+              className={`absolute z-10 hidden text-[#c6a65a] md:block ${className}`}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.08 * index, ease: EASE }}
+            >
+              {eyebrow && <span className="mb-1 block text-[10px] font-light uppercase tracking-[.14em]">{eyebrow}</span>}
+              <span className="block whitespace-pre-line text-xs font-semibold uppercase leading-5 tracking-[.14em] md:text-sm md:leading-6">
+                {title}
+              </span>
+              {subtitle && <span className="mt-1 block text-[10px] font-light tracking-[.08em] md:text-xs">{subtitle}</span>}
+            </motion.div>
+          ))}
+
+          <div className="relative z-10 mt-24 space-y-5 px-2 md:hidden">
+            <p className="q-title mb-8 text-center text-4xl tracking-[.28em] text-[#b89a5c]">ZAIAH</p>
+            {methodNodes.map(({ id, title, eyebrow, subtitle }) => (
+              <div key={id} className="border-l border-[#c6a65a]/50 pl-4 text-[#c6a65a]">
+                {eyebrow && <span className="mb-0.5 block text-[10px] font-light uppercase tracking-[.14em]">{eyebrow}</span>}
+                <span className="block whitespace-pre-line text-sm font-semibold uppercase leading-5 tracking-[.12em]">{title}</span>
+                {subtitle && <span className="mt-1 block text-[11px] font-light tracking-[.06em]">{subtitle}</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA FINAL ────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-t border-black/10 bg-[#faf9f7] py-16 text-[#041f49] md:py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
           <Reveal className="md:col-span-8">
-            <p className="mb-5 text-[10px] font-bold uppercase tracking-[.32em] text-[#041f49]/60">Una conversación antes que una decisión</p>
-            <h2 className="text-[clamp(2.4rem,4.6vw,4.6rem)] leading-[1] tracking-[-.04em]">¿Qué quieres que tu patrimonio haga por ti?</h2>
-            <p className="mt-5 max-w-xl text-base font-light leading-7 text-[#041f49]/70">Generar ingresos, diversificar o construir patrimonio dentro de una estrategia urbana. Conversemos para revisar objetivos, estructura y compatibilidad con el modelo.</p>
+            <h2 className="text-[clamp(2.4rem,4.6vw,4.6rem)] leading-[1] tracking-[-.04em]">Invierte y regenera nuestra ciudad…</h2>
+            <p className="mt-5 max-w-xl text-base font-light leading-7 text-[#041f49]/70">Genera ingresos pasivos en cualquiera de nuestros edificios, diversifica.</p>
+            <p className="mt-3 max-w-xl text-base font-light leading-7 text-[#041f49]/70">Agenda una reunión virtual donde analizaremos tu perfil inversionista y haremos la elección del mejor proyecto.</p>
           </Reveal>
           <Reveal className="md:col-span-4 md:justify-self-end">
             <Link href="/contacto">
@@ -454,7 +562,7 @@ export default function Home() {
                 transition={{ duration: 0.3, ease: EASE }}
                 className="group flex h-40 w-40 cursor-pointer flex-col items-center justify-center gap-2 rounded-full bg-[#041f49] text-center text-white transition-colors hover:bg-[#1c1c1c] md:h-48 md:w-48"
               >
-                <span className="px-6 text-[10px] font-bold uppercase leading-4 tracking-[.18em]">Agendar una cita</span>
+                <span className="px-6 text-[10px] font-bold uppercase leading-4 tracking-[.18em]">Agenda una cita</span>
                 <ArrowUpRight size={20} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </motion.span>
             </Link>
