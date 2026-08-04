@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Building2, Factory, LandPlot, Leaf, Map, MapPin, RefreshCw } from "lucide-react";
-import heroNight1 from "@/assets/images/hero-night-1.webp";
-import heroNight2 from "@/assets/images/hero-night-2.webp";
-import heroNight3 from "@/assets/images/hero-night-3.webp";
+import heroDay1 from "@/assets/images/hero-day-1.webp";
+import heroDay2 from "@/assets/images/hero-day-2.webp";
+import heroDay3 from "@/assets/images/hero-day-3.webp";
 import patrimonioImage from "@/assets/images/hero-day-1.webp";
 import projectImage from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.jpeg";
+import zaiahLogoBeige from "@/assets/images/zaiah-logo-beige.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -36,9 +37,9 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 }
 
 const heroSlides = [
-  { image: heroNight1, caption: "Ciudad de México · Regeneración urbana estructurada" },
-  { image: heroNight2, caption: "Bellas Artes · Nodo urbano · CDMX" },
-  { image: heroNight3, caption: "Paseo de la Reforma · Destino patrimonial" },
+  { image: heroDay1, caption: "Bellas Artes · Regeneración urbana estructurada" },
+  { image: heroDay2, caption: "Ángel de la Independencia · CDMX" },
+  { image: heroDay3, caption: "Paseo de la Reforma · Destino patrimonial" },
 ];
 
 const principles = [
@@ -70,12 +71,6 @@ const pains = [
   { icon: Leaf, text: "Pérdida de espacios naturales y biofilia." },
   { icon: Factory, text: "Altos niveles de contaminación." },
   { icon: Building2, text: "Hiperdensificación de las zonas urbanas." },
-];
-
-const pillars = [
-  { number: "01", title: "Vemos el edificio completo", text: "Así podemos intervenir de fondo, tomar mejores decisiones y hacernos responsables del resultado." },
-  { number: "02", title: "Entendemos la zona", text: "Antes de actuar estudiamos cómo se vive, qué hace falta y qué demanda realmente el mercado." },
-  { number: "03", title: "Pensamos más allá del proyecto", text: "Cada edificio se conecta con otros para mejorar la zona y hacer visible una transformación más amplia." },
 ];
 
 const methodNodes = [
@@ -129,15 +124,18 @@ export default function Home() {
             key={heroSlides[slide].image}
             src={heroSlides[slide].image}
             alt={heroSlides[slide].caption}
-            className="absolute inset-0 h-full w-full object-cover"
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1 }}
+            decoding="async"
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.4, ease: EASE }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            style={{ imageRendering: "auto" }}
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-black/35" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.45)_0%,rgba(0,0,0,.15)_38%,rgba(0,0,0,.45)_100%)]" />
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.4)_0%,rgba(0,0,0,.12)_40%,rgba(0,0,0,.42)_100%)]" />
 
         <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 pb-28 pt-28 text-center md:px-12">
           <motion.p
@@ -427,66 +425,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── POR QUÉ ZAIAH ────────────────────────────────────── */}
-      <section className="bg-[#faf9f7] py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-          <motion.div
-            className="grid gap-10 md:grid-cols-12 md:gap-8"
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-          >
-            <motion.div variants={fadeUp} className="md:col-span-5">
-              <p className="mb-5 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-                <span className="h-px w-9 bg-[#c6a65a]" /> Nuestro método de regeneración:
-              </p>
-              <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1.02] tracking-[-.04em] text-[#041f49]">
-                Nos involucramos en todo el proceso porque así se cuida mejor cada decisión.
-              </h2>
-              <p className="mt-6 max-w-md text-base font-light leading-7 text-black/55">
-                Participamos desde la selección de la zona hasta la operación diaria. La responsabilidad permanece dentro de una misma estructura.
-              </p>
-            </motion.div>
-            <div className="border-t border-black/15 md:col-span-7 md:border-t-0">
-              {pillars.map(({ number, title, text }, index) => (
-                <motion.div
-                  key={title}
-                  variants={fadeUp}
-                  className={`group relative cursor-default border-b border-black/10 px-1 py-7 transition-colors duration-500 hover:bg-[#041f49] md:px-8 ${index === 0 ? "md:border-t md:border-t-black/15" : ""}`}
-                >
-                  <div className="flex items-baseline justify-between gap-6">
-                    <div className="flex items-baseline gap-5">
-                      <span className="text-[10px] font-bold tracking-[.25em] text-[#c6a65a]">{number}</span>
-                      <h3 className="text-2xl tracking-[-.03em] text-[#041f49] transition-colors duration-500 group-hover:text-white md:text-3xl">{title}</h3>
-                    </div>
-                    <span className="shrink-0 text-[#c6a65a] opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:opacity-100">
-                      <ArrowUpRight size={22} strokeWidth={1.5} />
-                    </span>
-                  </div>
-                  <p className="mt-3 max-w-lg pl-0 text-sm font-light leading-6 text-black/55 transition-colors duration-500 group-hover:text-white/65 md:pl-10">{text}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ── MÉTODO ZAIAH DIAGRAMA ─────────────────────────────── */}
-      <section className="relative overflow-hidden" data-testid="section-metodo-diagrama">
-        <img
-          src={heroNight1}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black/65" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.55)_0%,rgba(0,0,0,.4)_50%,rgba(0,0,0,.7)_100%)]" />
-
-        <div className="relative z-10 mx-auto min-h-[560px] max-w-6xl px-4 pb-16 pt-10 md:min-h-[680px] md:px-8 md:pb-24 md:pt-14">
+      <section className="relative overflow-hidden bg-[#eceae6]" data-testid="section-metodo-diagrama">
+        <div className="relative z-10 mx-auto min-h-[520px] max-w-6xl px-4 pb-6 pt-10 md:min-h-[580px] md:px-8 md:pt-14">
           <p
             aria-hidden
-            className="pointer-events-none absolute left-[2%] top-[42%] max-w-[9ch] select-none text-[clamp(2.8rem,7vw,5.5rem)] font-bold leading-[.9] tracking-[-.04em] text-white/[.06] md:left-[4%] md:top-[38%]"
+            className="pointer-events-none absolute bottom-[18%] left-[3%] max-w-[10ch] select-none text-[clamp(2.4rem,6vw,4.5rem)] font-light leading-[.92] tracking-[-.02em] text-black/[.07] md:bottom-[14%] md:left-[5%]"
           >
             MÉTODO DE TRANSFORMACIÓN
           </p>
@@ -494,27 +438,29 @@ export default function Home() {
           <svg
             aria-hidden
             className="pointer-events-none absolute inset-0 hidden h-full w-full md:block"
-            viewBox="0 0 1000 640"
+            viewBox="0 0 1000 580"
             fill="none"
             preserveAspectRatio="xMidYMid meet"
           >
-            <path d="M420 300 H220 V130" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
-            <path d="M500 280 V120" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
-            <path d="M580 300 H780 V130" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
-            <path d="M580 340 H780 V430" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
-            <path d="M500 360 V450" stroke="rgba(255,255,255,.28)" strokeWidth="1" />
+            <path d="M420 275 H210 V115" stroke="rgba(0,0,0,.2)" strokeWidth="1" />
+            <path d="M500 255 V105" stroke="rgba(0,0,0,.2)" strokeWidth="1" />
+            <path d="M580 275 H790 V115" stroke="rgba(0,0,0,.2)" strokeWidth="1" />
+            <path d="M580 315 H790 V400" stroke="rgba(0,0,0,.2)" strokeWidth="1" />
+            <path d="M500 335 V420" stroke="rgba(0,0,0,.2)" strokeWidth="1" />
           </svg>
 
           <motion.div
-            className="absolute left-1/2 top-[48%] z-10 hidden -translate-x-1/2 -translate-y-1/2 md:block"
-            initial={{ opacity: 0, scale: 0.94 }}
+            className="absolute left-1/2 top-[46%] z-10 hidden -translate-x-1/2 -translate-y-1/2 md:block"
+            initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.9, ease: EASE }}
           >
-            <p className="q-title text-[clamp(2.8rem,6vw,4.8rem)] tracking-[.36em] text-[#b89a5c]">
-              ZAIAH
-            </p>
+            <img
+              src={zaiahLogoBeige}
+              alt="ZAIAH"
+              className="h-auto w-[min(52vw,420px)] object-contain"
+            />
           </motion.div>
 
           {methodNodes.map(({ id, className, title, eyebrow, subtitle }, index) => (
@@ -534,8 +480,12 @@ export default function Home() {
             </motion.div>
           ))}
 
-          <div className="relative z-10 mt-24 space-y-5 px-2 md:hidden">
-            <p className="q-title mb-8 text-center text-4xl tracking-[.28em] text-[#b89a5c]">ZAIAH</p>
+          <div className="relative z-10 mt-16 space-y-5 px-2 pb-8 md:hidden">
+            <img
+              src={zaiahLogoBeige}
+              alt="ZAIAH"
+              className="mx-auto mb-8 h-auto w-[min(70vw,280px)] object-contain"
+            />
             {methodNodes.map(({ id, title, eyebrow, subtitle }) => (
               <div key={id} className="border-l border-[#c6a65a]/50 pl-4 text-[#c6a65a]">
                 {eyebrow && <span className="mb-0.5 block text-[10px] font-light uppercase tracking-[.14em]">{eyebrow}</span>}
@@ -544,6 +494,17 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="relative h-40 overflow-hidden md:h-52 lg:h-60">
+          <img
+            src={heroDay2}
+            alt=""
+            aria-hidden
+            decoding="async"
+            className="h-full w-full object-cover object-[center_45%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-[#eceae6]/15 to-[#eceae6]" />
         </div>
       </section>
 
