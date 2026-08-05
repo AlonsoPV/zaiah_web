@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight, Building2, Factory, LandPlot, Leaf, Map, MapP
 import heroDay1 from "@/assets/images/hero-day-1.webp";
 import heroDay2 from "@/assets/images/hero-day-2.webp";
 import heroDay3 from "@/assets/images/hero-day-3.webp";
-import patrimonioImage from "@/assets/images/hero-day-1.webp";
+import patrimonioImage from "@/assets/images/zaiah-zonas-z.webp";
 import projectImage from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.jpeg";
 import zaiahLogoBeige from "@/assets/images/zaiah-logo-beige.png";
@@ -396,32 +396,54 @@ export default function Home() {
 
       {/* ── PATRIMONIO ───────────────────────────────────────── */}
       <section className="overflow-hidden bg-[#d9d6cf]">
-        <div className="grid min-h-[540px] md:grid-cols-2">
-          <div className="relative min-h-[360px] overflow-hidden md:min-h-full">
-            <motion.img
-              src={patrimonioImage}
-              alt="Ciudad de México · Zona Z"
-              className="absolute inset-0 h-full w-full object-cover"
-              initial={{ scale: 1.15 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 1.6, ease: EASE }}
-            />
-            <div className="absolute inset-0 bg-[#041f49]/15" />
-            <div className="absolute bottom-7 left-7 bg-[#faf9f7] px-5 py-4 text-[9px] font-bold uppercase tracking-[.22em] text-[#041f49]">Edificio regenerado · Nodo urbano</div>
-          </div>
-          <div className="flex items-center px-7 py-14 md:px-14 md:py-16 lg:px-20">
-            <Reveal>
-              <p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">Patrimonio con propósito</p>
-              <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">Genera Patrimonio con Certeza jurídica</h2>
-              <p className="mt-6 max-w-lg text-base font-light leading-7 text-[#1c1c1c]/65">No son acciones, títulos o derechos, obtienes escrituras en todos nuestros proyectos.</p>
-              <div className="mt-7 grid grid-cols-2 gap-px bg-black/15">
-                <div className="bg-[#d9d6cf] py-4 pr-5"><p className="text-2xl text-[#041f49]">30–65</p><p className="mt-1 text-[9px] uppercase tracking-[.18em] text-black/45">Perfil patrimonial</p></div>
-                <div className="bg-[#d9d6cf] py-4 pl-5"><p className="text-2xl text-[#041f49]">CDMX</p><p className="mt-1 text-[9px] uppercase tracking-[.18em] text-black/45">Primera Zona Z</p></div>
-              </div>
-              <Link href="/modelo"><span className="mt-7 inline-flex cursor-pointer items-center gap-3 border-b border-[#041f49] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">Conocer el modelo <ArrowRight size={14} /></span></Link>
-            </Reveal>
-          </div>
+        <div className="mx-auto max-w-[1200px]">
+          <img
+            src={patrimonioImage}
+            alt="Zonas Z · ZAIAH"
+            width={1200}
+            height={532}
+            decoding="async"
+            className="block h-auto w-full"
+            style={{ imageRendering: "auto" }}
+          />
+        </div>
+
+        <div className="mx-auto max-w-7xl px-6 pb-14 pt-10 md:px-12 md:pb-20 md:pt-12 lg:px-16">
+          <Reveal className="grid gap-10 md:grid-cols-12 md:gap-8 md:items-end">
+            <div className="md:col-span-7">
+              <p className="mb-5 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">
+                <span className="h-px w-9 bg-[#c6a65a]" /> Zonas Z · Patrimonio con propósito
+              </p>
+              <h2 className="max-w-2xl text-[clamp(2.2rem,4vw,3.8rem)] leading-[1.02] tracking-[-.04em] text-[#041f49]">
+                Genera Patrimonio con Certeza jurídica
+              </h2>
+            </div>
+            <div className="md:col-span-4 md:col-start-9">
+              <p className="text-base font-light leading-7 text-[#1c1c1c]/65">
+                No son acciones, títulos o derechos, obtienes escrituras en todos nuestros proyectos.
+              </p>
+              <Link href="/modelo">
+                <span className="mt-6 inline-flex cursor-pointer items-center gap-3 border-b border-[#041f49] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
+                  Conocer el modelo <ArrowRight size={14} />
+                </span>
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal className="mt-10 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
+            <div className="bg-[#d9d6cf] px-6 py-5">
+              <p className="text-2xl text-[#041f49] md:text-3xl">30–65</p>
+              <p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Perfil patrimonial</p>
+            </div>
+            <div className="bg-[#d9d6cf] px-6 py-5">
+              <p className="text-2xl text-[#041f49] md:text-3xl">CDMX</p>
+              <p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Primera Zona Z</p>
+            </div>
+            <div className="bg-[#d9d6cf] px-6 py-5">
+              <p className="text-2xl text-[#041f49] md:text-3xl">100%</p>
+              <p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Con escrituras</p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
