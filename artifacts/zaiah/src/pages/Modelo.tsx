@@ -44,7 +44,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
         transition={{ duration: 1, ease: EASE, delay: 0.22 }}
         className="max-w-5xl text-[clamp(2.9rem,6.5vw,5.8rem)] font-medium leading-[1.05] tracking-[-.02em]"
       >
-        Construimos Zonas Z mediante la compra progresiva <em className="font-serif font-normal italic">de edificios completos.</em>
+        Construimos Zonas Zaiah mediante la compra progresiva <em className="font-serif font-normal italic">de edificios completos.</em>
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 18 }}
@@ -101,7 +101,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
     </div>
   </section>
 
-  <section className="grid bg-[#d9d6cf] md:grid-cols-2"><div className="flex items-center px-7 py-14 md:px-14 md:py-16 lg:px-20"><Reveal><p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">Qué es una Zona Z</p><h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">No es un proyecto. Es un ecosistema territorial de transformación urbana.</h2><p className="mt-6 text-base font-light leading-7 text-black/60">Cada edificio regenerado es un nodo dentro de esa zona. Al concentrarlos en un radio caminable, mejora la experiencia de la calle, se hace más eficiente la operación y se fortalece el valor del conjunto.</p></Reveal></div><div className="relative min-h-[380px]"><img src={modelImage} alt="Representación de una Zona Z" className="absolute inset-0 h-full w-full object-cover grayscale"/></div></section>
+  <section className="grid bg-[#d9d6cf] md:grid-cols-2"><div className="flex items-center px-7 py-14 md:px-14 md:py-16 lg:px-20"><Reveal><p className="mb-5 text-[10px] font-bold uppercase tracking-[.3em] text-[#041f49]/55">Qué es una Zona Zaiah</p><h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-[1] tracking-[-.04em] text-[#041f49]">No es un proyecto. Es un ecosistema territorial de transformación urbana.</h2><p className="mt-6 text-base font-light leading-7 text-black/60">Cada edificio regenerado es un nodo dentro de esa zona. Al concentrarlos en un radio caminable, mejora la experiencia de la calle, se hace más eficiente la operación y se fortalece el valor del conjunto.</p></Reveal></div><div className="relative min-h-[380px]"><img src={modelImage} alt="Representación de una Zona Zaiah" className="absolute inset-0 h-full w-full object-cover grayscale"/></div></section>
 
   <section className="bg-[#041f49] py-16 text-white md:py-20">
     <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
@@ -111,7 +111,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
           </p>
           <h2 className="text-[clamp(2.2rem,4vw,3.8rem)] leading-[1.02] tracking-[-.04em]">Cada decisión tiene una razón.</h2>
           <p className="mt-6 max-w-sm text-sm font-light leading-6 text-white/55 md:text-base md:leading-7">
-            Antes de integrar un edificio a una Zona Z, necesitamos responder con claridad cuatro preguntas.
+            Antes de integrar un edificio a una Zona Zaiah, necesitamos responder con claridad cuatro preguntas.
           </p>
         </Reveal>
       <div className="grid border-l border-t border-white/15 sm:grid-cols-2 md:col-span-7">
