@@ -132,7 +132,7 @@ export default function Home() {
   return (
     <main className="bg-[#faf9f7] text-[#1c1c1c]">
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-screen overflow-hidden bg-[#0a1628]" data-testid="section-hero">
+      <section className="relative h-svh max-h-dvh min-h-[100svh] overflow-hidden bg-[#0a1628]" data-testid="section-hero">
         <img
           src={HERO_FALLBACK}
           alt=""
@@ -159,12 +159,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.4)_0%,rgba(0,0,0,.12)_40%,rgba(0,0,0,.42)_100%)]" />
 
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 pb-28 pt-28 text-center md:px-12">
+        <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-6 pb-10 pt-24 text-center md:px-12">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
-            className="mb-6 text-[11px] font-bold uppercase tracking-[.42em] text-white"
+            className="mb-4 text-[11px] font-bold uppercase tracking-[.42em] text-white md:mb-6"
           >
             ZAIAH
           </motion.p>
@@ -173,7 +173,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-            className="text-[clamp(3.4rem,8vw,6.5rem)] font-medium leading-[1.02] tracking-[-.02em] text-white"
+            className="max-w-5xl text-[clamp(2.2rem,6.2vw,5.6rem)] font-medium leading-[1.05] tracking-[-.02em] text-white"
           >
             REDEFINIMOS EL FUTURO URBANO{" "}
             <em className="font-serif font-normal italic text-white">DE LAS GRANDES CIUDADES</em>
@@ -183,7 +183,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
-            className="mt-6 max-w-xl text-base font-light leading-7 text-white/75 md:text-lg"
+            className="mt-4 max-w-xl text-sm font-light leading-6 text-white/75 md:mt-6 md:text-base md:leading-7 lg:text-lg"
           >
             Creamos nodos de regeneración, llamadas Zonas Zaiah, regenerando edificios y sus entornos, activando economías locales y creando patrimonio para quienes invierten en ellos.
           </motion.p>
@@ -192,7 +192,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-            className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
+            className="mt-7 flex flex-col items-center gap-3 sm:mt-9 sm:flex-row sm:gap-4"
           >
             <Link href="/contacto">
               <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#22c55e] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-white transition-colors hover:bg-[#16a34a]">
@@ -294,25 +294,28 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="relative mt-12 overflow-hidden"
+            className="relative mt-8 -mx-6 overflow-hidden sm:mt-10 md:mx-0 md:mt-12 md:rounded-sm"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.9, ease: EASE }}
           >
-            <img
-              src={zonasZaiahImage}
-              alt="Zonas Zaiah · Mapa de regeneración urbana"
-              width={1672}
-              height={941}
-              decoding="async"
-              className="block h-auto w-full"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#041f49_0%,transparent_12%,transparent_88%,#041f49_100%)]" />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#041f49_0%,transparent_18%,transparent_82%,rgba(4,31,73,.55)_100%)]" />
-            <div className="absolute bottom-5 left-5 md:bottom-7 md:left-7">
-              <p className="text-[10px] font-bold uppercase tracking-[.28em] text-[#c6a65a]">Zonas Zaiah</p>
-              <p className="mt-1 text-sm font-light text-white/70">Polígonos de regeneración urbana</p>
+            <div className="relative aspect-[16/11] w-full sm:aspect-[16/10] md:aspect-[16/9] lg:aspect-[16/9]">
+              <img
+                src={zonasZaiahImage}
+                alt="Zonas Zaiah · Mapa de regeneración urbana"
+                width={1672}
+                height={941}
+                decoding="async"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1100px"
+                className="absolute inset-0 h-full w-full object-cover object-[center_42%] md:object-center"
+              />
+            </div>
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#041f49_0%,transparent_8%,transparent_92%,#041f49_100%)] md:bg-[linear-gradient(90deg,#041f49_0%,transparent_12%,transparent_88%,#041f49_100%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(4,31,73,.35)_0%,transparent_22%,transparent_72%,rgba(4,31,73,.7)_100%)]" />
+            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 md:p-7">
+              <p className="text-[9px] font-bold uppercase tracking-[.28em] text-[#c6a65a] sm:text-[10px]">Zonas Zaiah</p>
+              <p className="mt-1 max-w-xs text-xs font-light text-white/75 sm:text-sm">Polígonos de regeneración urbana</p>
             </div>
           </motion.div>
 
