@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
-import { AnimatePresence, motion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Building2, CloudFog, DraftingCompass, Factory, Layers, Leaf, MapPin, MapPinned, Mountain, Orbit, Trees } from "lucide-react";
 import heroDay1 from "@/assets/images/hero-day-1.webp";
 import heroDay2 from "@/assets/images/hero-day-2.webp";
-import heroDay3 from "@/assets/images/hero-day-3.webp";
 import projectImage from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.jpeg";
 import zaiahLogoBeige from "@/assets/images/zaiah-logo-beige.png";
 import zonasZaiahImage from "@/assets/images/zonas-zaiah.webp";
+
+const HERO_VIDEO = `${import.meta.env.BASE_URL}videos/zaiah-cdmx.mp4`;
+const HERO_FALLBACK = heroDay1;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -35,12 +37,6 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
     </motion.div>
   );
 }
-
-const heroSlides = [
-  { image: heroDay1, caption: "Bellas Artes · Regeneración urbana estructurada" },
-  { image: heroDay2, caption: "Ángel de la Independencia · CDMX" },
-  { image: heroDay3, caption: "Paseo de la Reforma · Destino patrimonial" },
-];
 
 const principles = [
   {
@@ -116,34 +112,50 @@ const methodNodes = [
 
 
 export default function Home() {
-  const [slide, setSlide] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
-    const id = window.setInterval(() => {
-      setSlide((current) => (current + 1) % heroSlides.length);
-    }, 6000);
-    return () => window.clearInterval(id);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      setVideoFailed(true);
+      return;
+    }
+    const video = videoRef.current;
+    if (!video) return;
+    const play = video.play();
+    if (play && typeof play.catch === "function") {
+      play.catch(() => setVideoFailed(true));
+    }
   }, []);
 
   return (
     <main className="bg-[#faf9f7] text-[#1c1c1c]">
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative min-h-screen overflow-hidden bg-[#0a1628]" data-testid="section-hero">
-        <AnimatePresence mode="sync">
-          <motion.img
-            key={heroSlides[slide].image}
-            src={heroSlides[slide].image}
-            alt={heroSlides[slide].caption}
-            decoding="async"
-            fetchPriority="high"
+        <img
+          src={HERO_FALLBACK}
+          alt=""
+          aria-hidden
+          decoding="async"
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        {!videoFailed && (
+          <video
+            ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover object-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            style={{ imageRendering: "auto" }}
-          />
-        </AnimatePresence>
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={HERO_FALLBACK}
+            onError={() => setVideoFailed(true)}
+          >
+            <source src={HERO_VIDEO} type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.4)_0%,rgba(0,0,0,.12)_40%,rgba(0,0,0,.42)_100%)]" />
 
@@ -193,35 +205,6 @@ export default function Home() {
               </span>
             </Link>
           </motion.div>
-        </div>
-
-        {/* Bottom carousel chrome */}
-        <div className="absolute inset-x-0 bottom-0 z-10 pb-8 pt-16">
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6">
-            <div className="flex items-center gap-2">
-              {heroSlides.map((item, index) => (
-                <button
-                  key={item.caption}
-                  type="button"
-                  aria-label={`Ir a slide ${index + 1}`}
-                  onClick={() => setSlide(index)}
-                  className={`h-[2px] transition-all duration-500 ${index === slide ? "w-10 bg-white" : "w-6 bg-white/35 hover:bg-white/60"}`}
-                />
-              ))}
-            </div>
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={heroSlides[slide].caption}
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.45 }}
-                className="text-center text-[11px] font-light tracking-[.04em] text-white/80 md:text-sm"
-              >
-                {heroSlides[slide].caption}
-              </motion.p>
-            </AnimatePresence>
-          </div>
         </div>
       </section>
 
