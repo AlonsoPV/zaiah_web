@@ -2,15 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Building2, CloudFog, DraftingCompass, Factory, Layers, Leaf, MapPin, MapPinned, Mountain, Orbit, Trees } from "lucide-react";
-import heroDay1 from "@/assets/images/hero-day-1.webp";
-import heroDay2 from "@/assets/images/hero-day-2.webp";
+import heroFallback from "@/assets/images/hero-fallback.jpeg";
 import projectImage from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.jpeg";
 import zaiahLogoBeige from "@/assets/images/zaiah-logo-beige.png";
 import zonasZaiahImage from "@/assets/images/zonas-zaiah.webp";
 
 const HERO_VIDEO = `${import.meta.env.BASE_URL}videos/zaiah-cdmx.mp4`;
-const HERO_FALLBACK = heroDay1;
+const HERO_FALLBACK = heroFallback;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -570,17 +569,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="relative h-24 overflow-hidden md:h-32 lg:h-36">
-          <img
-            src={heroDay2}
-            alt=""
-            aria-hidden
-            decoding="async"
-            className="h-full w-full object-cover object-[center_45%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-[#eceae6]/15 to-[#eceae6]" />
         </div>
       </section>
 
