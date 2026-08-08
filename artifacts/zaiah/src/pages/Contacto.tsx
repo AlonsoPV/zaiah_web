@@ -106,7 +106,7 @@ export default function Contacto() {
 
       {/* HERO — homologado con inicio */}
       <section
-        className="relative min-h-[92vh] overflow-hidden bg-[#0a1628] text-white"
+        className="relative h-svh max-h-dvh min-h-[100svh] overflow-hidden bg-[#0a1628] text-white"
         data-testid="section-contact-hero"
       >
         <motion.img
@@ -120,12 +120,12 @@ export default function Contacto() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.5)_0%,rgba(0,0,0,.15)_40%,rgba(0,0,0,.5)_100%)]" />
 
-        <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-5xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center md:px-12">
+        <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-6 pb-10 pt-24 text-center md:px-12">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
-            className="mb-6 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.42em] text-[#c6a65a]"
+            className="mb-4 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.42em] text-[#c6a65a] md:mb-5"
           >
             <span className="h-px w-9 bg-[#c6a65a]" /> Agenda una cita <span className="h-px w-9 bg-[#c6a65a]" />
           </motion.p>
@@ -134,7 +134,7 @@ export default function Contacto() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-            className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-medium leading-[1.05] tracking-[-.02em] text-white"
+            className="text-[clamp(2.1rem,5.2vw,4.4rem)] font-medium leading-[1.05] tracking-[-.03em] text-white"
           >
             Empecemos por conocerte. <em className="font-serif font-normal italic">Lo demás viene después.</em>
           </motion.h1>
@@ -143,7 +143,7 @@ export default function Contacto() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
-            className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
+            className="mt-5 max-w-xl text-sm font-light leading-7 text-white/75 md:mt-6 md:text-base"
           >
             Si buscas comprar y delegar la operación, cuéntanos qué quieres proteger y qué te gustaría construir. Nosotros te explicamos con claridad cómo podemos acompañarte.
           </motion.p>
@@ -154,7 +154,7 @@ export default function Contacto() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
             onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className="mt-10 inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white"
+            className="mt-7 inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white md:mt-8"
           >
             Ir al formulario
           </motion.button>

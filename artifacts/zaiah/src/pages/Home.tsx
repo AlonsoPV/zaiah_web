@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Building2, CloudFog, DraftingCompass, Factory, Layers, Leaf, MapPin, MapPinned, Mountain, Orbit, Trees } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Building2, CloudFog, DraftingCompass, Factory, FileCheck2, Layers, Leaf, MapPin, MapPinned, Mountain, Orbit, Scale, ShieldCheck, Stamp, Trees } from "lucide-react";
 import heroFallback from "@/assets/images/hero-fallback.jpeg";
 import projectImage from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.jpeg";
@@ -76,6 +76,24 @@ const pains = [
   { icon: Trees, accent: Leaf, text: "Pérdida de espacios naturales y biofilia." },
   { icon: CloudFog, accent: Factory, text: "Altos niveles de contaminación." },
   { icon: Building2, accent: Layers, text: "Hiperdensificación de las zonas urbanas." },
+];
+
+const certaintyPoints = [
+  {
+    icon: ShieldCheck,
+    accent: Building2,
+    title: "Garantía respaldada por inmueble",
+  },
+  {
+    icon: FileCheck2,
+    accent: Scale,
+    title: "Certeza contractual",
+  },
+  {
+    icon: Stamp,
+    accent: Scale,
+    title: "Proceso notariado",
+  },
 ];
 
 const methodNodes = [
@@ -210,8 +228,8 @@ export default function Home() {
       {/* ── EL PROBLEMA ──────────────────────────────────────── */}
       <section className="border-b border-black/10 bg-[#faf9f7] py-14 sm:py-16 md:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 md:px-12 lg:px-16">
-          <div className="grid items-start gap-10 md:gap-12 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
+          <div className="grid items-stretch gap-10 md:gap-12 lg:grid-cols-12 lg:gap-16">
+            <Reveal className="lg:col-span-5">
               <p className="mb-4 flex items-center gap-4 text-[13px] font-bold uppercase tracking-[.3em] text-[#041f49]/55 sm:mb-5 sm:text-[15px]">
                 <span className="h-px w-9 bg-[#c6a65a]" /> El reto patrimonial
               </p>
@@ -224,42 +242,41 @@ export default function Home() {
             </Reveal>
 
             <motion.div
-              className="lg:col-span-7"
+              className="flex h-full lg:col-span-7"
               variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.15 }}
             >
-              <div className="grid border-t border-black/15 sm:grid-cols-2 sm:gap-px sm:border sm:border-black/10 sm:bg-black/10">
+              <div className="grid h-full w-full flex-1 gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-2 sm:grid-rows-2">
                 {pains.map(({ icon: Icon, accent: Accent, text }, index) => (
                   <motion.div
                     key={text}
                     variants={fadeUp}
-                    className="group grid grid-cols-[64px_1fr] items-center gap-4 border-b border-black/10 bg-[#faf9f7] px-1 py-6 transition-colors duration-300 hover:bg-[#041f49]/[.03] sm:grid-cols-1 sm:items-start sm:gap-5 sm:border-b-0 sm:px-6 sm:py-8 md:px-7 md:py-9"
+                    className="group flex h-full min-h-0 flex-col justify-between gap-4 bg-[#faf9f7] p-5 transition-colors duration-300 hover:bg-[#041f49]/[.03] sm:p-6"
                   >
-                    <span className="relative flex h-16 w-16 shrink-0 items-center justify-center sm:h-[72px] sm:w-[72px]">
-                      <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,rgba(198,166,90,.28),transparent_58%)]" />
-                      <span className="absolute inset-[5px] rounded-full border border-[#c6a65a]/35 transition-all duration-500 group-hover:inset-[3px] group-hover:border-[#c6a65a]/70" />
-                      <span className="absolute inset-[12px] rounded-full bg-[#041f49]/[.04] transition-colors duration-500 group-hover:bg-[#041f49]/10" />
-                      <Accent
-                        size={28}
-                        strokeWidth={1}
-                        className="absolute translate-x-2.5 translate-y-1.5 text-[#041f49]/15 transition-all duration-500 group-hover:translate-x-3 group-hover:text-[#041f49]/25"
-                        aria-hidden
-                      />
-                      <Icon
-                        size={26}
-                        strokeWidth={1.35}
-                        className="relative text-[#c6a65a] transition-all duration-500 group-hover:-translate-y-0.5 group-hover:text-[#041f49]"
-                        aria-hidden
-                      />
-                    </span>
-                    <div>
-                      <span className="text-[11px] font-bold tracking-[.28em] text-[#c6a65a]">0{index + 1}</span>
-                      <p className="mt-1.5 text-base leading-6 text-[#1c1c1c]/80 transition-transform duration-300 group-hover:translate-x-0.5 sm:mt-2 sm:text-lg sm:leading-7">
-                        {text}
-                      </p>
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="relative flex h-11 w-11 shrink-0 items-center justify-center">
+                        <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,rgba(198,166,90,.28),transparent_58%)]" />
+                        <span className="absolute inset-[3px] rounded-full border border-[#c6a65a]/35 transition-all duration-500 group-hover:border-[#c6a65a]/70" />
+                        <Accent
+                          size={16}
+                          strokeWidth={1}
+                          className="absolute translate-x-1.5 translate-y-1 text-[#041f49]/12"
+                          aria-hidden
+                        />
+                        <Icon
+                          size={18}
+                          strokeWidth={1.5}
+                          className="relative text-[#c6a65a] transition-all duration-500 group-hover:-translate-y-0.5 group-hover:text-[#041f49]"
+                          aria-hidden
+                        />
+                      </span>
+                      <p className="text-[10px] font-bold tracking-[.24em] text-[#c6a65a]">0{index + 1}</p>
                     </div>
+                    <p className="max-w-[18ch] text-[clamp(0.95rem,1.5vw,1.15rem)] leading-snug tracking-[-.02em] text-[#1c1c1c]/80">
+                      {text}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -391,18 +408,37 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <Reveal className="mt-10 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
-            <div className="bg-[#d9d6cf] px-6 py-5">
-              <p className="text-2xl text-[#041f49] md:text-3xl">30–65</p>
-              <p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Perfil patrimonial</p>
-            </div>
-            <div className="bg-[#d9d6cf] px-6 py-5">
-              <p className="text-2xl text-[#041f49] md:text-3xl">CDMX</p>
-              <p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Primera Zona Zaiah</p>
-            </div>
-            <div className="bg-[#d9d6cf] px-6 py-5">
-              <p className="text-2xl text-[#041f49] md:text-3xl">100%</p>
-              <p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Con escrituras</p>
+          <Reveal className="mt-10">
+            <div className="grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
+              {certaintyPoints.map(({ icon: Icon, accent: Accent, title }, index) => (
+                <div
+                  key={title}
+                  className="group flex items-center gap-4 bg-[#d9d6cf] px-5 py-4 transition-colors duration-300 hover:bg-[#d1cdc4] md:px-6"
+                >
+                  <span className="relative flex h-11 w-11 shrink-0 items-center justify-center">
+                    <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,rgba(198,166,90,.32),transparent_58%)]" />
+                    <span className="absolute inset-[3px] rounded-full border border-[#041f49]/15 transition-all duration-500 group-hover:border-[#c6a65a]/70" />
+                    <Accent
+                      size={16}
+                      strokeWidth={1}
+                      className="absolute translate-x-1.5 translate-y-1 text-[#041f49]/12"
+                      aria-hidden
+                    />
+                    <Icon
+                      size={18}
+                      strokeWidth={1.5}
+                      className="relative text-[#041f49] transition-transform duration-500 group-hover:-translate-y-0.5"
+                      aria-hidden
+                    />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[10px] font-bold tracking-[.24em] text-[#c6a65a]">0{index + 1}</p>
+                    <h3 className="mt-0.5 text-[15px] leading-snug tracking-[-.02em] text-[#041f49]">
+                      {title}
+                    </h3>
+                  </div>
+                </div>
+              ))}
             </div>
           </Reveal>
         </div>

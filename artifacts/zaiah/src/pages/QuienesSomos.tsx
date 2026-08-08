@@ -28,6 +28,30 @@ const crew: Person[] = [
   { name: "Alonso Pérez", role: "Desarrollador" },
 ];
 
+const testimonials = [
+  {
+    initials: "LH",
+    name: "Lizbeth Hernández",
+    role: "Inversionista",
+    quote:
+      "Fue increíble, le dieron seguimiento a todo el proyecto. Es muy formal y te da mucha confianza.",
+  },
+  {
+    initials: "RM",
+    name: "Rosa María",
+    role: "Inversionista",
+    quote:
+      "Nos transmitió mucha confianza Alexis: una persona muy agradable, tolerante y comprensiva para llegar a la conclusión de esta operación.",
+  },
+  {
+    initials: "AM",
+    name: "Alfonso Mercado",
+    role: "Inversionista",
+    quote:
+      "Recibir una renta fija es cómodo: no tener que lidiar con inquilinos ni con meses en que la propiedad no está ocupada. Para mí fue lo mejor.",
+  },
+];
+
 function initials(name: string) {
   return name
     .split(" ")
@@ -94,7 +118,7 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 export default function QuienesSomos() {
   return (
     <main className="bg-[#faf9f7] text-[#1c1c1c]">
-      <section className="relative min-h-[92vh] overflow-hidden bg-[#0a1628] text-white">
+      <section className="relative h-svh max-h-dvh min-h-[100svh] overflow-hidden bg-[#0a1628] text-white">
         <motion.img
           src={cityImage}
           alt="Ciudad regenerada por ZAIAH"
@@ -106,36 +130,42 @@ export default function QuienesSomos() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.5)_0%,rgba(0,0,0,.15)_40%,rgba(0,0,0,.5)_100%)]" />
 
-        <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-5xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center md:px-12">
+        <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-6 pb-10 pt-24 text-center md:px-12">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
-            className="mb-6 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.42em] text-[#c6a65a]"
+            className="mb-4 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.42em] text-[#c6a65a] md:mb-5"
           >
-            <span className="h-px w-9 bg-[#c6a65a]" /> Quiénes somos <span className="h-px w-9 bg-[#c6a65a]" />
+            <span className="h-px w-9 bg-[#c6a65a]" /> El equipo que construye <span className="h-px w-9 bg-[#c6a65a]" />
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-            className="text-[clamp(2.9rem,6.5vw,5.8rem)] font-medium leading-[1.05] tracking-[-.02em] text-white"
+            className="max-w-4xl text-[clamp(2.1rem,5.2vw,4.4rem)] font-medium leading-[1.05] tracking-[-.03em] text-white"
           >
-            No compramos edificios. <em className="font-serif font-normal italic">Creamos nodos urbanos transformados.</em>
+            “Construimos abundancia <em className="font-serif font-normal italic text-[#c6a65a]">para compartir</em>”
           </motion.h1>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
-            className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
+            className="mt-6 flex max-w-lg flex-col items-center md:mt-7"
           >
-            No renovamos fachadas. Reactivamos economías locales. Reunimos inversión, diseño y operación para recuperar edificios y devolverles un lugar dentro de la ciudad.
-          </motion.p>
+            <span className="mb-4 h-px w-12 bg-[#c6a65a]/70" aria-hidden />
+            <p className="text-[10px] font-bold uppercase tracking-[.32em] text-[#c6a65a]">
+              Founders <span className="mx-2 text-[#c6a65a]/45">·</span> Jorge Marín
+            </p>
+            <p className="mt-3 text-sm font-light leading-7 text-white/70 md:text-[15px]">
+              Una visión de ciudad regenerada, ejecutada por un equipo que combina estrategia, diseño y operación.
+            </p>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-            className="mt-9 flex flex-col items-center gap-4 sm:flex-row"
+            className="mt-7 flex flex-col items-center gap-3 sm:flex-row md:mt-8"
           >
             <Link href="/contacto">
               <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#22c55e] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-white transition-colors hover:bg-[#16a34a]">
@@ -148,26 +178,6 @@ export default function QuienesSomos() {
               </span>
             </Link>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Manifesto + equipo */}
-      <section className="relative overflow-hidden bg-[#041f49] py-16 text-white md:py-20">
-        <div aria-hidden className="pointer-events-none absolute -right-16 top-10 select-none text-[18rem] font-bold leading-none text-white/[.03]">
-          Z
-        </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <p className="mb-6 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-              <span className="h-px w-9 bg-[#c6a65a]" /> El equipo que construye
-            </p>
-            <h2 className="max-w-4xl text-[clamp(2.4rem,5vw,4.6rem)] leading-[1.02] tracking-[-.04em]">
-              “Construimos abundancia <em className="font-serif font-normal italic text-[#c6a65a]">para compartir</em>”
-            </h2>
-            <p className="mt-6 max-w-md text-sm font-light leading-7 text-white/55">
-              Founders · Jorge Marín. Una visión de ciudad regenerada, ejecutada por un equipo que combina estrategia, diseño y operación.
-            </p>
-          </Reveal>
         </div>
       </section>
 
@@ -210,6 +220,55 @@ export default function QuienesSomos() {
             {crew.map((person) => (
               <Reveal key={person.name}>
                 <Portrait person={person} size="sm" />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-[#041f49] py-16 text-white md:py-24">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-10 top-8 select-none text-[14rem] font-bold leading-none text-white/[.03] md:text-[18rem]"
+        >
+          ”
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <Reveal className="mb-12 max-w-2xl md:mb-14">
+            <p className="mb-4 flex items-center gap-4 text-[13px] font-bold uppercase tracking-[.3em] text-[#c6a65a] sm:text-[15px]">
+              <span className="h-px w-9 bg-[#c6a65a]" /> Testimonios
+            </p>
+            <h3 className="text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.08] tracking-[-.03em]">
+              Lo que dicen quienes ya regeneran con nosotros
+            </h3>
+          </Reveal>
+
+          <div className="grid gap-0 border-t border-white/12 md:grid-cols-3">
+            {testimonials.map((item, index) => (
+              <Reveal key={item.name}>
+                <figure
+                  className={`flex h-full flex-col border-white/12 py-8 md:border-r md:px-7 md:py-10 lg:px-9 ${
+                    index === testimonials.length - 1 ? "md:border-r-0" : ""
+                  } ${index > 0 ? "border-t md:border-t-0" : ""}`}
+                >
+                  <span className="text-[10px] font-bold tracking-[.28em] text-[#c6a65a]/70">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <blockquote className="mt-5 flex-1 font-serif text-[1.05rem] font-normal italic leading-7 text-white/88 md:text-[1.1rem] md:leading-8">
+                    “{item.quote}”
+                  </blockquote>
+                  <figcaption className="mt-8 flex items-center gap-3 border-t border-white/10 pt-5">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-[#c6a65a]/45 text-[10px] font-bold tracking-[.12em] text-[#c6a65a]">
+                      {item.initials}
+                    </span>
+                    <span>
+                      <span className="block text-sm tracking-[-.02em] text-white">{item.name}</span>
+                      <span className="mt-1 block text-[9px] font-bold uppercase tracking-[.22em] text-[#c6a65a]">
+                        {item.role}
+                      </span>
+                    </span>
+                  </figcaption>
+                </figure>
               </Reveal>
             ))}
           </div>

@@ -17,7 +17,7 @@ const steps=[
 ];
 
 export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1c1c]">
-  <section className="relative min-h-[92vh] overflow-hidden bg-[#0a1628] text-white">
+  <section className="relative h-svh max-h-dvh min-h-[100svh] overflow-hidden bg-[#0a1628] text-white">
     <motion.img
       src={modelImage}
       alt="Edificio en proceso de regeneración"
@@ -29,12 +29,12 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
     <div className="absolute inset-0 bg-black/40" />
     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.5)_0%,rgba(0,0,0,.12)_42%,rgba(4,31,73,.6)_100%)]" />
 
-    <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-5xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center md:px-12">
+    <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-6 pb-10 pt-24 text-center md:px-12">
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
-        className="mb-6 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.42em] text-[#c6a65a]"
+        className="mb-4 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.42em] text-[#c6a65a] md:mb-5"
       >
         <span className="h-px w-9 bg-[#c6a65a]" /> El modelo ZAIAH <span className="h-px w-9 bg-[#c6a65a]" />
       </motion.p>
@@ -42,7 +42,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-        className="max-w-5xl text-[clamp(2.9rem,6.5vw,5.8rem)] font-medium leading-[1.05] tracking-[-.02em]"
+        className="max-w-5xl text-[clamp(2.1rem,5.2vw,4.4rem)] font-medium leading-[1.05] tracking-[-.03em]"
       >
         Construimos Zonas Zaiah mediante la compra progresiva <em className="font-serif font-normal italic">de edificios completos.</em>
       </motion.h1>
@@ -50,7 +50,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
-        className="mt-7 max-w-xl text-sm font-light leading-7 text-white/75 md:text-base"
+        className="mt-5 max-w-xl text-sm font-light leading-7 text-white/75 md:mt-6 md:text-base"
       >
         No vendemos metros. Creamos patrimonio estructurado dentro de nodos urbanos capaces de transformar su zona.
       </motion.p>
@@ -58,7 +58,7 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-        className="mt-9 flex flex-col items-center gap-4 sm:flex-row"
+        className="mt-7 flex flex-col items-center gap-3 sm:flex-row md:mt-8"
       >
         <Link href="/contacto"><span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-white">Revisar si es para mí <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span></Link>
         <Link href="/portafolio"><span className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/45 bg-black/25 px-7 py-4 text-[11px] font-medium uppercase tracking-[.18em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10"><MapPin size={14} /> Ver proyectos</span></Link>
