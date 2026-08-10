@@ -5,8 +5,12 @@ import { ArrowRight, ArrowUpRight, Building2, CloudFog, DraftingCompass, Factory
 import heroFallback from "@/assets/images/hero-fallback.jpeg";
 import projectImage from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.jpeg";
-import zaiahLogoBeige from "@/assets/images/zaiah-logo-beige.png";
 import zonasZaiahImage from "@/assets/images/zonas-zaiah.webp";
+import letterZ from "@/assets/images/zaiah-letter-z.webp";
+import letterA from "@/assets/images/zaiah-letter-a.webp";
+import letterI from "@/assets/images/zaiah-letter-i.webp";
+import letterA2 from "@/assets/images/zaiah-letter-a2.webp";
+import letterH from "@/assets/images/zaiah-letter-h.webp";
 
 const HERO_VIDEO = `${import.meta.env.BASE_URL}videos/zaiah-cdmx.mp4`;
 const HERO_FALLBACK = heroFallback;
@@ -96,34 +100,49 @@ const certaintyPoints = [
   },
 ];
 
+const methodLetters = [
+  { id: "z", src: letterZ, alt: "Z" },
+  { id: "a", src: letterA, alt: "A" },
+  { id: "i", src: letterI, alt: "I" },
+  { id: "a2", src: letterA2, alt: "A" },
+  { id: "h", src: letterH, alt: "H" },
+];
+
 const methodNodes = [
   {
     id: "zona",
+    letter: "Z",
     className: "left-0 top-0 text-left md:left-[2%] md:top-[8%]",
     title: "ZONA ESTRATÉGICA",
     eyebrow: "Analizamos",
   },
   {
+    id: "adquisicion",
+    letter: "A",
+    className: "bottom-0 left-[18%] text-left md:bottom-[8%] md:left-[12%]",
+    title: "ADQUISICIÓN",
+    subtitle: "PROGRESIVA",
+  },
+  {
     id: "intervencion",
+    letter: "I",
     className: "left-1/2 top-0 -translate-x-1/2 text-center md:top-[4%]",
     title: "INTERVENCIÓN DE VALOR",
     subtitle: "Arquitectónica y Financiera",
   },
   {
+    id: "juridico",
+    letter: "A",
+    className: "bottom-0 right-[18%] text-right md:bottom-[8%] md:right-[12%]",
+    title: "ASEGURAMIENTO",
+    subtitle: "JURÍDICO",
+  },
+  {
     id: "horizonte",
+    letter: "H",
     className: "right-0 top-0 text-right md:right-[2%] md:top-[8%]",
     title: "HORIZONTE DE\nINVERSIÓN",
     subtitle: "A LARGO PLAZO",
-  },
-  {
-    id: "juridico",
-    className: "bottom-0 right-0 text-right md:bottom-[6%] md:right-[4%]",
-    title: "ASEGURAMIENTO\nJURÍDICO",
-  },
-  {
-    id: "adquisicion",
-    className: "bottom-0 left-1/2 -translate-x-1/2 text-center md:bottom-[4%]",
-    title: "ADQUISICIÓN\nPROGRESIVA",
   },
 ];
 
@@ -328,12 +347,11 @@ export default function Home() {
               />
             </div>
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#041f49_0%,transparent_8%,transparent_92%,#041f49_100%)] md:bg-[linear-gradient(90deg,#041f49_0%,transparent_12%,transparent_88%,#041f49_100%)]" />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(4,31,73,.35)_0%,transparent_22%,transparent_72%,rgba(4,31,73,.7)_100%)]" />
-            <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 md:p-7">
-              <p className="text-[9px] font-bold uppercase tracking-[.28em] text-[#c6a65a] sm:text-[10px]">Zonas Zaiah</p>
-              <p className="mt-1 max-w-xs text-xs font-light text-white/75 sm:text-sm">Polígonos de regeneración urbana</p>
-            </div>
           </motion.div>
+          <div className="mt-5 px-6 sm:mt-6 md:mt-7 md:px-0">
+            <p className="text-[9px] font-bold uppercase tracking-[.28em] text-[#c6a65a] sm:text-[10px]">Zonas Zaiah</p>
+            <p className="mt-1 max-w-xs text-xs font-light text-white/75 sm:text-sm">Polígonos de regeneración urbana</p>
+          </div>
 
           <motion.div
             className="mt-10 grid gap-4 md:grid-cols-3 md:gap-5"
@@ -522,8 +540,8 @@ export default function Home() {
       </section>
 
       {/* ── MÉTODO ZAIAH DIAGRAMA ─────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#eceae6]" data-testid="section-metodo-diagrama">
-        <div className="relative z-10 mx-auto max-w-5xl px-5 pb-6 pt-10 md:px-8 md:pb-8 md:pt-12">
+      <section className="relative overflow-x-hidden bg-[#eceae6]" data-testid="section-metodo-diagrama">
+        <div className="relative z-10 mx-auto max-w-5xl px-5 pb-10 pt-10 sm:px-6 md:px-8 md:pb-12 md:pt-12 lg:pb-14">
           <Reveal className="mb-6 text-center md:mb-8">
             <p className="mb-2 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[.28em] text-[#c6a65a]">
               <span className="h-px w-7 bg-[#c6a65a]" /> ZAIAH <span className="h-px w-7 bg-[#c6a65a]" />
@@ -533,74 +551,112 @@ export default function Home() {
             </h2>
           </Reveal>
 
-          {/* Desktop diagram */}
-          <div className="relative mx-auto hidden aspect-[16/9] w-full max-w-3xl md:block">
-            <svg
-              aria-hidden
-              className="pointer-events-none absolute inset-0 h-full w-full"
-              viewBox="0 0 1000 700"
-              fill="none"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              {/* Lines stop at logo safe zone (~360–640 x 300–400) */}
-              <path d="M170 130 V250 H360" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-              <path d="M500 110 V290" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-              <path d="M830 130 V250 H640" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-              <path d="M830 570 V450 H640" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-              <path d="M500 590 V410" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-              {/* endpoint dots */}
-              <circle cx="360" cy="250" r="2.5" fill="#c6a65a" />
-              <circle cx="500" cy="290" r="2.5" fill="#c6a65a" />
-              <circle cx="640" cy="250" r="2.5" fill="#c6a65a" />
-              <circle cx="640" cy="450" r="2.5" fill="#c6a65a" />
-              <circle cx="500" cy="410" r="2.5" fill="#c6a65a" />
-            </svg>
-
-            <motion.div
-              className="absolute left-1/2 top-1/2 z-10 w-[min(32%,260px)] -translate-x-1/2 -translate-y-1/2"
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.9, ease: EASE }}
-            >
-              <img
-                src={zaiahLogoBeige}
-                alt="ZAIAH"
-                className="mx-auto h-auto w-full object-contain"
-              />
-            </motion.div>
-
-            {methodNodes.map(({ id, className, title, eyebrow, subtitle }, index) => (
-              <motion.div
-                key={id}
-                className={`absolute z-10 max-w-[160px] text-[#c6a65a] ${className}`}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.65, delay: 0.06 * index, ease: EASE }}
+          {/* Desktop / large tablet diagram */}
+          <div className="relative mx-auto hidden w-full max-w-4xl lg:block">
+            <div className="relative aspect-[16/10] w-full min-h-[420px]">
+              <svg
+                aria-hidden
+                className="pointer-events-none absolute inset-0 h-full w-full"
+                viewBox="0 0 1000 700"
+                fill="none"
+                preserveAspectRatio="xMidYMid meet"
               >
-                {eyebrow && <span className="mb-0.5 block text-[9px] font-light uppercase tracking-[.12em] text-[#041f49]/45">{eyebrow}</span>}
-                <span className="block whitespace-pre-line text-[11px] font-semibold uppercase leading-4 tracking-[.1em]">
-                  {title}
-                </span>
-                {subtitle && <span className="mt-0.5 block text-[9px] font-light tracking-[.06em] text-[#041f49]/50">{subtitle}</span>}
+                <path d="M170 130 V250 H300" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
+                <path d="M400 590 V420" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
+                <path d="M500 110 V280" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
+                <path d="M600 590 V420" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
+                <path d="M830 130 V250 H700" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
+                <circle cx="300" cy="250" r="2.5" fill="#c6a65a" />
+                <circle cx="400" cy="420" r="2.5" fill="#c6a65a" />
+                <circle cx="500" cy="280" r="2.5" fill="#c6a65a" />
+                <circle cx="600" cy="420" r="2.5" fill="#c6a65a" />
+                <circle cx="700" cy="250" r="2.5" fill="#c6a65a" />
+              </svg>
+
+              <motion.div
+                className="absolute left-1/2 top-1/2 z-10 flex w-[min(52%,380px)] -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+                initial={{ opacity: 0, scale: 0.96 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.9, ease: EASE }}
+                aria-label="ZAIAH"
+              >
+                {methodLetters.map(({ id, src, alt }) => (
+                  <img
+                    key={id}
+                    src={src}
+                    alt={alt}
+                    className="h-auto w-1/5 object-contain"
+                  />
+                ))}
               </motion.div>
-            ))}
+
+              {methodNodes.map(({ id, className, title, eyebrow, subtitle }, index) => (
+                <motion.div
+                  key={id}
+                  className={`absolute z-10 max-w-[140px] text-[#c6a65a] xl:max-w-[160px] ${className}`}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.65, delay: 0.06 * index, ease: EASE }}
+                >
+                  {eyebrow && (
+                    <span className="mb-0.5 block text-[9px] font-light uppercase tracking-[.12em] text-[#041f49]/45">
+                      {eyebrow}
+                    </span>
+                  )}
+                  <span className="block whitespace-pre-line text-[10px] font-semibold uppercase leading-4 tracking-[.1em] xl:text-[11px]">
+                    {title}
+                  </span>
+                  {subtitle && (
+                    <span className="mt-0.5 block text-[9px] font-light tracking-[.06em] text-[#041f49]/50">
+                      {subtitle}
+                    </span>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          {/* Mobile */}
-          <div className="relative z-10 md:hidden">
-            <img
-              src={zaiahLogoBeige}
-              alt="ZAIAH"
-              className="mx-auto mb-6 h-auto w-[min(55vw,200px)] object-contain"
-            />
-            <div className="space-y-3.5">
-              {methodNodes.map(({ id, title, eyebrow, subtitle }) => (
-                <div key={id} className="border-l-2 border-[#c6a65a]/60 pl-3 text-[#041f49]">
-                  {eyebrow && <span className="mb-0.5 block text-[9px] font-light uppercase tracking-[.12em] text-[#041f49]/45">{eyebrow}</span>}
-                  <span className="block whitespace-pre-line text-xs font-semibold uppercase leading-4 tracking-[.1em] text-[#c6a65a]">{title}</span>
-                  {subtitle && <span className="mt-0.5 block text-[10px] font-light tracking-[.06em] text-[#041f49]/55">{subtitle}</span>}
+          {/* Mobile + tablet */}
+          <div className="relative z-10 lg:hidden">
+            <div
+              className="mx-auto mb-7 flex w-full max-w-[280px] items-center justify-center sm:mb-8 sm:max-w-[320px]"
+              aria-label="ZAIAH"
+            >
+              {methodLetters.map(({ id, src, alt }) => (
+                <img key={id} src={src} alt={alt} className="h-auto w-1/5 object-contain" />
+              ))}
+            </div>
+            <div className="mx-auto flex max-w-md flex-col gap-0">
+              {methodNodes.map(({ id, letter, title, eyebrow, subtitle }, index) => (
+                <div
+                  key={id}
+                  className="flex items-start gap-4 border-b border-[#041f49]/10 py-4 first:pt-0 last:border-b-0 last:pb-0"
+                >
+                  <div className="flex w-10 shrink-0 flex-col items-center gap-1.5">
+                    <span className="text-[9px] font-bold tracking-[.18em] text-[#041f49]/35">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex h-9 w-9 items-center justify-center bg-[#041f49] text-[12px] font-bold tracking-[.12em] text-[#c6a65a]">
+                      {letter}
+                    </span>
+                  </div>
+                  <div className="min-w-0 pt-0.5">
+                    {eyebrow && (
+                      <span className="mb-0.5 block text-[9px] font-light uppercase tracking-[.12em] text-[#041f49]/45">
+                        {eyebrow}
+                      </span>
+                    )}
+                    <span className="block whitespace-pre-line text-xs font-semibold uppercase leading-4 tracking-[.1em] text-[#c6a65a] sm:text-[13px]">
+                      {title}
+                    </span>
+                    {subtitle && (
+                      <span className="mt-1 block text-[10px] font-light tracking-[.06em] text-[#041f49]/55">
+                        {subtitle}
+                      </span>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
