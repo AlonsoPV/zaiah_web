@@ -11,6 +11,12 @@ import letterA from "@/assets/images/zaiah-letter-a.webp";
 import letterI from "@/assets/images/zaiah-letter-i.webp";
 import letterA2 from "@/assets/images/zaiah-letter-a2.webp";
 import letterH from "@/assets/images/zaiah-letter-h.webp";
+import treesLeftA from "@/assets/images/reto-trees-left-v2.png";
+import treesRightA from "@/assets/images/reto-trees-right-v2.png";
+import treesLeftB from "@/assets/images/reto-trees-left-b.png";
+import treesRightB from "@/assets/images/reto-trees-right-b.png";
+import treesLeftCdmx from "@/assets/images/reto-trees-cdmx-left.png";
+import treesRightCdmx from "@/assets/images/reto-trees-cdmx-right.png";
 
 const HERO_VIDEO = `${import.meta.env.BASE_URL}videos/zaiah-cdmx.mp4`;
 const HERO_FALLBACK = heroFallback;
@@ -38,6 +44,54 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
     >
       {children}
     </motion.div>
+  );
+}
+
+function NatureBackdrop({
+  tone = "#faf9f7",
+  left = treesLeftA,
+  right = treesRightA,
+}: {
+  tone?: string;
+  left?: string;
+  right?: string;
+}) {
+  const maskLeft = {
+    WebkitMaskImage: "linear-gradient(90deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
+    maskImage: "linear-gradient(90deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
+    WebkitMaskComposite: "source-in" as const,
+    maskComposite: "intersect" as const,
+  };
+  const maskRight = {
+    WebkitMaskImage: "linear-gradient(270deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
+    maskImage: "linear-gradient(270deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
+    WebkitMaskComposite: "source-in" as const,
+    maskComposite: "intersect" as const,
+  };
+
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0" style={{ backgroundColor: tone }} />
+      <img
+        src={left}
+        alt=""
+        decoding="async"
+        className="absolute bottom-[-2%] left-[-1%] h-[96%] w-auto max-w-[56%] object-contain object-left-bottom opacity-[0.7] sm:max-w-[48%] md:h-[108%] md:max-w-[44%] md:opacity-[0.78] lg:max-w-[40%]"
+        style={maskLeft}
+      />
+      <img
+        src={right}
+        alt=""
+        decoding="async"
+        className="absolute bottom-[-2%] right-[-1%] h-[98%] w-auto max-w-[58%] object-contain object-right-bottom opacity-[0.68] sm:max-w-[50%] md:h-[112%] md:max-w-[46%] md:opacity-[0.76] lg:max-w-[42%]"
+        style={maskRight}
+      />
+      <div className="absolute inset-x-0 bottom-0 h-[38%]" style={{ backgroundImage: `linear-gradient(to top, ${tone}, color-mix(in srgb, ${tone} 85%, transparent), transparent)` }} />
+      <div className="absolute inset-x-0 top-0 h-[26%]" style={{ backgroundImage: `linear-gradient(to bottom, ${tone}, color-mix(in srgb, ${tone} 70%, transparent), transparent)` }} />
+      <div className="absolute inset-y-0 left-[18%] w-[34%]" style={{ backgroundImage: `linear-gradient(to right, transparent, color-mix(in srgb, ${tone} 55%, transparent), color-mix(in srgb, ${tone} 95%, transparent))` }} />
+      <div className="absolute inset-y-0 right-[18%] w-[34%]" style={{ backgroundImage: `linear-gradient(to left, transparent, color-mix(in srgb, ${tone} 55%, transparent), color-mix(in srgb, ${tone} 95%, transparent))` }} />
+      <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(ellipse at 50% 45%, color-mix(in srgb, ${tone} 55%, transparent), transparent 70%)` }} />
+    </div>
   );
 }
 
@@ -112,35 +166,35 @@ const methodNodes = [
   {
     id: "zona",
     letter: "Z",
-    className: "left-0 top-0 text-left md:left-[2%] md:top-[8%]",
+    className: "left-0 top-0 text-left lg:left-[2%] lg:top-[8%]",
     title: "ZONA ESTRATÉGICA",
     eyebrow: "Analizamos",
   },
   {
     id: "adquisicion",
     letter: "A",
-    className: "bottom-0 left-[18%] text-left md:bottom-[8%] md:left-[12%]",
+    className: "bottom-[4%] left-[40%] -translate-x-1/2 text-center",
     title: "ADQUISICIÓN",
     subtitle: "PROGRESIVA",
   },
   {
     id: "intervencion",
     letter: "I",
-    className: "left-1/2 top-0 -translate-x-1/2 text-center md:top-[4%]",
+    className: "left-1/2 top-0 -translate-x-1/2 text-center lg:top-[4%]",
     title: "INTERVENCIÓN DE VALOR",
     subtitle: "Arquitectónica y Financiera",
   },
   {
     id: "juridico",
     letter: "A",
-    className: "bottom-0 right-[18%] text-right md:bottom-[8%] md:right-[12%]",
+    className: "bottom-[4%] left-[60%] -translate-x-1/2 text-center",
     title: "ASEGURAMIENTO",
     subtitle: "JURÍDICO",
   },
   {
     id: "horizonte",
     letter: "H",
-    className: "right-0 top-0 text-right md:right-[2%] md:top-[8%]",
+    className: "right-0 top-0 text-right lg:right-[2%] lg:top-[8%]",
     title: "HORIZONTE DE\nINVERSIÓN",
     subtitle: "A LARGO PLAZO",
   },
@@ -245,8 +299,10 @@ export default function Home() {
       </section>
 
       {/* ── EL PROBLEMA ──────────────────────────────────────── */}
-      <section className="border-b border-black/10 bg-[#faf9f7] py-14 sm:py-16 md:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6 md:px-12 lg:px-16">
+      <section className="relative overflow-hidden border-b border-black/10 bg-[#faf9f7] py-14 sm:py-16 md:py-20 lg:py-24">
+        <NatureBackdrop tone="#faf9f7" left={treesLeftA} right={treesRightA} />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 md:px-12 lg:px-16">
           <div className="grid items-stretch gap-10 md:gap-12 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-5">
               <p className="mb-4 flex items-center gap-4 text-[13px] font-bold uppercase tracking-[.3em] text-[#041f49]/55 sm:mb-5 sm:text-[15px]">
@@ -272,7 +328,7 @@ export default function Home() {
                   <motion.div
                     key={text}
                     variants={fadeUp}
-                    className="group flex h-full min-h-0 flex-col justify-between gap-4 bg-[#faf9f7] p-5 transition-colors duration-300 hover:bg-[#041f49]/[.03] sm:p-6"
+                    className="group flex h-full min-h-0 flex-col justify-between gap-4 bg-[#faf9f7]/92 p-5 backdrop-blur-[1px] transition-colors duration-300 hover:bg-[#041f49]/[.03] sm:p-6"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <span className="relative flex h-11 w-11 shrink-0 items-center justify-center">
@@ -324,7 +380,7 @@ export default function Home() {
               </h2>
             </motion.div>
             <motion.p variants={fadeUp} className="self-end text-base font-light leading-7 text-white/60 md:col-span-4 md:col-start-9">
-              No renovamos fachadas. Reactivamos economías locales. Cada edificio regenerado se conecta con su calle, su comunidad y una visión más grande de ciudad.
+              Cada edificio forma parte de una ZONA ZAIAH, una zona regenerada que conecta comunidad, seguridad y calidad de vida.
             </motion.p>
           </motion.div>
 
@@ -416,7 +472,7 @@ export default function Home() {
             </div>
             <div className="md:col-span-4 md:col-start-9">
               <p className="text-base font-light leading-7 text-[#1c1c1c]/65">
-                No son acciones, títulos o derechos, obtienes escrituras en todos nuestros proyectos.
+                No son acciones, títulos o derechos, obtienes escrituras en todos nuestros proyectos. Por medio de tres candados de seguridad.
               </p>
               <Link href="/modelo">
                 <span className="mt-6 inline-flex cursor-pointer items-center gap-3 border-b border-[#041f49] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
@@ -463,8 +519,9 @@ export default function Home() {
       </section>
 
       {/* ── DOS FORMAS DE EMPEZAR ───────────────────────────── */}
-      <section className="bg-[#f1efe9] py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+      <section className="relative overflow-hidden bg-[#f1efe9] py-12 md:py-16">
+        <NatureBackdrop tone="#f1efe9" left={treesLeftB} right={treesRightB} />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
           <Reveal className="grid gap-8 md:grid-cols-12 md:items-center">
             <div className="md:col-span-6">
               <p className="mb-4 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
@@ -532,9 +589,9 @@ export default function Home() {
           </div>
 
           <Reveal className="mt-8 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
-            <div className="bg-[#faf9f7] p-6"><p className="text-2xl text-[#041f49] md:text-3xl">10 años</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Regenerando inmuebles en CDMX</p></div>
-            <div className="bg-[#faf9f7] p-6"><p className="text-2xl text-[#041f49] md:text-3xl">+30</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Inversionistas que confían en el modelo</p></div>
-            <div className="bg-[#faf9f7] p-6"><p className="text-2xl text-[#041f49] md:text-3xl">100%</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Operación y administración a nuestro cargo</p></div>
+            <div className="bg-[#faf9f7]/90 p-6 backdrop-blur-[1px]"><p className="text-2xl text-[#041f49] md:text-3xl">10 años</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Regenerando inmuebles en CDMX</p></div>
+            <div className="bg-[#faf9f7]/90 p-6 backdrop-blur-[1px]"><p className="text-2xl text-[#041f49] md:text-3xl">+30</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Inversionistas que confían en el modelo</p></div>
+            <div className="bg-[#faf9f7]/90 p-6 backdrop-blur-[1px]"><p className="text-2xl text-[#041f49] md:text-3xl">100%</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Operación y administración a nuestro cargo</p></div>
           </Reveal>
         </div>
       </section>
@@ -561,20 +618,25 @@ export default function Home() {
                 fill="none"
                 preserveAspectRatio="xMidYMid meet"
               >
+                {/* Z */}
                 <path d="M170 130 V250 H300" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-                <path d="M400 590 V420" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
+                {/* A · Adquisición → 2ª letra */}
+                <path d="M400 620 V435" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
+                {/* I */}
                 <path d="M500 110 V280" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-                <path d="M600 590 V420" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
+                {/* A · Aseguramiento → 4ª letra */}
+                <path d="M600 620 V435" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
+                {/* H */}
                 <path d="M830 130 V250 H700" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
                 <circle cx="300" cy="250" r="2.5" fill="#c6a65a" />
-                <circle cx="400" cy="420" r="2.5" fill="#c6a65a" />
+                <circle cx="400" cy="435" r="2.5" fill="#c6a65a" />
                 <circle cx="500" cy="280" r="2.5" fill="#c6a65a" />
-                <circle cx="600" cy="420" r="2.5" fill="#c6a65a" />
+                <circle cx="600" cy="435" r="2.5" fill="#c6a65a" />
                 <circle cx="700" cy="250" r="2.5" fill="#c6a65a" />
               </svg>
 
               <motion.div
-                className="absolute left-1/2 top-1/2 z-10 flex w-[min(52%,380px)] -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+                className="absolute left-1/2 top-1/2 z-10 grid w-[50%] max-w-[400px] -translate-x-1/2 -translate-y-1/2 grid-cols-5"
                 initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.4 }}
@@ -586,7 +648,7 @@ export default function Home() {
                     key={id}
                     src={src}
                     alt={alt}
-                    className="h-auto w-1/5 object-contain"
+                    className="h-auto w-full object-contain"
                   />
                 ))}
               </motion.div>
@@ -666,7 +728,8 @@ export default function Home() {
 
       {/* ── CTA FINAL ────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-t border-black/10 bg-[#faf9f7] py-16 text-[#041f49] md:py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
+        <NatureBackdrop tone="#faf9f7" left={treesLeftCdmx} right={treesRightCdmx} />
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
           <Reveal className="md:col-span-8">
             <h2 className="text-[clamp(2.4rem,4.6vw,4.6rem)] leading-[1] tracking-[-.04em]">
               Hoy puedes ser parte de esta gran comunidad.
