@@ -11,12 +11,8 @@ import letterA from "@/assets/images/zaiah-letter-a.webp";
 import letterI from "@/assets/images/zaiah-letter-i.webp";
 import letterA2 from "@/assets/images/zaiah-letter-a2.webp";
 import letterH from "@/assets/images/zaiah-letter-h.webp";
-import treesLeftA from "@/assets/images/reto-trees-left-v2.png";
-import treesRightA from "@/assets/images/reto-trees-right-v2.png";
-import treesLeftB from "@/assets/images/reto-trees-left-b.png";
-import treesRightB from "@/assets/images/reto-trees-right-b.png";
-import treesLeftCdmx from "@/assets/images/reto-trees-cdmx-left.png";
-import treesRightCdmx from "@/assets/images/reto-trees-cdmx-right.png";
+import fondoZaiah from "@/assets/images/fondo-zaiah.png";
+import zaiahFondo from "@/assets/images/zaiah-fondo.png";
 
 const HERO_VIDEO = `${import.meta.env.BASE_URL}videos/zaiah-cdmx.mp4`;
 const HERO_FALLBACK = heroFallback;
@@ -44,54 +40,6 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
     >
       {children}
     </motion.div>
-  );
-}
-
-function NatureBackdrop({
-  tone = "#faf9f7",
-  left = treesLeftA,
-  right = treesRightA,
-}: {
-  tone?: string;
-  left?: string;
-  right?: string;
-}) {
-  const maskLeft = {
-    WebkitMaskImage: "linear-gradient(90deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
-    maskImage: "linear-gradient(90deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
-    WebkitMaskComposite: "source-in" as const,
-    maskComposite: "intersect" as const,
-  };
-  const maskRight = {
-    WebkitMaskImage: "linear-gradient(270deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
-    maskImage: "linear-gradient(270deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
-    WebkitMaskComposite: "source-in" as const,
-    maskComposite: "intersect" as const,
-  };
-
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0" style={{ backgroundColor: tone }} />
-      <img
-        src={left}
-        alt=""
-        decoding="async"
-        className="absolute bottom-[-2%] left-[-1%] h-[96%] w-auto max-w-[56%] object-contain object-left-bottom opacity-[0.7] sm:max-w-[48%] md:h-[108%] md:max-w-[44%] md:opacity-[0.78] lg:max-w-[40%]"
-        style={maskLeft}
-      />
-      <img
-        src={right}
-        alt=""
-        decoding="async"
-        className="absolute bottom-[-2%] right-[-1%] h-[98%] w-auto max-w-[58%] object-contain object-right-bottom opacity-[0.68] sm:max-w-[50%] md:h-[112%] md:max-w-[46%] md:opacity-[0.76] lg:max-w-[42%]"
-        style={maskRight}
-      />
-      <div className="absolute inset-x-0 bottom-0 h-[38%]" style={{ backgroundImage: `linear-gradient(to top, ${tone}, color-mix(in srgb, ${tone} 85%, transparent), transparent)` }} />
-      <div className="absolute inset-x-0 top-0 h-[26%]" style={{ backgroundImage: `linear-gradient(to bottom, ${tone}, color-mix(in srgb, ${tone} 70%, transparent), transparent)` }} />
-      <div className="absolute inset-y-0 left-[18%] w-[34%]" style={{ backgroundImage: `linear-gradient(to right, transparent, color-mix(in srgb, ${tone} 55%, transparent), color-mix(in srgb, ${tone} 95%, transparent))` }} />
-      <div className="absolute inset-y-0 right-[18%] w-[34%]" style={{ backgroundImage: `linear-gradient(to left, transparent, color-mix(in srgb, ${tone} 55%, transparent), color-mix(in srgb, ${tone} 95%, transparent))` }} />
-      <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(ellipse at 50% 45%, color-mix(in srgb, ${tone} 55%, transparent), transparent 70%)` }} />
-    </div>
   );
 }
 
@@ -155,11 +103,20 @@ const certaintyPoints = [
 ];
 
 const methodLetters = [
-  { id: "z", src: letterZ, alt: "Z" },
-  { id: "a", src: letterA, alt: "A" },
-  { id: "i", src: letterI, alt: "I" },
-  { id: "a2", src: letterA2, alt: "A" },
-  { id: "h", src: letterH, alt: "H" },
+  { id: "z", src: letterZ, alt: "Z", from: "top" as const },
+  { id: "a", src: letterA, alt: "A", from: "bottom" as const },
+  { id: "i", src: letterI, alt: "I", from: "top" as const },
+  { id: "a2", src: letterA2, alt: "A", from: "bottom" as const },
+  { id: "h", src: letterH, alt: "H", from: "top" as const },
+];
+
+/** viewBox 1600×1000 = 16:10, igual que el contenedor del diagrama. */
+const methodConnectors = [
+  { id: "z", d: "M192 175 V450 H480" },
+  { id: "a", d: "M640 880 V550" },
+  { id: "i", d: "M800 175 V450" },
+  { id: "a2", d: "M960 880 V550" },
+  { id: "h", d: "M1408 175 V450 H1120" },
 ];
 
 const methodNodes = [
@@ -300,7 +257,14 @@ export default function Home() {
 
       {/* ── EL PROBLEMA ──────────────────────────────────────── */}
       <section className="relative overflow-hidden border-b border-black/10 bg-[#faf9f7] py-14 sm:py-16 md:py-20 lg:py-24">
-        <NatureBackdrop tone="#faf9f7" left={treesLeftA} right={treesRightA} />
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <img
+            src={fondoZaiah}
+            alt=""
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-right-bottom opacity-30"
+          />
+        </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 md:px-12 lg:px-16">
           <div className="grid items-stretch gap-10 md:gap-12 lg:grid-cols-12 lg:gap-16">
@@ -519,9 +483,8 @@ export default function Home() {
       </section>
 
       {/* ── DOS FORMAS DE EMPEZAR ───────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#f1efe9] py-12 md:py-16">
-        <NatureBackdrop tone="#f1efe9" left={treesLeftB} right={treesRightB} />
-        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+      <section className="bg-[#f1efe9] py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
           <Reveal className="grid gap-8 md:grid-cols-12 md:items-center">
             <div className="md:col-span-6">
               <p className="mb-4 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
@@ -610,46 +573,37 @@ export default function Home() {
 
           {/* Desktop / large tablet diagram */}
           <div className="relative mx-auto hidden w-full max-w-4xl lg:block">
-            <div className="relative aspect-[16/10] w-full min-h-[420px]">
+            <div className="relative aspect-[16/10] w-full">
               <svg
                 aria-hidden
-                className="pointer-events-none absolute inset-0 h-full w-full"
-                viewBox="0 0 1000 700"
+                className="pointer-events-none absolute inset-0 z-0 h-full w-full"
+                viewBox="0 0 1600 1000"
                 fill="none"
                 preserveAspectRatio="xMidYMid meet"
               >
-                {/* Z */}
-                <path d="M170 130 V250 H300" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-                {/* A · Adquisición → 2ª letra */}
-                <path d="M400 620 V435" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-                {/* I */}
-                <path d="M500 110 V280" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-                {/* A · Aseguramiento → 4ª letra */}
-                <path d="M600 620 V435" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-                {/* H */}
-                <path d="M830 130 V250 H700" stroke="rgba(4,31,73,.22)" strokeWidth="1.25" />
-                <circle cx="300" cy="250" r="2.5" fill="#c6a65a" />
-                <circle cx="400" cy="435" r="2.5" fill="#c6a65a" />
-                <circle cx="500" cy="280" r="2.5" fill="#c6a65a" />
-                <circle cx="600" cy="435" r="2.5" fill="#c6a65a" />
-                <circle cx="700" cy="250" r="2.5" fill="#c6a65a" />
+                {methodConnectors.map(({ id, d }) => (
+                  <path key={id} d={d} stroke="rgba(4,31,73,.28)" strokeWidth="2" />
+                ))}
               </svg>
 
               <motion.div
-                className="absolute left-1/2 top-1/2 z-10 grid w-[50%] max-w-[400px] -translate-x-1/2 -translate-y-1/2 grid-cols-5"
+                className="absolute left-1/2 top-1/2 z-20 grid w-1/2 -translate-x-1/2 -translate-y-1/2 grid-cols-5 bg-[#eceae6]"
                 initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.9, ease: EASE }}
                 aria-label="ZAIAH"
               >
-                {methodLetters.map(({ id, src, alt }) => (
-                  <img
-                    key={id}
-                    src={src}
-                    alt={alt}
-                    className="h-auto w-full object-contain"
-                  />
+                {methodLetters.map(({ id, src, alt, from }) => (
+                  <div key={id} className="relative">
+                    <img src={src} alt={alt} className="h-auto w-full object-contain" />
+                    <span
+                      aria-hidden
+                      className={`absolute left-1/2 z-20 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-[#c6a65a] ${
+                        from === "top" ? "top-[18%] -translate-y-1/2" : "bottom-[18%] translate-y-1/2"
+                      }`}
+                    />
+                  </div>
                 ))}
               </motion.div>
 
@@ -728,7 +682,14 @@ export default function Home() {
 
       {/* ── CTA FINAL ────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-t border-black/10 bg-[#faf9f7] py-16 text-[#041f49] md:py-20">
-        <NatureBackdrop tone="#faf9f7" left={treesLeftCdmx} right={treesRightCdmx} />
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <img
+            src={zaiahFondo}
+            alt=""
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-15"
+          />
+        </div>
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
           <Reveal className="md:col-span-8">
             <h2 className="text-[clamp(2.4rem,4.6vw,4.6rem)] leading-[1] tracking-[-.04em]">

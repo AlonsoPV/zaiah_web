@@ -11,6 +11,7 @@ import Modelo from "@/pages/Modelo";
 import Portafolio from "@/pages/Portafolio";
 import Contacto from "@/pages/Contacto";
 import NotFound from "@/pages/not-found";
+import { applyPageMeta, metaForPath } from "@/lib/seo";
 
 const queryClient = new QueryClient();
 
@@ -22,10 +23,19 @@ function ScrollToTop() {
   return null;
 }
 
+function PageMeta() {
+  const [location] = useLocation();
+  useEffect(() => {
+    applyPageMeta(metaForPath(location));
+  }, [location]);
+  return null;
+}
+
 function Router() {
   return (
     <>
       <ScrollToTop />
+      <PageMeta />
       <Header />
       <Switch>
         <Route path="/" component={Home} />
