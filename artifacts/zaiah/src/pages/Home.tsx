@@ -262,7 +262,7 @@ export default function Home() {
             src={fondoZaiah}
             alt=""
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-right-bottom opacity-30"
+            className="absolute inset-0 h-full w-full object-cover object-right-bottom opacity-15"
           />
         </div>
 
