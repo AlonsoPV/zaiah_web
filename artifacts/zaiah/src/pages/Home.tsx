@@ -11,8 +11,10 @@ import letterA from "@/assets/images/zaiah-letter-a.webp";
 import letterI from "@/assets/images/zaiah-letter-i.webp";
 import letterA2 from "@/assets/images/zaiah-letter-a2.webp";
 import letterH from "@/assets/images/zaiah-letter-h.webp";
-import fondoZaiah from "@/assets/images/fondo-zaiah.png";
-import zaiahFondo from "@/assets/images/zaiah-fondo.png";
+import treesLeftA from "@/assets/images/reto-trees-left-v2.png";
+import treesRightA from "@/assets/images/reto-trees-right-v2.png";
+import treesLeftCdmx from "@/assets/images/reto-trees-cdmx-left.png";
+import treesRightCdmx from "@/assets/images/reto-trees-cdmx-right.png";
 
 const HERO_VIDEO = `${import.meta.env.BASE_URL}videos/zaiah-cdmx.mp4`;
 const HERO_FALLBACK = heroFallback;
@@ -40,6 +42,60 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
     >
       {children}
     </motion.div>
+  );
+}
+
+function NatureBackdrop({
+  tone = "#faf9f7",
+  left = treesLeftA,
+  right = treesRightA,
+}: {
+  tone?: string;
+  left?: string | null;
+  right?: string | null;
+}) {
+  const maskLeft = {
+    WebkitMaskImage: "linear-gradient(90deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
+    maskImage: "linear-gradient(90deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
+    WebkitMaskComposite: "source-in" as const,
+    maskComposite: "intersect" as const,
+  };
+  const maskRight = {
+    WebkitMaskImage: "linear-gradient(270deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
+    maskImage: "linear-gradient(270deg, #000 0%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 10%, #000 72%, transparent 100%)",
+    WebkitMaskComposite: "source-in" as const,
+    maskComposite: "intersect" as const,
+  };
+
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0" style={{ backgroundColor: tone }} />
+      {left && (
+        <img
+          src={left}
+          alt=""
+          decoding="async"
+          className="absolute bottom-[-2%] left-[-1%] h-[96%] w-auto max-w-[56%] object-contain object-left-bottom opacity-[0.7] sm:max-w-[48%] md:h-[108%] md:max-w-[44%] md:opacity-[0.78] lg:max-w-[40%]"
+          style={maskLeft}
+        />
+      )}
+      {right && (
+        <img
+          src={right}
+          alt=""
+          decoding="async"
+          className="absolute bottom-[-2%] right-[-1%] h-[98%] w-auto max-w-[58%] object-contain object-right-bottom opacity-[0.68] sm:max-w-[50%] md:h-[112%] md:max-w-[46%] md:opacity-[0.76] lg:max-w-[42%]"
+          style={maskRight}
+        />
+      )}
+      <div className="absolute inset-x-0 bottom-0 h-[38%]" style={{ backgroundImage: `linear-gradient(to top, ${tone}, color-mix(in srgb, ${tone} 85%, transparent), transparent)` }} />
+      <div className="absolute inset-x-0 top-0 h-[26%]" style={{ backgroundImage: `linear-gradient(to bottom, ${tone}, color-mix(in srgb, ${tone} 70%, transparent), transparent)` }} />
+      <div className="absolute inset-y-0 left-[18%] w-[34%]" style={{ backgroundImage: `linear-gradient(to right, transparent, color-mix(in srgb, ${tone} 55%, transparent), color-mix(in srgb, ${tone} 95%, transparent))` }} />
+      {right && (
+        <div className="absolute inset-y-0 right-[18%] w-[34%]" style={{ backgroundImage: `linear-gradient(to left, transparent, color-mix(in srgb, ${tone} 55%, transparent), color-mix(in srgb, ${tone} 95%, transparent))` }} />
+      )}
+      <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(ellipse at 50% 45%, color-mix(in srgb, ${tone} 55%, transparent), transparent 70%)` }} />
+    </div>
   );
 }
 
@@ -257,14 +313,7 @@ export default function Home() {
 
       {/* ── EL PROBLEMA ──────────────────────────────────────── */}
       <section className="relative overflow-hidden border-b border-black/10 bg-[#faf9f7] py-14 sm:py-16 md:py-20 lg:py-24">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <img
-            src={fondoZaiah}
-            alt=""
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-right-bottom opacity-15"
-          />
-        </div>
+        <NatureBackdrop tone="#faf9f7" left={treesLeftA} right={null} />
 
         <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 md:px-12 lg:px-16">
           <div className="grid items-stretch gap-10 md:gap-12 lg:grid-cols-12 lg:gap-16">
@@ -682,14 +731,7 @@ export default function Home() {
 
       {/* ── CTA FINAL ────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-t border-black/10 bg-[#faf9f7] py-16 text-[#041f49] md:py-20">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <img
-            src={zaiahFondo}
-            alt=""
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-15"
-          />
-        </div>
+        <NatureBackdrop tone="#faf9f7" left={treesLeftCdmx} right={treesRightCdmx} />
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-12 md:px-12 lg:px-16">
           <Reveal className="md:col-span-8">
             <h2 className="text-[clamp(2.4rem,4.6vw,4.6rem)] leading-[1] tracking-[-.04em]">

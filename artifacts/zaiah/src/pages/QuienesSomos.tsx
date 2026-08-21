@@ -2,30 +2,35 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import cityImage from "@/assets/images/quienes-somos-hero.jpeg";
+import jorgeMarin from "@/assets/images/jorge-marin.webp";
+import alexisMarin from "@/assets/images/alexis-marin.webp";
+import javierBautista from "@/assets/images/javier-bautista.webp";
+import erikaVelasco from "@/assets/images/erika-velasco.webp";
+import alonsoPerez from "@/assets/images/alonso-perez.webp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 type Person = { name: string; role: string; image?: string };
 
 const founders: Person[] = [
-  { name: "Jorge Marín", role: "Fundador" },
-  { name: "Jorge Alexis", role: "Fundador" },
+  { name: "Jorge Marín", role: "Fundador", image: jorgeMarin },
+  { name: "Jorge Alexis", role: "Fundador", image: alexisMarin },
 ];
 
 const leadership: Person[] = [
   { name: "Abraham Harris", role: "Director general" },
   { name: "Karim Harris", role: "Director Comercial" },
-  { name: "Javier Bustamante", role: "Líder comercial" },
+  { name: "Javier Bustamante", role: "Líder comercial", image: javierBautista },
   { name: "Miguel Piedras", role: "CFO on demand" },
 ];
 
 const crew: Person[] = [
   { name: "Miguel Pérez", role: "Arquitecto" },
   { name: "Jorge Rocha", role: "Arquitecto" },
-  { name: "Erika Velasco", role: "Administración" },
+  { name: "Erika Velasco", role: "Administración", image: erikaVelasco },
   { name: "Saúl López", role: "Contador" },
   { name: "Arlette López", role: "Contador" },
-  { name: "Alonso Pérez", role: "Desarrollador" },
+  { name: "Alonso Pérez", role: "Desarrollador", image: alonsoPerez },
 ];
 
 const testimonials = [
@@ -63,38 +68,59 @@ function initials(name: string) {
 }
 
 function Portrait({ person, size = "md" }: { person: Person; size?: "lg" | "md" | "sm" }) {
-  const heights = {
-    lg: "aspect-[3/4] min-h-[320px] md:min-h-[420px]",
-    md: "aspect-[4/5]",
-    sm: "aspect-square",
+  const frame = {
+    lg: "aspect-[3/4] min-h-[360px] md:min-h-[480px] lg:min-h-[520px]",
+    md: "aspect-[3/4] min-h-[280px] md:min-h-[340px]",
+    sm: "aspect-[4/5] min-h-[220px] sm:min-h-[240px]",
+  };
+  const nameClass = {
+    lg: "text-2xl md:text-[2rem] lg:text-[2.15rem]",
+    md: "text-lg md:text-xl",
+    sm: "text-[15px] sm:text-base",
+  };
+  const roleClass = {
+    lg: "text-[10px] tracking-[.22em] md:text-[11px]",
+    md: "text-[9px] tracking-[.2em] md:text-[10px]",
+    sm: "text-[8px] tracking-[.16em] sm:text-[9px]",
+  };
+  const padClass = {
+    lg: "p-5 md:p-7",
+    md: "p-4 md:p-5",
+    sm: "p-3 sm:p-4",
+  };
+  const initialClass = {
+    lg: "text-5xl md:text-6xl",
+    md: "text-4xl md:text-5xl",
+    sm: "text-3xl",
   };
 
   return (
-    <div className="group">
-      <div className={`relative overflow-hidden bg-[#041f49] ${heights[size]}`}>
+    <div className="group h-full">
+      <div className={`relative h-full overflow-hidden bg-[#041f49] ${frame[size]}`}>
         {person.image ? (
           <img
             src={person.image}
             alt={person.name}
-            className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.04]"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-[center_18%] transition duration-700 group-hover:scale-[1.04]"
           />
         ) : (
           <div className="absolute inset-0 bg-[linear-gradient(160deg,#0a1628_0%,#041f49_55%,#1a3a6e_100%)]">
             <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, #c6a65a 0%, transparent 45%)" }} />
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className={`font-medium tracking-[.2em] text-[#c6a65a]/80 ${size === "lg" ? "text-5xl md:text-6xl" : size === "md" ? "text-4xl" : "text-2xl"}`}>
+              <span className={`font-medium tracking-[.2em] text-[#c6a65a]/80 ${initialClass[size]}`}>
                 {initials(person.name)}
               </span>
             </div>
             <span className="absolute bottom-4 left-4 text-[9px] font-bold uppercase tracking-[.22em] text-white/25">Foto</span>
           </div>
         )}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#041f49]/70 via-transparent to-transparent opacity-80 transition duration-500 group-hover:opacity-95" />
-        <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-          <p className={`leading-tight tracking-[-.03em] text-white ${size === "lg" ? "text-2xl md:text-3xl" : size === "md" ? "text-xl" : "text-base"}`}>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#041f49]/80 via-[#041f49]/25 to-transparent opacity-90 transition duration-500 group-hover:opacity-100" />
+        <div className={`absolute inset-x-0 bottom-0 ${padClass[size]}`}>
+          <p className={`leading-tight tracking-[-.03em] text-white ${nameClass[size]}`}>
             {person.name}
           </p>
-          <p className="mt-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">{person.role}</p>
+          <p className={`mt-1.5 font-bold uppercase text-[#c6a65a] ${roleClass[size]}`}>{person.role}</p>
         </div>
       </div>
     </div>
@@ -190,7 +216,7 @@ export default function QuienesSomos() {
             </div>
           </Reveal>
 
-          <div className="grid gap-4 md:grid-cols-2 md:gap-5">
+          <div className="grid gap-5 md:grid-cols-2 md:gap-6">
             {founders.map((person) => (
               <Reveal key={person.name}>
                 <Portrait person={person} size="lg" />
@@ -198,12 +224,12 @@ export default function QuienesSomos() {
             ))}
           </div>
 
-          <Reveal className="mb-8 mt-16">
+          <Reveal className="mb-8 mt-16 md:mt-20">
             <p className="text-[10px] font-bold uppercase tracking-[.28em] text-[#c6a65a]">02 · Liderazgo</p>
             <h3 className="mt-2 text-2xl tracking-[-.03em] text-[#041f49] md:text-3xl">Dirección y ejecución</h3>
           </Reveal>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
             {leadership.map((person) => (
               <Reveal key={person.name}>
                 <Portrait person={person} size="md" />
@@ -211,12 +237,12 @@ export default function QuienesSomos() {
             ))}
           </div>
 
-          <Reveal className="mb-8 mt-16">
+          <Reveal className="mb-8 mt-16 md:mt-20">
             <p className="text-[10px] font-bold uppercase tracking-[.28em] text-[#c6a65a]">03 · Operación</p>
             <h3 className="mt-2 text-2xl tracking-[-.03em] text-[#041f49] md:text-3xl">El equipo que hace realidad cada Zona Zaiah</h3>
           </Reveal>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6">
             {crew.map((person) => (
               <Reveal key={person.name}>
                 <Portrait person={person} size="sm" />
