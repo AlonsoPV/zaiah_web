@@ -69,29 +69,29 @@ function initials(name: string) {
 
 function Portrait({ person, size = "md" }: { person: Person; size?: "lg" | "md" | "sm" }) {
   const frame = {
-    lg: "aspect-[3/4] min-h-[360px] md:min-h-[480px] lg:min-h-[520px]",
-    md: "aspect-[3/4] min-h-[280px] md:min-h-[340px]",
-    sm: "aspect-[4/5] min-h-[220px] sm:min-h-[240px]",
+    lg: "aspect-[3/4]",
+    md: "aspect-[3/4]",
+    sm: "aspect-[4/5]",
   };
   const nameClass = {
-    lg: "text-2xl md:text-[2rem] lg:text-[2.15rem]",
-    md: "text-lg md:text-xl",
-    sm: "text-[15px] sm:text-base",
+    lg: "text-lg md:text-xl lg:text-[1.35rem]",
+    md: "text-[15px] md:text-base",
+    sm: "text-[13px] sm:text-sm",
   };
   const roleClass = {
-    lg: "text-[10px] tracking-[.22em] md:text-[11px]",
-    md: "text-[9px] tracking-[.2em] md:text-[10px]",
-    sm: "text-[8px] tracking-[.16em] sm:text-[9px]",
+    lg: "text-[9px] tracking-[.2em] md:text-[10px]",
+    md: "text-[8px] tracking-[.18em] md:text-[9px]",
+    sm: "text-[8px] tracking-[.14em]",
   };
   const padClass = {
-    lg: "p-5 md:p-7",
-    md: "p-4 md:p-5",
-    sm: "p-3 sm:p-4",
+    lg: "p-4 md:p-5",
+    md: "p-3.5 md:p-4",
+    sm: "p-2.5 sm:p-3",
   };
   const initialClass = {
-    lg: "text-5xl md:text-6xl",
-    md: "text-4xl md:text-5xl",
-    sm: "text-3xl",
+    lg: "text-4xl md:text-5xl",
+    md: "text-3xl md:text-4xl",
+    sm: "text-2xl",
   };
 
   return (
@@ -216,7 +216,8 @@ export default function QuienesSomos() {
             </div>
           </Reveal>
 
-          <div className="grid gap-5 md:grid-cols-2 md:gap-6">
+          {/* Founders · nivel grande */}
+          <div className="mx-auto grid w-full max-w-[48rem] gap-4 md:grid-cols-2 md:gap-5">
             {founders.map((person) => (
               <Reveal key={person.name}>
                 <Portrait person={person} size="lg" />
@@ -229,7 +230,8 @@ export default function QuienesSomos() {
             <h3 className="mt-2 text-2xl tracking-[-.03em] text-[#041f49] md:text-3xl">Dirección y ejecución</h3>
           </Reveal>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          {/* Liderazgo · nivel medio */}
+          <div className="mx-auto grid w-full max-w-5xl gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
             {leadership.map((person) => (
               <Reveal key={person.name}>
                 <Portrait person={person} size="md" />
@@ -242,7 +244,8 @@ export default function QuienesSomos() {
             <h3 className="mt-2 text-2xl tracking-[-.03em] text-[#041f49] md:text-3xl">El equipo que hace realidad cada Zona Zaiah</h3>
           </Reveal>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6">
+          {/* Operación · nivel compacto */}
+          <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-3 sm:gap-3.5 md:grid-cols-3 lg:grid-cols-6">
             {crew.map((person) => (
               <Reveal key={person.name}>
                 <Portrait person={person} size="sm" />
