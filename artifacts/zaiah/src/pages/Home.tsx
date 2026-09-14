@@ -262,7 +262,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.4)_0%,rgba(0,0,0,.12)_40%,rgba(0,0,0,.42)_100%)]" />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-6 pb-10 pt-24 text-center md:px-12">
+        <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-5 pb-8 pt-24 text-center sm:px-6 md:px-12 md:pb-10">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -297,16 +297,16 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-            className="mt-7 flex flex-col items-center gap-3 sm:mt-9 sm:flex-row sm:gap-4"
+            className="mt-6 flex w-full max-w-[20.5rem] flex-col items-stretch gap-3 sm:mt-8 sm:max-w-md md:mt-9 md:max-w-none md:flex-row md:items-center md:justify-center md:gap-4"
           >
-            <Link href="/contacto">
-              <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#22c55e] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-white transition-colors hover:bg-[#16a34a]">
-                Quiero regenerar mi Ciudad <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            <Link href="/contacto" className="w-full md:w-auto">
+              <span className="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#22c55e] px-5 py-3.5 text-center text-[10px] font-bold uppercase tracking-[.12em] text-white transition-colors hover:bg-[#16a34a] sm:gap-3 sm:px-8 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
+                Quiero regenerar mi Ciudad <ArrowRight size={15} className="shrink-0 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
-            <Link href="/portafolio">
-              <span className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/45 bg-black/25 px-7 py-4 text-[11px] font-medium uppercase tracking-[.18em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10">
-                <MapPin size={14} /> Proyecto activos
+            <Link href="/portafolio" className="w-full md:w-auto">
+              <span className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/45 bg-black/25 px-5 py-3.5 text-center text-[10px] font-medium uppercase tracking-[.12em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 sm:px-7 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
+                <MapPin size={14} className="shrink-0" /> Proyecto activos
               </span>
             </Link>
           </motion.div>
