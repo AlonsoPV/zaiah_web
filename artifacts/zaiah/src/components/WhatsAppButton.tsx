@@ -5,7 +5,7 @@ export default function WhatsAppButton() {
 
   return (
     <a
-      href="https://wa.me/5215551452047"
+      href="https://wa.me/5215570759959"
       target="_blank"
       rel="noopener noreferrer"
       data-testid="button-whatsapp"

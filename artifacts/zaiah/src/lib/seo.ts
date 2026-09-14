@@ -43,6 +43,11 @@ export const pageMeta: Record<string, PageMeta> = {
     description:
       "Agenda una cita con ZAIAH. Analizamos tu perfil y te acompañamos a invertir en regeneración urbana en CDMX con claridad y certeza.",
   },
+  "/aviso-de-privacidad": {
+    title: "Aviso de privacidad | ZAIAH",
+    description:
+      "Consulta el Aviso de Privacidad y Confidencialidad de Documentos de ZAIAH sobre el tratamiento de datos personales.",
+  },
 };
 
 export function metaForPath(path: string): PageMeta {

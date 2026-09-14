@@ -3,7 +3,6 @@ import { Link } from "wouter";
 const footerLinks = [
   { href: "/", label: "Inicio" },
   { href: "/quienes-somos", label: "Quiénes Somos" },
-  { href: "/modelo", label: "Modelo ZH" },
   { href: "/portafolio", label: "Portafolio" },
 ];
 
@@ -53,20 +52,20 @@ export default function Footer() {
             <p className="text-[#c6a65a] eyebrow mb-7">Contacto</p>
             <div className="flex flex-col gap-4">
               <a
-                href="mailto:mkt@zaiah.com.mx"
+                href="mailto:alexis.marin@zaiah.com.mx"
                 className="text-white/40 text-sm hover:text-[#c6a65a] transition-colors tracking-wide"
                 data-testid="link-footer-email"
               >
-                mkt@zaiah.com.mx
+                alexis.marin@zaiah.com.mx
               </a>
               <a
-                href="https://wa.me/+5215551452047"
+                href="https://wa.me/5215570759959"
                 className="text-white/40 text-sm hover:text-[#c6a65a] transition-colors tracking-wide"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="link-footer-whatsapp"
               >
-                55 5145 2047
+                +52 1 55 7075 9959
               </a>
               <p className="text-white/40 text-sm tracking-wide">Ciudad de México</p>
             </div>
@@ -78,9 +77,17 @@ export default function Footer() {
           <p className="text-white/20 text-xs tracking-widest">
             © 2026 ZAIAH — Redefinimos el futuro urbano de las grandes ciudades.
           </p>
-          <div className="flex items-center gap-3">
-            <span className="w-6 h-px bg-[#c6a65a]/40" />
-            <p className="text-white/15 eyebrow">Ciudad de México · MX</p>
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-5">
+            <Link href="/aviso-de-privacidad">
+              <span className="text-white/25 text-[10px] font-medium uppercase tracking-[.16em] transition-colors hover:text-[#c6a65a]">
+                Aviso de privacidad
+              </span>
+            </Link>
+            <span className="hidden h-3 w-px bg-white/10 sm:block" aria-hidden />
+            <div className="flex items-center gap-3">
+              <span className="w-6 h-px bg-[#c6a65a]/40" />
+              <p className="text-white/15 eyebrow">Ciudad de México · MX</p>
+            </div>
           </div>
         </div>
       </div>

@@ -4,7 +4,6 @@ import { Link, useLocation } from "wouter";
 const navLinks = [
   { href: "/", label: "Inicio" },
   { href: "/quienes-somos", label: "Quiénes Somos" },
-  { href: "/modelo", label: "Modelo" },
   { href: "/portafolio", label: "Portafolio" },
 ];
 
@@ -89,7 +88,7 @@ export default function Header() {
                     : "border-white/40 text-white/90 hover:border-[#c6a65a] hover:text-[#c6a65a]"
                 }`}
               >
-                Agendar cita
+                Sinergia
               </span>
             </Link>
           </nav>
@@ -131,7 +130,7 @@ export default function Header() {
           ))}
           <Link href="/contacto">
             <span className="inline-block mt-2 px-6 py-3 bg-[#c6a65a] text-black text-xs font-bold tracking-[0.15em] uppercase">
-              Agendar cita
+              Sinergia
             </span>
           </Link>
         </div>

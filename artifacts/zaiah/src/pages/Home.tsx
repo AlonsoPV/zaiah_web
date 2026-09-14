@@ -288,7 +288,9 @@ export default function Home() {
             transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
             className="mt-4 max-w-xl text-sm font-light leading-6 text-white/75 md:mt-6 md:text-base md:leading-7 lg:text-lg"
           >
-            Creamos nodos de regeneración, llamadas Zonas Zaiah, regenerando edificios y sus entornos, activando economías locales y creando patrimonio para quienes invierten en ellos.
+            Creamos nodos de regeneración, llamadas{" "}
+            <span className="font-medium tracking-[.06em] text-white">ZONAS ZAIAH</span>
+            , regenerando edificios y sus entornos, activando economías locales y creando patrimonio para quienes invierten en ellos.
           </motion.p>
 
           <motion.div

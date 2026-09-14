@@ -1,15 +1,96 @@
-import { Router, type IRouter } from "express";
+import { Router, type IRouter, type Request } from "express";
 import nodemailer from "nodemailer";
 
 const router: IRouter = Router();
 
-const RECIPIENTS = ["mkt@zaiah.com.mx", "alpeva96@gmail.com"];
+const RECIPIENTS = ["alexis.marin@zaiah.com.mx"];
+const ALLOWED_INTEREST = new Set(["inversion", "alianza", "proyecto-inmobiliario", "otro"]);
+const MIN_FILL_MS = 2500;
+const MAX_FILL_MS = 1000 * 60 * 60 * 24;
+const RATE_WINDOW_MS = 1000 * 60 * 15;
+const RATE_MAX = 5;
+
+type RateEntry = { count: number; resetAt: number };
+const rateByIp = new Map<string, RateEntry>();
+
+function clientIp(req: Request): string {
+  const forwarded = req.headers["x-forwarded-for"];
+  if (typeof forwarded === "string" && forwarded.length > 0) {
+    return forwarded.split(",")[0]?.trim() || req.ip || "unknown";
+  }
+  return req.ip || "unknown";
+}
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateByIp.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateByIp.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return false;
+  }
+  entry.count += 1;
+  return entry.count > RATE_MAX;
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function asTrimmedString(value: unknown, max: number): string {
+  if (typeof value !== "string") return "";
+  return value.trim().slice(0, max);
+}
 
 router.post("/contact", async (req, res) => {
-  const { nombre, empresa, correo, telefono, interes, mensaje } = req.body as Record<string, string>;
+  const ip = clientIp(req);
+
+  if (isRateLimited(ip)) {
+    req.log.warn({ ip }, "Contacto bloqueado por rate limit");
+    res.status(429).json({ ok: false, error: "Demasiados intentos. Intenta más tarde." });
+    return;
+  }
+
+  const body = (req.body ?? {}) as Record<string, unknown>;
+  const website = asTrimmedString(body.website, 200);
+  const openedAt = typeof body._t === "number" ? body._t : Number(body._t);
+
+  // Honeypot: bots that fill hidden fields are silently accepted (no email sent)
+  if (website) {
+    req.log.info({ ip }, "Contacto descartado por honeypot");
+    res.json({ ok: true });
+    return;
+  }
+
+  if (!Number.isFinite(openedAt)) {
+    res.status(400).json({ ok: false, error: "Solicitud inválida." });
+    return;
+  }
+
+  const elapsed = Date.now() - openedAt;
+  if (elapsed < MIN_FILL_MS || elapsed > MAX_FILL_MS) {
+    req.log.info({ ip, elapsed }, "Contacto descartado por timing");
+    res.status(400).json({ ok: false, error: "Solicitud inválida." });
+    return;
+  }
+
+  const nombre = asTrimmedString(body.nombre, 120);
+  const correo = asTrimmedString(body.correo, 160);
+  const telefono = asTrimmedString(body.telefono, 40);
+  const interes = asTrimmedString(body.interes, 40);
+  const mensaje = asTrimmedString(body.mensaje, 4000);
 
   if (!nombre || !correo || !telefono || !interes || !mensaje) {
     res.status(400).json({ ok: false, error: "Campos requeridos faltantes." });
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo) || !ALLOWED_INTEREST.has(interes)) {
+    res.status(400).json({ ok: false, error: "Datos inválidos." });
     return;
   }
 
@@ -25,10 +106,15 @@ router.post("/contact", async (req, res) => {
   const interesLabels: Record<string, string> = {
     inversion: "Inversión",
     alianza: "Alianza estratégica",
-    "venta-activo": "Venta de activo",
     "proyecto-inmobiliario": "Proyecto inmobiliario",
     otro: "Otro",
   };
+
+  const safeNombre = escapeHtml(nombre);
+  const safeCorreo = escapeHtml(correo);
+  const safeTelefono = escapeHtml(telefono);
+  const safeInteres = escapeHtml(interesLabels[interes] ?? interes);
+  const safeMensaje = escapeHtml(mensaje).replace(/\n/g, "<br>");
 
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -43,40 +129,33 @@ router.post("/contact", async (req, res) => {
             <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; width: 140px;">
               <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">Nombre</strong>
             </td>
-            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${nombre}</td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${safeNombre}</td>
           </tr>
-          ${empresa ? `
-          <tr>
-            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0;">
-              <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">Empresa</strong>
-            </td>
-            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${empresa}</td>
-          </tr>` : ""}
           <tr>
             <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0;">
               <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">Correo</strong>
             </td>
             <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0;">
-              <a href="mailto:${correo}" style="color: #CAAA57;">${correo}</a>
+              <a href="mailto:${safeCorreo}" style="color: #CAAA57;">${safeCorreo}</a>
             </td>
           </tr>
           <tr>
             <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0;">
               <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">Teléfono</strong>
             </td>
-            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${telefono}</td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${safeTelefono}</td>
           </tr>
           <tr>
             <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0;">
               <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">Interés</strong>
             </td>
-            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${interesLabels[interes] ?? interes}</td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${safeInteres}</td>
           </tr>
           <tr>
             <td style="padding: 10px 0; vertical-align: top;">
               <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">Mensaje</strong>
             </td>
-            <td style="padding: 10px 0; color: #333; line-height: 1.6;">${mensaje.replace(/\n/g, "<br>")}</td>
+            <td style="padding: 10px 0; color: #333; line-height: 1.6;">${safeMensaje}</td>
           </tr>
         </table>
       </div>
@@ -102,7 +181,7 @@ router.post("/contact", async (req, res) => {
       html,
     });
 
-    req.log.info({ correo, interes }, "Contacto enviado correctamente");
+    req.log.info({ correo, interes, ip }, "Contacto enviado correctamente");
     res.json({ ok: true });
   } catch (err) {
     req.log.error({ err }, "Error al enviar correo");

@@ -1,14 +1,17 @@
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Play, X } from "lucide-react";
 import cityImage from "@/assets/images/quienes-somos-hero.jpeg";
 import jorgeMarin from "@/assets/images/jorge-marin.webp";
 import alexisMarin from "@/assets/images/alexis-marin.webp";
 import javierBautista from "@/assets/images/javier-bautista.webp";
 import erikaVelasco from "@/assets/images/erika-velasco.webp";
 import alonsoPerez from "@/assets/images/alonso-perez.webp";
+import abrahamHarris from "@/assets/images/abraham-harris.webp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+const VIDEO_BASE = `${import.meta.env.BASE_URL}videos`;
 
 type Person = { name: string; role: string; image?: string };
 
@@ -18,10 +21,10 @@ const founders: Person[] = [
 ];
 
 const leadership: Person[] = [
-  { name: "Abraham Harris", role: "Director general" },
+  { name: "Abraham Harris", role: "Director general", image: abrahamHarris },
   { name: "Karim Harris", role: "Director Comercial" },
-  { name: "Javier Bustamante", role: "Líder comercial", image: javierBautista },
-  { name: "Miguel Piedras", role: "CFO on demand" },
+  { name: "Javier Bautista", role: "Líder comercial", image: javierBautista },
+  { name: "Miguel Piedras", role: "CFO" },
 ];
 
 const crew: Person[] = [
@@ -30,16 +33,25 @@ const crew: Person[] = [
   { name: "Erika Velasco", role: "Administración", image: erikaVelasco },
   { name: "Saúl López", role: "Contador" },
   { name: "Arlette López", role: "Contador" },
-  { name: "Alonso Pérez", role: "Desarrollador", image: alonsoPerez },
+  { name: "Alonso Pérez", role: "Programador", image: alonsoPerez },
 ];
 
-const testimonials = [
+type Testimonial = {
+  initials: string;
+  name: string;
+  role: string;
+  quote: string;
+  video: string;
+};
+
+const testimonials: Testimonial[] = [
   {
     initials: "LH",
     name: "Lizbeth Hernández",
     role: "Inversionista",
     quote:
       "Fue increíble, le dieron seguimiento a todo el proyecto. Es muy formal y te da mucha confianza.",
+    video: `${VIDEO_BASE}/testimonio-lizbeth.mov`,
   },
   {
     initials: "RM",
@@ -47,6 +59,7 @@ const testimonials = [
     role: "Inversionista",
     quote:
       "Nos transmitió mucha confianza Alexis: una persona muy agradable, tolerante y comprensiva para llegar a la conclusión de esta operación.",
+    video: `${VIDEO_BASE}/testimonio-rosa.mp4`,
   },
   {
     initials: "AM",
@@ -54,6 +67,7 @@ const testimonials = [
     role: "Inversionista",
     quote:
       "Recibir una renta fija es cómodo: no tener que lidiar con inquilinos ni con meses en que la propiedad no está ocupada. Para mí fue lo mejor.",
+    video: `${VIDEO_BASE}/testimonio-alfonso.mp4`,
   },
 ];
 
@@ -67,36 +81,10 @@ function initials(name: string) {
     .toUpperCase();
 }
 
-function Portrait({ person, size = "md" }: { person: Person; size?: "lg" | "md" | "sm" }) {
-  const frame = {
-    lg: "aspect-[3/4]",
-    md: "aspect-[3/4]",
-    sm: "aspect-[4/5]",
-  };
-  const nameClass = {
-    lg: "text-lg md:text-xl lg:text-[1.35rem]",
-    md: "text-[15px] md:text-base",
-    sm: "text-[13px] sm:text-sm",
-  };
-  const roleClass = {
-    lg: "text-[9px] tracking-[.2em] md:text-[10px]",
-    md: "text-[8px] tracking-[.18em] md:text-[9px]",
-    sm: "text-[8px] tracking-[.14em]",
-  };
-  const padClass = {
-    lg: "p-4 md:p-5",
-    md: "p-3.5 md:p-4",
-    sm: "p-2.5 sm:p-3",
-  };
-  const initialClass = {
-    lg: "text-4xl md:text-5xl",
-    md: "text-3xl md:text-4xl",
-    sm: "text-2xl",
-  };
-
+function Portrait({ person }: { person: Person }) {
   return (
     <div className="group h-full">
-      <div className={`relative h-full overflow-hidden bg-[#041f49] ${frame[size]}`}>
+      <div className="relative aspect-[3/4] h-full overflow-hidden bg-[#041f49]">
         {person.image ? (
           <img
             src={person.image}
@@ -108,7 +96,7 @@ function Portrait({ person, size = "md" }: { person: Person; size?: "lg" | "md" 
           <div className="absolute inset-0 bg-[linear-gradient(160deg,#0a1628_0%,#041f49_55%,#1a3a6e_100%)]">
             <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, #c6a65a 0%, transparent 45%)" }} />
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className={`font-medium tracking-[.2em] text-[#c6a65a]/80 ${initialClass[size]}`}>
+              <span className="text-3xl font-medium tracking-[.2em] text-[#c6a65a]/80 md:text-4xl">
                 {initials(person.name)}
               </span>
             </div>
@@ -116,11 +104,11 @@ function Portrait({ person, size = "md" }: { person: Person; size?: "lg" | "md" 
           </div>
         )}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#041f49]/80 via-[#041f49]/25 to-transparent opacity-90 transition duration-500 group-hover:opacity-100" />
-        <div className={`absolute inset-x-0 bottom-0 ${padClass[size]}`}>
-          <p className={`leading-tight tracking-[-.03em] text-white ${nameClass[size]}`}>
+        <div className="absolute inset-x-0 bottom-0 p-3.5 md:p-4">
+          <p className="text-[15px] leading-tight tracking-[-.03em] text-white md:text-base">
             {person.name}
           </p>
-          <p className={`mt-1.5 font-bold uppercase text-[#c6a65a] ${roleClass[size]}`}>{person.role}</p>
+          <p className="mt-1.5 text-[8px] font-bold uppercase tracking-[.18em] text-[#c6a65a] md:text-[9px]">{person.role}</p>
         </div>
       </div>
     </div>
@@ -141,7 +129,73 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
   );
 }
 
+function TestimonialVideoModal({
+  item,
+  onClose,
+}: {
+  item: Testimonial;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[80] flex items-center justify-center bg-[#041f49]/88 p-4 backdrop-blur-md md:p-8"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Testimonio de ${item.name}`}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96, y: 12 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: EASE }}
+        className="relative w-full max-w-3xl overflow-hidden border border-white/15 bg-[#0a1628] shadow-[0_30px_80px_rgba(0,0,0,.45)]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 md:px-6">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#c6a65a]">Ver testimonio</p>
+            <p className="mt-1 text-sm tracking-[-.02em] text-white">{item.name}</p>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex h-10 w-10 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-[#c6a65a]/50 hover:text-[#c6a65a]"
+            aria-label="Cerrar video"
+          >
+            <X size={18} />
+          </button>
+        </div>
+        <div className="aspect-video bg-black">
+          <video
+            key={item.video}
+            src={item.video}
+            controls
+            autoPlay
+            playsInline
+            className="h-full w-full object-contain"
+          />
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function QuienesSomos() {
+  const [activeVideo, setActiveVideo] = useState<Testimonial | null>(null);
+
   return (
     <main className="bg-[#faf9f7] text-[#1c1c1c]">
       <section className="relative h-svh max-h-dvh min-h-[100svh] overflow-hidden bg-[#0a1628] text-white">
@@ -209,46 +263,17 @@ export default function QuienesSomos() {
 
       <section className="bg-[#faf9f7] pb-20 pt-12 md:pb-28 md:pt-16">
         <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-          <Reveal className="mb-8 flex items-end justify-between gap-6">
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[.28em] text-[#c6a65a]">01 · Founders</p>
-              <h3 className="mt-2 text-2xl tracking-[-.03em] text-[#041f49] md:text-3xl">Quienes impulsan la visión</h3>
-            </div>
+          <Reveal className="mb-10 md:mb-12">
+            <h2 className="max-w-3xl text-[clamp(1.8rem,3.2vw,2.8rem)] leading-[1.08] tracking-[-.03em] text-[#041f49]">
+              El equipo que hace realidad cada{" "}
+              <span className="text-[#c6a65a]">ZONA ZAIAH</span>
+            </h2>
           </Reveal>
 
-          {/* Founders · nivel grande */}
-          <div className="mx-auto grid w-full max-w-[48rem] gap-4 md:grid-cols-2 md:gap-5">
-            {founders.map((person) => (
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+            {[...founders, ...leadership, ...crew].map((person) => (
               <Reveal key={person.name}>
-                <Portrait person={person} size="lg" />
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mb-8 mt-16 md:mt-20">
-            <p className="text-[10px] font-bold uppercase tracking-[.28em] text-[#c6a65a]">02 · Liderazgo</p>
-            <h3 className="mt-2 text-2xl tracking-[-.03em] text-[#041f49] md:text-3xl">Dirección y ejecución</h3>
-          </Reveal>
-
-          {/* Liderazgo · nivel medio */}
-          <div className="mx-auto grid w-full max-w-5xl gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-            {leadership.map((person) => (
-              <Reveal key={person.name}>
-                <Portrait person={person} size="md" />
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mb-8 mt-16 md:mt-20">
-            <p className="text-[10px] font-bold uppercase tracking-[.28em] text-[#c6a65a]">03 · Operación</p>
-            <h3 className="mt-2 text-2xl tracking-[-.03em] text-[#041f49] md:text-3xl">El equipo que hace realidad cada Zona Zaiah</h3>
-          </Reveal>
-
-          {/* Operación · nivel compacto */}
-          <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-3 sm:gap-3.5 md:grid-cols-3 lg:grid-cols-6">
-            {crew.map((person) => (
-              <Reveal key={person.name}>
-                <Portrait person={person} size="sm" />
+                <Portrait person={person} />
               </Reveal>
             ))}
           </div>
@@ -276,13 +301,26 @@ export default function QuienesSomos() {
             {testimonials.map((item, index) => (
               <Reveal key={item.name}>
                 <figure
-                  className={`flex h-full flex-col border-white/12 py-8 md:border-r md:px-7 md:py-10 lg:px-9 ${
+                  className={`group/card flex h-full flex-col border-white/12 py-8 md:border-r md:px-7 md:py-10 lg:px-9 ${
                     index === testimonials.length - 1 ? "md:border-r-0" : ""
                   } ${index > 0 ? "border-t md:border-t-0" : ""}`}
                 >
-                  <span className="text-[10px] font-bold tracking-[.28em] text-[#c6a65a]/70">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="text-[10px] font-bold tracking-[.28em] text-[#c6a65a]/70">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setActiveVideo(item)}
+                      className="group inline-flex items-center gap-2.5 border border-[#c6a65a]/35 bg-white/[.03] px-3.5 py-2 text-[9px] font-bold uppercase tracking-[.18em] text-[#c6a65a] transition-all duration-300 hover:border-[#c6a65a] hover:bg-[#c6a65a] hover:text-[#041f49]"
+                      aria-label={`Ver video de ${item.name}`}
+                    >
+                      <span className="relative flex h-6 w-6 items-center justify-center rounded-full bg-[#c6a65a]/15 transition-colors group-hover:bg-[#041f49]/15">
+                        <Play size={11} className="ml-0.5 fill-current" />
+                      </span>
+                      Ver video
+                    </button>
+                  </div>
                   <blockquote className="mt-5 flex-1 font-serif text-[1.05rem] font-normal italic leading-7 text-white/88 md:text-[1.1rem] md:leading-8">
                     “{item.quote}”
                   </blockquote>
@@ -303,6 +341,10 @@ export default function QuienesSomos() {
           </div>
         </div>
       </section>
+
+      {activeVideo && (
+        <TestimonialVideoModal item={activeVideo} onClose={() => setActiveVideo(null)} />
+      )}
     </main>
   );
 }

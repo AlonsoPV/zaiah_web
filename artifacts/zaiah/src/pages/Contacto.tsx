@@ -41,14 +41,15 @@ function FadeIn({ children, delay = 0, className = "" }: { children: React.React
 }
 
 const contactSchema = z.object({
-  nombre: z.string().min(2, "Ingresa tu nombre completo"),
-  empresa: z.string().optional(),
-  correo: z.string().email("Ingresa un correo válido"),
-  telefono: z.string().min(8, "Ingresa un número de teléfono válido"),
-  interes: z.enum(["inversion", "alianza", "venta-activo", "proyecto-inmobiliario", "otro"], {
+  nombre: z.string().min(2, "Ingresa tu nombre completo").max(120),
+  correo: z.string().email("Ingresa un correo válido").max(160),
+  telefono: z.string().min(8, "Ingresa un número de teléfono válido").max(40),
+  interes: z.enum(["inversion", "alianza", "proyecto-inmobiliario", "otro"], {
     required_error: "Selecciona un tipo de interés",
   }),
-  mensaje: z.string().min(10, "Cuéntanos un poco más (mínimo 10 caracteres)"),
+  mensaje: z.string().min(10, "Cuéntanos un poco más (mínimo 10 caracteres)").max(4000),
+  /** Honeypot — debe quedar vacío */
+  website: z.string().max(200).optional(),
 });
 
 type ContactForm = z.infer<typeof contactSchema>;
@@ -61,32 +62,68 @@ const WA_ICON = (
 
 export default function Contacto() {
   const [submitted, setSubmitted] = useState(false);
+  const [humanCheck, setHumanCheck] = useState(false);
   const { toast } = useToast();
   const formRef = useRef<HTMLElement>(null);
+  const openedAt = useRef(Date.now());
 
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { nombre: "", empresa: "", correo: "", telefono: "", mensaje: "" },
+    defaultValues: { nombre: "", correo: "", telefono: "", mensaje: "", website: "" },
   });
 
   async function onSubmit(data: ContactForm) {
+    if (!humanCheck) {
+      toast({
+        title: "Confirmación requerida",
+        description: "Marca la casilla para confirmar que no eres un robot.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (data.website) {
+      setSubmitted(true);
+      form.reset();
+      setHumanCheck(false);
+      setTimeout(() => setSubmitted(false), 8000);
+      return;
+    }
+
+    const elapsed = Date.now() - openedAt.current;
+    if (elapsed < 2500) {
+      toast({
+        title: "Espera un momento",
+        description: "Por favor completa el formulario con calma e inténtalo de nuevo.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       const contactEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT
         ?? `${import.meta.env.BASE_URL}api/contact`;
+      const { website: _honeypot, ...fields } = data;
       const res = await fetch(contactEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...fields,
+          website: "",
+          _t: openedAt.current,
+        }),
       });
       const json = await res.json() as { ok: boolean; error?: string };
       if (!json.ok) throw new Error(json.error ?? "Error al enviar");
       setSubmitted(true);
       form.reset();
+      setHumanCheck(false);
+      openedAt.current = Date.now();
       setTimeout(() => setSubmitted(false), 8000);
     } catch {
       toast({
         title: "Error al enviar",
-        description: "Hubo un problema. Escríbenos directamente a mkt@zaiah.com.mx",
+        description: "Hubo un problema. Escríbenos directamente a alexis.marin@zaiah.com.mx",
         variant: "destructive",
       });
     }
@@ -95,7 +132,6 @@ export default function Contacto() {
   const interesOptions = [
     { value: "inversion", label: "Inversión" },
     { value: "alianza", label: "Alianza estratégica" },
-    { value: "venta-activo", label: "Venta de activo" },
     { value: "proyecto-inmobiliario", label: "Proyecto inmobiliario" },
     { value: "otro", label: "Otro" },
   ];
@@ -183,8 +219,8 @@ export default function Contacto() {
 
               <div className="mt-8 grid gap-4 border-t border-black/10 pt-6 sm:grid-cols-3 lg:grid-cols-1">
                 {[
-                  { label: "Correo", val: "mkt@zaiah.com.mx", href: "mailto:mkt@zaiah.com.mx", testid: "link-contact-email" },
-                  { label: "WhatsApp", val: "+52 55 5145 2047", href: "https://wa.me/5215551452047", testid: "link-contact-whatsapp" },
+                  { label: "Correo", val: "alexis.marin@zaiah.com.mx", href: "mailto:alexis.marin@zaiah.com.mx", testid: "link-contact-email" },
+                  { label: "WhatsApp", val: "+52 1 55 7075 9959", href: "https://wa.me/5215570759959", testid: "link-contact-whatsapp" },
                   { label: "Sede", val: "Ciudad de México", href: null as string | null, testid: null as string | null },
                 ].map((item) => (
                   <div key={item.label} className="border-b border-black/10 pb-4 last:border-0 last:pb-0 lg:border-b lg:pb-4 lg:last:border-b lg:last:pb-4">
@@ -211,7 +247,7 @@ export default function Contacto() {
                   Te responderemos en un máximo de 48 horas hábiles. Si prefieres escribirnos directamente, estamos en WhatsApp.
                 </p>
                 <a
-                  href="https://wa.me/5215551452047"
+                  href="https://wa.me/5215570759959"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="button-contact-whatsapp"
@@ -236,7 +272,7 @@ export default function Contacto() {
                   </div>
                 ) : (
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" data-testid="form-contact">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="relative space-y-5" data-testid="form-contact">
                       <p className="mb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
                         Cuéntanos un poco de ti
                       </p>
@@ -248,31 +284,6 @@ export default function Contacto() {
                               <Input {...field} placeholder="Tu nombre completo"
                                 className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                                 data-testid="input-nombre" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )} />
-                        <FormField control={form.control} name="empresa" render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Empresa</FormLabel>
-                            <FormControl>
-                              <Input {...field} placeholder="Tu empresa u organización"
-                                className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
-                                data-testid="input-empresa" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )} />
-                      </div>
-
-                      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                        <FormField control={form.control} name="correo" render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Correo *</FormLabel>
-                            <FormControl>
-                              <Input {...field} type="email" placeholder="correo@ejemplo.com"
-                                className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
-                                data-testid="input-correo" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -289,6 +300,18 @@ export default function Contacto() {
                           </FormItem>
                         )} />
                       </div>
+
+                      <FormField control={form.control} name="correo" render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Correo *</FormLabel>
+                          <FormControl>
+                            <Input {...field} type="email" placeholder="correo@ejemplo.com"
+                              className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
+                              data-testid="input-correo" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )} />
 
                       <FormField control={form.control} name="interes" render={({ field }) => (
                         <FormItem>
@@ -321,6 +344,62 @@ export default function Contacto() {
                           <FormMessage />
                         </FormItem>
                       )} />
+
+                      {/* Honeypot antispam — oculto para humanos */}
+                      <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                        <label htmlFor="website">Sitio web</label>
+                        <input
+                          id="website"
+                          type="text"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          {...form.register("website")}
+                          data-testid="input-website-honeypot"
+                        />
+                      </div>
+
+                      <label
+                        className={`group flex cursor-pointer items-center gap-4 border-b py-4 transition-colors ${
+                          humanCheck ? "border-[#c6a65a]" : "border-[#d9d6cf] hover:border-[#041f49]/35"
+                        }`}
+                      >
+                        <span
+                          className={`relative flex h-5 w-5 shrink-0 items-center justify-center border transition-all duration-300 ${
+                            humanCheck
+                              ? "border-[#041f49] bg-[#041f49]"
+                              : "border-[#041f49]/30 bg-transparent group-hover:border-[#041f49]/55"
+                          }`}
+                          aria-hidden="true"
+                        >
+                          <svg
+                            viewBox="0 0 12 10"
+                            className={`h-2.5 w-2.5 text-[#c6a65a] transition-all duration-300 ${
+                              humanCheck ? "scale-100 opacity-100" : "scale-75 opacity-0"
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="square"
+                          >
+                            <path d="M1 5l3.5 3.5L11 1" />
+                          </svg>
+                        </span>
+                        <input
+                          type="checkbox"
+                          checked={humanCheck}
+                          onChange={(e) => setHumanCheck(e.target.checked)}
+                          className="sr-only"
+                          data-testid="checkbox-human"
+                        />
+                        <span className="min-w-0">
+                          <span className="block text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">
+                            Verificación
+                          </span>
+                          <span className="mt-1 block text-sm font-light leading-5 text-[#041f49]/55">
+                            Confirmo que soy una persona y deseo conversar con ZAIAH.
+                          </span>
+                        </span>
+                      </label>
 
                       <div className="pt-2">
                         <button
