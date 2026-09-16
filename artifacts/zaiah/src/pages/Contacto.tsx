@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -61,8 +62,8 @@ const WA_ICON = (
 );
 
 export default function Contacto() {
-  const [submitted, setSubmitted] = useState(false);
   const [humanCheck, setHumanCheck] = useState(false);
+  const [, setLocation] = useLocation();
   const { toast } = useToast();
   const formRef = useRef<HTMLElement>(null);
   const openedAt = useRef(Date.now());
@@ -83,10 +84,7 @@ export default function Contacto() {
     }
 
     if (data.website) {
-      setSubmitted(true);
-      form.reset();
-      setHumanCheck(false);
-      setTimeout(() => setSubmitted(false), 8000);
+      setLocation("/gracias");
       return;
     }
 
@@ -115,11 +113,7 @@ export default function Contacto() {
       });
       const json = await res.json() as { ok: boolean; error?: string };
       if (!json.ok) throw new Error(json.error ?? "Error al enviar");
-      setSubmitted(true);
-      form.reset();
-      setHumanCheck(false);
-      openedAt.current = Date.now();
-      setTimeout(() => setSubmitted(false), 8000);
+      setLocation("/gracias");
     } catch {
       toast({
         title: "Error al enviar",
@@ -262,15 +256,6 @@ export default function Contacto() {
             {/* Form */}
             <FadeIn delay={120} className="lg:col-span-8">
               <div className="border border-black/10 bg-white p-6 md:p-10">
-                {submitted ? (
-                  <div className="flex flex-col items-start py-10">
-                    <div className="mb-6 h-px w-8 bg-[#c6a65a]" />
-                    <h3 className="mb-3 text-2xl text-[#041f49]">Solicitud enviada</h3>
-                    <p className="max-w-sm text-sm font-light leading-6 text-[#041f49]/55">
-                      Hemos recibido tu mensaje. El equipo ZAIAH te contactará en las próximas 48 horas hábiles.
-                    </p>
-                  </div>
-                ) : (
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="relative space-y-5" data-testid="form-contact">
                       <p className="mb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
@@ -413,7 +398,6 @@ export default function Contacto() {
                       </div>
                     </form>
                   </Form>
-                )}
               </div>
             </FadeIn>
           </div>

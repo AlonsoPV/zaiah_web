@@ -10,6 +10,7 @@ import QuienesSomos from "@/pages/QuienesSomos";
 import Modelo from "@/pages/Modelo";
 import Portafolio from "@/pages/Portafolio";
 import Contacto from "@/pages/Contacto";
+import Gracias from "@/pages/Gracias";
 import AvisoPrivacidad from "@/pages/AvisoPrivacidad";
 import NotFound from "@/pages/not-found";
 import { applyPageMeta, metaForPath } from "@/lib/seo";
@@ -44,6 +45,7 @@ function Router() {
         <Route path="/modelo" component={Modelo} />
         <Route path="/portafolio" component={Portafolio} />
         <Route path="/contacto" component={Contacto} />
+        <Route path="/gracias" component={Gracias} />
         <Route path="/aviso-de-privacidad" component={AvisoPrivacidad} />
         <Route component={NotFound} />
       </Switch>

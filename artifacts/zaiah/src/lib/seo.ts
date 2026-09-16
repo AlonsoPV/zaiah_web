@@ -43,6 +43,11 @@ export const pageMeta: Record<string, PageMeta> = {
     description:
       "Agenda una cita con ZAIAH. Analizamos tu perfil y te acompañamos a invertir en regeneración urbana en CDMX con claridad y certeza.",
   },
+  "/gracias": {
+    title: "Gracias | Solicitud recibida · ZAIAH",
+    description:
+      "Hemos recibido tu mensaje. El equipo ZAIAH te contactará en un máximo de 48 horas hábiles.",
+  },
   "/aviso-de-privacidad": {
     title: "Aviso de privacidad | ZAIAH",
     description:
