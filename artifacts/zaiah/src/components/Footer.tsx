@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const footerLinks = [
   { href: "/", label: "Inicio" },
@@ -68,6 +69,38 @@ export default function Footer() {
                 +52 1 55 7075 9959
               </a>
               <p className="text-white/40 text-sm tracking-wide">Ciudad de México</p>
+            </div>
+            <div className="mt-6 border-t border-white/10 pt-5">
+              <p className="mb-4 text-[#c6a65a] eyebrow">Redes sociales</p>
+              <div className="flex flex-col gap-3">
+                <a
+                  href="https://www.facebook.com/zaiahinvestment"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="ZAIAH en Facebook (abre en una pestaña nueva)"
+                  className="flex items-center gap-3 text-white/40 text-sm hover:text-[#c6a65a] transition-colors"
+                >
+                  <FaFacebookF aria-hidden="true" /> Facebook
+                </a>
+                <a
+                  href="https://www.instagram.com/zaiahinvestment/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="ZAIAH en Instagram (abre en una pestaña nueva)"
+                  className="flex items-center gap-3 text-white/40 text-sm hover:text-[#c6a65a] transition-colors"
+                >
+                  <FaInstagram aria-hidden="true" /> Instagram
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/zaiah/posts/?feedView=all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="ZAIAH en LinkedIn (abre en una pestaña nueva)"
+                  className="flex items-center gap-3 text-white/40 text-sm hover:text-[#c6a65a] transition-colors"
+                >
+                  <FaLinkedinIn aria-hidden="true" /> LinkedIn
+                </a>
+              </div>
             </div>
           </div>
         </div>

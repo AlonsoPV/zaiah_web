@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -246,6 +247,40 @@ export default function Contacto() {
                 <p className="text-xs font-light leading-5 text-[#041f49]/45">
                   Te responderemos en un máximo de 48 horas hábiles. Si prefieres escribirnos directamente, estamos en WhatsApp.
                 </p>
+                <div className="border-t border-black/10 pt-5">
+                  <p className="mb-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]/45">
+                    Síguenos
+                  </p>
+                  <div className="flex flex-wrap gap-x-5 gap-y-3">
+                    <a
+                      href="https://www.facebook.com/zaiahinvestment"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="ZAIAH en Facebook (abre en una pestaña nueva)"
+                      className="inline-flex items-center gap-2 text-sm text-[#041f49]/70 transition-colors hover:text-[#c6a65a]"
+                    >
+                      <FaFacebookF aria-hidden="true" /> Facebook
+                    </a>
+                    <a
+                      href="https://www.instagram.com/zaiahinvestment/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="ZAIAH en Instagram (abre en una pestaña nueva)"
+                      className="inline-flex items-center gap-2 text-sm text-[#041f49]/70 transition-colors hover:text-[#c6a65a]"
+                    >
+                      <FaInstagram aria-hidden="true" /> Instagram
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/zaiah/posts/?feedView=all"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="ZAIAH en LinkedIn (abre en una pestaña nueva)"
+                      className="inline-flex items-center gap-2 text-sm text-[#041f49]/70 transition-colors hover:text-[#c6a65a]"
+                    >
+                      <FaLinkedinIn aria-hidden="true" /> LinkedIn
+                    </a>
+                  </div>
+                </div>
                 <a
                   href="https://wa.me/5215570759959"
                   target="_blank"
