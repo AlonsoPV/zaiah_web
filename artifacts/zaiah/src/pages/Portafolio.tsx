@@ -7,7 +7,7 @@ import projectOne from "@/assets/images/san-pedro.webp";
 import projectOneB from "@/assets/images/sanpedro-2.webp";
 import projectOneC from "@/assets/images/sanpedro-3.webp";
 import projectOneD from "@/assets/images/zh-nvl01-5.webp";
-import projectTwo from "@/assets/images/edison-58.jpeg";
+import projectTwo from "@/assets/images/edison-58.webp";
 import projectTwoB from "@/assets/images/edison-galeria/fachada-exterior.webp";
 import projectTwoC from "@/assets/images/edison-galeria/fachada.webp";
 import projectTwoD from "@/assets/images/edison-galeria/terraza.webp";
@@ -90,7 +90,7 @@ type Project = {
   facts: [string, string][];
 };
 
-const projects: Project[] = [
+const activeProjects: Project[] = [
   {
     name: "ZAIAH HEALTH",
     type: "Consultorios médicos",
@@ -107,13 +107,16 @@ const projects: Project[] = [
       ["10–14 m²", "Superficie desde"],
     ],
   },
+];
+
+const successCases: Project[] = [
   {
     name: "Edison 58",
     type: "Departamentos · Renta corta",
     place: "Tabacalera · CDMX",
-    status: "Disponibilidad actual",
+    status: "Vendido",
     description:
-      "Regeneramos un edificio con valor histórico en una zona conectada del centro. El modelo integra identidad arquitectónica, ubicación y operación de renta corta con criterios de mercado.",
+      "Adquirimos, regeneramos y vendimos un edificio con valor histórico en Tabacalera. El caso demuestra el modelo ZAIAH de regeneración con identidad arquitectónica y operación profesional.",
     image: projectTwo,
     images: [
       projectTwo,
@@ -127,11 +130,11 @@ const projects: Project[] = [
       projectTwoI,
       projectTwoJ,
     ],
-    url: "https://edison58tabacalera.com/",
+    url: "#casos-de-exito",
     facts: [
-      ["$3.5 MDP", "Inversión desde"],
-      ["12%", "Cap rate estimado"],
-      ["$68 USD", "Tarifa promedio"],
+      ["Tabacalera", "Zona regenerada"],
+      ["Renta corta", "Modelo operado"],
+      ["Vendido", "Estado del activo"],
     ],
   },
 ];
@@ -606,8 +609,7 @@ export default function Portafolio() {
             transition={{ duration: 1, ease: EASE, delay: 0.22 }}
             className="max-w-4xl text-[clamp(2.1rem,5.2vw,4.4rem)] font-medium leading-[1.05] tracking-[-.03em] text-white"
           >
-            Proyectos que nacen de escuchar{" "}
-            <em className="font-serif font-normal italic text-[#c6a65a]">lo que una zona necesita</em>
+            Proyectos de inversión inmobiliaria en CDMX
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -617,7 +619,7 @@ export default function Portafolio() {
           >
             <span className="mb-4 h-px w-12 bg-[#c6a65a]/70" aria-hidden />
             <p className="text-[10px] font-bold uppercase tracking-[.32em] text-[#c6a65a]">
-              Activos <span className="mx-2 text-[#c6a65a]/45">·</span> CDMX
+              Proyecto activo <span className="mx-2 text-[#c6a65a]/45">·</span> Casos de éxito
             </p>
             <p className="mt-3 text-sm font-light leading-7 text-white/70 md:text-[15px]">
               Cada proyecto responde a criterios urbanos, jurídicos, financieros y operativos. Aquí puedes revisar su estructura y contexto.
@@ -627,16 +629,16 @@ export default function Portafolio() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-            className="mt-7 flex flex-col items-center gap-3 sm:flex-row md:mt-8"
+            className="mt-6 flex w-full max-w-[20.5rem] flex-col items-stretch gap-3 sm:mt-7 sm:max-w-md md:mt-8 md:max-w-none md:flex-row md:items-center md:justify-center md:gap-4"
           >
-            <Link href="/contacto">
-              <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#22c55e] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-white transition-colors hover:bg-[#16a34a]">
-                Quiero regenerar mi Ciudad <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            <Link href="/contacto" className="w-full md:w-auto">
+              <span className="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#c6a65a] px-5 py-3.5 text-center text-[10px] font-bold uppercase tracking-[.12em] text-[#041f49] transition-colors hover:bg-white sm:gap-3 sm:px-8 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
+                Quiero regenerar mi Ciudad <ArrowRight size={15} className="shrink-0 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
-            <a href="#proyectos">
-              <span className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/45 bg-black/25 px-7 py-4 text-[11px] font-medium uppercase tracking-[.18em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10">
-                <MapPin size={14} /> Proyecto activos
+            <a href="#proyectos" className="w-full md:w-auto">
+              <span className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/45 bg-black/25 px-5 py-3.5 text-center text-[10px] font-medium uppercase tracking-[.12em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 sm:px-7 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
+                <MapPin size={14} className="shrink-0" /> Ver proyecto
               </span>
             </a>
           </motion.div>
@@ -645,26 +647,24 @@ export default function Portafolio() {
 
       <section id="proyectos" className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <Reveal className="mb-10 md:mb-14">
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[.28em] text-[#c6a65a]">Proyecto activo</p>
+            <h2 className="max-w-2xl text-[clamp(1.8rem,3vw,2.8rem)] leading-[1.08] tracking-[-.03em] text-[#041f49]">
+              Disponible para invertir hoy
+            </h2>
+          </Reveal>
           <div className="space-y-16 md:space-y-20">
-            {projects.map((p, i) => {
+            {activeProjects.map((p) => {
               const gallery = p.images && p.images.length > 1 ? p.images : [p.image];
               return (
                 <div key={p.name} className="space-y-14 md:space-y-16">
                   <Reveal className="grid gap-10 md:grid-cols-12 md:items-stretch">
-                    <div
-                      className={`relative min-h-[480px] overflow-hidden md:col-span-7 ${
-                        i % 2 ? "md:col-start-6 md:row-start-1" : ""
-                      }`}
-                    >
+                    <div className="relative min-h-[480px] overflow-hidden md:col-span-7">
                       {gallery.length > 1 ? (
                         <ProjectGallery images={gallery} name={p.name} status={p.status} />
                       ) : (
                         <>
-                          <img
-                            src={p.image}
-                            alt={p.name}
-                            className="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-[1.02]"
-                          />
+                          <img src={p.image} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                           <div className="absolute inset-0 bg-[#041f49]/10" />
                           <span className="absolute left-6 top-6 bg-[#c6a65a] px-4 py-3 text-[9px] font-bold uppercase tracking-[.2em] text-[#041f49]">
                             {p.status}
@@ -672,17 +672,11 @@ export default function Portafolio() {
                         </>
                       )}
                     </div>
-                    <div
-                      className={`flex flex-col justify-center py-6 md:col-span-4 ${
-                        i % 2 ? "md:col-start-1 md:row-start-1" : "md:col-start-9"
-                      }`}
-                    >
+                    <div className="flex flex-col justify-center py-6 md:col-span-4 md:col-start-9">
                       <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">{p.type}</p>
-                      <h2 className="mt-5 text-[clamp(2.5rem,4vw,4.2rem)] leading-[1] tracking-[-.04em] text-[#041f49]">
-                        {p.name}
-                      </h2>
+                      <h2 className="mt-5 text-[clamp(2.5rem,4vw,4.2rem)] leading-[1] tracking-[-.04em] text-[#041f49]">{p.name}</h2>
                       <p className="mt-3 text-[10px] uppercase tracking-[.2em] text-black/40">{p.place}</p>
-                      <p className="mt-8 text-sm font-light leading-7 text-black/60">{p.description}</p>
+                      <p className="mt-8 text-sm font-light leading-7 text-[#1c1c1c]/70">{p.description}</p>
                       <div className="mt-9 border-t border-black/15">
                         {p.facts.map(([v, l]) => (
                           <div key={l} className="flex items-baseline justify-between border-b border-black/10 py-4">
@@ -699,22 +693,78 @@ export default function Portafolio() {
                       >
                         Conocer el proyecto <ExternalLink size={13} />
                       </a>
+                      <Link href="/modelo">
+                        <span className="mt-4 inline-flex cursor-pointer items-center gap-2 text-[10px] font-bold uppercase tracking-[.18em] text-[#c6a65a]">
+                          Cómo funciona el modelo <ArrowRight size={13} />
+                        </span>
+                      </Link>
                     </div>
                   </Reveal>
-                  {p.name === "ZAIAH HEALTH" && (
-                    <FloorPlansViewer
-                      plans={zhPlans}
-                      brand="ZAIAH Health"
-                      description="Revisa cada nivel del edificio: desde lobby y planta baja hasta los niveles de consultorios."
-                    />
-                  )}
-                  {p.name === "Edison 58" && (
-                    <FloorPlansViewer
-                      plans={edisonPlans}
-                      brand="Edison 58"
-                      description="Explora planta baja, niveles 1–2, azotea con lofts y el cuadro de áreas del desarrollo."
-                    />
-                  )}
+                  <FloorPlansViewer
+                    plans={zhPlans}
+                    brand="ZAIAH Health"
+                    description="Revisa cada nivel del edificio: desde lobby y planta baja hasta los niveles de consultorios."
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="casos-de-exito" className="border-t border-black/10 bg-[#f1efe9] py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <Reveal className="mb-10 md:mb-14">
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[.28em] text-[#c6a65a]">Casos de éxito</p>
+            <h2 className="max-w-2xl text-[clamp(1.8rem,3vw,2.8rem)] leading-[1.08] tracking-[-.03em] text-[#041f49]">
+              Edison 58: regenerado y vendido
+            </h2>
+          </Reveal>
+          <div className="space-y-16 md:space-y-20">
+            {successCases.map((p) => {
+              const gallery = p.images && p.images.length > 1 ? p.images : [p.image];
+              return (
+                <div key={p.name} className="space-y-14 md:space-y-16">
+                  <Reveal className="grid gap-10 md:grid-cols-12 md:items-stretch">
+                    <div className="relative min-h-[480px] overflow-hidden md:col-span-7 md:col-start-6 md:row-start-1">
+                      {gallery.length > 1 ? (
+                        <ProjectGallery images={gallery} name={p.name} status={p.status} />
+                      ) : (
+                        <>
+                          <img src={p.image} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                          <div className="absolute inset-0 bg-[#041f49]/10" />
+                          <span className="absolute left-6 top-6 bg-[#c6a65a] px-4 py-3 text-[9px] font-bold uppercase tracking-[.2em] text-[#041f49]">
+                            {p.status}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                    <div className="flex flex-col justify-center py-6 md:col-span-4 md:col-start-1 md:row-start-1">
+                      <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">{p.type}</p>
+                      <h2 className="mt-5 text-[clamp(2.5rem,4vw,4.2rem)] leading-[1] tracking-[-.04em] text-[#041f49]">{p.name}</h2>
+                      <p className="mt-3 text-[10px] uppercase tracking-[.2em] text-black/40">{p.place}</p>
+                      <p className="mt-8 text-sm font-light leading-7 text-[#1c1c1c]/70">{p.description}</p>
+                      <div className="mt-9 border-t border-black/15">
+                        {p.facts.map(([v, l]) => (
+                          <div key={l} className="flex items-baseline justify-between border-b border-black/10 py-4">
+                            <span className="text-xl text-[#041f49]">{v}</span>
+                            <span className="text-[9px] uppercase tracking-[.16em] text-black/40">{l}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <a
+                        href="#proyectos"
+                        className="mt-8 inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]"
+                      >
+                        Ver proyecto activo <ArrowRight size={13} />
+                      </a>
+                    </div>
+                  </Reveal>
+                  <FloorPlansViewer
+                    plans={edisonPlans}
+                    brand="Edison 58"
+                    description="Explora planta baja, niveles 1–2, azotea con lofts y el cuadro de áreas del desarrollo."
+                  />
                 </div>
               );
             })}

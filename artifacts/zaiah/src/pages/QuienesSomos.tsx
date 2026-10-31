@@ -225,8 +225,17 @@ export default function QuienesSomos() {
             transition={{ duration: 1, ease: EASE, delay: 0.22 }}
             className="max-w-4xl text-[clamp(2.1rem,5.2vw,4.4rem)] font-medium leading-[1.05] tracking-[-.03em] text-white"
           >
-            “Construimos abundancia <em className="font-serif font-normal italic text-[#c6a65a]">para compartir</em>”
+            Equipo ZAIAH: 10 años regenerando inmuebles en CDMX
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.32 }}
+            className="mt-4 max-w-3xl text-lg font-light leading-7 text-white/85 md:text-xl"
+            aria-hidden
+          >
+            “Construimos abundancia <em className="font-serif italic text-[#c6a65a]">para compartir</em>”
+          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -245,16 +254,16 @@ export default function QuienesSomos() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-            className="mt-7 flex flex-col items-center gap-3 sm:flex-row md:mt-8"
+            className="mt-6 flex w-full max-w-[20.5rem] flex-col items-stretch gap-3 sm:mt-7 sm:max-w-md md:mt-8 md:max-w-none md:flex-row md:items-center md:justify-center md:gap-4"
           >
-            <Link href="/contacto">
-              <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#22c55e] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-white transition-colors hover:bg-[#16a34a]">
-                Quiero regenerar mi Ciudad <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            <Link href="/contacto" className="w-full md:w-auto">
+              <span className="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#c6a65a] px-5 py-3.5 text-center text-[10px] font-bold uppercase tracking-[.12em] text-[#041f49] transition-colors hover:bg-white sm:gap-3 sm:px-8 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
+                Quiero regenerar mi Ciudad <ArrowRight size={15} className="shrink-0 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
-            <Link href="/portafolio">
-              <span className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/45 bg-black/25 px-7 py-4 text-[11px] font-medium uppercase tracking-[.18em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10">
-                <MapPin size={14} /> Proyecto activos
+            <Link href="/portafolio" className="w-full md:w-auto">
+              <span className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/45 bg-black/25 px-5 py-3.5 text-center text-[10px] font-medium uppercase tracking-[.12em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 sm:px-7 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
+                <MapPin size={14} className="shrink-0" /> Ver proyecto
               </span>
             </Link>
           </motion.div>
@@ -271,11 +280,13 @@ export default function QuienesSomos() {
           </Reveal>
 
           <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {[...founders, ...leadership, ...crew].map((person) => (
-              <Reveal key={person.name}>
-                <Portrait person={person} />
-              </Reveal>
-            ))}
+            {[...founders, ...leadership, ...crew]
+              .filter((person) => Boolean(person.image))
+              .map((person) => (
+                <Reveal key={person.name}>
+                  <Portrait person={person} />
+                </Reveal>
+              ))}
           </div>
         </div>
       </section>

@@ -34,6 +34,12 @@ function clean_text(mixed $value, int $maxLength): string
     return mb_substr($text, 0, $maxLength);
 }
 
+$website = clean_text($data['website'] ?? '', 200);
+if ($website !== '') {
+    echo json_encode(['ok' => true]);
+    exit;
+}
+
 $nombre = clean_text($data['nombre'] ?? '', 120);
 $empresa = clean_text($data['empresa'] ?? '', 120);
 $correo = clean_text($data['correo'] ?? '', 180);
@@ -41,11 +47,15 @@ $telefono = clean_text($data['telefono'] ?? '', 60);
 $interes = clean_text($data['interes'] ?? '', 60);
 $mensaje = clean_text($data['mensaje'] ?? '', 3000);
 
+$allowedInterest = ['inversion', 'alianza', 'proyecto-inmobiliario', 'otro'];
 $requiredValid = $nombre !== ''
-    && filter_var($correo, FILTER_VALIDATE_EMAIL)
     && $telefono !== ''
     && $interes !== ''
-    && $mensaje !== '';
+    && in_array($interes, $allowedInterest, true);
+
+if ($correo !== '' && !filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+    $requiredValid = false;
+}
 
 if (!$requiredValid) {
     http_response_code(422);
@@ -67,10 +77,10 @@ $escape = static fn(string $value): string => htmlspecialchars($value, ENT_QUOTE
 $rows = [
     ['Nombre', $nombre],
     ['Empresa', $empresa],
+    ['WhatsApp', $telefono],
     ['Correo', $correo],
-    ['Teléfono', $telefono],
     ['Interés', $interesLabel],
-    ['Mensaje', nl2br($escape($mensaje))],
+    ['Mensaje', $mensaje !== '' ? nl2br($escape($mensaje)) : 'Sin mensaje'],
 ];
 
 $tableRows = '';
@@ -100,9 +110,11 @@ $headers = [
     'MIME-Version: 1.0',
     'Content-Type: text/html; charset=UTF-8',
     'From: ZAIAH Formulario <mkt@zaiah.com.mx>',
-    'Reply-To: ' . $correo,
     'X-Mailer: PHP/' . PHP_VERSION,
 ];
+if ($correo !== '') {
+    $headers[] = 'Reply-To: ' . $correo;
+}
 
 $sent = mail($recipients, $encodedSubject, $html, implode("\r\n", $headers), '-fmkt@zaiah.com.mx');
 

@@ -84,12 +84,17 @@ router.post("/contact", async (req, res) => {
   const interes = asTrimmedString(body.interes, 40);
   const mensaje = asTrimmedString(body.mensaje, 4000);
 
-  if (!nombre || !correo || !telefono || !interes || !mensaje) {
+  if (!nombre || !telefono || !interes) {
     res.status(400).json({ ok: false, error: "Campos requeridos faltantes." });
     return;
   }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo) || !ALLOWED_INTEREST.has(interes)) {
+  if (!ALLOWED_INTEREST.has(interes)) {
+    res.status(400).json({ ok: false, error: "Datos inválidos." });
+    return;
+  }
+
+  if (correo && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
     res.status(400).json({ ok: false, error: "Datos inválidos." });
     return;
   }
@@ -111,10 +116,10 @@ router.post("/contact", async (req, res) => {
   };
 
   const safeNombre = escapeHtml(nombre);
-  const safeCorreo = escapeHtml(correo);
+  const safeCorreo = escapeHtml(correo || "No proporcionado");
   const safeTelefono = escapeHtml(telefono);
   const safeInteres = escapeHtml(interesLabels[interes] ?? interes);
-  const safeMensaje = escapeHtml(mensaje).replace(/\n/g, "<br>");
+  const safeMensaje = escapeHtml(mensaje || "Sin mensaje").replace(/\n/g, "<br>");
 
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -133,17 +138,15 @@ router.post("/contact", async (req, res) => {
           </tr>
           <tr>
             <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0;">
-              <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">Correo</strong>
+              <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">WhatsApp</strong>
             </td>
-            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0;">
-              <a href="mailto:${safeCorreo}" style="color: #CAAA57;">${safeCorreo}</a>
-            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${safeTelefono}</td>
           </tr>
           <tr>
             <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0;">
-              <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">Teléfono</strong>
+              <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #00246B;">Correo</strong>
             </td>
-            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${safeTelefono}</td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0; color: #333;">${safeCorreo}</td>
           </tr>
           <tr>
             <td style="padding: 10px 0; border-bottom: 1px solid #e5e3e0;">
@@ -176,12 +179,12 @@ router.post("/contact", async (req, res) => {
     await transporter.sendMail({
       from: `"ZAIAH Formulario" <${gmailUser}>`,
       to: RECIPIENTS.join(", "),
-      replyTo: correo,
+      ...(correo ? { replyTo: correo } : {}),
       subject: `Nueva solicitud — ${nombre} · ${interesLabels[interes] ?? interes}`,
       html,
     });
 
-    req.log.info({ correo, interes, ip }, "Contacto enviado correctamente");
+    req.log.info({ telefono, interes, ip }, "Contacto enviado correctamente");
     res.json({ ok: true });
   } catch (err) {
     req.log.error({ err }, "Error al enviar correo");

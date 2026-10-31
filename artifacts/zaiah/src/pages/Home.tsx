@@ -1,20 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Building2, CloudFog, DraftingCompass, Factory, FileCheck2, Layers, Leaf, MapPin, MapPinned, Mountain, Orbit, Scale, ShieldCheck, Stamp, Trees } from "lucide-react";
-import heroFallback from "@/assets/images/hero-fallback.jpeg";
+import { ArrowRight, ArrowUpRight, Building2, CloudFog, DraftingCompass, Factory, FileCheck2, Layers, Leaf, MapPin, MapPinned, Mountain, Orbit, Play, Scale, ShieldCheck, Stamp, Trees, X } from "lucide-react";
+import heroFallback from "@/assets/images/hero-fallback.webp";
 import projectImage from "@/assets/images/san-pedro.webp";
-import projectTwo from "@/assets/images/edison-58.jpeg";
+import projectTwo from "@/assets/images/edison-58.webp";
 import zonasZaiahImage from "@/assets/images/zonas-zaiah.webp";
 import letterZ from "@/assets/images/zaiah-letter-z.webp";
 import letterA from "@/assets/images/zaiah-letter-a.webp";
 import letterI from "@/assets/images/zaiah-letter-i.webp";
 import letterA2 from "@/assets/images/zaiah-letter-a2.webp";
 import letterH from "@/assets/images/zaiah-letter-h.webp";
-import treesLeftA from "@/assets/images/reto-trees-left-v2.png";
-import treesRightA from "@/assets/images/reto-trees-right-v2.png";
-import treesLeftCdmx from "@/assets/images/reto-trees-cdmx-left.png";
-import treesRightCdmx from "@/assets/images/reto-trees-cdmx-right.png";
+import treesLeftA from "@/assets/images/reto-trees-left-v2.webp";
+import treesRightA from "@/assets/images/reto-trees-right-v2.webp";
+import treesLeftCdmx from "@/assets/images/reto-trees-cdmx-left.webp";
+import treesRightCdmx from "@/assets/images/reto-trees-cdmx-right.webp";
 
 const HERO_VIDEO = `${import.meta.env.BASE_URL}videos/zaiah-cdmx.mp4`;
 const HERO_FALLBACK = heroFallback;
@@ -159,11 +159,29 @@ const certaintyPoints = [
 ];
 
 const methodLetters = [
-  { id: "z", src: letterZ, alt: "Z", from: "top" as const },
-  { id: "a", src: letterA, alt: "A", from: "bottom" as const },
-  { id: "i", src: letterI, alt: "I", from: "top" as const },
-  { id: "a2", src: letterA2, alt: "A", from: "bottom" as const },
-  { id: "h", src: letterH, alt: "H", from: "top" as const },
+  { id: "z", src: letterZ, alt: "", from: "top" as const },
+  { id: "a", src: letterA, alt: "", from: "bottom" as const },
+  { id: "i", src: letterI, alt: "", from: "top" as const },
+  { id: "a2", src: letterA2, alt: "", from: "bottom" as const },
+  { id: "h", src: letterH, alt: "", from: "top" as const },
+];
+
+const VIDEO_BASE = `${import.meta.env.BASE_URL}videos`;
+const homeTestimonials = [
+  {
+    name: "Rosa María",
+    role: "Inversionista",
+    quote:
+      "Nos transmitió mucha confianza Alexis: una persona muy agradable, tolerante y comprensiva para llegar a la conclusión de esta operación.",
+    video: `${VIDEO_BASE}/testimonio-rosa.mp4`,
+  },
+  {
+    name: "Alfonso Mercado",
+    role: "Inversionista",
+    quote:
+      "Recibir una renta fija es cómodo: no tener que lidiar con inquilinos ni con meses en que la propiedad no está ocupada. Para mí fue lo mejor.",
+    video: `${VIDEO_BASE}/testimonio-alfonso.mp4`,
+  },
 ];
 
 /** viewBox 1600×1000 = 16:10, igual que el contenedor del diagrama. */
@@ -217,6 +235,7 @@ const methodNodes = [
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoFailed, setVideoFailed] = useState(false);
+  const [activeVideo, setActiveVideo] = useState<(typeof homeTestimonials)[number] | null>(null);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -226,11 +245,20 @@ export default function Home() {
     }
     const video = videoRef.current;
     if (!video) return;
-    const play = video.play();
-    if (play && typeof play.catch === "function") {
-      play.catch(() => setVideoFailed(true));
-    }
-  }, []);
+
+    const tryPlay = () => {
+      const play = video.play();
+      if (play && typeof play.catch === "function") {
+        // No ocultar el video si el navegador bloquea autoplay: queda muted en DOM.
+        play.catch(() => undefined);
+      }
+    };
+
+    if (video.readyState >= 2) tryPlay();
+    else video.addEventListener("loadeddata", tryPlay, { once: true });
+
+    return () => video.removeEventListener("loadeddata", tryPlay);
+  }, [videoFailed]);
 
   return (
     <main className="bg-[#faf9f7] text-[#1c1c1c]">
@@ -238,8 +266,7 @@ export default function Home() {
       <section className="relative h-svh max-h-dvh min-h-[100svh] overflow-hidden bg-[#0a1628]" data-testid="section-hero">
         <img
           src={HERO_FALLBACK}
-          alt=""
-          aria-hidden
+          alt="Regeneración urbana e inversión inmobiliaria ZAIAH en Ciudad de México"
           decoding="async"
           fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover object-center"
@@ -247,22 +274,21 @@ export default function Home() {
         {!videoFailed && (
           <video
             ref={videoRef}
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            src={HERO_VIDEO}
+            className="absolute inset-0 z-[1] h-full w-full object-cover object-center"
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             poster={HERO_FALLBACK}
             onError={() => setVideoFailed(true)}
-          >
-            <source src={HERO_VIDEO} type="video/mp4" />
-          </video>
+          />
         )}
         <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.4)_0%,rgba(0,0,0,.12)_40%,rgba(0,0,0,.42)_100%)]" />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-6 pb-10 pt-24 text-center md:px-12">
+        <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-5 pb-8 pt-24 text-center sm:px-6 md:px-12 md:pb-10">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -276,17 +302,27 @@ export default function Home() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.22 }}
-            className="max-w-5xl text-[clamp(2.2rem,6.2vw,5.6rem)] font-medium leading-[1.05] tracking-[-.02em] text-white"
+            className="max-w-4xl text-[clamp(2rem,5.4vw,4.2rem)] font-medium leading-[1.08] tracking-[-.03em] text-white"
           >
-            REDEFINIMOS EL FUTURO URBANO{" "}
-            <em className="font-serif font-normal italic text-white">DE LAS GRANDES CIUDADES</em>
+            Inversión inmobiliaria con escrituras en CDMX
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
-            className="mt-4 max-w-xl text-sm font-light leading-6 text-white/75 md:mt-6 md:text-base md:leading-7 lg:text-lg"
+            transition={{ duration: 0.9, ease: EASE, delay: 0.32 }}
+            className="mt-4 max-w-3xl text-[clamp(1.15rem,2.4vw,1.85rem)] font-light leading-[1.25] tracking-[-.02em] text-white/90 md:mt-5"
+            aria-hidden
+          >
+            Redefinimos el futuro urbano{" "}
+            <em className="font-serif font-normal italic text-white">de las grandes ciudades</em>
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: EASE, delay: 0.42 }}
+            className="mt-4 max-w-xl text-sm font-light leading-6 text-white/80 md:mt-5 md:text-base md:leading-7 lg:text-lg"
           >
             Creamos nodos de regeneración, llamadas{" "}
             <span className="font-medium tracking-[.06em] text-white">ZONAS ZAIAH</span>
@@ -297,19 +333,27 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-            className="mt-7 flex flex-col items-center gap-3 sm:mt-9 sm:flex-row sm:gap-4"
+            className="mt-6 flex w-full max-w-[20.5rem] flex-col items-stretch gap-3 sm:mt-8 sm:max-w-md md:mt-9 md:max-w-none md:flex-row md:items-center md:justify-center md:gap-4"
           >
-            <Link href="/contacto">
-              <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#22c55e] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-white transition-colors hover:bg-[#16a34a]">
-                Quiero regenerar mi Ciudad <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            <Link href="/contacto" className="w-full md:w-auto">
+              <span className="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#c6a65a] px-5 py-3.5 text-center text-[10px] font-bold uppercase tracking-[.12em] text-[#041f49] transition-colors hover:bg-white sm:gap-3 sm:px-8 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
+                Quiero regenerar mi Ciudad <ArrowRight size={15} className="shrink-0 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
-            <Link href="/portafolio">
-              <span className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/45 bg-black/25 px-7 py-4 text-[11px] font-medium uppercase tracking-[.18em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10">
-                <MapPin size={14} /> Proyecto activos
+            <Link href="/portafolio" className="w-full md:w-auto">
+              <span className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/45 bg-black/25 px-5 py-3.5 text-center text-[10px] font-medium uppercase tracking-[.12em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 sm:px-7 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
+                <MapPin size={14} className="shrink-0" /> Ver proyecto
               </span>
             </Link>
           </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="mt-5 text-[10px] font-medium uppercase tracking-[.18em] text-white/70"
+          >
+            Escrituras · Proceso notariado · +30 inversionistas
+          </motion.p>
         </div>
       </section>
 
@@ -533,79 +577,162 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DOS FORMAS DE EMPEZAR ───────────────────────────── */}
+      {/* ── PROYECTO ACTIVO + CASOS DE ÉXITO ─────────────────── */}
       <section className="bg-[#f1efe9] py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
           <Reveal className="grid gap-8 md:grid-cols-12 md:items-center">
             <div className="md:col-span-6">
               <p className="mb-4 flex items-center gap-4 text-[15px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
-                <span className="h-px w-9 bg-[#c6a65a]" /> Proyectos actuales
+                <span className="h-px w-9 bg-[#c6a65a]" /> Proyecto activo
               </p>
               <h2 className="max-w-xl text-[clamp(2rem,3.4vw,3.4rem)] leading-[1.05] tracking-[-.04em] text-[#041f49]">
                 ¿Cómo puedes hoy, invertir con propósito?
               </h2>
-              <p className="mt-3 max-w-md text-lg font-light leading-7 text-[#041f49]/70">
-                Dos proyectos. Dos maneras de construir patrimonio.
+              <p className="mt-3 max-w-md text-lg font-light leading-7 text-[#041f49]/80">
+                Hoy puedes invertir en consultorios del sector salud a 5 min del WTC.
               </p>
             </div>
             <div className="border-t border-black/15 pt-6 md:col-span-5 md:col-start-8 md:border-l md:border-t-0 md:pl-8 md:pt-0 lg:pl-12">
-              <p className="max-w-sm text-sm font-light leading-7 text-black/55 md:text-base">
+              <p className="max-w-sm text-sm font-light leading-7 text-[#1c1c1c]/70 md:text-base">
                 Conoce el proyecto que conversa mejor con tus objetivos. Si todavía no lo tienes claro, lo revisamos contigo.
               </p>
-              <Link href="/portafolio">
+              <Link href="/portafolio#proyectos">
                 <span className="mt-5 inline-flex cursor-pointer items-center gap-3 border-b border-[#041f49] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
-                  Ver todos los proyectos <ArrowRight size={14} />
+                  Ver proyecto activo <ArrowRight size={14} />
                 </span>
               </Link>
             </div>
           </Reveal>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <div className="mt-10">
             <motion.a
               href="https://sanpedropatriotismo.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block min-h-[440px] overflow-hidden bg-[#041f49] md:min-h-[480px]"
+              className="group relative block min-h-[440px] overflow-hidden bg-[#041f49] md:min-h-[520px]"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: .2 }}
+              viewport={{ once: true, amount: 0.2 }}
               variants={fadeUp}
             >
-              <img src={projectImage} alt="San Pedro Patriotismo" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
+              <img
+                src={projectImage}
+                alt="Zaiah Health · San Pedro Patriotismo"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+              />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,31,73,.08)_20%,rgba(4,31,73,.95)_100%)]" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
-                <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">San Pedro Patriotismo · Zaiah Health</p>
+                <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">
+                  San Pedro Patriotismo · Zaiah Health
+                </p>
                 <h3 className="mt-3 text-2xl tracking-[-.03em] md:text-3xl">Regenera consultorios</h3>
-                <p className="mt-3 max-w-lg text-sm font-light leading-6 text-white/65">Invierte a 5 min del WTC y genera ingresos pasivos a través de la renta de consultorios del sector de salud...</p>
-                <span className="mt-5 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">Conocer Zaiah Health <ArrowUpRight size={14}/></span>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="https://edison58tabacalera.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block min-h-[440px] overflow-hidden bg-[#1c1c1c] md:min-h-[480px]"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: .2 }}
-              variants={fadeUp}
-            >
-              <img src={projectTwo} alt="Edison 58 Tabacalera" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.08)_20%,rgba(0,0,0,.9)_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
-                <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">Edison 58 · Tabacalera</p>
-                <h3 className="mt-3 text-2xl tracking-[-.03em] md:text-3xl">Regenera departamentos en Tabacalera</h3>
-                <p className="mt-3 max-w-lg text-sm font-light leading-6 text-white/65">Invierte en el único proyecto activo de los arquitectos de Frontón México y genera rentas por estancias cortas.</p>
-                <span className="mt-5 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">Conocer Edison 58 <ArrowUpRight size={14}/></span>
+                <p className="mt-3 max-w-lg text-sm font-light leading-6 text-white/70">
+                  Invierte a 5 min del WTC y genera ingresos pasivos a través de la renta de consultorios del sector de salud.
+                </p>
+                <span className="mt-5 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">
+                  Conocer Zaiah Health <ArrowUpRight size={14} />
+                </span>
               </div>
             </motion.a>
           </div>
 
+          <Reveal className="mt-14 md:mt-16">
+            <p className="mb-4 flex items-center gap-4 text-[12px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
+              <span className="h-px w-9 bg-[#c6a65a]" /> Casos de éxito
+            </p>
+            <h2 className="max-w-xl text-[clamp(1.7rem,2.8vw,2.6rem)] leading-[1.08] tracking-[-.03em] text-[#041f49]">
+              Edison 58: regenerado y vendido
+            </h2>
+          </Reveal>
+
+          <div className="mt-8">
+            <Link href="/portafolio#casos-de-exito">
+              <motion.span
+                className="group relative block min-h-[360px] cursor-pointer overflow-hidden bg-[#1c1c1c] md:min-h-[420px]"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+              >
+                <img
+                  src={projectTwo}
+                  alt="Edison 58 Tabacalera · caso de éxito"
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.12)_20%,rgba(0,0,0,.88)_100%)]" />
+                <span className="absolute left-6 top-6 bg-[#c6a65a] px-4 py-2.5 text-[9px] font-bold uppercase tracking-[.2em] text-[#041f49]">
+                  Vendido
+                </span>
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
+                  <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">Edison 58 · Tabacalera</p>
+                  <h3 className="mt-3 text-2xl tracking-[-.03em] md:text-3xl">De edificio histórico a inversión vendida</h3>
+                  <p className="mt-3 max-w-lg text-sm font-light leading-6 text-white/70">
+                    ZAIAH adquirió, regeneró y vendió este activo en una zona conectada del centro de CDMX.
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">
+                    Ver caso <ArrowRight size={14} />
+                  </span>
+                </div>
+              </motion.span>
+            </Link>
+          </div>
+
           <Reveal className="mt-8 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
-            <div className="bg-[#faf9f7]/90 p-6 backdrop-blur-[1px]"><p className="text-2xl text-[#041f49] md:text-3xl">10 años</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Regenerando inmuebles en CDMX</p></div>
-            <div className="bg-[#faf9f7]/90 p-6 backdrop-blur-[1px]"><p className="text-2xl text-[#041f49] md:text-3xl">+30</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Inversionistas que confían en el modelo</p></div>
-            <div className="bg-[#faf9f7]/90 p-6 backdrop-blur-[1px]"><p className="text-2xl text-[#041f49] md:text-3xl">100%</p><p className="mt-2 text-[10px] uppercase tracking-[.18em] text-black/45">Operación y administración a nuestro cargo</p></div>
+            <div className="bg-[#faf9f7]/90 p-6 backdrop-blur-[1px]">
+              <p className="text-2xl text-[#041f49] md:text-3xl">10 años</p>
+              <p className="mt-2 text-[10px] uppercase tracking-[.18em] text-[#1c1c1c]/55">Regenerando inmuebles en CDMX</p>
+            </div>
+            <div className="bg-[#faf9f7]/90 p-6 backdrop-blur-[1px]">
+              <p className="text-2xl text-[#041f49] md:text-3xl">+30</p>
+              <p className="mt-2 text-[10px] uppercase tracking-[.18em] text-[#1c1c1c]/55">Inversionistas que confían en el modelo</p>
+            </div>
+            <div className="bg-[#faf9f7]/90 p-6 backdrop-blur-[1px]">
+              <p className="text-2xl text-[#041f49] md:text-3xl">100%</p>
+              <p className="mt-2 text-[10px] uppercase tracking-[.18em] text-[#1c1c1c]/55">Operación y administración a nuestro cargo</p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIOS ─────────────────────────────────────── */}
+      <section className="bg-[#faf9f7] py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <Reveal className="mb-8 md:mb-10">
+            <p className="mb-4 flex items-center gap-4 text-[12px] font-bold uppercase tracking-[.3em] text-[#c6a65a]">
+              <span className="h-px w-9 bg-[#c6a65a]" /> Confianza
+            </p>
+            <h2 className="max-w-2xl text-[clamp(1.8rem,3vw,2.8rem)] leading-[1.08] tracking-[-.03em] text-[#041f49]">
+              Quienes ya invirtieron con ZAIAH
+            </h2>
+          </Reveal>
+          <div className="grid gap-5 md:grid-cols-2">
+            {homeTestimonials.map((item) => (
+              <Reveal key={item.name} className="border border-black/10 bg-white p-6 md:p-8">
+                <p className="text-sm font-light leading-7 text-[#1c1c1c]/75">“{item.quote}”</p>
+                <div className="mt-6 flex items-center justify-between gap-4 border-t border-black/10 pt-5">
+                  <div>
+                    <p className="text-sm text-[#041f49]">{item.name}</p>
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-[.18em] text-[#c6a65a]">{item.role}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setActiveVideo(item)}
+                    className="inline-flex items-center gap-2 border border-[#041f49]/15 px-4 py-2.5 text-[10px] font-bold uppercase tracking-[.16em] text-[#041f49] transition-colors hover:border-[#c6a65a] hover:text-[#c6a65a]"
+                  >
+                    <Play size={12} /> Ver video
+                  </button>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mt-6">
+            <Link href="/quienes-somos">
+              <span className="inline-flex cursor-pointer items-center gap-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
+                Conocer al equipo <ArrowRight size={14} />
+              </span>
+            </Link>
           </Reveal>
         </div>
       </section>
@@ -748,13 +875,49 @@ export default function Home() {
           </Reveal>
           <Reveal className="md:col-span-4 md:justify-self-end">
             <Link href="/contacto">
-              <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#22c55e] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-white transition-colors hover:bg-[#16a34a]">
+              <span className="group inline-flex cursor-pointer items-center gap-3 rounded-full bg-[#c6a65a] px-8 py-4 text-[11px] font-bold uppercase tracking-[.18em] text-[#041f49] transition-colors hover:bg-[#041f49] hover:text-white">
                 Agenda una cita <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
           </Reveal>
         </div>
       </section>
+
+      {activeVideo && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-[#041f49]/88 p-4 backdrop-blur-md md:p-8"
+          onClick={() => setActiveVideo(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Testimonio de ${activeVideo.name}`}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, ease: EASE }}
+            className="relative w-full max-w-3xl overflow-hidden border border-white/15 bg-[#0a1628]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[.22em] text-[#c6a65a]">Ver testimonio</p>
+                <p className="mt-1 text-sm text-white">{activeVideo.name}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveVideo(null)}
+                className="flex h-10 w-10 items-center justify-center border border-white/15 text-white/70 hover:text-[#c6a65a]"
+                aria-label="Cerrar video"
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div className="aspect-video bg-black">
+              <video src={activeVideo.video} controls autoPlay playsInline className="h-full w-full object-contain" />
+            </div>
+          </motion.div>
+        </div>
+      )}
     </main>
   );
 }
