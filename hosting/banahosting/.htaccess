@@ -1,13 +1,27 @@
 Options -MultiViews
 RewriteEngine On
 
-# Serve existing files and folders directly.
+# Real 404 document (prerendered).
+ErrorDocument 404 /404.html
+
+# Serve existing files and folders directly (robots.txt, sitemap.xml, assets).
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Send application routes to the React entry point.
-RewriteRule ^ index.html [L]
+# Known SPA routes → their prerendered folders / index.
+RewriteRule ^(modelo)/?$ /$1/index.html [L]
+RewriteRule ^(portafolio)/?$ /$1/index.html [L]
+RewriteRule ^(quienes-somos)/?$ /$1/index.html [L]
+RewriteRule ^(contacto)/?$ /$1/index.html [L]
+RewriteRule ^(gracias)/?$ /$1/index.html [L]
+RewriteRule ^(aviso-de-privacidad)/?$ /$1/index.html [L]
+
+# Home
+RewriteRule ^$ /index.html [L]
+
+# Anything else → 404
+RewriteRule ^ - [R=404,L]
 
 # Basic compression and browser caching for static assets.
 <IfModule mod_deflate.c>

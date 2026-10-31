@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
@@ -10,6 +11,7 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
       data-testid="button-whatsapp"
       aria-label="Hablar por WhatsApp"
+      onClick={() => trackWhatsAppClick("floating_button")}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}

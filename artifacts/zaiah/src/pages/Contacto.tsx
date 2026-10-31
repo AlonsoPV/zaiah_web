@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 import heroImage from "@/assets/images/hero-day-4.webp";
+import { trackContactSubmit, trackWhatsAppClick } from "@/lib/analytics";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -43,12 +44,11 @@ function FadeIn({ children, delay = 0, className = "" }: { children: React.React
 
 const contactSchema = z.object({
   nombre: z.string().min(2, "Ingresa tu nombre completo").max(120),
-  correo: z.string().email("Ingresa un correo válido").max(160),
-  telefono: z.string().min(8, "Ingresa un número de teléfono válido").max(40),
+  telefono: z.string().min(8, "Ingresa un WhatsApp válido").max(40),
   interes: z.enum(["inversion", "alianza", "proyecto-inmobiliario", "otro"], {
     required_error: "Selecciona un tipo de interés",
   }),
-  mensaje: z.string().min(10, "Cuéntanos un poco más (mínimo 10 caracteres)").max(4000),
+  mensaje: z.string().max(4000).optional(),
   /** Honeypot — debe quedar vacío */
   website: z.string().max(200).optional(),
 });
@@ -70,7 +70,7 @@ export default function Contacto() {
 
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { nombre: "", correo: "", telefono: "", mensaje: "", website: "" },
+    defaultValues: { nombre: "", telefono: "", mensaje: "", website: "" },
   });
 
   async function onSubmit(data: ContactForm) {
@@ -113,6 +113,7 @@ export default function Contacto() {
       });
       const json = await res.json() as { ok: boolean; error?: string };
       if (!json.ok) throw new Error(json.error ?? "Error al enviar");
+      trackContactSubmit();
       setLocation("/gracias");
     } catch {
       toast({
@@ -166,8 +167,17 @@ export default function Contacto() {
             transition={{ duration: 1, ease: EASE, delay: 0.22 }}
             className="text-[clamp(2.1rem,5.2vw,4.4rem)] font-medium leading-[1.05] tracking-[-.03em] text-white"
           >
-            Empecemos por conocerte. <em className="font-serif font-normal italic">Lo demás viene después.</em>
+            Agenda tu cita de inversión
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.32 }}
+            className="mt-4 max-w-2xl text-lg font-light leading-7 text-white/85 md:text-xl"
+            aria-hidden
+          >
+            Empecemos por conocerte. <em className="font-serif italic">Lo demás viene después.</em>
+          </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 18 }}
@@ -245,6 +255,7 @@ export default function Contacto() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="button-contact-whatsapp"
+                  onClick={() => trackWhatsAppClick("contacto_sidebar")}
                   className="inline-flex w-fit items-center gap-2.5 bg-[#25D366] px-5 py-3 text-[10px] font-bold uppercase tracking-[.15em] text-white transition-colors hover:bg-[#1ebe5d]"
                 >
                   {WA_ICON}
@@ -261,38 +272,25 @@ export default function Contacto() {
                       <p className="mb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
                         Cuéntanos un poco de ti
                       </p>
-                      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                        <FormField control={form.control} name="nombre" render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Nombre *</FormLabel>
-                            <FormControl>
-                              <Input {...field} placeholder="Tu nombre completo"
-                                className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
-                                data-testid="input-nombre" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )} />
-                        <FormField control={form.control} name="telefono" render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Teléfono *</FormLabel>
-                            <FormControl>
-                              <Input {...field} type="tel" placeholder="+52 55 0000 0000"
-                                className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
-                                data-testid="input-telefono" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )} />
-                      </div>
-
-                      <FormField control={form.control} name="correo" render={({ field }) => (
+                      <FormField control={form.control} name="nombre" render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Correo *</FormLabel>
+                          <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Nombre *</FormLabel>
                           <FormControl>
-                            <Input {...field} type="email" placeholder="correo@ejemplo.com"
+                            <Input {...field} placeholder="Tu nombre completo"
                               className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
-                              data-testid="input-correo" />
+                              data-testid="input-nombre" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )} />
+
+                      <FormField control={form.control} name="telefono" render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">WhatsApp *</FormLabel>
+                          <FormControl>
+                            <Input {...field} type="tel" placeholder="+52 55 0000 0000"
+                              className="rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
+                              data-testid="input-telefono" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -319,9 +317,9 @@ export default function Contacto() {
 
                       <FormField control={form.control} name="mensaje" render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Mensaje *</FormLabel>
+                          <FormLabel className="text-[10px] font-bold uppercase tracking-[.18em] text-[#041f49]">Mensaje (opcional)</FormLabel>
                           <FormControl>
-                            <Textarea {...field} placeholder="¿Qué estás buscando y cómo podemos ayudarte?"
+                            <Textarea {...field} placeholder="¿Qué estás buscando? (opcional)"
                               rows={3}
                               className="resize-none rounded-none border-0 border-b border-[#d9d6cf] bg-transparent px-0 text-[#041f49] placeholder:text-[#041f49]/25 focus-visible:border-[#041f49] focus-visible:ring-0"
                               data-testid="textarea-mensaje" />

@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/images/hero-day-4.webp";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -16,8 +17,7 @@ export default function Gracias() {
     <main className="relative min-h-screen overflow-hidden bg-[#0a1628] text-white" data-testid="page-gracias">
       <motion.img
         src={heroImage}
-        alt=""
-        aria-hidden
+        alt="Conversación patrimonial ZAIAH en Ciudad de México"
         className="absolute inset-0 h-full w-full object-cover"
         initial={{ scale: 1.06 }}
         animate={{ scale: 1 }}
@@ -45,14 +45,18 @@ export default function Gracias() {
           Gracias. <em className="font-serif font-normal italic text-[#c6a65a]">Ya dimos el primer paso.</em>
         </motion.h1>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
-          className="mt-6 max-w-lg text-sm font-light leading-7 text-white/75 md:mt-7 md:text-base"
+          className="mt-6 max-w-lg space-y-4 text-sm font-light leading-7 text-white/75 md:mt-7 md:text-base"
         >
-          Hemos recibido tu mensaje. El equipo ZAIAH te contactará en un máximo de 48 horas hábiles para continuar la conversación.
-        </motion.p>
+          <p>Hemos recibido tu mensaje. El equipo ZAIAH te contactará en un máximo de 48 horas hábiles.</p>
+          <p className="text-white/85">
+            <span className="font-medium text-[#c6a65a]">Qué sigue:</span> revisamos tu perfil, te proponemos el proyecto
+            que mejor encaja y agendamos una conversación clara sobre escritura, operación y siguiente paso.
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,11 +64,17 @@ export default function Gracias() {
           transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
           className="mt-9 flex w-full max-w-[20.5rem] flex-col items-stretch gap-3 sm:mt-10 sm:max-w-md md:max-w-none md:flex-row md:items-center md:justify-center md:gap-4"
         >
-          <Link href="/" className="w-full md:w-auto">
-            <span className="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#c6a65a] px-5 py-3.5 text-[10px] font-bold uppercase tracking-[.12em] text-[#041f49] transition-colors hover:bg-white sm:gap-3 sm:px-8 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
-              Volver al inicio <ArrowRight size={15} className="shrink-0 transition-transform group-hover:translate-x-1" />
+          <a
+            href="https://wa.me/5215570759959"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick("gracias_page")}
+            className="w-full md:w-auto"
+          >
+            <span className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 text-[10px] font-bold uppercase tracking-[.12em] text-white transition-colors hover:bg-[#1ebe5d] sm:gap-3 sm:px-8 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
+              {WA_ICON} Hablar por WhatsApp
             </span>
-          </Link>
+          </a>
           <Link href="/portafolio" className="w-full md:w-auto">
             <span className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-white/45 bg-black/25 px-5 py-3.5 text-[10px] font-medium uppercase tracking-[.12em] text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10 sm:px-7 sm:py-4 sm:text-[11px] sm:tracking-[.18em]">
               Ver portafolio
@@ -72,18 +82,18 @@ export default function Gracias() {
           </Link>
         </motion.div>
 
-        <motion.a
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.75 }}
-          href="https://wa.me/5215570759959"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[.18em] text-white/70 transition-colors hover:text-[#25D366]"
+          className="mt-8"
         >
-          {WA_ICON}
-          ¿Prefieres WhatsApp?
-        </motion.a>
+          <Link href="/">
+            <span className="inline-flex cursor-pointer items-center gap-2 text-[10px] font-bold uppercase tracking-[.18em] text-white/70 transition-colors hover:text-[#c6a65a]">
+              Volver al inicio <ArrowRight size={14} />
+            </span>
+          </Link>
+        </motion.div>
       </div>
     </main>
   );

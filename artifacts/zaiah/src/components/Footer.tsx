@@ -1,9 +1,12 @@
 import { Link } from "wouter";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const footerLinks = [
   { href: "/", label: "Inicio" },
-  { href: "/quienes-somos", label: "Quiénes Somos" },
+  { href: "/modelo", label: "Modelo" },
   { href: "/portafolio", label: "Portafolio" },
+  { href: "/quienes-somos", label: "Quiénes somos" },
+  { href: "/contacto", label: "Agenda una cita" },
 ];
 
 export default function Footer() {
@@ -64,6 +67,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="link-footer-whatsapp"
+                onClick={() => trackWhatsAppClick("footer")}
               >
                 +52 1 55 7075 9959
               </a>

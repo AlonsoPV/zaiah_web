@@ -44,8 +44,17 @@ export default function Modelo(){return <main className="bg-[#faf9f7] text-[#1c1
         transition={{ duration: 1, ease: EASE, delay: 0.22 }}
         className="max-w-5xl text-[clamp(2.1rem,5.2vw,4.4rem)] font-medium leading-[1.05] tracking-[-.03em]"
       >
-        Construimos Zonas Zaiah mediante la compra progresiva <em className="font-serif font-normal italic">de edificios completos.</em>
+        Cómo funciona invertir con ZAIAH
       </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: EASE, delay: 0.32 }}
+        className="mt-4 max-w-3xl text-lg font-light leading-7 text-white/85 md:text-xl"
+        aria-hidden
+      >
+        Construimos Zonas Zaiah mediante la compra progresiva <em className="font-serif italic">de edificios completos.</em>
+      </motion.p>
       <motion.p
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
