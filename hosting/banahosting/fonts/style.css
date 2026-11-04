@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Qualion';
+    src: local('Qualion Bold'), local('Qualion-Bold'),
+        url('Qualion-Bold.woff2') format('woff2'),
+        url('Qualion-Bold.woff') format('woff'),
+        url('Qualion-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Building2, CloudFog, DraftingCompass, Factory, FileCheck2, Layers, Leaf, MapPin, MapPinned, Mountain, Orbit, Play, Scale, ShieldCheck, Stamp, Trees, X } from "lucide-react";
+import { ArrowRight, Building2, CloudFog, DraftingCompass, Factory, FileCheck2, Layers, Leaf, MapPin, MapPinned, Mountain, Orbit, Play, Scale, ShieldCheck, Stamp, Trees, X } from "lucide-react";
 import heroFallback from "@/assets/images/hero-fallback.webp";
 import projectImage from "@/assets/images/san-pedro.webp";
 import projectTwo from "@/assets/images/edison-58.webp";
@@ -596,7 +596,7 @@ export default function Home() {
               <p className="max-w-sm text-sm font-light leading-7 text-[#1c1c1c]/70 md:text-base">
                 Conoce el proyecto que conversa mejor con tus objetivos. Si todavía no lo tienes claro, lo revisamos contigo.
               </p>
-              <Link href="/portafolio#proyectos">
+              <Link href="/zaiah-health">
                 <span className="mt-5 inline-flex cursor-pointer items-center gap-3 border-b border-[#041f49] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
                   Ver proyecto activo <ArrowRight size={14} />
                 </span>
@@ -605,36 +605,35 @@ export default function Home() {
           </Reveal>
 
           <div className="mt-10">
-            <motion.a
-              href="https://sanpedropatriotismo.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative block min-h-[440px] overflow-hidden bg-[#041f49] md:min-h-[520px]"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeUp}
-            >
-              <img
-                src={projectImage}
-                alt="Zaiah Health · San Pedro Patriotismo"
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,31,73,.08)_20%,rgba(4,31,73,.95)_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
-                <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">
-                  San Pedro Patriotismo · Zaiah Health
-                </p>
-                <h3 className="mt-3 text-2xl tracking-[-.03em] md:text-3xl">Regenera consultorios</h3>
-                <p className="mt-3 max-w-lg text-sm font-light leading-6 text-white/70">
-                  Invierte a 5 min del WTC y genera ingresos pasivos a través de la renta de consultorios del sector de salud.
-                </p>
-                <span className="mt-5 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">
-                  Conocer Zaiah Health <ArrowUpRight size={14} />
-                </span>
-              </div>
-            </motion.a>
+            <Link href="/zaiah-health">
+              <motion.span
+                className="group relative block min-h-[440px] cursor-pointer overflow-hidden bg-[#041f49] md:min-h-[520px]"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+              >
+                <img
+                  src={projectImage}
+                  alt="Zaiah Health · San Pedro Patriotismo"
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,31,73,.08)_20%,rgba(4,31,73,.95)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
+                  <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#c6a65a]">
+                    San Pedro Patriotismo · Zaiah Health
+                  </p>
+                  <h3 className="mt-3 text-2xl tracking-[-.03em] md:text-3xl">Regenera consultorios</h3>
+                  <p className="mt-3 max-w-lg text-sm font-light leading-6 text-white/70">
+                    Invierte a 5 min del WTC y genera ingresos pasivos a través de la renta de consultorios del sector de salud.
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-3 border-b border-[#c6a65a] pb-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#c6a65a]">
+                    Conocer Zaiah Health <ArrowRight size={14} />
+                  </span>
+                </div>
+              </motion.span>
+            </Link>
           </div>
 
           <Reveal className="mt-14 md:mt-16">
@@ -647,7 +646,7 @@ export default function Home() {
           </Reveal>
 
           <div className="mt-8">
-            <Link href="/portafolio#casos-de-exito">
+            <Link href="/casos-de-exito/edison-58">
               <motion.span
                 className="group relative block min-h-[360px] cursor-pointer overflow-hidden bg-[#1c1c1c] md:min-h-[420px]"
                 initial="hidden"

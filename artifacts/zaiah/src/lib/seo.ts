@@ -23,30 +23,55 @@ export const pageMeta: Record<string, PageMeta> = {
     description:
       "Invierte en inmuebles regenerados en CDMX con escrituras, operación profesional y renta pasiva. Conoce el modelo ZAIAH y agenda una cita.",
     path: "/",
+    ogImage: `${SITE_URL}/og-home.webp`,
   },
   "/modelo": {
     title: "Cómo invertir en inmuebles regenerados | Modelo ZAIAH",
     description:
       "Compramos edificios completos, los regeneramos y tú inviertes con escrituras y administración incluida. Así funciona el modelo ZAIAH.",
     path: "/modelo",
+    ogImage: `${SITE_URL}/og-modelo.webp`,
   },
   "/portafolio": {
     title: "Proyectos de inversión inmobiliaria en CDMX | ZAIAH",
     description:
       "Conoce el proyecto activo de ZAIAH y nuestros casos de éxito en CDMX. Inmuebles regenerados con escrituras y renta administrada.",
     path: "/portafolio",
+    ogImage: `${SITE_URL}/og-portafolio.webp`,
+  },
+  "/zaiah-health": {
+    title: "Consultorios en venta para rentar en CDMX | Zaiah Health",
+    description:
+      "Invierte en consultorios a 5 min del WTC con escrituras y renta administrada por ZAIAH. Agenda un recorrido.",
+    path: "/zaiah-health",
+    ogImage: `${SITE_URL}/og-zaiah-health.webp`,
+  },
+  "/casos-de-exito/edison-58": {
+    title: "Edison 58, Tabacalera: caso de regeneración | ZAIAH",
+    description: "Cómo ZAIAH adquirió, regeneró y vendió Edison 58 en la Tabacalera, CDMX.",
+    path: "/casos-de-exito/edison-58",
+    ogImage: `${SITE_URL}/og-edison-58.webp`,
+  },
+  "/preguntas-frecuentes": {
+    title: "Preguntas frecuentes sobre invertir con ZAIAH",
+    description:
+      "Escrituras, rendimientos, administración y proceso notarial: respuestas claras antes de invertir.",
+    path: "/preguntas-frecuentes",
+    ogImage: `${SITE_URL}/og-faq.webp`,
   },
   "/quienes-somos": {
     title: "Quiénes somos: equipo de inversión inmobiliaria | ZAIAH",
     description:
       "10 años regenerando inmuebles en CDMX. Conoce al equipo y a los asesores que acompañan a +30 inversionistas.",
     path: "/quienes-somos",
+    ogImage: `${SITE_URL}/og-quienes-somos.webp`,
   },
   "/contacto": {
     title: "Agenda una cita de inversión inmobiliaria | ZAIAH",
     description:
       "Agenda una reunión virtual: analizamos tu perfil y te recomendamos el proyecto que mejor encaja con tus objetivos.",
     path: "/contacto",
+    ogImage: `${SITE_URL}/og-contacto.webp`,
   },
   "/gracias": {
     title: "Gracias | Solicitud recibida · ZAIAH",
@@ -68,6 +93,9 @@ export const sitemapPaths = [
   "/",
   "/modelo",
   "/portafolio",
+  "/zaiah-health",
+  "/casos-de-exito/edison-58",
+  "/preguntas-frecuentes",
   "/quienes-somos",
   "/contacto",
   "/aviso-de-privacidad",

@@ -4,14 +4,22 @@ import { Link, useLocation } from "wouter";
 const navLinks = [
   { href: "/", label: "Inicio" },
   { href: "/modelo", label: "Modelo" },
-  { href: "/portafolio", label: "Portafolio" },
-  { href: "/quienes-somos", label: "Quiénes somos" },
+  { href: "/portafolio", label: "Proyectos" },
+  { href: "/casos-de-exito/edison-58", label: "Casos de éxito" },
+  { href: "/quienes-somos", label: "Nosotros" },
 ];
+
+function linkPath(href: string) {
+  return href.split("#")[0] || "/";
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
+  const [hash, setHash] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash : "",
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -21,9 +29,27 @@ export default function Header() {
 
   useEffect(() => {
     setMenuOpen(false);
+    setHash(window.location.hash);
   }, [location]);
 
+  useEffect(() => {
+    const onHash = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
   const isLight = scrolled;
+
+  const isActive = (href: string) => {
+    const path = linkPath(href);
+    if (href.includes("#")) {
+      return location === path && hash === `#${href.split("#")[1]}`;
+    }
+    if (path === "/casos-de-exito/edison-58") {
+      return location === path || location.startsWith("/casos-de-exito/");
+    }
+    return location === path;
+  };
 
   return (
     <header
@@ -36,7 +62,6 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-16">
         <div className="flex items-center justify-between h-[72px]">
-          {/* Logo */}
           <Link href="/" data-testid="link-logo">
             <img
               src={`${import.meta.env.BASE_URL}logo-zaiah.png`}
@@ -53,10 +78,9 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8" data-testid="nav-desktop">
             {navLinks.map((link) => {
-              const active = location === link.href;
+              const active = isActive(link.href);
               return (
                 <Link
                   key={link.href}
@@ -66,8 +90,12 @@ export default function Header() {
                   <span
                     className={`text-[11px] font-semibold tracking-[0.14em] uppercase transition-colors duration-300 relative group ${
                       isLight
-                        ? active ? "text-[#041f49]" : "text-[#041f49]/55 hover:text-[#041f49]"
-                        : active ? "text-white" : "text-white/55 hover:text-white"
+                        ? active
+                          ? "text-[#041f49]"
+                          : "text-[#041f49]/55 hover:text-[#041f49]"
+                        : active
+                          ? "text-white"
+                          : "text-white/55 hover:text-white"
                     }`}
                   >
                     {link.label}
@@ -94,7 +122,6 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Mobile hamburger */}
           <button
             className={`md:hidden flex flex-col gap-[5px] p-2 transition-colors duration-300 ${
               isLight ? "text-[#041f49]" : "text-white"
@@ -103,14 +130,19 @@ export default function Header() {
             aria-label="Toggle menu"
             data-testid="button-menu-toggle"
           >
-            <span className={`block w-5 h-px bg-current transition-transform duration-300 origin-center ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`} />
-            <span className={`block w-5 h-px bg-current transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-5 h-px bg-current transition-transform duration-300 origin-center ${menuOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
+            <span
+              className={`block w-5 h-px bg-current transition-transform duration-300 origin-center ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`}
+            />
+            <span
+              className={`block w-5 h-px bg-current transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`block w-5 h-px bg-current transition-transform duration-300 origin-center ${menuOpen ? "-translate-y-[6px] -rotate-45" : ""}`}
+            />
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={`md:hidden bg-[#041f49] overflow-hidden transition-all duration-500 ${
           menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"

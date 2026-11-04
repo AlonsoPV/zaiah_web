@@ -40,9 +40,7 @@ jobs:
         env:
           PORT: 4173
           BASE_PATH: /zaiah_web/
-
-      - name: Add SPA fallback
-        run: cp artifacts/zaiah/dist/public/index.html artifacts/zaiah/dist/public/404.html
+          PUPPETEER_CACHE_DIR: ${{ runner.temp }}/puppeteer
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

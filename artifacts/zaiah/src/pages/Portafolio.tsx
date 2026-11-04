@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink, MapPin, Maximize2, X } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, MapPin, Maximize2, X } from "lucide-react";
 import heroDay from "@/assets/images/hero-day-3.webp";
 import projectOne from "@/assets/images/san-pedro.webp";
 import projectOneB from "@/assets/images/sanpedro-2.webp";
@@ -100,7 +100,7 @@ const activeProjects: Project[] = [
       "Un activo dirigido al sector médico, con demanda constante, ubicación a cinco minutos del WTC y administración profesional. La operación permanece a cargo de un equipo especializado.",
     image: projectOne,
     images: [projectOne, projectOneB, projectOneC, projectOneD],
-    url: "https://sanpedropatriotismo.com/",
+    url: "/zaiah-health",
     facts: [
       ["$1.5 MDP", "Inversión desde"],
       ["9% anual", "Rentabilidad estimada"],
@@ -130,7 +130,7 @@ const successCases: Project[] = [
       projectTwoI,
       projectTwoJ,
     ],
-    url: "#casos-de-exito",
+    url: "/casos-de-exito/edison-58",
     facts: [
       ["Tabacalera", "Zona regenerada"],
       ["Renta corta", "Modelo operado"],
@@ -580,6 +580,19 @@ function ProjectGallery({
 }
 
 export default function Portafolio() {
+  useEffect(() => {
+    const scrollToHash = () => {
+      const id = window.location.hash.replace(/^#/, "");
+      if (!id) return;
+      window.setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 120);
+    };
+    scrollToHash();
+    window.addEventListener("hashchange", scrollToHash);
+    return () => window.removeEventListener("hashchange", scrollToHash);
+  }, []);
+
   return (
     <main className="bg-[#faf9f7] text-[#1c1c1c]">
       <section className="relative h-svh max-h-dvh min-h-[100svh] overflow-hidden bg-[#0a1628] text-white">
@@ -685,14 +698,11 @@ export default function Portafolio() {
                           </div>
                         ))}
                       </div>
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-8 inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]"
-                      >
-                        Conocer el proyecto <ExternalLink size={13} />
-                      </a>
+                      <Link href={p.url}>
+                        <span className="mt-8 inline-flex cursor-pointer items-center gap-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
+                          Conocer el proyecto <ArrowRight size={13} />
+                        </span>
+                      </Link>
                       <Link href="/modelo">
                         <span className="mt-4 inline-flex cursor-pointer items-center gap-2 text-[10px] font-bold uppercase tracking-[.18em] text-[#c6a65a]">
                           Cómo funciona el modelo <ArrowRight size={13} />
@@ -752,12 +762,16 @@ export default function Portafolio() {
                           </div>
                         ))}
                       </div>
-                      <a
-                        href="#proyectos"
-                        className="mt-8 inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]"
-                      >
-                        Ver proyecto activo <ArrowRight size={13} />
-                      </a>
+                      <Link href={p.url}>
+                        <span className="mt-8 inline-flex cursor-pointer items-center gap-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#041f49]">
+                          Ver caso completo <ArrowRight size={13} />
+                        </span>
+                      </Link>
+                      <Link href="/zaiah-health">
+                        <span className="mt-4 inline-flex cursor-pointer items-center gap-2 text-[10px] font-bold uppercase tracking-[.18em] text-[#c6a65a]">
+                          Ver proyecto activo <ArrowRight size={13} />
+                        </span>
+                      </Link>
                     </div>
                   </Reveal>
                   <FloorPlansViewer

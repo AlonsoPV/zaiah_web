@@ -5,8 +5,11 @@ import { trackWhatsAppClick } from "@/lib/analytics";
 const footerLinks = [
   { href: "/", label: "Inicio" },
   { href: "/modelo", label: "Modelo" },
-  { href: "/portafolio", label: "Portafolio" },
-  { href: "/quienes-somos", label: "Quiénes somos" },
+  { href: "/portafolio", label: "Proyectos" },
+  { href: "/zaiah-health", label: "Zaiah Health" },
+  { href: "/casos-de-exito/edison-58", label: "Casos de éxito" },
+  { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
+  { href: "/quienes-somos", label: "Nosotros" },
   { href: "/contacto", label: "Agenda una cita" },
 ];
 
