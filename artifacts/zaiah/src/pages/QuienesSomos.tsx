@@ -96,11 +96,10 @@ function Portrait({ person }: { person: Person }) {
           <div className="absolute inset-0 bg-[linear-gradient(160deg,#0a1628_0%,#041f49_55%,#1a3a6e_100%)]">
             <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, #c6a65a 0%, transparent 45%)" }} />
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-3xl font-medium tracking-[.2em] text-[#c6a65a]/80 md:text-4xl">
+              <span className="text-3xl font-medium tracking-[.2em] text-[#c6a65a]/80 md:text-4xl" aria-hidden>
                 {initials(person.name)}
               </span>
             </div>
-            <span className="absolute bottom-4 left-4 text-[9px] font-bold uppercase tracking-[.22em] text-white/25">Foto</span>
           </div>
         )}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#041f49]/80 via-[#041f49]/25 to-transparent opacity-90 transition duration-500 group-hover:opacity-100" />
@@ -280,13 +279,11 @@ export default function QuienesSomos() {
           </Reveal>
 
           <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {[...founders, ...leadership, ...crew]
-              .filter((person) => Boolean(person.image))
-              .map((person) => (
-                <Reveal key={person.name}>
-                  <Portrait person={person} />
-                </Reveal>
-              ))}
+            {[...founders, ...leadership, ...crew].map((person) => (
+              <Reveal key={person.name}>
+                <Portrait person={person} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
