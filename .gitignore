@@ -47,3 +47,7 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Deploy packages (upload via FTP, do not commit)
+hosting/banahosting.zip
+*.zip
